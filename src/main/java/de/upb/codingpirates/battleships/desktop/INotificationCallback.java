@@ -4,19 +4,19 @@ import de.upb.codingpirates.battleships.network.message.notification.*;
 
 public interface INotificationCallback {
 
-  public void onGameInitNotification(GameInitNotification initNotification);
+    void onGameInitNotification(GameInitNotification initNotification);
 
-  public void onGameStartNotification(GameStartNotification startNotification);
+    void onGameStartNotification(GameStartNotification startNotification);
 
-  public void onSpectatorUpdateNotification(SpectatorUpdateNotification updateNotification);
+    void onSpectatorUpdateNotification(SpectatorUpdateNotification updateNotification);
 
-  public void onFinishNotification(FinishNotification finishNotification);
+    void onFinishNotification(FinishNotification finishNotification);
 
-  public void onPauseNotification(PauseNotification pauseNotification);
+    void onPauseNotification(PauseNotification pauseNotification);
 
-  public void onContinueNotification(ContinueNotification continueNotification);
+    void onContinueNotification(ContinueNotification continueNotification);
 
-  public void onLeaveNotification(LeaveNotification leaveNotification);
+    void onLeaveNotification(LeaveNotification leaveNotification);
 
-  public void onRoundStartNotification(RoundStartNotification roundstartNotification);
+    void onRoundStartNotification(RoundStartNotification roundstartNotification);
 }

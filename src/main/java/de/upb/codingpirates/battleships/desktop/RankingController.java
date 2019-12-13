@@ -20,55 +20,57 @@ import java.util.ResourceBundle;
  */
 public class RankingController implements Initializable {
 
-  @FXML
-  TableView<Player> tableRangList;
-  @FXML
-  TableColumn<Player, String> name;
-  @FXML
-  TableColumn<Player, Integer> rang;
-  @FXML
-  TableColumn<Player, Integer> points;
+    @FXML
+    TableView<Player> tableRangList;
+    @FXML
+    TableColumn<Player, String> name;
+    @FXML
+    TableColumn<Player, Integer> rang;
+    @FXML
+    TableColumn<Player, Integer> points;
 
-  private Ranking ranking;
+    private Ranking ranking;
 
-  /**
-   * Set Method for the Ranking.
-   * @param ranking The related Ranking Class.
-   */
-  public void setRanking(Ranking ranking) {
-    this.ranking = ranking;
-  }
-
-  /**
-   * Initial Method.
-   */
-  @Override
-  public void initialize(URL arg0, ResourceBundle arg1) {
-
-  }
-
-  /**
-   * Fills the Ranking Window with the Placement of every Player, it's Name and Points. 
-   * @param pointsList 	Sorted PlayerIds List
-   * @param pointsMap	Map of PlayerIds and Points
-   * @param players		Unsorted PlayerList
-   */
-  public void setPointsList(Queue<Integer> pointsList, Map<Integer,Integer> pointsMap, Collection<Client> players) {  //ToDo Tabelle füllen
-    ObservableList<Player> playerList = null;
-    int i=1;
-    while(pointsList.isEmpty()==false) {
-      int playerInt = pointsList.remove();
-      String player = Integer.toString(playerInt);
-      int points = pointsMap.get(playerInt);
-      int rang = i;
-      i++;	
-      playerList = FXCollections.observableArrayList(
-          new Player(rang, player, points));
+    /**
+     * Set Method for the Ranking.
+     *
+     * @param ranking The related Ranking Class.
+     */
+    public void setRanking(Ranking ranking) {
+        this.ranking = ranking;
     }
-    rang.setCellValueFactory(new PropertyValueFactory<Player, Integer>("rang"));
-    name.setCellValueFactory(new PropertyValueFactory<Player, String>("name"));
-    points.setCellValueFactory(new PropertyValueFactory<Player, Integer>("points"));
-    tableRangList.setItems(playerList);
-  }
+
+    /**
+     * Initial Method.
+     */
+    @Override
+    public void initialize(URL arg0, ResourceBundle arg1) {
+
+    }
+
+    /**
+     * Fills the Ranking Window with the Placement of every Player, it's Name and Points.
+     *
+     * @param pointsList Sorted PlayerIds List
+     * @param pointsMap  Map of PlayerIds and Points
+     * @param players    Unsorted PlayerList
+     */
+    public void setPointsList(Queue<Integer> pointsList, Map<Integer, Integer> pointsMap, Collection<Client> players) {  //ToDo Tabelle füllen
+        ObservableList<Player> playerList = null;
+        int i = 1;
+        while (pointsList.isEmpty() == false) {
+            int playerInt = pointsList.remove();
+            String player = Integer.toString(playerInt);
+            int points = pointsMap.get(playerInt);
+            int rang = i;
+            i++;
+            playerList = FXCollections.observableArrayList(
+                    new Player(rang, player, points));
+        }
+        rang.setCellValueFactory(new PropertyValueFactory<Player, Integer>("rang"));
+        name.setCellValueFactory(new PropertyValueFactory<Player, String>("name"));
+        points.setCellValueFactory(new PropertyValueFactory<Player, Integer>("points"));
+        tableRangList.setItems(playerList);
+    }
 
 }
