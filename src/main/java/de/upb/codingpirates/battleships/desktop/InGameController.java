@@ -81,7 +81,7 @@ public class InGameController implements Initializable {
     /**
      * Safes the selected Game Class.
      *
-     * @param selected Game
+     * @param game
      */
     public void setGame(Game game) {
         this.game = game;
@@ -138,8 +138,6 @@ public class InGameController implements Initializable {
 
     /**
      * Initializes a Ranking with the Rank, Name and Points of every Player.
-     *
-     * @param points Map of the Points reached by Players.
      */
     public void showRanking() {
         this.ranking = new Ranking();
@@ -333,7 +331,7 @@ public class InGameController implements Initializable {
         Object[] clientArray = clientList.toArray();
         for (int i = 0; i < clientArray.length; i++) {
             Client client = (Client) clientArray[i];
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("../../../../../../resources/GameFieldView.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("../../../../../resources/GameFieldView.fxml"));
             inGame = loader.load();
             spielfelder.getChildren().add(inGame);
             GameFieldController gameFieldController = loader.getController();

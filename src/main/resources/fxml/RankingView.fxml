@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" style="-fx-background-color: #1A2529; -fx-border-color: white;" minHeight="500.0"
+            minWidth="300.0" xmlns="http://javafx.com/javafx/11.0.1"
+            fx:controller="de.upb.codingpirates.battleships.desktop.RankingController">
+  <children>
+    <VBox style="-fx-background-color: #1A2529;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
+          AnchorPane.topAnchor="0.0" alignment="TOP_CENTER" prefHeight="502.0"
+          prefWidth="302.0">
+      <children>
+        <HBox VBox.vgrow="ALWAYS" alignment="CENTER" spacing="5.0">
+          <VBox.margin>
+            <Insets bottom="5.0"/>
+          </VBox.margin>
+          <children>
+            <ImageView HBox.hgrow="ALWAYS" fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+              <image>
+                <Image url="@trophy_icon.png"/>
+              </image>
+            </ImageView>
+            <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Rangliste">
+              <font>
+                <Font name="System Bold" size="22.0"/>
+              </font>
+            </Text>
+            <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="95.0" layoutY="11.0" pickOnBounds="true"
+                       preserveRatio="true">
+              <image>
+                <Image url="@trophy_icon.png"/>
+              </image>
+            </ImageView>
+          </children>
+        </HBox>
+        <Separator VBox.vgrow="ALWAYS" prefWidth="200.0">
+          <VBox.margin>
+            <Insets/>
+          </VBox.margin>
+        </Separator>
+        <ScrollPane style="-fx-background-color: #1A2529;" VBox.vgrow="ALWAYS" hbarPolicy="NEVER" prefHeight="500.0"
+                    prefWidth="325.0">
+          <content>
+            <AnchorPane style="-fx-background-color: #1A2529;" minHeight="0.0" minWidth="0.0" prefHeight="458.0"
+                        prefWidth="298.0">
+              <children>
+                <TableView style="-fx-background-color: #1A2529;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
+                           AnchorPane.topAnchor="0.0" layoutY="12.0"
+                           prefHeight="458.0" prefWidth="298.0" fx:id="tableRangList">
+                  <columns>
+                    <TableColumn prefWidth="54.66665768623352" text="Platz" fx:id="rang"/>
+                    <TableColumn prefWidth="128.00006484985352" text="Name" fx:id="name"/>
+                    <TableColumn prefWidth="113.99992370605469" text="Punkte" fx:id="points"/>
+                  </columns>
+                </TableView>
+              </children>
+            </AnchorPane>
+          </content>
+        </ScrollPane>
+      </children>
+    </VBox>
+  </children>
+</AnchorPane>

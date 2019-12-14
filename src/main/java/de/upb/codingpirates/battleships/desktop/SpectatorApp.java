@@ -1,6 +1,5 @@
 package de.upb.codingpirates.battleships.desktop;
 
-import de.upb.codingpirates.battleships.desktop.network.TCPClient;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -29,7 +28,7 @@ public class SpectatorApp extends Application {
      */
     public void start(Stage primaryStage) throws Exception {
         this.primaryStage = primaryStage;
-        FXMLLoader loader = new FXMLLoader(SpectatorApp.class.getResource("../../../../../../resources/ServerLogin.fxml"));
+        FXMLLoader loader = new FXMLLoader(SpectatorApp.class.getResource("/fxml/ServerLogin.fxml"));
         AnchorPane pane = loader.load();
         ServerLoginController serverLoginController = loader.getController();
         serverLoginController.setMain(this);

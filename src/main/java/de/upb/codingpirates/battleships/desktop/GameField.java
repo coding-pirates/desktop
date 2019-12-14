@@ -69,7 +69,7 @@ public class GameField {
     /**
      * Paints the Field grey where a Ship was hit by a Shot.
      *
-     * @param Point2D shot
+     * @param shot
      */
     public void shipHit(Point2D shot) {
         String point = (shot.getX() + "," + shot.getY());

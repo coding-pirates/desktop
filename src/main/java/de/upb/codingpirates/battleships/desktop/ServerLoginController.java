@@ -1,6 +1,5 @@
 package de.upb.codingpirates.battleships.desktop;
 
-import de.upb.codingpirates.battleships.desktop.network.TCPClient;
 import de.upb.codingpirates.battleships.logic.ClientType;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;

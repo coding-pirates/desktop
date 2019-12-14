@@ -33,7 +33,7 @@ public class InGameModel extends Application implements INotificationCallback {
 
     // Gamedata
     private Collection<Client> player = new ArrayList<Client>();
-    private java.util.Map<Integer, java.util.Map<Integer, PlacementInfo>> ships = null;
+    private Map<Integer, Map<Integer, PlacementInfo>> ships = null;
     private GameState gameState = null;
     private Collection<Shot> shots = new ArrayList<Shot>();
     private Map<Integer, Integer> points = null;
@@ -72,7 +72,7 @@ public class InGameModel extends Application implements INotificationCallback {
      *
      * @return Map of PlayerId on a Map Placement Info
      */
-    public java.util.Map<Integer, java.util.Map<Integer, PlacementInfo>> getShips() {
+    public Map<Integer, Map<Integer, PlacementInfo>> getShips() {
         return ships;
     }
 
@@ -81,7 +81,7 @@ public class InGameModel extends Application implements INotificationCallback {
      *
      * @param ships Map of PlayerId on a Map Placement Info
      */
-    public void setShips(java.util.Map<Integer, java.util.Map<Integer, PlacementInfo>> ships) {
+    public void setShips(Map<Integer, Map<Integer, PlacementInfo>> ships) {
         this.ships = ships;
     }
 
@@ -136,7 +136,7 @@ public class InGameModel extends Application implements INotificationCallback {
             boolean result = sendGameStateRequest();
             if (result) {
                 this.inGameStage = inGameStage;
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("../../../../../../resources/InGameView.fxml"));
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/InGameView.fxml"));
                 AnchorPane pane = loader.load();
                 inGameController = loader.getController();
                 inGameController.setModel(this);

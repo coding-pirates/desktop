@@ -23,7 +23,7 @@ public class Ranking extends Application {
      */
     public void start(Stage rankingStage) throws Exception {
         this.rankingStage = rankingStage;
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("../../../../../../resources/RankingView.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/RankingView.fxml"));
         AnchorPane pane = loader.load();
         this.rankingController = loader.getController();
         rankingController.setRanking(this);

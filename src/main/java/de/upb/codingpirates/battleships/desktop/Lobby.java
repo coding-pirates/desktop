@@ -18,7 +18,7 @@ public class Lobby extends Application {
      */
     public void start(Stage lobbyStage) throws Exception {
         this.lobbyStage = lobbyStage;
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("../../../../../../resources/Lobby.fxml"));
+      FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/Lobby.fxml"));
         AnchorPane pane = loader.load();
         LobbyController lobbyController = loader.getController();
         lobbyController.setLobby(this);

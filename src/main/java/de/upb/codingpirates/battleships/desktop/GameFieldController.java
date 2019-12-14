@@ -3,7 +3,7 @@ package de.upb.codingpirates.battleships.desktop;
 import de.upb.codingpirates.battleships.logic.Game;
 import de.upb.codingpirates.battleships.logic.PlacementInfo;
 import de.upb.codingpirates.battleships.logic.Point2D;
-import de.upb.codingpirates.battleships.logic.Ship;
+import de.upb.codingpirates.battleships.logic.ShipType;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
@@ -106,11 +106,11 @@ public class GameFieldController implements Initializable {
      * @param ships Map of ShipIds and PlacementInfo
      * @param place Map of ShipIds and Ships
      */
-    public void placeShips(Map<Integer, PlacementInfo> ships, Map<Integer, Ship> place) {
+    public void placeShips(Map<Integer, PlacementInfo> ships, Map<Integer, ShipType> place) {
         Set<Integer> keys = ships.keySet();
         Object[] keysArray = keys.toArray();
         for (int i = 0; i < keysArray.length; i++) {
-            Point2D[] places = (Point2D[]) place.get(keysArray[i]).getPosition().toArray();
+            Point2D[] places = (Point2D[]) place.get(keysArray[i]).getPositions().toArray();
             for (int j = 0; j < places.length; j++) {
                 type[places[j].getX()][places[j].getY()] = "ship";
                 System.out.println("Schiff auf " + places[j].getX() + "," + places[j].getY());

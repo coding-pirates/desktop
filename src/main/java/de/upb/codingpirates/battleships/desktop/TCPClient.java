@@ -1,7 +1,5 @@
-package de.upb.codingpirates.battleships.desktop.network;
+package de.upb.codingpirates.battleships.desktop;
 
-import de.upb.codingpirates.battleships.desktop.InGameModel;
-import de.upb.codingpirates.battleships.desktop.ServerLoginModel;
 import de.upb.codingpirates.battleships.network.exceptions.parser.ParserException;
 import de.upb.codingpirates.battleships.network.message.Message;
 import de.upb.codingpirates.battleships.network.message.notification.*;
@@ -68,7 +66,7 @@ public class TCPClient {
                     return false;
                 }
             }
-          return !ip.endsWith(".");
+            return !ip.endsWith(".");
         } catch (NumberFormatException nfe) {
             return false;
         }
@@ -78,8 +76,8 @@ public class TCPClient {
      * Sends a Request to the Server. Returns the Response of the Server.
      *
      * @param urlParameters String
-     * @throws Exception
      * @return result Response of the Server.
+     * @throws Exception
      */
     public String sendeAnfrage(String urlParameters) throws Exception {
 
