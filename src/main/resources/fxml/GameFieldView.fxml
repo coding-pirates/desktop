@@ -7,7 +7,7 @@
             maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity"
             minWidth="-Infinity" onMouseClicked="#enlargeBoard" prefHeight="330.0" prefWidth="300.0"
             xmlns="http://javafx.com/javafx/11.0.1"
-            fx:controller="de.upb.codingpirates.battleships.desktop.GameFieldController">
+            fx:controller="de.upb.codingpirates.battleships.desktop.gamefield.GameFieldController">
   <children>
     <BorderPane AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0"
                 AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0" maxHeight="1.7976931348623157E308"

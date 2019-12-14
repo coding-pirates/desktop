@@ -1,5 +1,7 @@
-package de.upb.codingpirates.battleships.desktop;
+package de.upb.codingpirates.battleships.desktop.network;
 
+import de.upb.codingpirates.battleships.desktop.ingame.InGameModel;
+import de.upb.codingpirates.battleships.desktop.serverlogin.ServerLoginModel;
 import de.upb.codingpirates.battleships.network.exceptions.parser.ParserException;
 import de.upb.codingpirates.battleships.network.message.Message;
 import de.upb.codingpirates.battleships.network.message.notification.*;

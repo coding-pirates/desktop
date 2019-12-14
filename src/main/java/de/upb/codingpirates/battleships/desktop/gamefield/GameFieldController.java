@@ -1,5 +1,6 @@
-package de.upb.codingpirates.battleships.desktop;
+package de.upb.codingpirates.battleships.desktop.gamefield;
 
+import de.upb.codingpirates.battleships.desktop.ingame.InGameController;
 import de.upb.codingpirates.battleships.logic.Game;
 import de.upb.codingpirates.battleships.logic.PlacementInfo;
 import de.upb.codingpirates.battleships.logic.Point2D;

@@ -1,5 +1,7 @@
-package de.upb.codingpirates.battleships.desktop;
+package de.upb.codingpirates.battleships.desktop.ingame;
 
+import de.upb.codingpirates.battleships.desktop.SpectatorApp;
+import de.upb.codingpirates.battleships.desktop.util.INotificationCallback;
 import de.upb.codingpirates.battleships.logic.*;
 import de.upb.codingpirates.battleships.network.message.Parser;
 import de.upb.codingpirates.battleships.network.message.notification.*;

@@ -1,4 +1,4 @@
-package de.upb.codingpirates.battleships.desktop;
+package de.upb.codingpirates.battleships.desktop.util;
 
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;

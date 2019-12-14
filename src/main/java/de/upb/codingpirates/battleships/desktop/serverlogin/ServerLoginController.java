@@ -1,5 +1,8 @@
-package de.upb.codingpirates.battleships.desktop;
+package de.upb.codingpirates.battleships.desktop.serverlogin;
 
+import de.upb.codingpirates.battleships.desktop.SpectatorApp;
+import de.upb.codingpirates.battleships.desktop.lobby.Lobby;
+import de.upb.codingpirates.battleships.desktop.network.TCPClient;
 import de.upb.codingpirates.battleships.logic.ClientType;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;

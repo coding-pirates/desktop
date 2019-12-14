@@ -9,7 +9,7 @@
 <?import javafx.scene.text.Text?>
 <AnchorPane xmlns:fx="http://javafx.com/fxml/1" style="-fx-background-color: #1A2529; -fx-border-color: white;" minHeight="500.0"
             minWidth="300.0" xmlns="http://javafx.com/javafx/11.0.1"
-            fx:controller="de.upb.codingpirates.battleships.desktop.RankingController">
+            fx:controller="de.upb.codingpirates.battleships.desktop.ranking.RankingController">
   <children>
     <VBox style="-fx-background-color: #1A2529;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
           AnchorPane.topAnchor="0.0" alignment="TOP_CENTER" prefHeight="502.0"

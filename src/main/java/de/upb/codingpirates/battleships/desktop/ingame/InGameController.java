@@ -1,5 +1,7 @@
-package de.upb.codingpirates.battleships.desktop;
+package de.upb.codingpirates.battleships.desktop.ingame;
 
+import de.upb.codingpirates.battleships.desktop.gamefield.GameFieldController;
+import de.upb.codingpirates.battleships.desktop.ranking.Ranking;
 import de.upb.codingpirates.battleships.logic.*;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;

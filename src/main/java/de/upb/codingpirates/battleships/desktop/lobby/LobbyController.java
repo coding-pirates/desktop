@@ -1,5 +1,7 @@
-package de.upb.codingpirates.battleships.desktop;
+package de.upb.codingpirates.battleships.desktop.lobby;
 
+import de.upb.codingpirates.battleships.desktop.ingame.InGameModel;
+import de.upb.codingpirates.battleships.desktop.util.GameView;
 import de.upb.codingpirates.battleships.logic.Game;
 import de.upb.codingpirates.battleships.logic.GameState;
 import javafx.beans.value.ChangeListener;

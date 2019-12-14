@@ -1,5 +1,7 @@
 package de.upb.codingpirates.battleships.desktop;
 
+import de.upb.codingpirates.battleships.desktop.network.TCPClient;
+import de.upb.codingpirates.battleships.desktop.serverlogin.ServerLoginController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -19,7 +21,7 @@ public class SpectatorApp extends Application {
         launch(args);
     }
 
-    protected void close() {
+    public void close() {
         primaryStage.close();
     }
 

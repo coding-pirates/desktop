@@ -1,5 +1,6 @@
-package de.upb.codingpirates.battleships.desktop;
+package de.upb.codingpirates.battleships.desktop.lobby;
 
+import de.upb.codingpirates.battleships.desktop.SpectatorApp;
 import de.upb.codingpirates.battleships.logic.Game;
 import de.upb.codingpirates.battleships.network.message.Parser;
 import de.upb.codingpirates.battleships.network.message.request.LobbyRequest;

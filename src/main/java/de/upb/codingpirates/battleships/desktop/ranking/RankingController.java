@@ -1,5 +1,6 @@
-package de.upb.codingpirates.battleships.desktop;
+package de.upb.codingpirates.battleships.desktop.ranking;
 
+import de.upb.codingpirates.battleships.desktop.util.Player;
 import de.upb.codingpirates.battleships.logic.Client;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;

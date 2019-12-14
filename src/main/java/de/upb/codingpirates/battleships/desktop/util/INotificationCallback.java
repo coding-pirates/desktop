@@ -1,4 +1,4 @@
-package de.upb.codingpirates.battleships.desktop;
+package de.upb.codingpirates.battleships.desktop.util;
 
 import de.upb.codingpirates.battleships.network.message.notification.*;
 

@@ -9,7 +9,7 @@
 <AnchorPane xmlns:fx="http://javafx.com/fxml/1" style="-fx-background-color: #1A2529; -fx-text-fill: white;" maxHeight="400.0" maxWidth="600.0" minHeight="400.0" minWidth="600.0"
             prefHeight="400.0" prefWidth="600.0"
             xmlns="http://javafx.com/javafx/11.0.1"
-            fx:controller="de.upb.codingpirates.battleships.desktop.ServerLoginController">
+            fx:controller="de.upb.codingpirates.battleships.desktop.serverlogin.ServerLoginController">
   <children>
     <Button style="-fx-background-color: #E5AC30;" layoutX="215.0" layoutY="338.0" mnemonicParsing="false" onAction="#login"
             prefHeight="25.0" prefWidth="169.0" text="Verbinden" textAlignment="CENTER"

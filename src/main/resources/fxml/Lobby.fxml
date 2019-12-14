@@ -7,7 +7,7 @@
 <AnchorPane xmlns:fx="http://javafx.com/fxml/1" style="-fx-background-color: #1A2529;" minHeight="-Infinity" minWidth="-Infinity"
             prefHeight="400.0" prefWidth="600.0"
             xmlns="http://javafx.com/javafx/11.0.1"
-            fx:controller="de.upb.codingpirates.battleships.desktop.LobbyController">
+            fx:controller="de.upb.codingpirates.battleships.desktop.lobby.LobbyController">
   <children>
     <VBox AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0"
           prefHeight="400.0" prefWidth="600.0">

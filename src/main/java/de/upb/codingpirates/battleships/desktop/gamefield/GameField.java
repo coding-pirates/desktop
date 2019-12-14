@@ -1,4 +1,4 @@
-package de.upb.codingpirates.battleships.desktop;
+package de.upb.codingpirates.battleships.desktop.gamefield;
 
 import de.upb.codingpirates.battleships.logic.Point2D;
 import javafx.beans.property.ReadOnlyDoubleProperty;

@@ -1,4 +1,4 @@
-package de.upb.codingpirates.battleships.desktop;
+package de.upb.codingpirates.battleships.desktop.lobby;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;

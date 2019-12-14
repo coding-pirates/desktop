@@ -1,5 +1,6 @@
-package de.upb.codingpirates.battleships.desktop;
+package de.upb.codingpirates.battleships.desktop.serverlogin;
 
+import de.upb.codingpirates.battleships.desktop.SpectatorApp;
 import de.upb.codingpirates.battleships.logic.ClientType;
 import de.upb.codingpirates.battleships.network.message.Parser;
 import de.upb.codingpirates.battleships.network.message.request.ServerJoinRequest;
