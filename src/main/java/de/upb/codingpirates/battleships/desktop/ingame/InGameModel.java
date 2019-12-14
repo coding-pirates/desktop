@@ -1,15 +1,12 @@
 package de.upb.codingpirates.battleships.desktop.ingame;
 
 import de.upb.codingpirates.battleships.desktop.SpectatorApp;
-import de.upb.codingpirates.battleships.desktop.util.INotificationCallback;
 import de.upb.codingpirates.battleships.logic.*;
-import de.upb.codingpirates.battleships.network.message.Parser;
 import de.upb.codingpirates.battleships.network.message.notification.*;
 import de.upb.codingpirates.battleships.network.message.request.GameJoinSpectatorRequest;
 import de.upb.codingpirates.battleships.network.message.request.PointsRequest;
 import de.upb.codingpirates.battleships.network.message.request.RemainingTimeRequest;
 import de.upb.codingpirates.battleships.network.message.request.SpectatorGameStateRequest;
-import de.upb.codingpirates.battleships.network.message.response.GameJoinSpectatorResponse;
 import de.upb.codingpirates.battleships.network.message.response.PointsResponse;
 import de.upb.codingpirates.battleships.network.message.response.RemainingTimeResponse;
 import de.upb.codingpirates.battleships.network.message.response.SpectatorGameStateResponse;
@@ -27,7 +24,9 @@ import java.util.Map;
  * Model class for the InGame Window.
  * Implements the Communication with the Server.
  */
-public class InGameModel extends Application implements INotificationCallback {
+public class InGameModel extends Application {
+
+    public static InGameModel INSTANCE;
 
     private Stage inGameStage;
     private Game ausgewaehltesSpiel = null;
@@ -48,7 +47,6 @@ public class InGameModel extends Application implements INotificationCallback {
      */
     public InGameModel(Game g) {
         ausgewaehltesSpiel = g;
-        SpectatorApp.tcpConnector.setNotifier(this);
     }
 
     /**
@@ -131,31 +129,24 @@ public class InGameModel extends Application implements INotificationCallback {
      */
     public void start(Stage inGameStage) throws Exception {
         // sendGameJoinSpectatorRequest
-        int gameID = sendGameJoinSpectatorRequest();
+        sendGameJoinSpectatorRequest();
+    }
 
-        if (gameID >= 0) {
+    public void start() {
+        sendGameStateRequest();
+    }
 
-            boolean result = sendGameStateRequest();
-            if (result) {
-                this.inGameStage = inGameStage;
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/InGameView.fxml"));
-                AnchorPane pane = loader.load();
-                inGameController = loader.getController();
-                inGameController.setModel(this);
-                inGameStage.setTitle("");
-                inGameStage.setScene(new Scene(pane));
-                inGameStage.setMaximized(true);
-                inGameStage.show();
-                inGameController.spectatorGameStateResponse(player, shots, ships, gameState);
-                inGameController.setGame(ausgewaehltesSpiel);
-            } else {
-                throw new Exception("Keine Antwort von Server für SpectatorGameStateRequest erhalten");
-            }
-
-        } else {
-            throw new Exception("Keine Antwort von Server SpectatorGameJoinRequest erhalten");
-        }
-
+    public void start2() throws Exception {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/InGameView.fxml"));
+        AnchorPane pane = loader.load();
+        inGameController = loader.getController();
+        inGameController.setModel(this);
+        inGameStage.setTitle("");
+        inGameStage.setScene(new Scene(pane));
+        inGameStage.setMaximized(true);
+        inGameStage.show();
+        inGameController.spectatorGameStateResponse(player, shots, ships, gameState);
+        inGameController.setGame(ausgewaehltesSpiel);
     }
 
     /**
@@ -163,25 +154,14 @@ public class InGameModel extends Application implements INotificationCallback {
      *
      * @return gameId: Id of the joined Game
      */
-    public int sendGameJoinSpectatorRequest() {
-        GameJoinSpectatorRequest gsjr = new GameJoinSpectatorRequest(ausgewaehltesSpiel.getId());
-        Parser mp = new Parser();
-        int gameID = -1;
-        // send to server
+    public void sendGameJoinSpectatorRequest() {
         try {
-            String jsonResult = mp.serialize(gsjr);
+            SpectatorApp.tcpConnector.sendMessageToServer(new GameJoinSpectatorRequest(ausgewaehltesSpiel.getId()));
 
-            String response = SpectatorApp.tcpConnector.sendeAnfrage(jsonResult);
-
-            if (response != null) {
-                GameJoinSpectatorResponse gjprlres = (GameJoinSpectatorResponse) mp.deserialize(response);
-                gameID = gjprlres.getGameId();
-            }
         } catch (Exception e) {
             System.out.println("Konnte GameJoin Request nicht schicken: " + e);
         }
 
-        return gameID;
     }
 
     /**
@@ -190,34 +170,21 @@ public class InGameModel extends Application implements INotificationCallback {
      * @return boolean
      */
     // Zweiter Request: SpectatorGameStateRequest
-    public boolean sendGameStateRequest() {
-        SpectatorGameStateRequest sgsr = new SpectatorGameStateRequest();
-        Parser mp = new Parser();
-
+    public void sendGameStateRequest() {
         // send to server
         try {
-            String jsonResult = mp.serialize(sgsr);
-
-            String response = SpectatorApp.tcpConnector.sendeAnfrage(jsonResult);
-
-            if (response != null) {
-                SpectatorGameStateResponse sgsresp = (SpectatorGameStateResponse) mp
-                        .deserialize(response);
-
-                // Mapping of Gamedata
-                player = sgsresp.getPlayers();
-                ships = sgsresp.getShips();
-                gameState = sgsresp.getState();
-                shots = sgsresp.getShots();
-
-                return true;
-            }
+            SpectatorApp.tcpConnector.sendMessageToServer(new SpectatorGameStateRequest());
         } catch (Exception e) {
             System.out.println("Konnte GameState Request nicht schicken: " + e);
         }
-        return false;
     }
 
+    public void setGameStateResult(SpectatorGameStateResponse response){
+        player = response.getPlayers();
+        ships = response.getShips();
+        gameState = response.getState();
+        shots = response.getShots();
+    }
     /**
      * Closes the InGame Window.
      */
@@ -229,7 +196,6 @@ public class InGameModel extends Application implements INotificationCallback {
      * Reacts on GameInitNotification.
      * Starts Controllers gameInitNotification().
      */
-    @Override
     public void onGameInitNotification(GameInitNotification initNotification) {
         Collection<Client> clients = initNotification.getClientList();
         Configuration config = initNotification.getConfiguration();
@@ -246,7 +212,6 @@ public class InGameModel extends Application implements INotificationCallback {
      * Reacts on GameStartNotification.
      * Starts Controllers roundStartNotification().
      */
-    @Override
     public void onGameStartNotification(GameStartNotification initNotification) {
         inGameController.gameStartNotification();
     }
@@ -255,7 +220,6 @@ public class InGameModel extends Application implements INotificationCallback {
      * Reacts on SpectatorUpdateNotification.
      * Starts Controllers spectatorUpdateNotification().
      */
-    @Override
     public void onSpectatorUpdateNotification(SpectatorUpdateNotification updateNotification) {
         Collection<Shot> hits = updateNotification.getHits();
         Map<Integer, Integer> points = updateNotification.getPoints();
@@ -268,7 +232,6 @@ public class InGameModel extends Application implements INotificationCallback {
      * Reacts on FinishNotification.
      * Starts Controllers FinishNotification().
      */
-    @Override
     public void onFinishNotification(FinishNotification finishNotification) {
         Map<Integer, Integer> points = finishNotification.getPoints();
         int winner = finishNotification.getWinner();
@@ -279,7 +242,6 @@ public class InGameModel extends Application implements INotificationCallback {
      * Reacts on PauseNotification.
      * Starts Controllers pauseNotification().
      */
-    @Override
     public void onPauseNotification(PauseNotification pauseNotification) {
         inGameController.pauseNotification();
     }
@@ -288,7 +250,6 @@ public class InGameModel extends Application implements INotificationCallback {
      * Reacts on ContinueNotification.
      * Starts Controllers continueNotification().
      */
-    @Override
     public void onContinueNotification(ContinueNotification continueNotification) {
         inGameController.continueNotification();
     }
@@ -297,7 +258,6 @@ public class InGameModel extends Application implements INotificationCallback {
      * Reacts on LeaveNotification.
      * Starts Controllers leaveNotification().
      */
-    @Override
     public void onLeaveNotification(LeaveNotification leaveNotification) {
         int playerId = leaveNotification.getPlayerId();
         inGameController.leaveNotification(playerId);
@@ -307,7 +267,6 @@ public class InGameModel extends Application implements INotificationCallback {
      * Reacts on RoundStartNotification.
      * Starts Controllers roundStartNotification().
      */
-    @Override
     public void onRoundStartNotification(RoundStartNotification roundstartNotification) {
         inGameController.roundStartNotification();
     }
@@ -318,29 +277,17 @@ public class InGameModel extends Application implements INotificationCallback {
      *
      * @return boolean
      */
-    public boolean remainingTimeRequest() {
-        RemainingTimeRequest rtr = new RemainingTimeRequest();
-        Parser mpr = new Parser();
-
-        // send to server
+    public void remainingTimeRequest() {
         try {
-            String jsonremainingtime = mpr.serialize(rtr);
-            String remainingtimeresult = SpectatorApp.tcpConnector.sendeAnfrage(jsonremainingtime);
-
-            if (remainingtimeresult != null) {
-                RemainingTimeResponse rtresp = (RemainingTimeResponse) mpr
-                        .deserialize(remainingtimeresult);
-
-                // Mapping of Gamedata
-                rtime = rtresp.getTime();
-                inGameController.remainingTimeResponse(rtime);
-                return true;
-            }
+            SpectatorApp.tcpConnector.sendMessageToServer(new RemainingTimeRequest());
         } catch (Exception e) {
             System.out.println("Konnte Remaining Time Request nicht schicken: " + e);
         }
-        System.out.println("Fehler");
-        return false;
+    }
+
+    public void onRemainingTimeResponse(RemainingTimeResponse response){
+        rtime = response.getTime();
+        inGameController.remainingTimeResponse(rtime);
     }
 
     /**
@@ -349,26 +296,16 @@ public class InGameModel extends Application implements INotificationCallback {
      *
      * @return
      */
-    public boolean pointsRequest() {
-        PointsRequest pr = new PointsRequest();
-        Parser mprs = new Parser();
-
-        // send to server
+    public void pointsRequest() {
         try {
-            String jsonpointsresult = mprs.serialize(pr);
-            String pointsresult = SpectatorApp.tcpConnector.sendeAnfrage(jsonpointsresult);
-
-            if (pointsresult != null) {
-                PointsResponse presp = (PointsResponse) mprs.deserialize(pointsresult);
-
-                // Mapping of Gamedata
-                points = presp.getPoints();
-                inGameController.setPoints(points);
-                return true;
-            }
+            SpectatorApp.tcpConnector.sendMessageToServer(new PointsRequest());
         } catch (Exception e) {
             System.out.println("Konnte Points Request nicht schicken: " + e);
         }
-        return false;
+    }
+
+    public void onPointsResponse(PointsResponse response){
+        points = response.getPoints();
+        inGameController.setPoints(points);
     }
 }

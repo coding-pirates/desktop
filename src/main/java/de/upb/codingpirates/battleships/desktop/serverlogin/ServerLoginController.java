@@ -2,18 +2,17 @@ package de.upb.codingpirates.battleships.desktop.serverlogin;
 
 import de.upb.codingpirates.battleships.desktop.SpectatorApp;
 import de.upb.codingpirates.battleships.desktop.lobby.Lobby;
-import de.upb.codingpirates.battleships.desktop.network.TCPClient;
 import de.upb.codingpirates.battleships.logic.ClientType;
+import de.upb.codingpirates.battleships.network.message.response.ServerJoinResponse;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import javafx.stage.WindowEvent;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -21,6 +20,8 @@ import java.util.ResourceBundle;
  * Controller Class for the ServerLigon Window.
  */
 public class ServerLoginController implements Initializable {
+
+    public static ServerLoginController INSTANCE;
 
     public SpectatorApp main;
 
@@ -32,6 +33,10 @@ public class ServerLoginController implements Initializable {
     private TextField nameField;
     @FXML
     private Label lblStatus;
+
+    public ServerLoginController() {
+        INSTANCE = this;
+    }
 
     /**
      * Set Method for Main.
@@ -61,38 +66,41 @@ public class ServerLoginController implements Initializable {
         String serverIP = ipField.getText();
         String port = portField.getText();
 
-        if (TCPClient.validIP(serverIP)) {
-
             try {
-                SpectatorApp.tcpConnector = new TCPClient(serverIP, Integer.parseInt(port));
+                SpectatorApp.tcpConnector.connect(serverIP, Integer.parseInt(port));
 
                 //Send request to server
                 ServerLoginModel slm = new ServerLoginModel(nameField.getText(), ClientType.SPECTATOR);
-                int result = slm.sendRequest(serverIP);
-
-                //Test of Request was successful.
-                if (result < 0) {
-                    lblStatus.setText("Die Anmeldung ist fehlgeschlagen!");
-                } else {
-                    lblStatus.setText("");
-                    main.close();
-                    Lobby lobby = new Lobby();
-                    Stage lobbyStage = new Stage();
-                    lobby.start(lobbyStage);
-                    lobbyStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
-                        @Override
-                        public void handle(WindowEvent t) {
-                            Platform.exit();
-                            System.exit(0);
-                        }
-                    });
-                }
+                slm.sendRequest(serverIP);
             } catch (Exception e) {
                 lblStatus.setText("Anmeldung fehlgeschlagen: Server nicht erreichbar!");
             }
-        } else {
-            lblStatus.setText("Ihre IP ist nicht valide.");
+    }
+
+    public void setLblStatus(String lblStatus) {
+        synchronized (lblStatus) {
+            this.lblStatus.setText(lblStatus);
         }
     }
 
+    public void closeMain(){
+        main.close();
+    }
+
+    public void onServerJoinResponse(ServerJoinResponse response){
+        ServerLoginModel.INSTANCE.setClientId(response.getClientId());
+        setLblStatus("");
+        closeMain();
+        Lobby lobby = new Lobby();
+        Stage lobbyStage = new Stage();
+        try {
+            lobby.start(lobbyStage);
+        } catch (IOException e) {
+            e.printStackTrace();//TODO
+        }
+        lobbyStage.setOnCloseRequest(t -> {
+            Platform.exit();
+            System.exit(0);
+        });
+    }
 }

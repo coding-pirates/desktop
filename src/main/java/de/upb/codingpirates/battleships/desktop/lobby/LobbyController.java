@@ -25,6 +25,8 @@ import java.util.ResourceBundle;
  */
 public class LobbyController implements Initializable {
 
+    public static LobbyController INSTANCE;
+
     public Lobby lobby;
     @FXML
     private ListView<GameView> lstvwStart;
@@ -37,6 +39,10 @@ public class LobbyController implements Initializable {
     private ArrayList<GameView> startList = null;
     private ArrayList<GameView> runningList = null;
     private ArrayList<GameView> endList = null;
+
+    public LobbyController() {
+        INSTANCE = this;
+    }
 
     /**
      * Set Method for the related Lobby.
@@ -51,13 +57,10 @@ public class LobbyController implements Initializable {
      * Requests the GameList from Server and Shows the Games in the Lobby Window.
      */
     public void showgames() {
-
-        Collection<Game> list = new ArrayList<Game>();
-
         // Request GameList from Server
         try {
             LobbyModel lm = new LobbyModel();
-            list = lm.sendRequest();
+            lm.sendRequest();
         } catch (Exception e) {
             System.out.println("Fehler: " + e);
         }
@@ -65,8 +68,6 @@ public class LobbyController implements Initializable {
         this.startList = new ArrayList<GameView>();
         this.runningList = new ArrayList<GameView>();
         this.endList = new ArrayList<GameView>();
-
-        parseToGameView(list);
 
         //Show GameList
 

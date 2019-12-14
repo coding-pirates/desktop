@@ -6,6 +6,8 @@ import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
+import java.io.IOException;
+
 /**
  * Class that initials the Lobby Window.
  */
@@ -16,7 +18,7 @@ public class Lobby extends Application {
     /**
      * Creates a Lobby Window and the related Controller.
      */
-    public void start(Stage lobbyStage) throws Exception {
+    public void start(Stage lobbyStage) throws IOException {
         this.lobbyStage = lobbyStage;
       FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/Lobby.fxml"));
         AnchorPane pane = loader.load();

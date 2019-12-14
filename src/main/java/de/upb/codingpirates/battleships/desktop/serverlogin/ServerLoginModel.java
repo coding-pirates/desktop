@@ -4,12 +4,15 @@ import de.upb.codingpirates.battleships.desktop.SpectatorApp;
 import de.upb.codingpirates.battleships.logic.ClientType;
 import de.upb.codingpirates.battleships.network.message.Parser;
 import de.upb.codingpirates.battleships.network.message.request.ServerJoinRequest;
-import de.upb.codingpirates.battleships.network.message.response.ServerJoinResponse;
+
+import java.io.IOException;
 
 /**
  * Model class for the ServerLogin Window.
  */
 public class ServerLoginModel {
+
+    public static ServerLoginModel INSTANCE;
 
     public static final Parser MESSAGE_PARSER = new Parser();
     private String spielerName;
@@ -23,6 +26,7 @@ public class ServerLoginModel {
      * @param clientKind  Kind of the Client
      */
     public ServerLoginModel(String spielerName, ClientType clientKind) {
+        INSTANCE = this;
         this.spielerName = spielerName;
         this.clientKind = clientKind;
     }
@@ -87,27 +91,12 @@ public class ServerLoginModel {
      * @param ip Ip of the Server
      * @return ClientId Id of the Client
      */
-    public int sendRequest(String ip) {
-
+    public void sendRequest(String ip) {
         try {
-            // ServerJoinRequest zu JSON parsen
-            ServerJoinRequest request = new ServerJoinRequest(spielerName, clientKind);
-            String jsonRequest = MESSAGE_PARSER.serialize(request);
-
-            // An Server senden
-            String result = SpectatorApp.tcpConnector.sendeAnfrage(jsonRequest);
-
-            // Json wieder zu ServerJoinResponse parsen
-            if (result != null) {
-                ServerJoinResponse response = (ServerJoinResponse) MESSAGE_PARSER
-                        .deserialize(result);
-                clientId = response.getClientId();
-            }
-        } catch (Exception e) {
-            System.out.println("ERROR: parsing failed:" + e);
+            SpectatorApp.tcpConnector.sendMessageToServer(new ServerJoinRequest(spielerName, clientKind));
+        } catch (IOException e) {
+            e.printStackTrace();
         }
-
-        return clientId;
     }
 
 }
