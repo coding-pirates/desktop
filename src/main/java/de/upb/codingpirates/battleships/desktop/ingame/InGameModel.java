@@ -1,5 +1,6 @@
 package de.upb.codingpirates.battleships.desktop.ingame;
 
+import de.upb.codingpirates.battleships.client.ListenerHandler;
 import de.upb.codingpirates.battleships.desktop.SpectatorApp;
 import de.upb.codingpirates.battleships.logic.*;
 import de.upb.codingpirates.battleships.network.message.notification.*;
@@ -7,6 +8,7 @@ import de.upb.codingpirates.battleships.network.message.request.GameJoinSpectato
 import de.upb.codingpirates.battleships.network.message.request.PointsRequest;
 import de.upb.codingpirates.battleships.network.message.request.RemainingTimeRequest;
 import de.upb.codingpirates.battleships.network.message.request.SpectatorGameStateRequest;
+import de.upb.codingpirates.battleships.network.message.response.GameJoinSpectatorResponse;
 import de.upb.codingpirates.battleships.network.message.response.PointsResponse;
 import de.upb.codingpirates.battleships.network.message.response.RemainingTimeResponse;
 import de.upb.codingpirates.battleships.network.message.response.SpectatorGameStateResponse;
@@ -24,7 +26,7 @@ import java.util.Map;
  * Model class for the InGame Window.
  * Implements the Communication with the Server.
  */
-public class InGameModel extends Application {
+public class InGameModel extends Application implements InGameModelMessageListener {
 
     public static InGameModel INSTANCE;
 
@@ -47,6 +49,7 @@ public class InGameModel extends Application {
      */
     public InGameModel(Game g) {
         ausgewaehltesSpiel = g;
+        ListenerHandler.registerListener(this);
     }
 
     /**
@@ -193,85 +196,6 @@ public class InGameModel extends Application {
     }
 
     /**
-     * Reacts on GameInitNotification.
-     * Starts Controllers gameInitNotification().
-     */
-    public void onGameInitNotification(GameInitNotification initNotification) {
-        Collection<Client> clients = initNotification.getClientList();
-        Configuration config = initNotification.getConfiguration();
-        try {
-            inGameController.gameInitNotification(config, clients);
-            //secondGameStateRequest();
-        } catch (Exception e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
-    }
-
-    /**
-     * Reacts on GameStartNotification.
-     * Starts Controllers roundStartNotification().
-     */
-    public void onGameStartNotification(GameStartNotification initNotification) {
-        inGameController.gameStartNotification();
-    }
-
-    /**
-     * Reacts on SpectatorUpdateNotification.
-     * Starts Controllers spectatorUpdateNotification().
-     */
-    public void onSpectatorUpdateNotification(SpectatorUpdateNotification updateNotification) {
-        Collection<Shot> hits = updateNotification.getHits();
-        Map<Integer, Integer> points = updateNotification.getPoints();
-        Collection<Shot> sunk = updateNotification.getSunk();
-        Collection<Shot> missed = updateNotification.getMissed();
-        inGameController.spectatorUpdateNotification(hits, points, sunk, missed);
-    }
-
-    /**
-     * Reacts on FinishNotification.
-     * Starts Controllers FinishNotification().
-     */
-    public void onFinishNotification(FinishNotification finishNotification) {
-        Map<Integer, Integer> points = finishNotification.getPoints();
-        int winner = finishNotification.getWinner();
-        inGameController.FinishNotification(points, winner);
-    }
-
-    /**
-     * Reacts on PauseNotification.
-     * Starts Controllers pauseNotification().
-     */
-    public void onPauseNotification(PauseNotification pauseNotification) {
-        inGameController.pauseNotification();
-    }
-
-    /**
-     * Reacts on ContinueNotification.
-     * Starts Controllers continueNotification().
-     */
-    public void onContinueNotification(ContinueNotification continueNotification) {
-        inGameController.continueNotification();
-    }
-
-    /**
-     * Reacts on LeaveNotification.
-     * Starts Controllers leaveNotification().
-     */
-    public void onLeaveNotification(LeaveNotification leaveNotification) {
-        int playerId = leaveNotification.getPlayerId();
-        inGameController.leaveNotification(playerId);
-    }
-
-    /**
-     * Reacts on RoundStartNotification.
-     * Starts Controllers roundStartNotification().
-     */
-    public void onRoundStartNotification(RoundStartNotification roundstartNotification) {
-        inGameController.roundStartNotification();
-    }
-
-    /**
      * Asks the Server about the remaining Time for the GameRound.
      * Starts the Controllers remainingTimeResponse().
      *
@@ -283,11 +207,6 @@ public class InGameModel extends Application {
         } catch (Exception e) {
             System.out.println("Konnte Remaining Time Request nicht schicken: " + e);
         }
-    }
-
-    public void onRemainingTimeResponse(RemainingTimeResponse response){
-        rtime = response.getTime();
-        inGameController.remainingTimeResponse(rtime);
     }
 
     /**
@@ -304,8 +223,85 @@ public class InGameModel extends Application {
         }
     }
 
-    public void onPointsResponse(PointsResponse response){
-        points = response.getPoints();
+    @Override
+    public void onContinueNotification(ContinueNotification message, int clientId) {
+        inGameController.continueNotification();
+    }
+
+    @Override
+    public void onFinishNotification(FinishNotification message, int clientId) {
+        Map<Integer, Integer> points = message.getPoints();
+        int winner = message.getWinner();
+        inGameController.FinishNotification(points, winner);
+    }
+
+    @Override
+    public void onGameInitNotification(GameInitNotification message, int clientId) {
+        Collection<Client> clients = message.getClientList();
+        Configuration config = message.getConfiguration();
+        try {
+            inGameController.gameInitNotification(config, clients);
+            //secondGameStateRequest();
+        } catch (Exception e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void onGameJoinSpectatorResponse(GameJoinSpectatorResponse message, int clientId) {
+        start();
+    }
+
+    @Override
+    public void onGameStartNotification(GameStartNotification message, int clientId) {
+        inGameController.gameStartNotification();
+    }
+
+    @Override
+    public void onLeaveNotification(LeaveNotification message, int clientId) {
+        int playerId = message.getPlayerId();
+        inGameController.leaveNotification(playerId);
+    }
+
+    @Override
+    public void onPauseNotification(PauseNotification message, int clientId) {
+        inGameController.pauseNotification();
+    }
+
+    @Override
+    public void onPointsResponse(PointsResponse message, int clientId) {
+        points = message.getPoints();
         inGameController.setPoints(points);
+    }
+
+    @Override
+    public void onRemainingTimeResponse(RemainingTimeResponse message, int clientId) {
+        rtime = message.getTime();
+        inGameController.remainingTimeResponse(rtime);
+    }
+
+    @Override
+    public void onRoundStartNotification(RoundStartNotification message, int clientId) {
+        inGameController.roundStartNotification();
+    }
+
+    @Override
+    public void onSpectatorGameStateResponse(SpectatorGameStateResponse message, int clientId) {
+        setGameStateResult(message);
+        try {
+            start2();
+        } catch (Exception e) {
+            e.printStackTrace();//TODO
+        }
+    }
+
+    @Override
+    public void onSpectatorUpdateNotification(SpectatorUpdateNotification message, int clientId) {
+        Collection<Shot> hits = message.getHits();
+        Map<Integer, Integer> points = message.getPoints();
+        Collection<Shot> sunk = message.getSunk();
+        Collection<Shot> missed = message.getMissed();
+        inGameController.spectatorUpdateNotification(hits, points, sunk, missed);
     }
 }

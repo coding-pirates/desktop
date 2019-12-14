@@ -1,9 +1,12 @@
 package de.upb.codingpirates.battleships.desktop.lobby;
 
+import de.upb.codingpirates.battleships.client.ListenerHandler;
+import de.upb.codingpirates.battleships.client.listener.LobbyResponseListener;
 import de.upb.codingpirates.battleships.desktop.ingame.InGameModel;
 import de.upb.codingpirates.battleships.desktop.util.GameView;
 import de.upb.codingpirates.battleships.logic.Game;
 import de.upb.codingpirates.battleships.logic.GameState;
+import de.upb.codingpirates.battleships.network.message.response.LobbyResponse;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -23,9 +26,8 @@ import java.util.ResourceBundle;
 /**
  * Controller Class for the Lobby Window.
  */
-public class LobbyController implements Initializable {
+public class LobbyController implements Initializable , LobbyResponseListener {
 
-    public static LobbyController INSTANCE;
 
     public Lobby lobby;
     @FXML
@@ -41,7 +43,7 @@ public class LobbyController implements Initializable {
     private ArrayList<GameView> endList = null;
 
     public LobbyController() {
-        INSTANCE = this;
+        ListenerHandler.registerListener(this);
     }
 
     /**
@@ -138,5 +140,8 @@ public class LobbyController implements Initializable {
 
     }
 
-
+    @Override
+    public void onLobbyResponse(LobbyResponse message, int clientId) {
+        parseToGameView(message.getGames());
+    }
 }

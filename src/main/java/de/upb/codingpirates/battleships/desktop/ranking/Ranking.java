@@ -57,8 +57,7 @@ public class Ranking extends Application {
      */
     public void sortPoints(Map<Integer, Integer> points) {
         Queue<Integer> pointsList = new LinkedList<Integer>();
-        Map<Integer, Integer> pointsMap = points;
-        while (points.isEmpty() == false) {
+        while (!points.isEmpty()) {
             Integer akt = 0;
             Set<Integer> clientIds = points.keySet();
             for (Integer clientId : clientIds) {
@@ -69,7 +68,7 @@ public class Ranking extends Application {
             pointsList.add(akt);
             points.remove(akt);
         }
-        rankingController.setPointsList(pointsList, pointsMap, players);
+        rankingController.setPointsList(pointsList, points, players);
     }
 
 

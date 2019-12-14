@@ -1,5 +1,7 @@
 package de.upb.codingpirates.battleships.desktop.serverlogin;
 
+import de.upb.codingpirates.battleships.client.ListenerHandler;
+import de.upb.codingpirates.battleships.client.listener.ServerJoinResponseListener;
 import de.upb.codingpirates.battleships.desktop.SpectatorApp;
 import de.upb.codingpirates.battleships.desktop.lobby.Lobby;
 import de.upb.codingpirates.battleships.logic.ClientType;
@@ -19,9 +21,7 @@ import java.util.ResourceBundle;
 /**
  * Controller Class for the ServerLigon Window.
  */
-public class ServerLoginController implements Initializable {
-
-    public static ServerLoginController INSTANCE;
+public class ServerLoginController implements Initializable, ServerJoinResponseListener {
 
     public SpectatorApp main;
 
@@ -35,7 +35,7 @@ public class ServerLoginController implements Initializable {
     private Label lblStatus;
 
     public ServerLoginController() {
-        INSTANCE = this;
+        ListenerHandler.registerListener(this);
     }
 
     /**
@@ -62,6 +62,7 @@ public class ServerLoginController implements Initializable {
      * @param event Button Pressed Event
      * @throws Exception
      */
+    @FXML
     public void login(ActionEvent event) throws Exception {
         String serverIP = ipField.getText();
         String port = portField.getText();
@@ -87,8 +88,8 @@ public class ServerLoginController implements Initializable {
         main.close();
     }
 
-    public void onServerJoinResponse(ServerJoinResponse response){
-        ServerLoginModel.INSTANCE.setClientId(response.getClientId());
+    @Override
+    public void onServerJoinResponse(ServerJoinResponse response, int clientId){
         setLblStatus("");
         closeMain();
         Lobby lobby = new Lobby();

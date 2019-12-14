@@ -1,20 +1,21 @@
 package de.upb.codingpirates.battleships.desktop.serverlogin;
 
+import de.upb.codingpirates.battleships.client.ListenerHandler;
+import de.upb.codingpirates.battleships.client.listener.ServerJoinResponseListener;
 import de.upb.codingpirates.battleships.desktop.SpectatorApp;
 import de.upb.codingpirates.battleships.logic.ClientType;
 import de.upb.codingpirates.battleships.network.message.Parser;
 import de.upb.codingpirates.battleships.network.message.request.ServerJoinRequest;
+import de.upb.codingpirates.battleships.network.message.response.ServerJoinResponse;
 
 import java.io.IOException;
 
 /**
  * Model class for the ServerLogin Window.
  */
-public class ServerLoginModel {
+public class ServerLoginModel implements ServerJoinResponseListener {
 
-    public static ServerLoginModel INSTANCE;
 
-    public static final Parser MESSAGE_PARSER = new Parser();
     private String spielerName;
     private ClientType clientKind;
     private int clientId;
@@ -26,7 +27,7 @@ public class ServerLoginModel {
      * @param clientKind  Kind of the Client
      */
     public ServerLoginModel(String spielerName, ClientType clientKind) {
-        INSTANCE = this;
+        ListenerHandler.registerListener(this);
         this.spielerName = spielerName;
         this.clientKind = clientKind;
     }
@@ -99,4 +100,8 @@ public class ServerLoginModel {
         }
     }
 
+    @Override
+    public void onServerJoinResponse(ServerJoinResponse message, int clientId) {
+        this.setClientId(message.getClientId());
+    }
 }

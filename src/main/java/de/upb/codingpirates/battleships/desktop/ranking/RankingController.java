@@ -59,7 +59,7 @@ public class RankingController implements Initializable {
     public void setPointsList(Queue<Integer> pointsList, Map<Integer, Integer> pointsMap, Collection<Client> players) {  //ToDo Tabelle füllen
         ObservableList<Player> playerList = null;
         int i = 1;
-        while (pointsList.isEmpty() == false) {
+        while (!pointsList.isEmpty()) {
             int playerInt = pointsList.remove();
             String player = Integer.toString(playerInt);
             int points = pointsMap.get(playerInt);
