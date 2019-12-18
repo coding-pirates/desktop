@@ -1,0 +1,24 @@
+package de.upb.codingpirates.battleships.desktop.start;
+
+
+/**
+ * Class that implements a Window to set the settings
+ */
+public class Start extends Application {
+
+
+    /**
+     * Start Method that creates a new Window and a related Controller.
+     */
+    public void start(Stage startStage) throws Exception {
+        this.startStage = startStage;
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/StartView.fxml"));
+        AnchorPane pane = loader.load();
+        this.StartController = loader.getController();
+        startStage.setTitle("Start");
+        startStage.setResizable(false);
+        startStage.setScene(new Scene(pane));
+        startStage.show();
+    }
+
+}

@@ -15,18 +15,10 @@ public class Settings extends Application {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/SettingsView.fxml"));
         AnchorPane pane = loader.load();
         this.SettingsController = loader.getController();
-        settingsStage.setTitle("Endgame");
+        settingsStage.setTitle("Settings");
         settingsStage.setResizable(false);
         settingsStage.setScene(new Scene(pane));
         settingsStage.show();
     }
-
-    /**
-     * Closes the Ranking Window
-     */
-    protected void close() {
-        placeshipsStage.close();
-    }
-
 
 }
