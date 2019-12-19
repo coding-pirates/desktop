@@ -37,5 +37,4 @@ public class Lobby extends Application {
     protected void close() {
         lobbyStage.close();
     }
-
 }

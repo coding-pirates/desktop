@@ -27,5 +27,4 @@ public class Player {
     public Integer getPoints() {
         return points.get();
     }
-
 }

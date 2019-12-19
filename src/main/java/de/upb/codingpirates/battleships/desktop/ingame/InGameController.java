@@ -93,7 +93,7 @@ public class InGameController implements Initializable {
      * Shows the klicked GameField of one Player on a bigger Screen in detail.
      */
     public void enlargeBoard(GameFieldController controller) {
-        if (enlarged == true) {
+        if (enlarged) {
             spielfelder.getChildren().add(this.inGame);
         }
         grid.getChildren().clear();
@@ -168,20 +168,15 @@ public class InGameController implements Initializable {
      * Takes Configuration of the running or ended Game and displays the Information in the TextFields.
      */
     public void setConfig() {
-        Platform.runLater(new Runnable() {
-
-            @Override
-            public void run() {
-                maxPlayerCount.setText(Integer.toString(game.getConfig().getMaxPlayerCount()));
-                shotCount.setText(Integer.toString(game.getConfig().getShotCount()));
-                hitPoints.setText(Integer.toString(game.getConfig().getHitPoints()));
-                sunkPoints.setText(Integer.toString(game.getConfig().getSunkPoints()));
-                roundTime.setText(Long.toString(game.getConfig().getRoundTime()));
-                controllerMap.forEach((client, controller) -> {
-                    controller.buildBoard(game.getConfig().getHeight(), game.getConfig().getWidth());
-                });
-
-            }
+        Platform.runLater(() -> {
+            maxPlayerCount.setText(Integer.toString(game.getConfig().getMaxPlayerCount()));
+            shotCount.setText(Integer.toString(game.getConfig().getShotCount()));
+            hitPoints.setText(Integer.toString(game.getConfig().getHitPoints()));
+            sunkPoints.setText(Integer.toString(game.getConfig().getSunkPoints()));
+            roundTime.setText(Long.toString(game.getConfig().getRoundTime()));
+            controllerMap.forEach((client, controller) -> {
+                controller.buildBoard(game.getConfig().getHeight(), game.getConfig().getWidth());
+            });
 
         });
 
@@ -192,29 +187,22 @@ public class InGameController implements Initializable {
      *
      * @param tempConfig Configuration of the Game.
      * @param clientList List of all Clients taking part in the Game.
-     * @throws Exception
      */
-    public void gameInitNotification(Configuration tempConfig, Collection<Client> clientList)
-            throws Exception {
+    public void gameInitNotification(Configuration tempConfig, Collection<Client> clientList) {
         config = tempConfig;
         height = config.getHeight();
         width = config.getWidth();
         millis = config.getRoundTime();
 
-        Platform.runLater(new Runnable() {
-
-            @Override
-            public void run() {
-                maxPlayerCount.setText(Integer.toString(config.getMaxPlayerCount()));
-                shotCount.setText(Integer.toString(config.getShotCount()));
-                hitPoints.setText(Integer.toString(config.getHitPoints()));
-                sunkPoints.setText(Integer.toString(config.getSunkPoints()));
-                roundTime.setText(Long.toString(config.getRoundTime()));
-                controllerMap.forEach((client, controller) -> {
-                    controller.buildBoard(height, width);
-                });
-
-            }
+        Platform.runLater(() -> {
+            maxPlayerCount.setText(Integer.toString(config.getMaxPlayerCount()));
+            shotCount.setText(Integer.toString(config.getShotCount()));
+            hitPoints.setText(Integer.toString(config.getHitPoints()));
+            sunkPoints.setText(Integer.toString(config.getSunkPoints()));
+            roundTime.setText(Long.toString(config.getRoundTime()));
+            controllerMap.forEach((client, controller) -> {
+                controller.buildBoard(height, width);
+            });
 
         });
         try {
@@ -237,32 +225,21 @@ public class InGameController implements Initializable {
      * @throws Exception
      */
     public void spectatorGameStateResponse(Collection<Client> players, Collection<Shot> shots, Map<Integer, Map<Integer, PlacementInfo>> ships, GameState state) throws Exception {
-        Collection<Client> unduplicatedPlayers = players;
 
         if (this.players != null) {
-            for (Client client : players) {
-                if (this.players.contains(client)) {
-                    unduplicatedPlayers.remove(client);
-                }
-            }
+            players.removeIf(client -> this.players.contains(client));
         }
 
-        this.players = unduplicatedPlayers;
+        this.players = players;
 
-        Platform.runLater(new Runnable() {
-
-            @Override
-            public void run() {
-                try {
-                    fieldInit(unduplicatedPlayers);
-                } catch (Exception e) {
-                    // TODO Auto-generated catch block
-                    e.printStackTrace();
-                }
-                placeShips(ships);
-                redoShots(shots);
-
+        Platform.runLater(() -> {
+            try {
+                fieldInit(players);
+            } catch (Exception e) {
+                e.printStackTrace();
             }
+            placeShips(ships);
+            redoShots(shots);
 
         });
 
@@ -317,9 +294,9 @@ public class InGameController implements Initializable {
     public void placeShips(Map<Integer, Map<Integer, PlacementInfo>> ships) {
         Set<Integer> keys = ships.keySet();
         Object[] keysArray = keys.toArray();
-        for (int i = 0; i < keysArray.length; i++) {
-            GameFieldController controller = controllerMap.get(keysArray[i]);
-            controller.placeShips(ships.get(keysArray[i]), game.getConfig().getShips());
+        for (Object o : keysArray) {
+            GameFieldController controller = controllerMap.get(o);
+            controller.placeShips(ships.get(o), game.getConfig().getShips());
         }
     }
 
@@ -331,8 +308,8 @@ public class InGameController implements Initializable {
      */
     public void fieldInit(Collection<Client> clientList) throws Exception {
         Object[] clientArray = clientList.toArray();
-        for (int i = 0; i < clientArray.length; i++) {
-            Client client = (Client) clientArray[i];
+        for (Object o : clientArray) {
+            Client client = (Client) o;
             FXMLLoader loader = new FXMLLoader(getClass().getResource("../../../../../resources/GameFieldView.fxml"));
             inGame = loader.load();
             spielfelder.getChildren().add(inGame);
@@ -356,15 +333,11 @@ public class InGameController implements Initializable {
                                             Collection<Shot> sunk, Collection<Shot> missed) {
         InGameController thisOb = this;
 
-        Platform.runLater(new Runnable() {
-
-            @Override
-            public void run() {
-                thisOb.missedShots(missed);
-                thisOb.hitShots(hits);
-                thisOb.setPoints(points);
-                thisOb.points = points;
-            }
+        Platform.runLater(() -> {
+            thisOb.missedShots(missed);
+            thisOb.hitShots(hits);
+            thisOb.setPoints(points);
+            thisOb.points = points;
         });
     }
 
@@ -401,8 +374,8 @@ public class InGameController implements Initializable {
      */
     public void hitShots(Collection<Shot> hits) {
         Object[] hitsArray = hits.toArray();
-        for (int i = 0; i < hitsArray.length; i++) {
-            Shot hit = (Shot) hitsArray[i];
+        for (Object o : hitsArray) {
+            Shot hit = (Shot) o;
             int id = hit.getClientId();
             GameFieldController controller = controllerMap.get(id);
             controller.shipHit(hit.getTargetField());
@@ -435,7 +408,7 @@ public class InGameController implements Initializable {
      *
      * @param pointsMap Map of Players and Points
      */
-    public void pointsReponse(
+    public void pointsResponse(
             Map<Integer, Integer> pointsMap) {
         this.setPoints(pointsMap);
     }
@@ -491,15 +464,11 @@ public class InGameController implements Initializable {
      */
     public void FinishNotification(Map<Integer, Integer> points, int winner) {
         time.stop();
-        Platform.runLater(new Runnable() {
-
-            @Override
-            public void run() {
-                Alert alertFinish = new Alert(Alert.AlertType.INFORMATION,
-                        "Das Spiel ist vorbei. Der Gewinner ist " + winner, ButtonType.OK);
-                alertFinish.showAndWait();
-                showRanking();
-            }
+        Platform.runLater(() -> {
+            Alert alertFinish = new Alert(Alert.AlertType.INFORMATION,
+                    "Das Spiel ist vorbei. Der Gewinner ist " + winner, ButtonType.OK);
+            alertFinish.showAndWait();
+            showRanking();
         });
     }
 

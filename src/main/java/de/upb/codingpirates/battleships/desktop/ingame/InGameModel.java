@@ -1,7 +1,7 @@
 package de.upb.codingpirates.battleships.desktop.ingame;
 
 import de.upb.codingpirates.battleships.client.ListenerHandler;
-import de.upb.codingpirates.battleships.desktop.SpectatorApp;
+import de.upb.codingpirates.battleships.desktop.BattleshipsDesktopClientApplication;
 import de.upb.codingpirates.battleships.logic.*;
 import de.upb.codingpirates.battleships.network.message.notification.*;
 import de.upb.codingpirates.battleships.network.message.request.GameJoinSpectatorRequest;
@@ -34,13 +34,10 @@ public class InGameModel extends Application implements InGameModelMessageListen
     private Game ausgewaehltesSpiel = null;
     private InGameController inGameController;
 
-    // Gamedata
     private Collection<Client> player = new ArrayList<Client>();
     private Map<Integer, Map<Integer, PlacementInfo>> ships = null;
     private GameState gameState = null;
     private Collection<Shot> shots = new ArrayList<Shot>();
-    private Map<Integer, Integer> points = null;
-    private Long rtime = null;
 
     /**
      * Constructor. Sets a tcpConnector and the chosen Game.
@@ -130,7 +127,7 @@ public class InGameModel extends Application implements InGameModelMessageListen
      * Starts spectatorGameStateResponse().
      * Throws Exception if the Server don't Response.
      */
-    public void start(Stage inGameStage) throws Exception {
+    public void start(Stage inGameStage) {
         // sendGameJoinSpectatorRequest
         sendGameJoinSpectatorRequest();
     }
@@ -159,7 +156,10 @@ public class InGameModel extends Application implements InGameModelMessageListen
      */
     public void sendGameJoinSpectatorRequest() {
         try {
-            SpectatorApp.tcpConnector.sendMessageToServer(new GameJoinSpectatorRequest(ausgewaehltesSpiel.getId()));
+            BattleshipsDesktopClientApplication
+                .getInstance()
+                .getTcpConnector()
+                .sendMessageToServer(new GameJoinSpectatorRequest(ausgewaehltesSpiel.getId()));
 
         } catch (Exception e) {
             System.out.println("Konnte GameJoin Request nicht schicken: " + e);
@@ -176,7 +176,10 @@ public class InGameModel extends Application implements InGameModelMessageListen
     public void sendGameStateRequest() {
         // send to server
         try {
-            SpectatorApp.tcpConnector.sendMessageToServer(new SpectatorGameStateRequest());
+            BattleshipsDesktopClientApplication
+                .getInstance()
+                .getTcpConnector()
+                .sendMessageToServer(new SpectatorGameStateRequest());
         } catch (Exception e) {
             System.out.println("Konnte GameState Request nicht schicken: " + e);
         }
@@ -203,7 +206,10 @@ public class InGameModel extends Application implements InGameModelMessageListen
      */
     public void remainingTimeRequest() {
         try {
-            SpectatorApp.tcpConnector.sendMessageToServer(new RemainingTimeRequest());
+            BattleshipsDesktopClientApplication
+                .getInstance()
+                .getTcpConnector()
+                .sendMessageToServer(new RemainingTimeRequest());
         } catch (Exception e) {
             System.out.println("Konnte Remaining Time Request nicht schicken: " + e);
         }
@@ -217,7 +223,10 @@ public class InGameModel extends Application implements InGameModelMessageListen
      */
     public void pointsRequest() {
         try {
-            SpectatorApp.tcpConnector.sendMessageToServer(new PointsRequest());
+            BattleshipsDesktopClientApplication
+                .getInstance()
+                .getTcpConnector()
+                .sendMessageToServer(new PointsRequest());
         } catch (Exception e) {
             System.out.println("Konnte Points Request nicht schicken: " + e);
         }
@@ -271,13 +280,13 @@ public class InGameModel extends Application implements InGameModelMessageListen
 
     @Override
     public void onPointsResponse(PointsResponse message, int clientId) {
-        points = message.getPoints();
+        Map<Integer, Integer> points = message.getPoints();
         inGameController.setPoints(points);
     }
 
     @Override
     public void onRemainingTimeResponse(RemainingTimeResponse message, int clientId) {
-        rtime = message.getTime();
+        Long rtime = message.getTime();
         inGameController.remainingTimeResponse(rtime);
     }
 
@@ -292,7 +301,7 @@ public class InGameModel extends Application implements InGameModelMessageListen
         try {
             start2();
         } catch (Exception e) {
-            e.printStackTrace();//TODO
+            e.printStackTrace();
         }
     }
 

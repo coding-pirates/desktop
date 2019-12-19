@@ -1,17 +1,6 @@
 package de.upb.codingpirates.battleships.desktop.ingame;
 
-import de.upb.codingpirates.battleships.client.listener.ContinueNotificationListener;
-import de.upb.codingpirates.battleships.client.listener.FinishNotificationListener;
-import de.upb.codingpirates.battleships.client.listener.GameInitNotificationListener;
-import de.upb.codingpirates.battleships.client.listener.GameJoinSpectatorResponseListener;
-import de.upb.codingpirates.battleships.client.listener.GameStartNotificationListener;
-import de.upb.codingpirates.battleships.client.listener.LeaveNotificationListener;
-import de.upb.codingpirates.battleships.client.listener.PauseNotificationListener;
-import de.upb.codingpirates.battleships.client.listener.PointsResponseListener;
-import de.upb.codingpirates.battleships.client.listener.RemainingTimeResponseListener;
-import de.upb.codingpirates.battleships.client.listener.RoundStartNotificationListener;
-import de.upb.codingpirates.battleships.client.listener.SpectatorGameStateResponseListener;
-import de.upb.codingpirates.battleships.client.listener.SpectatorUpdateNotificationListener;
+import de.upb.codingpirates.battleships.client.listener.*;
 
 interface InGameModelMessageListener extends GameInitNotificationListener, ContinueNotificationListener, FinishNotificationListener, GameJoinSpectatorResponseListener, GameStartNotificationListener, LeaveNotificationListener, PauseNotificationListener, SpectatorUpdateNotificationListener, PointsResponseListener, RemainingTimeResponseListener, RoundStartNotificationListener, SpectatorGameStateResponseListener {
 }

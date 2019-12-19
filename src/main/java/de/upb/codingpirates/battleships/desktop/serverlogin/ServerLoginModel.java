@@ -2,9 +2,8 @@ package de.upb.codingpirates.battleships.desktop.serverlogin;
 
 import de.upb.codingpirates.battleships.client.ListenerHandler;
 import de.upb.codingpirates.battleships.client.listener.ServerJoinResponseListener;
-import de.upb.codingpirates.battleships.desktop.SpectatorApp;
+import de.upb.codingpirates.battleships.desktop.BattleshipsDesktopClientApplication;
 import de.upb.codingpirates.battleships.logic.ClientType;
-import de.upb.codingpirates.battleships.network.message.Parser;
 import de.upb.codingpirates.battleships.network.message.request.ServerJoinRequest;
 import de.upb.codingpirates.battleships.network.message.response.ServerJoinResponse;
 
@@ -90,11 +89,13 @@ public class ServerLoginModel implements ServerJoinResponseListener {
      * Creates a new ServerJoinRequest, sends it to the Server.
      *
      * @param ip Ip of the Server
-     * @return ClientId Id of the Client
-     */
+´     */
     public void sendRequest(String ip) {
         try {
-            SpectatorApp.tcpConnector.sendMessageToServer(new ServerJoinRequest(spielerName, clientKind));
+            BattleshipsDesktopClientApplication
+                .getInstance()
+                .getTcpConnector()
+                .sendMessageToServer(new ServerJoinRequest(spielerName, clientKind));
         } catch (IOException e) {
             e.printStackTrace();
         }

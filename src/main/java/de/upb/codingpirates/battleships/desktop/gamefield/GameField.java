@@ -18,7 +18,7 @@ public class GameField {
     private GridPane gameField;
     private int nbRow;
     private int nbColumn;
-    private HashMap<String, Rectangle> map = new HashMap<String, Rectangle>();
+    private HashMap<String, Rectangle> map = new HashMap<>();
 
     /**
      * Constructor sets a new GridPane.

@@ -14,6 +14,7 @@ import javafx.scene.text.Text;
 
 import java.net.URL;
 import java.util.Map;
+import java.util.Objects;
 import java.util.ResourceBundle;
 import java.util.Set;
 
@@ -94,7 +95,7 @@ public class GameFieldController implements Initializable {
      * @param shot Point2D Coordinates of the Shot
      */
     public void shot(Point2D shot) {
-        if (type[shot.getX()][shot.getY()] == "ship") {
+        if (Objects.equals(type[shot.getX()][shot.getY()], "ship")) {
             gameField.shipHit(shot);
         } else {
             gameField.waterHit(shot);

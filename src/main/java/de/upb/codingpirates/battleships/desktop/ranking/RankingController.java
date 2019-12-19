@@ -68,9 +68,9 @@ public class RankingController implements Initializable {
             playerList = FXCollections.observableArrayList(
                     new Player(rang, player, points));
         }
-        rang.setCellValueFactory(new PropertyValueFactory<Player, Integer>("rang"));
-        name.setCellValueFactory(new PropertyValueFactory<Player, String>("name"));
-        points.setCellValueFactory(new PropertyValueFactory<Player, Integer>("points"));
+        rang.setCellValueFactory(new PropertyValueFactory<>("rang"));
+        name.setCellValueFactory(new PropertyValueFactory<>("name"));
+        points.setCellValueFactory(new PropertyValueFactory<>("points"));
         tableRangList.setItems(playerList);
     }
 

@@ -1,6 +1,6 @@
 package de.upb.codingpirates.battleships.desktop.lobby;
 
-import de.upb.codingpirates.battleships.desktop.SpectatorApp;
+import de.upb.codingpirates.battleships.desktop.BattleshipsDesktopClientApplication;
 import de.upb.codingpirates.battleships.network.message.request.LobbyRequest;
 
 /**
@@ -24,7 +24,10 @@ public class LobbyModel {
      */
     public void sendRequest() {
         try {
-            SpectatorApp.tcpConnector.sendMessageToServer(new LobbyRequest());
+            BattleshipsDesktopClientApplication
+                .getInstance()
+                .getTcpConnector()
+                .sendMessageToServer(new LobbyRequest());
         } catch (Exception e) {
             e.printStackTrace();
         }

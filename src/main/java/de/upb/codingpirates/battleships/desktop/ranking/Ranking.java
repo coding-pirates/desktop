@@ -56,7 +56,7 @@ public class Ranking extends Application {
      * @param points Map of PlayerIds and Points
      */
     public void sortPoints(Map<Integer, Integer> points) {
-        Queue<Integer> pointsList = new LinkedList<Integer>();
+        Queue<Integer> pointsList = new LinkedList<>();
         while (!points.isEmpty()) {
             Integer akt = 0;
             Set<Integer> clientIds = points.keySet();
