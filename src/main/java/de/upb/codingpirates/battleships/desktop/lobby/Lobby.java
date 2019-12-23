@@ -20,7 +20,7 @@ public class Lobby extends Application {
      */
     public void start(Stage lobbyStage) throws IOException {
         this.lobbyStage = lobbyStage;
-      FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/Lobby.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/Lobby.fxml"));
         AnchorPane pane = loader.load();
         LobbyController lobbyController = loader.getController();
         lobbyController.setLobby(this);
@@ -35,6 +35,7 @@ public class Lobby extends Application {
      * Closes the Lobby Window.
      */
     protected void close() {
+
         lobbyStage.close();
     }
 }
