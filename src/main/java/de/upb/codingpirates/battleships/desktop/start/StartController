@@ -1,10 +1,18 @@
 package de.upb.codingpirates.battleships.desktop.start;
 
+import de.upb.codingpirates.battleships.desktop.SpectatorApp;
+import javafx.fxml.Initializable;
+
+import java.net.URL;
+import java.util.ResourceBundle;
+
 /**
  * Controller Class for the Settings Window.
  */
 public class StartController implements Initializable {
 
+
+    private SpectatorApp main;
 
     /**
      * Initial Method.
@@ -14,4 +22,9 @@ public class StartController implements Initializable {
 
     }
 
+    public void setMain(SpectatorApp spectatorApp) {
+        {
+            this.main = main;
+    }
+}
 }

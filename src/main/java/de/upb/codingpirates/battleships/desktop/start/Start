@@ -1,19 +1,47 @@
 package de.upb.codingpirates.battleships.desktop.start;
 
 
+import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Group;
+import javafx.scene.Scene;
+import javafx.scene.control.Control;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.shape.SVGPath;
+import javafx.stage.Stage;
+
 /**
- * Class that implements a Window to set the settings
+ * Class that implements a Window to start the game
  */
 public class Start extends Application {
 
 
+    private Stage startStage;
+    private Control StartController;
+
     /**
      * Start Method that creates a new Window and a related Controller.
      */
-    public void start(Stage startStage) throws Exception {
-        this.startStage = startStage;
+    @Override
+    public void start(Stage primaryStage) throws Exception {
+        this.startStage = primaryStage;
+        Image background = new Image("file:Startscreen_BG.jpg");
+        ImageView bg = new ImageView(background);
+        Group root = new Group();
+        root.getChildren().addAll(bg);
+
+        SVGPath svgpath = new SVGPath();
+        String path =  "M 100 100 L 300 100 L 200 300 z";
+        svgpath.setContent (path);
+        Group root1  = new Group(svgpath);
+
+        Scene scene = new Scene(root1, 1920, 1080);
+        startStage.setScene(scene);
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/StartView.fxml"));
         AnchorPane pane = loader.load();
+
         this.StartController = loader.getController();
         startStage.setTitle("Start");
         startStage.setResizable(false);
