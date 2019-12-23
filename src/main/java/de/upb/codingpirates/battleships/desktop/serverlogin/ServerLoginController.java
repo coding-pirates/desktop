@@ -1,19 +1,18 @@
 package de.upb.codingpirates.battleships.desktop.serverlogin;
 
-import java.io.IOException;
-
+import de.upb.codingpirates.battleships.client.ListenerHandler;
+import de.upb.codingpirates.battleships.client.listener.ServerJoinResponseListener;
+import de.upb.codingpirates.battleships.desktop.lobby.Lobby;
+import de.upb.codingpirates.battleships.logic.ClientType;
+import de.upb.codingpirates.battleships.network.message.response.ServerJoinResponse;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
-import de.upb.codingpirates.battleships.client.ListenerHandler;
-import de.upb.codingpirates.battleships.client.listener.ServerJoinResponseListener;
-import de.upb.codingpirates.battleships.desktop.BattleshipsDesktopClientApplication;
-import de.upb.codingpirates.battleships.desktop.lobby.Lobby;
-import de.upb.codingpirates.battleships.logic.ClientType;
-import de.upb.codingpirates.battleships.network.message.response.ServerJoinResponse;
+import java.io.IOException;
 
 /**
  * Controller Class for the ServerLogin Window.
@@ -29,6 +28,9 @@ public class ServerLoginController implements ServerJoinResponseListener {
     @FXML
     private Label lblStatus;
 
+    @FXML
+    private Button settings;
+
     public ServerLoginController() {
         ListenerHandler.registerListener(this);
     }
@@ -43,7 +45,7 @@ public class ServerLoginController implements ServerJoinResponseListener {
         String port = portField.getText();
 
             try {
-                BattleshipsDesktopClientApplication
+                ServerLogin
                     .getInstance()
                     .getTcpConnector()
                     .connect(serverIP, Integer.parseInt(port));
@@ -60,11 +62,13 @@ public class ServerLoginController implements ServerJoinResponseListener {
         this.lblStatus.setText(lblStatus);
     }
 
+
+
     @Override
     public void onServerJoinResponse(ServerJoinResponse response, int clientId){
         setLblStatus("");
 
-        BattleshipsDesktopClientApplication
+        ServerLogin
             .getInstance()
             .getLoginStage()
             .close();
@@ -81,4 +85,5 @@ public class ServerLoginController implements ServerJoinResponseListener {
             System.exit(0);
         });
     }
+
 }

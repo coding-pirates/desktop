@@ -58,4 +58,5 @@
          <Font size="18.0" />
       </font>
    </Button>
+   <Button fx:id="btn_settings" layoutX="510.0" layoutY="34.0" mnemonicParsing="false" text="Settings" />
 </AnchorPane>
