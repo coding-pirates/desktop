@@ -13,7 +13,7 @@ import javax.annotation.Nonnull;
 
 public final class BattleshipsDesktopClientApplication extends Application {
 
-    private Stage startStage;
+    private Stage loginStage;
 
     private final ClientConnector tcpConnector = ClientApplication.create(new ClientModule<>(ClientConnector.class));
 
@@ -35,22 +35,22 @@ public final class BattleshipsDesktopClientApplication extends Application {
     }
 
     /**
-     * Loads the StartView.fxml, creates a Start Window and related Controller.
+     * Loads the ServerLogin.fxml, creates a ServerLogin Window and related Controller.
      */
-    public void start(@Nonnull final Stage startStage) throws Exception {
-        this.startStage = startStage;
+    public void start(@Nonnull final Stage loginStage) throws Exception {
+        this.loginStage = loginStage;
 
-        FXMLLoader loader = new FXMLLoader(BattleshipsDesktopClientApplication.class.getResource("/fxml/StartView.fxml"));
+        FXMLLoader loader = new FXMLLoader(BattleshipsDesktopClientApplication.class.getResource("/fxml/ServerLogin.fxml"));
         AnchorPane pane = loader.load();
 
-        startStage.setResizable(false);
-        startStage.setTitle(TITLE);
-        startStage.setScene(new Scene(pane, 600, 400));
-        startStage.show();
+        loginStage.setResizable(false);
+        loginStage.setTitle(TITLE);
+        loginStage.setScene(new Scene(pane, 600, 400));
+        loginStage.show();
     }
 
-    public Stage getStartStage() {
-        return startStage;
+    public Stage getLoginStage() {
+        return loginStage;
     }
 
     public ClientConnector getTcpConnector() {
