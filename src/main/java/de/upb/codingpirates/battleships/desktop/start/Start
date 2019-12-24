@@ -5,6 +5,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Group;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Control;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -29,15 +30,15 @@ public class Start extends Application {
         this.startStage = primaryStage;
         Image background = new Image("file:Startscreen_BG.jpg");
         ImageView bg = new ImageView(background);
+
+
+        Image start_btn = new Image("file:button.jpg");
+        ImageView start = new ImageView(start_btn);
+        Button btn_start = new Button("Start", start);
+
         Group root = new Group();
-        root.getChildren().addAll(bg);
-
-        SVGPath svgpath = new SVGPath();
-        String path =  "M 100 100 L 300 100 L 200 300 z";
-        svgpath.setContent (path);
-        Group root1  = new Group(svgpath);
-
-        Scene scene = new Scene(root1, 1920, 1080);
+        root.getChildren().addAll(bg, btn_start);
+        Scene scene = new Scene(root, 1920, 1080);
         startStage.setScene(scene);
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/StartView.fxml"));
         AnchorPane pane = loader.load();

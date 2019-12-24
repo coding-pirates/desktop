@@ -19,7 +19,7 @@
   </Button>
   <ImageView fx:id="background" fitHeight="400.0" fitWidth="600.0" pickOnBounds="true" AnchorPane.bottomAnchor="-1.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
       <image>
-         <Image url="@../images/Map_BG.png" />
+         <Image url="@../images/Background.png" />
       </image>
       <cursor>
          <Cursor fx:constant="DEFAULT" />
