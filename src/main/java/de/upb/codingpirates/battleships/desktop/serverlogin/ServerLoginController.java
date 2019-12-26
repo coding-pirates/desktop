@@ -3,6 +3,7 @@ package de.upb.codingpirates.battleships.desktop.serverlogin;
 import de.upb.codingpirates.battleships.client.ListenerHandler;
 import de.upb.codingpirates.battleships.client.listener.ServerJoinResponseListener;
 import de.upb.codingpirates.battleships.desktop.lobby.Lobby;
+import de.upb.codingpirates.battleships.desktop.settings.settings;
 import de.upb.codingpirates.battleships.logic.ClientType;
 import de.upb.codingpirates.battleships.network.message.response.ServerJoinResponse;
 import javafx.application.Platform;
@@ -81,6 +82,26 @@ public class ServerLoginController implements ServerJoinResponseListener {
             e.printStackTrace();//TODO
         }
         lobbyStage.setOnCloseRequest(t -> {
+            Platform.exit();
+            System.exit(0);
+        });
+    }
+
+    public void settings() throws Exception {
+        ServerLogin
+                .getInstance()
+                .getLoginStage()
+                .close();
+
+        de.upb.codingpirates.battleships.desktop.settings.settings settings = new settings();
+        Stage settingsStage = new Stage();
+        try {
+            settings.start(settingsStage);
+            }
+        catch (IOException e) {
+            e.printStackTrace();//TODO
+        }
+        settingsStage.setOnCloseRequest(t -> {
             Platform.exit();
             System.exit(0);
         });
