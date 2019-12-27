@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Slider?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -8,16 +10,75 @@
 <?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #1A2529;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.upb.codingpirates.battleships.desktop.endgame.EndgameController">
-  <VBox alignment="CENTER" layoutY="-1.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-    <Label text="SettingsView" textFill="#dd1212">
-      <font>
-        <Font size="62.0" />
-      </font>
-    </Label>
-      <ImageView fitHeight="400.0" fitWidth="600.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../images/Background.png" />
-         </image>
-      </ImageView>
+   <ImageView fitHeight="400.0" fitWidth="600.0" layoutX="-21.0" layoutY="-14.0" pickOnBounds="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <image>
+         <Image url="@../images/Background.png" />
+      </image>
+   </ImageView>
+   <Button contentDisplay="GRAPHIC_ONLY" layoutX="505.0" layoutY="43.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="40.0" prefWidth="48.0" style="-fx-background-color: #CFBE8E;" text="Button" AnchorPane.bottomAnchor="317.0" AnchorPane.leftAnchor="505.0" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="43.0">
+      <graphic>
+         <ImageView fitHeight="40.0" fitWidth="30.0">
+            <image>
+               <Image url="@../images/icon_leave.png" />
+            </image>
+         </ImageView>
+      </graphic>
+   </Button>
+  <VBox alignment="CENTER" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <children>
+       <Label text="Settings" textFill="#f5f5f5">
+         <font>
+           <Font size="38.0" />
+         </font>
+       </Label>
+         <AnchorPane prefHeight="205.0" prefWidth="600.0">
+            <children>
+               <Slider layoutX="128.0" layoutY="106.0" prefHeight="31.0" prefWidth="410.0" value="100.0" />
+               <Slider layoutX="128.0" layoutY="61.0" prefHeight="40.0" prefWidth="410.0" value="100.0" AnchorPane.bottomAnchor="141.0" AnchorPane.leftAnchor="128.0" AnchorPane.rightAnchor="62.0" AnchorPane.topAnchor="61.0" />
+               <Button alignment="CENTER" contentDisplay="CENTER" layoutX="43.0" layoutY="191.0" mnemonicParsing="false" onMouseClicked="#showgames" prefHeight="42.0" prefWidth="202.0" style="-fx-background-color: #CFBE8E;" text="Impressum" textAlignment="CENTER" textFill="WHITE">
+                  <font>
+                     <Font name="System Bold" size="20.0" />
+                  </font>
+                  <graphic>
+                     <ImageView fitHeight="37.0" fitWidth="184.0">
+                        <image>
+                           <Image url="@../images/button.png" />
+                        </image>
+                     </ImageView>
+                  </graphic>
+               </Button>
+               <Button alignment="CENTER" contentDisplay="CENTER" layoutX="326.0" layoutY="191.0" mnemonicParsing="false" onMouseClicked="#showgames" prefHeight="42.0" prefWidth="202.0" style="-fx-background-color: #CFBE8E;" text="Piratencodex" textAlignment="CENTER" textFill="WHITE">
+                  <font>
+                     <Font name="System Bold" size="20.0" />
+                  </font>
+                  <graphic>
+                     <ImageView fitHeight="37.0" fitWidth="184.0">
+                        <image>
+                           <Image url="@../images/button.png" />
+                        </image>
+                     </ImageView>
+                  </graphic>
+               </Button>
+               <Button contentDisplay="GRAPHIC_ONLY" layoutX="59.0" layoutY="106.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="40.0" prefWidth="48.0" style="-fx-background-color: #CFBE8E;" text="Button">
+                  <graphic>
+                     <ImageView fitHeight="31.0" fitWidth="21.0">
+                        <image>
+                           <Image url="@../images/icon_music.png" />
+                        </image>
+                     </ImageView>
+                  </graphic>
+               </Button>
+               <Button contentDisplay="GRAPHIC_ONLY" layoutX="59.0" layoutY="61.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="40.0" prefWidth="48.0" style="-fx-background-color: #CFBE8E;" text="Button">
+                  <graphic>
+                     <ImageView fitHeight="31.0" fitWidth="40.0">
+                        <image>
+                           <Image url="@../images/icon_sound.png" />
+                        </image>
+                     </ImageView>
+                  </graphic>
+               </Button>
+            </children>
+         </AnchorPane>
+      </children>
   </VBox>
 </AnchorPane>
