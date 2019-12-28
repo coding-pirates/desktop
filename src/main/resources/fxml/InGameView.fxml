@@ -18,141 +18,114 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #1A2529;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.upb.codingpirates.battleship.desktop.ingame.InGameController">
-   <ImageView fitHeight="400.0" fitWidth="600.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-      <image>
-         <Image url="@../images/Background.png" />
-      </image>
-   </ImageView>
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #CFBE8E;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.upb.codingpirates.battleship.desktop.ingame.InGameController">
   <VBox alignment="CENTER" layoutY="-1.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-    <HBox maxHeight="60.0" minHeight="60.0" prefHeight="60.0" prefWidth="600.0" style="-fx-background-color: darkgrey;" VBox.vgrow="ALWAYS">
-      <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Status:">
-        <HBox.margin>
-          <Insets left="20.0" top="20.0" />
-        </HBox.margin>
-        <font>
-          <Font size="18.0" />
-        </font>
-      </Text>
-      <Label fx:id="status" contentDisplay="CENTER" textAlignment="CENTER" textFill="#246acd">
-        <HBox.margin>
-          <Insets left="10.0" top="20.0" />
-        </HBox.margin>
-        <font>
-          <Font size="18.0" />
-        </font>
-      </Label>
-      <Text fill="WHITE" layoutX="117.0" layoutY="43.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Punkte bei Treffer:">
-        <HBox.margin>
-          <Insets left="20.0" top="20.0" />
-        </HBox.margin>
-        <font>
-          <Font size="18.0" />
-        </font>
-      </Text>
-      <Label fx:id="hitPoints" contentDisplay="CENTER" layoutX="927.0" layoutY="10.0" textAlignment="CENTER" textFill="#246acd">
-        <font>
-          <Font size="18.0" />
-        </font>
-        <HBox.margin>
-          <Insets left="10.0" top="20.0" />
-        </HBox.margin>
-      </Label>
-      <Text fill="WHITE" layoutX="204.0" layoutY="43.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Punkte bei Versenken:">
-        <HBox.margin>
-          <Insets left="20.0" top="20.0" />
-        </HBox.margin>
-        <font>
-          <Font size="18.0" />
-        </font>
-      </Text>
-      <Label fx:id="sunkPoints" contentDisplay="CENTER" layoutX="93.0" layoutY="30.0" textAlignment="CENTER" textFill="#246acd">
-        <font>
-          <Font size="18.0" />
-        </font>
-        <HBox.margin>
-          <Insets left="10.0" top="20.0" />
-        </HBox.margin>
-      </Label>
-      <Text fill="WHITE" layoutX="291.0" layoutY="43.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Bedenkzeit:">
-        <HBox.margin>
-          <Insets left="20.0" top="20.0" />
-        </HBox.margin>
-        <font>
-          <Font size="18.0" />
-        </font>
-      </Text>
-      <Label fx:id="roundTime" contentDisplay="CENTER" layoutX="93.0" layoutY="30.0" textAlignment="CENTER" textFill="#246acd">
-        <font>
-          <Font size="18.0" />
-        </font>
-        <HBox.margin>
-          <Insets left="10.0" top="20.0" />
-        </HBox.margin>
-      </Label>
-      <Text fill="WHITE" layoutX="557.0" layoutY="49.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Restliche Bedenkzeit:">
-        <HBox.margin>
-          <Insets left="20.0" top="20.0" />
-        </HBox.margin>
-        <font>
-          <Font size="18.0" />
-        </font>
-      </Text>
-      <Label fx:id="restTime" contentDisplay="CENTER" textAlignment="CENTER" textFill="#246acd" HBox.hgrow="ALWAYS">
-        <HBox.margin>
-          <Insets left="10.0" top="20.0" />
-        </HBox.margin>
-        <font>
-          <Font name="System Bold" size="18.0" />
-        </font>
-      </Label>
-      <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Spieler:">
-        <HBox.margin>
-          <Insets left="20.0" top="20.0" />
-        </HBox.margin>
-        <font>
-          <Font size="18.0" />
-        </font>
-      </Text>
-      <Label fx:id="maxPlayerCount" contentDisplay="CENTER" layoutX="93.0" layoutY="30.0" textAlignment="CENTER" textFill="#246acd">
-        <font>
-          <Font size="18.0" />
-        </font>
-        <HBox.margin>
-          <Insets left="10.0" top="20.0" />
-        </HBox.margin>
-      </Label>
-      <Text fill="WHITE" layoutX="30.0" layoutY="43.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Schüsse:">
-        <HBox.margin>
-          <Insets left="20.0" top="20.0" />
-        </HBox.margin>
-        <font>
-          <Font size="18.0" />
-        </font>
-      </Text>
-      <Label fx:id="shotCount" contentDisplay="CENTER" layoutX="840.0" layoutY="10.0" textAlignment="CENTER" textFill="#246acd">
-        <font>
-          <Font size="18.0" />
-        </font>
-        <HBox.margin>
-          <Insets left="10.0" top="20.0" />
-        </HBox.margin>
-      </Label>
-    </HBox>
+      <AnchorPane prefHeight="90.0" prefWidth="600.0">
+         <children>
+         <Label fx:id="maxPlayerCount" contentDisplay="CENTER" layoutX="428.0" layoutY="52.0" prefHeight="27.0" prefWidth="29.0" textAlignment="CENTER" textFill="#246acd">
+           <font>
+             <Font size="18.0" />
+           </font>
+         </Label>
+            <ImageView fitHeight="90.0" fitWidth="600.0" pickOnBounds="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <image>
+                  <Image url="@../images/button.png" />
+               </image></ImageView>
+         <Text fill="WHITE" layoutX="31.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Status:" AnchorPane.bottomAnchor="54.0" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="155.0" AnchorPane.topAnchor="12.0">
+           <font>
+             <Font size="18.0" />
+           </font>
+         </Text>
+         <Label fx:id="status" contentDisplay="CENTER" layoutX="89.0" layoutY="11.0" prefHeight="27.0" prefWidth="29.0" textAlignment="CENTER" textFill="#246acd">
+           <font>
+             <Font size="18.0" />
+           </font>
+         </Label>
+         <Text fill="WHITE" layoutX="115.0" layoutY="33.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Punkte bei Treffer:" AnchorPane.bottomAnchor="54.0" AnchorPane.leftAnchor="125.0" AnchorPane.rightAnchor="335.0" AnchorPane.topAnchor="12.0">
+           <font>
+             <Font size="18.0" />
+           </font>
+         </Text>
+         <Label fx:id="hitPoints" contentDisplay="CENTER" layoutX="270.0" layoutY="12.0" prefHeight="27.0" prefWidth="36.0" textAlignment="CENTER" textFill="#246acd">
+           <font>
+             <Font size="18.0" />
+           </font>
+         </Label>
+         <Text fill="WHITE" layoutX="291.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Punkte bei Versenken:" AnchorPane.bottomAnchor="54.0" AnchorPane.leftAnchor="330.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="12.0">
+           <font>
+             <Font size="18.0" />
+           </font>
+         </Text>
+         <Label fx:id="sunkPoints" contentDisplay="CENTER" layoutX="506.0" layoutY="11.0" prefHeight="27.0" prefWidth="29.0" textAlignment="CENTER" textFill="#246acd">
+           <font>
+             <Font size="18.0" />
+           </font>
+         </Label>
+         <Text fill="WHITE" layoutX="21.0" layoutY="76.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Bedenkzeit:" AnchorPane.bottomAnchor="12.0" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="155.0" AnchorPane.topAnchor="50.0">
+           <font>
+             <Font size="18.0" />
+           </font>
+         </Text>
+         <Label fx:id="roundTime" contentDisplay="CENTER" layoutX="121.0" layoutY="52.0" prefHeight="27.0" prefWidth="29.0" textAlignment="CENTER" textFill="#246acd">
+           <font>
+             <Font size="18.0" />
+           </font>
+         </Label>
+         <Text fill="WHITE" layoutX="194.0" layoutY="73.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Restliche Bedenkzeit:" AnchorPane.bottomAnchor="12.0" AnchorPane.leftAnchor="160.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="50.0">
+           <font>
+             <Font size="18.0" />
+           </font>
+         </Text>
+         <Label fx:id="restTime" contentDisplay="CENTER" layoutX="326.0" layoutY="52.0" prefHeight="27.0" prefWidth="29.0" textAlignment="CENTER" textFill="#246acd">
+           <font>
+             <Font name="System Bold" size="18.0" />
+           </font>
+         </Label>
+         <Text fill="WHITE" layoutX="408.0" layoutY="84.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Spieler:" AnchorPane.bottomAnchor="12.0" AnchorPane.leftAnchor="370.0" AnchorPane.rightAnchor="178.150390625" AnchorPane.topAnchor="50.0">
+           <font>
+             <Font size="18.0" />
+           </font>
+         </Text>
+         <Text fill="WHITE" layoutX="486.0" layoutY="59.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Schüsse:" AnchorPane.bottomAnchor="12.0" AnchorPane.rightAnchor="45.0" AnchorPane.topAnchor="50.0">
+           <font>
+             <Font size="18.0" />
+           </font>
+         </Text>
+         <Label fx:id="shotCount" contentDisplay="CENTER" layoutX="561.0" layoutY="48.0" prefHeight="27.0" prefWidth="29.0" textAlignment="CENTER" textFill="#246acd">
+           <font>
+             <Font size="18.0" />
+           </font>
+         </Label>
+         </children>
+      </AnchorPane>
     <HBox alignment="CENTER" prefHeight="0.0" prefWidth="825.0" spacing="100.0" VBox.vgrow="NEVER">
       <VBox.margin>
         <Insets bottom="10.0" top="10.0" />
       </VBox.margin>
       <children>
-        <Button mnemonicParsing="false" onMouseClicked="#showRanking" prefHeight="31.0" prefWidth="311.0" style="-fx-background-color: #E5AC30;" text="Rangliste anzeigen" textFill="WHITE" HBox.hgrow="ALWAYS">
+        <Button contentDisplay="CENTER" mnemonicParsing="false" onMouseClicked="#showRanking" prefHeight="31.0" prefWidth="311.0" style="-fx-background-color: #CFBE8E;" text="Rangliste anzeigen" textFill="WHITE">
           <font>
             <Font name="System Bold" size="15.0" />
           </font>
+               <graphic>
+                  <ImageView fitHeight="55.0" fitWidth="238.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/button.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
         </Button>
-        <Button alignment="CENTER" mnemonicParsing="false" onMouseClicked="#closeModus" prefHeight="31.0" prefWidth="311.0" style="-fx-background-color: #CE201C;" text="Beobachtermodus Beenden" textFill="WHITE" HBox.hgrow="ALWAYS">
+        <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onMouseClicked="#closeModus" prefHeight="31.0" prefWidth="311.0" style="-fx-background-color: #CFBE8E;" text="Schlacht verlassen" textFill="WHITE" HBox.hgrow="ALWAYS">
           <font>
             <Font name="System Bold" size="15.0" />
           </font>
+               <graphic>
+                  <ImageView fitHeight="55.0" fitWidth="219.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/button.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
         </Button>
       </children>
     </HBox>
@@ -160,14 +133,14 @@
       <items>
         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" SplitPane.resizableWithParent="false">
           <children>
-            <ScrollPane fitToHeight="true" fitToWidth="true" prefHeight="340.0" prefWidth="1027.0" style="-fx-background-color: #1A2529;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <ScrollPane fitToHeight="true" fitToWidth="true" prefHeight="257.0" prefWidth="600.0" style="-fx-background-color: #1A2529;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
               <content>
                 <FlowPane fx:id="spielfelder" hgap="10.0" style="-fx-background-color: #1A2529;" vgap="10.0">
                   <padding>
                     <Insets bottom="10.0" left="10.0" top="10.0" />
                   </padding>
                            <children>
-                              <ImageView fitHeight="320.0" fitWidth="1000.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fitHeight="320.0" fitWidth="1000.0" pickOnBounds="true">
                                  <image>
                                     <Image url="@../images/Background.png" />
                                  </image>
@@ -182,7 +155,7 @@
           <children>
             <BorderPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
               <bottom>
-                <Button mnemonicParsing="false" onMouseClicked="#backToView" style="-fx-background-color: #E5AC30;" text="Zurück zur Spielübersicht" textFill="WHITE" BorderPane.alignment="CENTER">
+                <Button mnemonicParsing="false" onMouseClicked="#backToView" style="-fx-background-color: #472218;" text="Zurück zur Spielübersicht" textFill="WHITE" BorderPane.alignment="CENTER">
                   <BorderPane.margin>
                     <Insets bottom="30.0" />
                   </BorderPane.margin>
@@ -192,7 +165,7 @@
                 </Button>
               </bottom>
               <center>
-                <GridPane fx:id="grid" alignment="CENTER" BorderPane.alignment="CENTER">
+                <GridPane fx:id="grid" alignment="CENTER" prefHeight="123.0" prefWidth="5.0" BorderPane.alignment="CENTER">
                   <BorderPane.margin>
                     <Insets bottom="30.0" left="30.0" right="30.0" />
                   </BorderPane.margin>

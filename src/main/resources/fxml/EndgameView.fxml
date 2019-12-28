@@ -1,23 +1,95 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #1A2529;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.upb.codingpirates.battleships.desktop.endgame.EndgameController">
-  <VBox alignment="CENTER" layoutY="-1.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-    <Label text="EndView" textFill="#dd1212">
-      <font>
-        <Font size="62.0" />
-      </font>
-    </Label>
-      <ImageView fitHeight="400.0" fitWidth="600.0" pickOnBounds="true" preserveRatio="true">
+   <children>
+      <ImageView fitHeight="400.0" fitWidth="600.0" pickOnBounds="true">
          <image>
             <Image url="@../images/Background.png" />
          </image>
       </ImageView>
-  </VBox>
+      <VBox layoutX="10.0" layoutY="10.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0">
+         <children>
+            <AnchorPane prefHeight="100.0" prefWidth="600.0">
+               <children>
+                  <Label alignment="CENTER" layoutX="80.0" layoutY="23.0" prefHeight="57.0" prefWidth="446.0" text="SIEGER UND BESIEGTE" textFill="WHITE">
+                     <font>
+                        <Font size="35.0" />
+                     </font>
+                  </Label>
+                  <Separator layoutX="14.0" layoutY="100.0" prefHeight="0.0" prefWidth="577.0" style="-fx-background-color: black;" />
+                  <Button fx:id="btn_settings1" cache="true" cacheHint="ROTATE" cacheShape="false" contentDisplay="GRAPHIC_ONLY" focusTraversable="false" layoutX="545.0" layoutY="28.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#settings" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: #CFBE8E;" text="Settings" />
+                  <ImageView fitHeight="38.0" fitWidth="30.0" layoutX="545.0" layoutY="28.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/icon_settings.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </AnchorPane>
+            <VBox alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="290.0" prefWidth="600.0">
+               <children>
+                  <AnchorPane prefHeight="239.0" prefWidth="600.0">
+                     <children>
+                        <ImageView fitHeight="103.0" fitWidth="98.0" layoutX="245.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="109.44444274902344" AnchorPane.leftAnchor="250.0" AnchorPane.rightAnchor="250.0" AnchorPane.topAnchor="0.0">
+                           <image>
+                              <Image url="@../images/winner1.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="113.0" fitWidth="98.0" layoutX="58.0" layoutY="50.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="120.0" AnchorPane.rightAnchor="252.0" AnchorPane.topAnchor="50.0">
+                           <image>
+                              <Image url="@../images/winner2.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="103.0" fitWidth="98.0" layoutX="429.0" layoutY="50.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="380.0" AnchorPane.rightAnchor="122.0" AnchorPane.topAnchor="50.0">
+                           <image>
+                              <Image url="@../images/winner3.png" />
+                           </image>
+                        </ImageView>
+                        <Label layoutX="250.0" layoutY="100.0" prefHeight="41.0" prefWidth="98.0" text="1. Sieger" textAlignment="CENTER" textFill="#f8f8f8" AnchorPane.bottomAnchor="68.0" AnchorPane.leftAnchor="250.0" AnchorPane.rightAnchor="252.0" AnchorPane.topAnchor="100.0" />
+                        <Label layoutX="380.0" layoutY="150.0" prefHeight="41.0" prefWidth="98.0" text="1. Sieger" textAlignment="CENTER" textFill="#fffefe" />
+                        <Label layoutX="120.0" layoutY="150.0" prefHeight="41.0" prefWidth="98.0" text="1. Sieger" textAlignment="CENTER" textFill="WHITE" />
+                     </children>
+                  </AnchorPane>
+                  <HBox prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onMouseClicked="#showgames" prefHeight="42.0" prefWidth="202.0" style="-fx-background-color: #CFBE8E;" text="Gesamtübersicht" textAlignment="CENTER" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="20.0" />
+                           </font>
+                           <graphic>
+                              <ImageView fitHeight="37.0" fitWidth="184.0">
+                                 <image>
+                                    <Image url="@../images/button.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                        <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onMouseClicked="#showgames" prefHeight="51.0" prefWidth="362.0" style="-fx-background-color: #CFBE8E;" text="Neue Herausforderung suchen" textAlignment="CENTER" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="20.0" />
+                           </font>
+                           <graphic>
+                              <ImageView fitHeight="37.0" fitWidth="337.0">
+                                 <image>
+                                    <Image url="@../images/button.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+         </children>
+      </VBox>
+   </children>
 </AnchorPane>
