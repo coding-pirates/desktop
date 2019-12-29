@@ -1,4 +1,4 @@
-package de.upb.codingpirates.battleships.desktop.settings;
+package de.upb.codingpirates.battleships.desktop.start;
 
 import de.upb.codingpirates.battleships.desktop.BattleshipsDesktopClientApplication;
 import de.upb.codingpirates.battleships.desktop.serverlogin.ServerLogin;
@@ -13,15 +13,16 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 /**
- * Controller Class for the Settings Window.
+ * Controller Class for the Start Window.
  */
-public class SettingsController implements Initializable {
-
-    private BattleshipsDesktopClientApplication main;
+public class StartController implements Initializable {
 
     //Views
     @FXML
-    private Button btn_back;
+    private Button btn_start;
+
+
+    private BattleshipsDesktopClientApplication main;
 
     /**
      * Initial Method.
@@ -42,7 +43,7 @@ public class SettingsController implements Initializable {
 
     @FXML
     public void handleButton() throws Exception {
-        System.out.println("in methode");
+        //btn_start.setText("clicked");
         //closeMain();
         ServerLogin login = new ServerLogin();
         Stage loginStage = new Stage();
@@ -56,5 +57,4 @@ public class SettingsController implements Initializable {
             System.exit(0);
         });
     }
-
 }

@@ -9,21 +9,12 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #1A2529;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.upb.codingpirates.battleships.desktop.endgame.EndgameController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #1A2529;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.upb.codingpirates.battleships.desktop.settings.SettingsController">
    <ImageView fitHeight="400.0" fitWidth="600.0" layoutX="-21.0" layoutY="-14.0" pickOnBounds="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
       <image>
          <Image url="@../images/Background.png" />
       </image>
    </ImageView>
-   <Button contentDisplay="GRAPHIC_ONLY" layoutX="505.0" layoutY="43.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="40.0" prefWidth="48.0" style="-fx-background-color: #CFBE8E;" text="Button" AnchorPane.bottomAnchor="317.0" AnchorPane.leftAnchor="505.0" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="43.0">
-      <graphic>
-         <ImageView fitHeight="40.0" fitWidth="30.0">
-            <image>
-               <Image url="@../images/icon_leave.png" />
-            </image>
-         </ImageView>
-      </graphic>
-   </Button>
   <VBox alignment="CENTER" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
       <children>
        <Label text="Settings" textFill="#f5f5f5">
@@ -35,7 +26,7 @@
             <children>
                <Slider layoutX="128.0" layoutY="106.0" prefHeight="31.0" prefWidth="410.0" value="100.0" />
                <Slider layoutX="128.0" layoutY="61.0" prefHeight="40.0" prefWidth="410.0" value="100.0" AnchorPane.bottomAnchor="141.0" AnchorPane.leftAnchor="128.0" AnchorPane.rightAnchor="62.0" AnchorPane.topAnchor="61.0" />
-               <Button alignment="CENTER" contentDisplay="CENTER" layoutX="43.0" layoutY="191.0" mnemonicParsing="false" onMouseClicked="#showgames" prefHeight="42.0" prefWidth="202.0" style="-fx-background-color: #CFBE8E;" text="Impressum" textAlignment="CENTER" textFill="WHITE">
+               <Button alignment="CENTER" contentDisplay="CENTER" layoutX="43.0" layoutY="191.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="202.0" style="-fx-background-color: #CFBE8E;" text="Impressum" textAlignment="CENTER" textFill="WHITE">
                   <font>
                      <Font name="System Bold" size="20.0" />
                   </font>
@@ -47,7 +38,7 @@
                      </ImageView>
                   </graphic>
                </Button>
-               <Button alignment="CENTER" contentDisplay="CENTER" layoutX="326.0" layoutY="191.0" mnemonicParsing="false" onMouseClicked="#showgames" prefHeight="42.0" prefWidth="202.0" style="-fx-background-color: #CFBE8E;" text="Piratencodex" textAlignment="CENTER" textFill="WHITE">
+               <Button alignment="CENTER" contentDisplay="CENTER" layoutX="341.0" layoutY="191.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="212.0" style="-fx-background-color: #CFBE8E;" text="Piratencodex" textAlignment="CENTER" textFill="WHITE">
                   <font>
                      <Font name="System Bold" size="20.0" />
                   </font>
@@ -81,4 +72,13 @@
          </AnchorPane>
       </children>
   </VBox>
+   <Button fx:id="btn_back" layoutX="478.0" layoutY="41.0" mnemonicParsing="false" onAction="#handleButton" text="back">
+      <graphic>
+         <ImageView fitHeight="49.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+               <Image url="@../images/icon_leave.png" />
+            </image>
+         </ImageView>
+      </graphic>
+   </Button>
 </AnchorPane>

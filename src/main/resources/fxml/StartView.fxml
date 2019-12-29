@@ -9,7 +9,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.upb.codingpirates.battleships.desktop.start.StartController">
    <children>
-      <ImageView blendMode="SRC_ATOP" fitHeight="400.0" fitWidth="600.0" pickOnBounds="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <ImageView blendMode="SRC_ATOP" fitHeight="405.0" fitWidth="605.0" pickOnBounds="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <image>
             <Image url="@../images/Startscreen_BG.jpg" />
          </image>
@@ -17,9 +17,9 @@
             <Cursor fx:constant="DEFAULT" />
          </cursor>
       </ImageView>
-      <Button blendMode="OVERLAY" contentDisplay="CENTER" graphicTextGap="6.0" layoutX="235.0" layoutY="304.0" mnemonicParsing="false" prefHeight="66.0" prefWidth="131.0" style="-fx-background-color: #472218;" text="Start" textAlignment="CENTER" textFill="#fcfcfc" AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="235.0" AnchorPane.rightAnchor="234.0" AnchorPane.topAnchor="304.0">
+      <Button fx:id="btn_start" blendMode="OVERLAY" contentDisplay="CENTER" graphicTextGap="6.0" layoutX="235.0" layoutY="304.0" mnemonicParsing="false" onAction="#handleButton" prefHeight="66.0" prefWidth="131.0" style="-fx-background-color: #472218;" text="Start" textAlignment="CENTER" textFill="#fcfcfc" AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="235.0" AnchorPane.rightAnchor="234.0" AnchorPane.topAnchor="304.0">
          <font>
-            <Font size="25.0" name="Pirata One"/>
+            <Font name="Pirata One" size="25.0" />
          </font>
       </Button>
       <ImageView fitHeight="237.0" fitWidth="274.0" layoutX="186.0" layoutY="50.0" pickOnBounds="true" preserveRatio="true">

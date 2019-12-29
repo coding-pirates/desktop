@@ -47,7 +47,7 @@
     </effect>
   </TextField>
   <Text fill="WHITE" layoutX="88.0" layoutY="170.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name:" textAlignment="CENTER" wrappingWidth="53.13671875" AnchorPane.bottomAnchor="225.0" AnchorPane.leftAnchor="88.0" AnchorPane.rightAnchor="458.86328125" AnchorPane.topAnchor="154.0" />
-   <Button id="button_login" fx:id="btn_login" contentDisplay="GRAPHIC_ONLY" layoutX="257.0" layoutY="348.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="86.0" textAlignment="CENTER" AnchorPane.bottomAnchor="22.0" AnchorPane.leftAnchor="257.0" AnchorPane.rightAnchor="257.0" AnchorPane.topAnchor="348.0">
+   <Button id="button_login" fx:id="btn_login" contentDisplay="GRAPHIC_ONLY" layoutX="257.0" layoutY="348.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="80.0" textAlignment="CENTER" AnchorPane.bottomAnchor="27.0" AnchorPane.leftAnchor="257.0" AnchorPane.rightAnchor="263.0" AnchorPane.topAnchor="348.0">
       <font>
          <Font size="18.0" />
       </font>

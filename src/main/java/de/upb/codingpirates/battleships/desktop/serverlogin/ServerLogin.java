@@ -22,9 +22,9 @@ public class ServerLogin extends Application {
 
     private Stage loginStage;
 
-    private final ClientConnector tcpConnector = ClientApplication.create(new ClientModule<>(ClientConnector.class));
+    private ServerLoginController serverLoginController;
 
-    private static final String TITLE = "Coding Pirates Battleships Desktop Client";
+    private final ClientConnector tcpConnector = ClientApplication.create(new ClientModule<>(ClientConnector.class));
 
     private static ServerLogin instance;
 
@@ -47,15 +47,9 @@ public class ServerLogin extends Application {
         FXMLLoader loader = new FXMLLoader(ServerLogin.class.getResource("/fxml/ServerLogin.fxml"));
         AnchorPane pane = loader.load();
 
-
-        InputStream input = getClass().getResourceAsStream("/images/Settings_Icon.svg");
-        Image image = new Image(input);
-        ImageView imageview = new ImageView(image);
-        Button btn_settings = new Button("Settings", imageview);
-        pane.getChildren().addAll(btn_settings);
-
+        this.serverLoginController = loader.getController();
         loginStage.setResizable(false);
-        loginStage.setTitle(TITLE);
+        loginStage.setTitle("Login");
         loginStage.setScene(new Scene(pane, 600, 400));
         loginStage.show();
     }

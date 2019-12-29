@@ -1,6 +1,7 @@
 package de.upb.codingpirates.battleships.desktop.serverlogin;
 
 import de.upb.codingpirates.battleships.client.ListenerHandler;
+import de.upb.codingpirates.battleships.client.listener.MessageHandlerListener;
 import de.upb.codingpirates.battleships.client.listener.ServerJoinResponseListener;
 import de.upb.codingpirates.battleships.desktop.BattleshipsDesktopClientApplication;
 import de.upb.codingpirates.battleships.logic.ClientType;
@@ -26,7 +27,7 @@ public class ServerLoginModel implements ServerJoinResponseListener {
      * @param clientKind  Kind of the Client
      */
     public ServerLoginModel(String spielerName, ClientType clientKind) {
-        ListenerHandler.registerListener(this);
+        ListenerHandler.registerListener((MessageHandlerListener) this);
         this.spielerName = spielerName;
         this.clientKind = clientKind;
     }

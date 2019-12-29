@@ -11,7 +11,7 @@ import javafx.stage.Stage;
 /**
  * Class that implements a Window to set the settings
  */
-public class settings extends Application {
+public class Settings extends Application {
 
 
     Stage settingsStage;
@@ -27,7 +27,7 @@ public class settings extends Application {
         this.settingsController = loader.getController();
         settingsStage.setTitle("Settings");
         settingsStage.setResizable(false);
-        settingsStage.setScene(new Scene(pane));
+        settingsStage.setScene(new Scene(pane, 600, 400));
         settingsStage.show();
     }
 
