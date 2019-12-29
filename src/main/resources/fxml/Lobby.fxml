@@ -13,22 +13,22 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" style="-fx-background-color: #CFBE8E #CFBE8E #CFBE8E;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.upb.codingpirates.battleships.desktop.lobby.LobbyController">
-   <ImageView fitHeight="800.0" fitWidth="1200.0" nodeOrientation="INHERIT" pickOnBounds="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+<AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" style="-fx-background-color: #CFBE8E #CFBE8E #CFBE8E;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.upb.codingpirates.battleships.desktop.lobby.LobbyController">
+   <ImageView nodeOrientation="INHERIT" pickOnBounds="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
       <image>
          <Image url="@../images/Background.png" />
       </image>
    </ImageView>
-  <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+  <VBox minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
       <AnchorPane prefHeight="219.0" prefWidth="1200.0">
          <children>
-         <Label alignment="CENTER" layoutX="511.0" layoutY="71.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="76.0" prefWidth="179.0" text="LOBBY" textFill="WHITE" AnchorPane.bottomAnchor="33.0" AnchorPane.leftAnchor="511.0" AnchorPane.rightAnchor="510.0" AnchorPane.topAnchor="71.0">
+         <Label alignment="CENTER" layoutX="511.0" layoutY="71.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="76.0" prefWidth="179.0" text="LOBBY" textFill="WHITE" AnchorPane.leftAnchor="511.0" AnchorPane.rightAnchor="510.0" AnchorPane.topAnchor="71.0">
            <font>
              <Font size="35.0" />
            </font>
          </Label>
-         <Separator layoutX="284.0" layoutY="145.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="4.0" prefWidth="668.0" style="-fx-background-color: black;" AnchorPane.bottomAnchor="31.0" AnchorPane.leftAnchor="284.0" AnchorPane.rightAnchor="248.0" AnchorPane.topAnchor="145.0" />
-            <Button fx:id="btn_settings1" cache="true" cacheHint="ROTATE" cacheShape="false" contentDisplay="GRAPHIC_ONLY" focusTraversable="false" layoutX="1083.0" layoutY="78.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#settings" prefHeight="44.0" prefWidth="55.0" style="-fx-background-color: #CFBE8E;" text="Settings" AnchorPane.bottomAnchor="58.0" AnchorPane.leftAnchor="1083.0" AnchorPane.rightAnchor="62.0" AnchorPane.topAnchor="78.0">
+         <Separator layoutX="284.0" layoutY="145.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="4.0" prefWidth="668.0" style="-fx-background-color: black;" AnchorPane.leftAnchor="284.0" AnchorPane.rightAnchor="248.0" />
+            <Button fx:id="btn_settings1" cache="true" cacheHint="ROTATE" cacheShape="false" contentDisplay="GRAPHIC_ONLY" focusTraversable="false" layoutX="1083.0" layoutY="78.0" minHeight="-Infinity" minWidth="-Infinity" onAction="#settings" prefHeight="44.0" prefWidth="55.0" style="-fx-background-color: #CFBE8E;" text="Settings" AnchorPane.rightAnchor="62.0" AnchorPane.topAnchor="78.0">
                <graphic>
                   <ImageView fitHeight="38.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -39,9 +39,9 @@
          </children>
       </AnchorPane>
    <VBox alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="620.0" prefWidth="1200.0">
-     <Button alignment="CENTER" contentDisplay="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#showgames" prefHeight="70.0" prefWidth="242.0" style="-fx-background-color: #CFBE8E;" text="Aktualisieren" textAlignment="CENTER" textFill="WHITE">
+     <Button alignment="CENTER" contentDisplay="CENTER" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#showgames" prefHeight="70.0" prefWidth="242.0" style="-fx-background-color: #CFBE8E;" text="Aktualisieren" textAlignment="CENTER" textFill="WHITE">
        <VBox.margin>
-         <Insets bottom="30.0" top="15.0" />
+         <Insets bottom="30.0" top="20.0" />
        </VBox.margin>
        <font>
          <Font name="System Bold" size="20.0" />
@@ -54,30 +54,33 @@
                </ImageView>
             </graphic>
      </Button>
-     <Accordion maxHeight="-Infinity" maxWidth="-Infinity" minHeight="145.0" minWidth="558.0" prefHeight="400.0" prefWidth="1100.0" VBox.vgrow="ALWAYS">
+     <Accordion minHeight="145.0" minWidth="558.0" prefHeight="400.0" prefWidth="1100.0" VBox.vgrow="ALWAYS">
        <padding>
          <Insets bottom="20.0" left="20.0" right="20.0" />
        </padding>
        <panes>
-         <TitledPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="150.0" prefWidth="1000.0" style="-fx-body-color: #472218; -fx-inner-border: #92BFBF; -fx-box-border: #92BFBF; -fx-mark-color: white; -fx-focus-color: #E4FFFF;" text="Startende Spiele" textFill="#fcfcfc">
+         <TitledPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="150.0" prefWidth="1000.0" style="-fx-body-color: #472218; -fx-inner-border: #92BFBF; -fx-box-border: #92BFBF; -fx-mark-color: white; -fx-focus-color: #E4FFFF;" text="Startende Spiele" textFill="#fcfcfc">
            <font>
              <Font name="System Bold" size="25.0" />
            </font>
            <ListView fx:id="lstvwStart" minWidth="100.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #CFBE8E;" />
          </TitledPane>
-         <TitledPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="150.0" prefWidth="1000.0" style="-fx-body-color: #472218; -fx-inner-border: #92BFBF; -fx-box-border: #92BFBF; -fx-mark-color: white; -fx-focus-color: #E4FFFF;" text="Laufende Spiele" textFill="#fcfcfc">
+         <TitledPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="150.0" prefWidth="1000.0" style="-fx-body-color: #472218; -fx-inner-border: #92BFBF; -fx-box-border: #92BFBF; -fx-mark-color: white; -fx-focus-color: #E4FFFF;" text="Laufende Spiele" textFill="#fcfcfc">
            <font>
              <Font name="System Bold" size="25.0" />
            </font>
            <ListView fx:id="lstvwRunning" minWidth="100.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #CFBE8E;" />
          </TitledPane>
-         <TitledPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="150.0" prefWidth="1000.0" style="-fx-body-color: #472218; -fx-inner-border: #92BFBF; -fx-box-border: #92BFBF; -fx-mark-color: white; -fx-focus-color: #E4FFFF;" text="Beendete Spiele" textFill="#f8f7f7">
+         <TitledPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="150.0" prefWidth="1000.0" style="-fx-body-color: #472218; -fx-inner-border: #92BFBF; -fx-box-border: #92BFBF; -fx-mark-color: white; -fx-focus-color: #E4FFFF;" text="Beendete Spiele" textFill="#f8f7f7">
            <font>
              <Font name="System Bold" size="25.0" />
            </font>
            <ListView fx:id="lstvwEnd" minWidth="100.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #CFBE8E;" />
          </TitledPane>
        </panes>
+            <VBox.margin>
+               <Insets top="30.0" />
+            </VBox.margin>
      </Accordion>
    </VBox>
   </VBox>

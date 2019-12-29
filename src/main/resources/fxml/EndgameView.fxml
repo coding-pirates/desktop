@@ -11,9 +11,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" style="-fx-background-color: #1A2529;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.upb.codingpirates.battleships.desktop.endgame.EndgameController">
+<AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" style="-fx-background-color: #1A2529;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.upb.codingpirates.battleships.desktop.endgame.EndgameController">
    <children>
-      <ImageView fitHeight="800.0" fitWidth="1200.0" pickOnBounds="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <ImageView pickOnBounds="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <image>
             <Image url="@../images/Background.png" />
          </image>
@@ -22,13 +22,13 @@
          <children>
             <AnchorPane prefHeight="221.0" prefWidth="1200.0">
                <children>
-                  <Label alignment="CENTER" layoutX="405.0" layoutY="88.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="83.0" prefWidth="466.0" text="SIEGER UND BESIEGTE" textFill="WHITE" AnchorPane.bottomAnchor="-26.0" AnchorPane.leftAnchor="405.0" AnchorPane.rightAnchor="329.0" AnchorPane.topAnchor="88.0">
+                  <Label alignment="CENTER" layoutX="405.0" layoutY="88.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="83.0" prefWidth="466.0" text="SIEGER UND BESIEGTE" textFill="WHITE" AnchorPane.leftAnchor="405.0" AnchorPane.rightAnchor="329.0" AnchorPane.topAnchor="88.0">
                      <font>
                         <Font size="35.0" />
                      </font>
                   </Label>
-                  <Separator layoutX="227.0" layoutY="204.0" prefHeight="7.0" prefWidth="842.0" style="-fx-background-color: black;" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="227.0" AnchorPane.rightAnchor="131.0" AnchorPane.topAnchor="204.0" />
-                  <Button fx:id="btn_settings1" cache="true" cacheHint="ROTATE" cacheShape="false" contentDisplay="GRAPHIC_ONLY" focusTraversable="false" layoutX="1092.0" layoutY="69.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#settings" prefHeight="47.0" prefWidth="50.0" style="-fx-background-color: #CFBE8E;" text="Settings">
+                  <Separator layoutX="227.0" layoutY="204.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="7.0" prefWidth="842.0" style="-fx-background-color: black;" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="227.0" AnchorPane.rightAnchor="131.0" AnchorPane.topAnchor="204.0" />
+                  <Button fx:id="btn_settings1" cache="true" cacheHint="ROTATE" cacheShape="false" contentDisplay="GRAPHIC_ONLY" focusTraversable="false" layoutX="1092.0" layoutY="69.0" minHeight="-Infinity" minWidth="-Infinity" onAction="#settings" prefHeight="47.0" prefWidth="50.0" style="-fx-background-color: #CFBE8E;" text="Settings" AnchorPane.rightAnchor="58.0" AnchorPane.topAnchor="69.0">
                      <graphic>
                         <ImageView fitHeight="38.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -38,33 +38,33 @@
                      </graphic></Button>
                </children>
             </AnchorPane>
-            <VBox alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="589.0" prefWidth="1200.0">
+            <VBox alignment="CENTER" fillWidth="false" minHeight="-Infinity" minWidth="-Infinity" prefHeight="589.0" prefWidth="1200.0">
                <children>
                   <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="1200.0">
                      <children>
-                        <ImageView fitHeight="250.0" fitWidth="200.0" layoutX="518.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="204.2222137451172" AnchorPane.leftAnchor="518.0" AnchorPane.rightAnchor="548.0" AnchorPane.topAnchor="12.777786254882812">
+                        <ImageView fitHeight="250.0" fitWidth="200.0" layoutX="518.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="518.0" AnchorPane.rightAnchor="548.0" AnchorPane.topAnchor="12.777786254882812">
                            <image>
                               <Image url="@../images/winner1.png" />
                            </image>
                         </ImageView>
-                        <ImageView fitHeight="188.0" fitWidth="182.0" layoutX="294.0" layoutY="93.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="140.39682006835938" AnchorPane.leftAnchor="294.0" AnchorPane.rightAnchor="724.0" AnchorPane.topAnchor="93.0">
+                        <ImageView fitHeight="188.0" fitWidth="182.0" layoutX="294.0" layoutY="93.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="294.0" AnchorPane.topAnchor="93.0">
                            <image>
                               <Image url="@../images/winner2.png" />
                            </image>
                         </ImageView>
-                        <ImageView fitHeight="210.0" fitWidth="164.0" layoutX="754.0" layoutY="98.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="116.39682006835938" AnchorPane.leftAnchor="754.0" AnchorPane.rightAnchor="282.0" AnchorPane.topAnchor="117.0">
+                        <ImageView fitHeight="210.0" fitWidth="164.0" layoutX="754.0" layoutY="98.0" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="282.0" AnchorPane.topAnchor="117.0">
                            <image>
                               <Image url="@../images/winner3.png" />
                            </image>
                         </ImageView>
-                        <Label layoutX="518.0" layoutY="216.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="63.0" prefWidth="206.0" text="1. Sieger" textAlignment="CENTER" textFill="#f8f8f8" AnchorPane.bottomAnchor="142.0" AnchorPane.leftAnchor="518.0" AnchorPane.rightAnchor="542.0" AnchorPane.topAnchor="216.0" />
-                        <Label layoutX="754.0" layoutY="284.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="42.0" prefWidth="164.0" text="1. Sieger" textAlignment="CENTER" textFill="#fffefe" AnchorPane.bottomAnchor="74.0" AnchorPane.leftAnchor="754.0" AnchorPane.rightAnchor="282.0" AnchorPane.topAnchor="284.0" />
-                        <Label layoutX="312.0" layoutY="284.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="42.0" prefWidth="164.0" text="1. Sieger" textAlignment="CENTER" textFill="WHITE" AnchorPane.bottomAnchor="74.0" AnchorPane.leftAnchor="312.0" AnchorPane.rightAnchor="724.0" AnchorPane.topAnchor="284.0" />
+                        <Label layoutX="518.0" layoutY="216.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="63.0" prefWidth="206.0" text="1. Sieger" textAlignment="CENTER" textFill="#f8f8f8" AnchorPane.bottomAnchor="142.0" AnchorPane.leftAnchor="518.0" AnchorPane.rightAnchor="542.0" AnchorPane.topAnchor="216.0" />
+                        <Label layoutX="754.0" layoutY="284.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="42.0" prefWidth="164.0" text="1. Sieger" textAlignment="CENTER" textFill="#fffefe" AnchorPane.bottomAnchor="74.0" AnchorPane.leftAnchor="754.0" AnchorPane.rightAnchor="282.0" AnchorPane.topAnchor="284.0" />
+                        <Label layoutX="312.0" layoutY="284.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="42.0" prefWidth="164.0" text="1. Sieger" textAlignment="CENTER" textFill="WHITE" AnchorPane.bottomAnchor="74.0" AnchorPane.leftAnchor="312.0" AnchorPane.rightAnchor="724.0" AnchorPane.topAnchor="284.0" />
                      </children>
                   </AnchorPane>
-                  <HBox prefHeight="157.0" prefWidth="1200.0">
+                  <HBox fillHeight="false" prefHeight="157.0" prefWidth="1200.0">
                      <children>
-                        <Button alignment="CENTER" contentDisplay="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#showgames" prefHeight="61.0" prefWidth="326.0" style="-fx-background-color: #CFBE8E;" text="Gesamtübersicht" textAlignment="CENTER" textFill="WHITE">
+                        <Button alignment="CENTER" contentDisplay="CENTER" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#showgames" prefHeight="61.0" prefWidth="326.0" style="-fx-background-color: #CFBE8E;" text="Gesamtübersicht" textAlignment="CENTER" textFill="WHITE">
                            <font>
                               <Font name="System Bold" size="20.0" />
                            </font>
@@ -79,7 +79,7 @@
                               <Insets left="150.0" />
                            </HBox.margin>
                         </Button>
-                        <Button alignment="CENTER" contentDisplay="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#showgames" prefHeight="64.0" prefWidth="378.0" style="-fx-background-color: #CFBE8E;" text="Neue Herausforderung suchen" textAlignment="CENTER" textFill="WHITE">
+                        <Button alignment="CENTER" contentDisplay="CENTER" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#showgames" prefHeight="64.0" prefWidth="378.0" style="-fx-background-color: #CFBE8E;" text="Neue Herausforderung suchen" textAlignment="CENTER" textFill="WHITE">
                            <font>
                               <Font name="System Bold" size="20.0" />
                            </font>

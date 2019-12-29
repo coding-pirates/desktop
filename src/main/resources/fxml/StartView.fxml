@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.upb.codingpirates.battleships.desktop.start.StartController">
+<AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.upb.codingpirates.battleships.desktop.start.StartController">
    <children>
       <ImageView blendMode="SRC_ATOP" pickOnBounds="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <image>
@@ -17,7 +17,7 @@
             <Cursor fx:constant="DEFAULT" />
          </cursor>
       </ImageView>
-      <Button fx:id="btn_start" blendMode="OVERLAY" contentDisplay="CENTER" graphicTextGap="6.0" layoutX="535.0" layoutY="665.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleButton" prefHeight="75.0" prefWidth="150.0" style="-fx-background-color: #472218;" text="Start" textAlignment="CENTER" textFill="#fcfcfc" AnchorPane.bottomAnchor="60.0" AnchorPane.leftAnchor="535.0" AnchorPane.rightAnchor="515.0" AnchorPane.topAnchor="665.0">
+      <Button fx:id="btn_start" blendMode="OVERLAY" contentDisplay="CENTER" graphicTextGap="6.0" layoutX="525.0" layoutY="658.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleButton" prefHeight="75.0" prefWidth="150.0" style="-fx-background-color: #472218;" text="Start" textAlignment="CENTER" textFill="#fcfcfc" AnchorPane.bottomAnchor="67.0" AnchorPane.leftAnchor="525.0" AnchorPane.rightAnchor="525.0">
          <font>
             <Font name="Pirata One" size="25.0" />
          </font>

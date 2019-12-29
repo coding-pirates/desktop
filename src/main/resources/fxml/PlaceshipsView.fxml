@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.SplitPane?>
@@ -18,14 +17,14 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" style="-fx-background-color: #CFBE8E;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.upb.codingpirates.battleship.desktop.ingame.InGameController">
+<AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" style="-fx-background-color: #CFBE8E;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.upb.codingpirates.battleship.desktop.ingame.InGameController">
    <children>
-      <ImageView fitHeight="90.0" fitWidth="1200.0" pickOnBounds="true">
+      <ImageView fitHeight="162.0" fitWidth="1200.0" pickOnBounds="true" AnchorPane.bottomAnchor="638.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <image>
             <Image url="@../images/button.png" />
          </image>
       </ImageView>
-      <VBox alignment="CENTER" layoutY="-1.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <VBox alignment="CENTER" layoutY="-1.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <HBox prefHeight="100.0" prefWidth="200.0">
                <children>
@@ -37,23 +36,23 @@
                         <Insets left="50.0" top="30.0" />
                      </HBox.margin>
                   </Text>
-                  <Label maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="90.0" prefWidth="100.0" textFill="WHITE" />
+                  <Label minHeight="-Infinity" minWidth="-Infinity" prefHeight="90.0" prefWidth="100.0" textFill="WHITE" />
                   <Text fill="#fcf9f9" strokeType="OUTSIDE" strokeWidth="0.0" text="Size" wrappingWidth="44.22802734375">
                      <HBox.margin>
                         <Insets left="50.0" top="30.0" />
                      </HBox.margin></Text>
-                  <Label maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="90.0" prefWidth="100.0" textFill="#fcfafa" />
+                  <Label minHeight="-Infinity" minWidth="-Infinity" prefHeight="90.0" prefWidth="100.0" textFill="#fcfafa" />
                   <Text fill="#f8f6f6" strokeType="OUTSIDE" strokeWidth="0.0" text="Form">
                      <HBox.margin>
                         <Insets left="50.0" top="30.0" />
                      </HBox.margin></Text>
-                  <Label maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="90.0" prefWidth="100.0" textFill="#fcfafa" />
+                  <Label minHeight="-Infinity" minWidth="-Infinity" prefHeight="90.0" prefWidth="100.0" textFill="#fcfafa" />
                   <Text fill="#f8f7f7" strokeType="OUTSIDE" strokeWidth="0.0" text="Placed ships">
                      <HBox.margin>
                         <Insets left="50.0" top="30.0" />
                      </HBox.margin>
                   </Text>
-                  <Label maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="90.0" prefWidth="100.0" text="Label" />
+                  <Label minHeight="-Infinity" minWidth="-Infinity" prefHeight="90.0" prefWidth="100.0" text="Label" />
                </children>
             </HBox>
             <SplitPane fx:id="splitPane" dividerPositions="1.0" prefHeight="160.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
@@ -67,7 +66,7 @@
                                     <Insets bottom="10.0" left="10.0" top="10.0" />
                                  </padding>
                                  <children>
-                                    <ImageView fitHeight="800.0" fitWidth="1200.0" pickOnBounds="true">
+                                    <ImageView pickOnBounds="true">
                                        <image>
                                           <Image url="@../images/Background.png" />
                                        </image>
@@ -78,19 +77,9 @@
                         </ScrollPane>
                      </children>
                   </AnchorPane>
-                  <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="0.0" minWidth="0.0" prefHeight="710.0" prefWidth="1200.0" style="-fx-background-color: #1A2529;" SplitPane.resizableWithParent="false">
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="710.0" prefWidth="1200.0" style="-fx-background-color: #1A2529;" SplitPane.resizableWithParent="false">
                      <children>
                         <BorderPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                           <bottom>
-                              <Button mnemonicParsing="false" onMouseClicked="#backToView" style="-fx-background-color: #472218;" text="Zurück zur Spielübersicht" textFill="WHITE" BorderPane.alignment="CENTER">
-                                 <BorderPane.margin>
-                                    <Insets bottom="30.0" />
-                                 </BorderPane.margin>
-                                 <font>
-                                    <Font name="System Bold" size="20.0" />
-                                 </font>
-                              </Button>
-                           </bottom>
                            <center>
                               <GridPane fx:id="grid" alignment="CENTER" prefHeight="123.0" prefWidth="5.0" BorderPane.alignment="CENTER">
                                  <BorderPane.margin>

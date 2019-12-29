@@ -11,13 +11,8 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" style="-fx-background-color: #1A2529; -fx-text-fill: white;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.upb.codingpirates.battleships.desktop.serverlogin.ServerLoginController">
-  <Button layoutX="215.0" layoutY="338.0" mnemonicParsing="false" onAction="#login" prefHeight="25.0" prefWidth="169.0" style="-fx-background-color: #E5AC30;" text="Verbinden" textAlignment="CENTER" textFill="WHITE">
-    <font>
-      <Font name="System Bold" size="12.0" />
-    </font>
-  </Button>
-  <ImageView fx:id="background" fitHeight="800.0" fitWidth="1200.0" pickOnBounds="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+<AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" style="-fx-background-color: #1A2529; -fx-text-fill: white;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.upb.codingpirates.battleships.desktop.serverlogin.ServerLoginController">
+  <ImageView fx:id="background" layoutX="-769.0" layoutY="-249.0" pickOnBounds="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
       <image>
          <Image url="@../images/Background.png" />
       </image>
@@ -25,39 +20,39 @@
          <Cursor fx:constant="DEFAULT" />
       </cursor>
   </ImageView>
-  <Text fill="WHITE" layoutX="100.0" layoutY="370.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Port:" wrappingWidth="49.00002479553223" AnchorPane.bottomAnchor="425.482421875" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="1050.9999752044678" AnchorPane.topAnchor="350.576171875">
+  <Text fill="WHITE" layoutX="100.0" layoutY="370.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Port:" wrappingWidth="49.00002479553223" AnchorPane.leftAnchor="100.0" AnchorPane.topAnchor="350.576171875">
       <font>
          <Font size="18.0" />
       </font></Text>
-  <Text fill="#fcf9f9" layoutX="74.0" layoutY="483.0" strokeType="OUTSIDE" strokeWidth="0.0" text="IP-Adresse:" wrappingWidth="101.99998188018799" AnchorPane.bottomAnchor="312.482421875" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="1024.000018119812" AnchorPane.topAnchor="463.576171875">
+  <Text fill="#fcf9f9" layoutX="74.0" layoutY="483.0" strokeType="OUTSIDE" strokeWidth="0.0" text="IP-Adresse:" wrappingWidth="101.99998188018799" AnchorPane.leftAnchor="100.0" AnchorPane.topAnchor="463.576171875">
       <font>
          <Font size="18.0" />
       </font></Text>
-  <Text fill="WHITE" layoutX="450.0" layoutY="143.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Server Login" textAlignment="CENTER" wrappingWidth="344.13671875" AnchorPane.bottomAnchor="649.470703125" AnchorPane.leftAnchor="450.0" AnchorPane.rightAnchor="405.86328125" AnchorPane.topAnchor="110.626953125">
+  <Text fill="WHITE" layoutX="450.0" layoutY="143.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Server Login" textAlignment="CENTER" wrappingWidth="344.13671875" AnchorPane.leftAnchor="450.0" AnchorPane.rightAnchor="405.86328125" AnchorPane.topAnchor="110.626953125">
     <font>
       <Font size="30.0" />
     </font>
   </Text>
-  <TextField fx:id="portField" layoutX="71.0" layoutY="388.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="60.0" prefWidth="1060.0" promptText="Server-Port hier eingeben" style="-fx-background-color: #472218; -fx-border-radius: 25; -fx-text-inner-color: white;">
+  <TextField fx:id="portField" layoutX="71.0" layoutY="388.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="60.0" prefWidth="1060.0" promptText="Server-Port hier eingeben" style="-fx-background-color: #472218; -fx-border-radius: 25; -fx-text-inner-color: white;" AnchorPane.leftAnchor="71.0" AnchorPane.rightAnchor="69.0" AnchorPane.topAnchor="388.0">
     <effect>
       <Glow />
     </effect>
   </TextField>
-  <TextField fx:id="ipField" layoutX="70.0" layoutY="496.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="60.0" prefWidth="1060.0" promptText="Server-IP hier eingeben" style="-fx-background-color: #472218; -fx-border-radius: 25; -fx-text-inner-color: white;" AnchorPane.bottomAnchor="243.0" AnchorPane.leftAnchor="70.0" AnchorPane.rightAnchor="71.0" AnchorPane.topAnchor="496.0">
+  <TextField fx:id="ipField" layoutX="70.0" layoutY="496.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="60.0" prefWidth="1060.0" promptText="Server-IP hier eingeben" style="-fx-background-color: #472218; -fx-border-radius: 25; -fx-text-inner-color: white;" AnchorPane.leftAnchor="70.0" AnchorPane.rightAnchor="71.0" AnchorPane.topAnchor="496.0">
     <effect>
       <Glow />
     </effect>
   </TextField>
-  <TextField fx:id="nameField" layoutX="71.0" layoutY="276.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="60.0" prefWidth="1060.0" promptText="Name hier eingeben" style="-fx-background-color: #472218; -fx-border-radius: 25; -fx-text-inner-color: white;">
+  <TextField fx:id="nameField" layoutX="70.0" layoutY="265.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="60.0" prefWidth="1060.0" promptText="Name hier eingeben" style="-fx-background-color: #472218; -fx-border-radius: 25; -fx-text-inner-color: white;" AnchorPane.leftAnchor="70.0" AnchorPane.rightAnchor="70.0" AnchorPane.topAnchor="265.0">
     <effect>
       <Glow level="0.29" />
     </effect>
   </TextField>
-  <Text fill="WHITE" layoutX="100.0" layoutY="253.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name:" wrappingWidth="53.13671875" AnchorPane.bottomAnchor="542.482421875" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="1046.86328125" AnchorPane.topAnchor="233.576171875">
+  <Text fill="WHITE" layoutX="100.0" layoutY="253.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name:" wrappingWidth="53.13671875" AnchorPane.leftAnchor="100.0" AnchorPane.topAnchor="233.576171875">
       <font>
          <Font size="18.0" />
       </font></Text>
-   <Button fx:id="btn_settings" cache="true" cacheHint="ROTATE" cacheShape="false" contentDisplay="GRAPHIC_ONLY" focusTraversable="false" layoutX="1093.0" layoutY="71.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#settings" prefHeight="40.0" prefWidth="53.0" style="-fx-background-color: #CFBE8E;" text="Settings" AnchorPane.bottomAnchor="689.0" AnchorPane.leftAnchor="1093.0" AnchorPane.rightAnchor="54.0" AnchorPane.topAnchor="71.0">
+   <Button fx:id="btn_settings" cache="true" cacheHint="ROTATE" cacheShape="false" contentDisplay="GRAPHIC_ONLY" focusTraversable="false" layoutX="1093.0" layoutY="71.0" minHeight="-Infinity" minWidth="-Infinity" onAction="#settings" prefHeight="40.0" prefWidth="53.0" style="-fx-background-color: #CFBE8E;" text="Settings" AnchorPane.rightAnchor="54.0" AnchorPane.topAnchor="71.0">
       <graphic>
          <ImageView fitHeight="38.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
             <image>
@@ -65,14 +60,14 @@
             </image>
          </ImageView>
       </graphic></Button>
-   <Label fx:id="lblStatus" layoutX="171.0" layoutY="180.0" prefHeight="54.0" prefWidth="859.0" textAlignment="CENTER" textFill="RED" AnchorPane.bottomAnchor="566.0" AnchorPane.leftAnchor="171.0" AnchorPane.rightAnchor="170.0" AnchorPane.topAnchor="180.0" />
-   <Button layoutX="1097.0" layoutY="743.0" mnemonicParsing="false" onAction="#handlerButton" text="next" />
-   <Button id="button_login" fx:id="btn_login" contentDisplay="GRAPHIC_ONLY" layoutX="539.0" layoutY="651.0" mnemonicParsing="false" onAction="#login" prefHeight="5.0" prefWidth="124.0" textAlignment="CENTER" AnchorPane.bottomAnchor="144.0" AnchorPane.leftAnchor="539.0" AnchorPane.rightAnchor="537.0" AnchorPane.topAnchor="651.0">
+   <Label fx:id="lblStatus" layoutX="171.0" layoutY="180.0" prefHeight="54.0" prefWidth="859.0" textAlignment="CENTER" textFill="RED" AnchorPane.leftAnchor="171.0" AnchorPane.rightAnchor="170.0" AnchorPane.topAnchor="180.0" />
+   <Button layoutX="1097.0" layoutY="743.0" mnemonicParsing="false" onAction="#handlerButton" text="next" AnchorPane.bottomAnchor="26.0" AnchorPane.rightAnchor="54.0" />
+   <Button id="button_login" fx:id="btn_login" contentDisplay="GRAPHIC_ONLY" layoutX="467.0" layoutY="603.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#login" prefHeight="100.0" prefWidth="250.0" style="-fx-background-color: #CFBE8E;" textAlignment="CENTER" AnchorPane.bottomAnchor="104.0">
       <font>
          <Font size="18.0" />
       </font>
       <graphic>
-         <ImageView fitHeight="47.0" fitWidth="186.0" pickOnBounds="true" preserveRatio="true">
+         <ImageView fitHeight="208.0" fitWidth="337.0" pickOnBounds="true" preserveRatio="true">
             <image>
                <Image url="@../images/button_login.png" />
             </image>

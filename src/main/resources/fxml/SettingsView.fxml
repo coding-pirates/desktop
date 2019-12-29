@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Slider?>
@@ -9,24 +10,27 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" style="-fx-background-color: #1A2529;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.upb.codingpirates.battleships.desktop.settings.SettingsController">
-   <ImageView fitHeight="800.0" fitWidth="1200.0" layoutX="-21.0" layoutY="-14.0" pickOnBounds="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+<AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" style="-fx-background-color: #1A2529;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.upb.codingpirates.battleships.desktop.settings.SettingsController">
+   <ImageView nodeOrientation="INHERIT" pickOnBounds="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
       <image>
          <Image url="@../images/Background.png" />
       </image>
    </ImageView>
-  <VBox alignment="CENTER" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+  <VBox alignment="CENTER" fillWidth="false" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
       <children>
-       <Label maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="100.0" prefWidth="150.0" text="Settings" textFill="#f5f5f5">
+       <Label alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="100.0" prefWidth="150.0" text="Settings" textFill="#f5f5f5">
          <font>
            <Font size="38.0" />
          </font>
+            <VBox.margin>
+               <Insets />
+            </VBox.margin>
        </Label>
          <AnchorPane prefHeight="205.0" prefWidth="1200.0">
             <children>
-               <Slider layoutX="128.0" layoutY="106.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="52.0" prefWidth="977.0" value="100.0" AnchorPane.bottomAnchor="105.0" AnchorPane.leftAnchor="128.0" AnchorPane.rightAnchor="95.0" AnchorPane.topAnchor="106.0" />
-               <Slider layoutX="128.0" layoutY="61.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="61.0" prefWidth="977.0" value="100.0" AnchorPane.bottomAnchor="141.0" AnchorPane.leftAnchor="128.0" AnchorPane.rightAnchor="95.0" AnchorPane.topAnchor="61.0" />
-               <Button alignment="CENTER" contentDisplay="CENTER" layoutX="261.0" layoutY="191.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="72.0" prefWidth="250.0" style="-fx-background-color: #CFBE8E;" text="Impressum" textAlignment="CENTER" textFill="WHITE">
+               <Slider layoutX="128.0" layoutY="106.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="52.0" prefWidth="977.0" value="100.0" AnchorPane.bottomAnchor="105.0" AnchorPane.leftAnchor="128.0" AnchorPane.topAnchor="106.0" />
+               <Slider layoutX="128.0" layoutY="61.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="61.0" prefWidth="977.0" value="100.0" AnchorPane.bottomAnchor="141.0" AnchorPane.leftAnchor="128.0" AnchorPane.topAnchor="61.0" />
+               <Button alignment="CENTER" contentDisplay="CENTER" layoutX="261.0" layoutY="191.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="72.0" prefWidth="250.0" style="-fx-background-color: #CFBE8E;" text="Impressum" textAlignment="CENTER" textFill="WHITE">
                   <font>
                      <Font name="System Bold" size="20.0" />
                   </font>
@@ -38,7 +42,7 @@
                      </ImageView>
                   </graphic>
                </Button>
-               <Button alignment="CENTER" contentDisplay="CENTER" layoutX="688.0" layoutY="191.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="72.0" prefWidth="250.0" style="-fx-background-color: #CFBE8E;" text="Piratencodex" textAlignment="CENTER" textFill="WHITE">
+               <Button alignment="CENTER" contentDisplay="CENTER" layoutX="688.0" layoutY="191.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="72.0" prefWidth="250.0" style="-fx-background-color: #CFBE8E;" text="Piratencodex" textAlignment="CENTER" textFill="WHITE">
                   <font>
                      <Font name="System Bold" size="20.0" />
                   </font>
@@ -50,7 +54,7 @@
                      </ImageView>
                   </graphic>
                </Button>
-               <Button contentDisplay="GRAPHIC_ONLY" layoutX="59.0" layoutY="112.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="40.0" prefWidth="48.0" style="-fx-background-color: #CFBE8E;" text="Button" AnchorPane.bottomAnchor="111.0" AnchorPane.leftAnchor="59.0" AnchorPane.rightAnchor="1093.0" AnchorPane.topAnchor="112.0">
+               <Button contentDisplay="GRAPHIC_ONLY" layoutX="59.0" layoutY="112.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="40.0" prefWidth="48.0" style="-fx-background-color: #CFBE8E;" text="Button" AnchorPane.bottomAnchor="111.0" AnchorPane.leftAnchor="59.0" AnchorPane.topAnchor="112.0">
                   <graphic>
                      <ImageView fitHeight="31.0" fitWidth="21.0">
                         <image>
@@ -59,7 +63,7 @@
                      </ImageView>
                   </graphic>
                </Button>
-               <Button contentDisplay="GRAPHIC_ONLY" layoutX="59.0" layoutY="61.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="40.0" prefWidth="48.0" style="-fx-background-color: #CFBE8E;" text="Button" AnchorPane.bottomAnchor="162.0" AnchorPane.leftAnchor="59.0" AnchorPane.rightAnchor="1093.0" AnchorPane.topAnchor="61.0">
+               <Button contentDisplay="GRAPHIC_ONLY" layoutX="59.0" layoutY="61.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="40.0" prefWidth="48.0" style="-fx-background-color: #CFBE8E;" text="Button" AnchorPane.bottomAnchor="162.0" AnchorPane.leftAnchor="59.0" AnchorPane.topAnchor="61.0">
                   <graphic>
                      <ImageView fitHeight="31.0" fitWidth="40.0">
                         <image>
@@ -72,7 +76,7 @@
          </AnchorPane>
       </children>
   </VBox>
-   <Button fx:id="btn_back" layoutX="1041.0" layoutY="75.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleButton" prefHeight="50.0" prefWidth="100.0" style="-fx-background-color: #CFBE8E;" text="back" AnchorPane.bottomAnchor="675.0" AnchorPane.leftAnchor="1041.0" AnchorPane.rightAnchor="66.0" AnchorPane.topAnchor="75.0">
+   <Button fx:id="btn_back" layoutX="1041.0" layoutY="75.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleButton" prefHeight="50.0" prefWidth="100.0" style="-fx-background-color: #CFBE8E;" text="back" AnchorPane.rightAnchor="59.0" AnchorPane.topAnchor="75.0">
       <graphic>
          <ImageView fitHeight="49.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
             <image>
