@@ -12,35 +12,50 @@
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #CFBE8E;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.upb.codingpirates.battleship.desktop.ingame.InGameController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" style="-fx-background-color: #CFBE8E;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.upb.codingpirates.battleship.desktop.ingame.InGameController">
    <children>
-      <VBox alignment="CENTER" layoutY="-1.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <ImageView fitHeight="90.0" fitWidth="1200.0" pickOnBounds="true">
+         <image>
+            <Image url="@../images/button.png" />
+         </image>
+      </ImageView>
+      <VBox alignment="CENTER" layoutY="-1.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <AnchorPane prefHeight="90.0" prefWidth="600.0">
+            <HBox prefHeight="100.0" prefWidth="200.0">
                <children>
-                  <ImageView fitHeight="90.0" fitWidth="600.0" pickOnBounds="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                     <image>
-                        <Image url="@../images/button.png" />
-                     </image>
-                  </ImageView>
-                  <Text fill="WHITE" layoutX="45.0" layoutY="51.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Place your ships!" textAlignment="CENTER">
+                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Place your ships!" textAlignment="CENTER" wrappingWidth="200.4072265625">
                      <font>
                         <Font size="18.0" />
                      </font>
+                     <HBox.margin>
+                        <Insets left="50.0" top="30.0" />
+                     </HBox.margin>
                   </Text>
-                  <Text fill="#fcf9f9" layoutX="206.0" layoutY="41.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Size" />
-                  <Text fill="#f8f6f6" layoutX="205.0" layoutY="72.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Form" />
-                  <Text fill="#f8f7f7" layoutX="345.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Placed ships" />
-                  <Label layoutX="256.0" layoutY="25.0" textFill="WHITE" />
-                  <Label layoutX="256.0" layoutY="55.0" textFill="#fcfafa" />
-                  <Label layoutX="439.0" layoutY="23.0" textFill="#fcfafa" />
+                  <Label maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="90.0" prefWidth="100.0" textFill="WHITE" />
+                  <Text fill="#fcf9f9" strokeType="OUTSIDE" strokeWidth="0.0" text="Size" wrappingWidth="44.22802734375">
+                     <HBox.margin>
+                        <Insets left="50.0" top="30.0" />
+                     </HBox.margin></Text>
+                  <Label maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="90.0" prefWidth="100.0" textFill="#fcfafa" />
+                  <Text fill="#f8f6f6" strokeType="OUTSIDE" strokeWidth="0.0" text="Form">
+                     <HBox.margin>
+                        <Insets left="50.0" top="30.0" />
+                     </HBox.margin></Text>
+                  <Label maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="90.0" prefWidth="100.0" textFill="#fcfafa" />
+                  <Text fill="#f8f7f7" strokeType="OUTSIDE" strokeWidth="0.0" text="Placed ships">
+                     <HBox.margin>
+                        <Insets left="50.0" top="30.0" />
+                     </HBox.margin>
+                  </Text>
+                  <Label maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="90.0" prefWidth="100.0" text="Label" />
                </children>
-            </AnchorPane>
+            </HBox>
             <SplitPane fx:id="splitPane" dividerPositions="1.0" prefHeight="160.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
                <items>
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" SplitPane.resizableWithParent="false">
@@ -52,7 +67,7 @@
                                     <Insets bottom="10.0" left="10.0" top="10.0" />
                                  </padding>
                                  <children>
-                                    <ImageView fitHeight="320.0" fitWidth="1000.0" pickOnBounds="true">
+                                    <ImageView fitHeight="800.0" fitWidth="1200.0" pickOnBounds="true">
                                        <image>
                                           <Image url="@../images/Background.png" />
                                        </image>
@@ -63,7 +78,7 @@
                         </ScrollPane>
                      </children>
                   </AnchorPane>
-                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="0.0" prefWidth="0.0" style="-fx-background-color: #1A2529;" SplitPane.resizableWithParent="false">
+                  <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="0.0" minWidth="0.0" prefHeight="710.0" prefWidth="1200.0" style="-fx-background-color: #1A2529;" SplitPane.resizableWithParent="false">
                      <children>
                         <BorderPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <bottom>
