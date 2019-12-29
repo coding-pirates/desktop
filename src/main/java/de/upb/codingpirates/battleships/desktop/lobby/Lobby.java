@@ -25,7 +25,7 @@ public class Lobby extends Application {
         LobbyController lobbyController = loader.getController();
         lobbyController.setLobby(this);
         lobbyStage.setTitle("Lobby");
-        lobbyStage.setScene(new Scene(pane));
+        lobbyStage.setScene(new Scene(pane, 600, 400));
         lobbyStage.show();
         lobbyController.showgames();
 

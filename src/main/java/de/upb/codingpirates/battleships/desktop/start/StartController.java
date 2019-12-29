@@ -44,7 +44,6 @@ public class StartController implements Initializable {
     @FXML
     public void handleButton() throws Exception {
         //btn_start.setText("clicked");
-        //closeMain();
         ServerLogin login = new ServerLogin();
         Stage loginStage = new Stage();
         try {
@@ -57,4 +56,5 @@ public class StartController implements Initializable {
             System.exit(0);
         });
     }
+
 }

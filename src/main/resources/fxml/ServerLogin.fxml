@@ -68,5 +68,6 @@
             </image>
          </ImageView>
       </graphic></Button>
-   <Label fx:id="lblStatus" layoutX="144.0" layoutY="124.0" prefHeight="30.0" prefWidth="316.0" textAlignment="CENTER" textFill="RED" AnchorPane.bottomAnchor="246.0" AnchorPane.leftAnchor="144.0" AnchorPane.rightAnchor="140.0" AnchorPane.topAnchor="124.0" />
+   <Label fx:id="lblStatus" layoutX="114.0" layoutY="124.0" prefHeight="30.0" prefWidth="374.0" textAlignment="CENTER" textFill="RED" AnchorPane.bottomAnchor="246.0" AnchorPane.leftAnchor="114.0" AnchorPane.rightAnchor="112.0" AnchorPane.topAnchor="124.0" />
+   <Button layoutX="447.0" layoutY="348.0" mnemonicParsing="false" onAction="#handlerButton" text="next" />
 </AnchorPane>

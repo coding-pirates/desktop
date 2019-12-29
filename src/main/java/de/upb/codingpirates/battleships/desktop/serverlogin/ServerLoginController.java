@@ -127,4 +127,20 @@ public class ServerLoginController implements Initializable, ServerJoinResponseL
         });
     }
 
+    @FXML
+    public void handlerButton(){
+        Lobby lobby = new Lobby();
+        Stage lobbyStage = new Stage();
+        try {
+            lobby.start(lobbyStage);
+        } catch (IOException e) {
+            e.printStackTrace();//TODO
+        }
+        lobbyStage.setOnCloseRequest(t -> {
+            Platform.exit();
+            System.exit(0);
+        });
+    }
+
+
 }

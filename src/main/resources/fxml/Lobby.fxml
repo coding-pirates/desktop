@@ -28,12 +28,14 @@
            </font>
          </Label>
          <Separator layoutX="14.0" layoutY="100.0" prefHeight="0.0" prefWidth="577.0" style="-fx-background-color: black;" />
-            <Button fx:id="btn_settings1" cache="true" cacheHint="ROTATE" cacheShape="false" contentDisplay="GRAPHIC_ONLY" focusTraversable="false" layoutX="545.0" layoutY="28.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#settings" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: #CFBE8E;" text="Settings" />
-            <ImageView fitHeight="38.0" fitWidth="30.0" layoutX="545.0" layoutY="28.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../images/icon_settings.png" />
-               </image>
-            </ImageView>
+            <Button fx:id="btn_settings1" cache="true" cacheHint="ROTATE" cacheShape="false" contentDisplay="GRAPHIC_ONLY" focusTraversable="false" layoutX="545.0" layoutY="28.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#settings" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: #CFBE8E;" text="Settings">
+               <graphic>
+                  <ImageView fitHeight="38.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/icon_settings.png" />
+                     </image>
+                  </ImageView>
+               </graphic></Button>
          </children>
       </AnchorPane>
    <VBox alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="600.0">

@@ -1,10 +1,13 @@
 package de.upb.codingpirates.battleships.desktop.lobby;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.ResourceBundle;
 
+import de.upb.codingpirates.battleships.desktop.settings.Settings;
+import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -135,5 +138,22 @@ public class LobbyController implements Initializable , LobbyResponseListener {
     @Override
     public void onLobbyResponse(LobbyResponse message, int clientId) {
         parseToGameView(message.getGames());
+    }
+
+    @FXML
+    public void settings() throws Exception {
+
+        Settings settings = new Settings();
+        Stage settingsStage = new Stage();
+        try {
+            settings.start(settingsStage);
+        }
+        catch (IOException e) {
+            e.printStackTrace();//TODO
+        }
+        settingsStage.setOnCloseRequest(t -> {
+            Platform.exit();
+            System.exit(0);
+        });
     }
 }
