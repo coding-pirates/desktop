@@ -72,7 +72,7 @@
          </AnchorPane>
       </children>
   </VBox>
-   <Button fx:id="btn_back" layoutX="478.0" layoutY="41.0" mnemonicParsing="false" onAction="#handleButton" text="back">
+   <Button fx:id="btn_back" layoutX="478.0" layoutY="41.0" mnemonicParsing="false" onAction="#handleButton" style="-fx-background-color: #CFBE8E;" text="back">
       <graphic>
          <ImageView fitHeight="49.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
             <image>
