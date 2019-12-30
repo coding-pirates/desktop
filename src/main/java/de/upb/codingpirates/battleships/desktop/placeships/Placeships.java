@@ -25,8 +25,7 @@ public class Placeships extends Application {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/PlaceshipsView.fxml"));
         AnchorPane pane = loader.load();
         this.placeshipsController = loader.getController();
-        placeshipsStage.setTitle("Placeships");
-        placeshipsStage.setResizable(false);
+        placeshipsStage.setTitle("PlaceShips");
         placeshipsStage.setScene(new Scene(pane));
         placeshipsStage.show();
     }

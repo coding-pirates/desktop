@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.ResourceBundle;
 
+import de.upb.codingpirates.battleships.desktop.placeships.Placeships;
 import de.upb.codingpirates.battleships.desktop.settings.Settings;
 import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
@@ -114,15 +115,15 @@ public class LobbyController implements Initializable , LobbyResponseListener {
             final GameView view = new GameView(game);
 
             switch (game.getState()) {
-            case LOBBY:
-                startList.add(view);
-                break;
-            case IN_PROGRESS:
-            case PAUSED:
-                runningList.add(view);
-                break;
-            case FINISHED:
-                endList.add(view);
+                case LOBBY:
+                    startList.add(view);
+                    break;
+                case IN_PROGRESS:
+                case PAUSED:
+                    runningList.add(view);
+                    break;
+                case FINISHED:
+                    endList.add(view);
             }
         }
     }
@@ -140,7 +141,7 @@ public class LobbyController implements Initializable , LobbyResponseListener {
         parseToGameView(message.getGames());
     }
 
-    public void closeStage(){
+    public void closeStage() {
         Stage stage = (Stage) refreshButton.getScene().getWindow();
         stage.close();
     }
@@ -153,8 +154,7 @@ public class LobbyController implements Initializable , LobbyResponseListener {
         try {
             settings.start(settingsStage);
             closeStage();
-        }
-        catch (IOException e) {
+        } catch (IOException e) {
             e.printStackTrace();//TODO
         }
         settingsStage.setOnCloseRequest(t -> {
@@ -162,4 +162,21 @@ public class LobbyController implements Initializable , LobbyResponseListener {
             System.exit(0);
         });
     }
+
+    @FXML
+    public void handlerButton() throws Exception {
+        Placeships placeships = new Placeships();
+        Stage placeStage = new Stage();
+        try {
+            placeships.start(placeStage);
+            closeStage();
+        } catch (IOException e) {
+            e.printStackTrace();//TODO
+            placeStage.setOnCloseRequest(t -> {
+                Platform.exit();
+                System.exit(0);
+            });
+        }
+    }
+
 }

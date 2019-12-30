@@ -82,6 +82,7 @@
                <Insets top="30.0" />
             </VBox.margin>
      </Accordion>
+         <Button mnemonicParsing="false" onAction="#handlerButton" text="next" />
    </VBox>
   </VBox>
 </AnchorPane>

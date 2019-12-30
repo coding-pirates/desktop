@@ -8,6 +8,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.Parent;
+import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
@@ -47,6 +48,9 @@ public final class BattleshipsDesktopClientApplication extends Application {
         AnchorPane pane = loader.load();
         StartController startcontroller = loader.getController();
         startcontroller.setMain(this);
+
+        //Image icon = new Image("app_icon.png");
+        //startStage.getIcons().add(icon);
 
         Scene scene = new Scene(pane);
         startStage.setTitle(TITLE);
