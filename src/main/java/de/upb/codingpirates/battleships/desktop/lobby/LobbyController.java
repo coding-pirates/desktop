@@ -140,6 +140,11 @@ public class LobbyController implements Initializable , LobbyResponseListener {
         parseToGameView(message.getGames());
     }
 
+    public void closeStage(){
+        Stage stage = (Stage) refreshButton.getScene().getWindow();
+        stage.close();
+    }
+
     @FXML
     public void settings() throws Exception {
 
@@ -147,6 +152,7 @@ public class LobbyController implements Initializable , LobbyResponseListener {
         Stage settingsStage = new Stage();
         try {
             settings.start(settingsStage);
+            closeStage();
         }
         catch (IOException e) {
             e.printStackTrace();//TODO

@@ -37,17 +37,19 @@ public class StartController implements Initializable {
         this.main = main;
     }
 
-    public void closeMain(){
-        main.close();
+
+    public void closeStage(){
+        Stage stage = (Stage) btn_start.getScene().getWindow();
+        stage.close();
     }
 
     @FXML
     public void handleButton() throws Exception {
-        //btn_start.setText("clicked");
         ServerLogin login = new ServerLogin();
         Stage loginStage = new Stage();
         try {
             login.start(loginStage);
+            closeStage();
         } catch (IOException e) {
             e.printStackTrace();//TODO
         }

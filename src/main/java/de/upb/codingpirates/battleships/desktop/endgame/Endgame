@@ -1,11 +1,21 @@
 package de.upb.codingpirates.battleships.desktop.endgame;
 
 
+import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
+import javafx.scene.control.Control;
+import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
+
 /**
  * Class that implements a Window to place the ships
  */
 public class Endgame extends Application {
 
+
+    private Stage endStage;
+    private Control EndgameController;
 
     /**
      * Start Method that creates a new Window and a related Controller.

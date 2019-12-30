@@ -8,10 +8,7 @@ import de.upb.codingpirates.battleships.network.message.request.GameJoinSpectato
 import de.upb.codingpirates.battleships.network.message.request.PointsRequest;
 import de.upb.codingpirates.battleships.network.message.request.RemainingTimeRequest;
 import de.upb.codingpirates.battleships.network.message.request.SpectatorGameStateRequest;
-import de.upb.codingpirates.battleships.network.message.response.GameJoinSpectatorResponse;
-import de.upb.codingpirates.battleships.network.message.response.PointsResponse;
-import de.upb.codingpirates.battleships.network.message.response.RemainingTimeResponse;
-import de.upb.codingpirates.battleships.network.message.response.SpectatorGameStateResponse;
+import de.upb.codingpirates.battleships.network.message.response.*;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -312,5 +309,10 @@ public class InGameModel extends Application implements InGameModelMessageListen
         Collection<Shot> sunk = message.getSunk();
         Collection<Shot> missed = message.getMissed();
         inGameController.spectatorUpdateNotification(hits, points, sunk, missed);
+    }
+
+    @Override
+    public void onLobbyResponse(LobbyResponse message, int clientId) {
+
     }
 }

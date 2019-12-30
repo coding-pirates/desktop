@@ -26,8 +26,7 @@ public class Settings extends Application {
         AnchorPane pane = loader.load();
         this.settingsController = loader.getController();
         settingsStage.setTitle("Settings");
-        settingsStage.setResizable(false);
-        settingsStage.setScene(new Scene(pane, 600, 400));
+        settingsStage.setScene(new Scene(pane));
         settingsStage.show();
     }
 

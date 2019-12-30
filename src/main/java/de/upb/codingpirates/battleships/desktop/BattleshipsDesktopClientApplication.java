@@ -49,7 +49,6 @@ public final class BattleshipsDesktopClientApplication extends Application {
         startcontroller.setMain(this);
 
         Scene scene = new Scene(pane);
-        startStage.setResizable(false);
         startStage.setTitle(TITLE);
         startStage.setScene(scene);
         startStage.show();}

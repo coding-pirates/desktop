@@ -48,9 +48,8 @@ public class ServerLogin extends Application {
         AnchorPane pane = loader.load();
 
         this.serverLoginController = loader.getController();
-        loginStage.setResizable(false);
         loginStage.setTitle("Login");
-        loginStage.setScene(new Scene(pane, 600, 400));
+        loginStage.setScene(new Scene(pane));
         loginStage.show();
     }
 

@@ -88,8 +88,9 @@ public class ServerLoginController implements Initializable, ServerJoinResponseL
         text.set(lblStatus);
     }
 
-    public void closeMain(){
-        main.close();
+    public void closeStage(){
+        Stage stage = (Stage) lblStatus.getScene().getWindow();
+        stage.close();
     }
 
     @Override
@@ -100,6 +101,7 @@ public class ServerLoginController implements Initializable, ServerJoinResponseL
         Stage lobbyStage = new Stage();
         try {
             lobby.start(lobbyStage);
+            closeStage();
         } catch (IOException e) {
             e.printStackTrace();//TODO
         }
@@ -110,6 +112,7 @@ public class ServerLoginController implements Initializable, ServerJoinResponseL
     }
 
 
+
     @FXML
     public void settings() throws Exception {
 
@@ -117,6 +120,7 @@ public class ServerLoginController implements Initializable, ServerJoinResponseL
         Stage settingsStage = new Stage();
         try {
             settings.start(settingsStage);
+            closeStage();
             }
         catch (IOException e) {
             e.printStackTrace();//TODO
@@ -133,6 +137,7 @@ public class ServerLoginController implements Initializable, ServerJoinResponseL
         Stage lobbyStage = new Stage();
         try {
             lobby.start(lobbyStage);
+            closeStage();
         } catch (IOException e) {
             e.printStackTrace();//TODO
         }
