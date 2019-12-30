@@ -1,4 +1,4 @@
-package de.upb.codingpirates.battleships.desktop.placeships;
+package de.upb.codingpirates.battleships.desktop.placeship;
 
 
 import javafx.application.Application;
@@ -15,14 +15,14 @@ public class Placeships extends Application {
 
 
     private Stage placeshipsStage;
-    private Control placeshipsController;
+    private PlaceShipsController placeshipsController;
 
     /**
      * Start Method that creates a new Window and a related Controller.
      */
     public void start(Stage placeshipsStage) throws Exception {
         this.placeshipsStage = placeshipsStage;
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/PlaceshipsView.fxml"));
+        FXMLLoader loader = new FXMLLoader(this.getClass().getResource("/fxml/PlaceshipsView.fxml"));
         AnchorPane pane = loader.load();
         this.placeshipsController = loader.getController();
         placeshipsStage.setTitle("PlaceShips");

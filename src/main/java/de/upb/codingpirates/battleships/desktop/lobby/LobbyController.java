@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.ResourceBundle;
 
-import de.upb.codingpirates.battleships.desktop.placeships.Placeships;
+import de.upb.codingpirates.battleships.desktop.placeship.Placeships;
 import de.upb.codingpirates.battleships.desktop.settings.Settings;
 import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
@@ -41,6 +41,7 @@ public class LobbyController implements Initializable , LobbyResponseListener {
     private ListView<GameView> lstvwEnd;
     @FXML
     private Button refreshButton;
+
     private ArrayList<GameView> startList = null;
     private ArrayList<GameView> runningList = null;
     private ArrayList<GameView> endList = null;
