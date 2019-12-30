@@ -11,7 +11,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" style="-fx-background-color: #1A2529; -fx-text-fill: white;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.upb.codingpirates.battleships.desktop.serverlogin.ServerLoginController">
+<AnchorPane minHeight="400.0" minWidth="600.0" prefHeight="800.0" prefWidth="1200.0" style="-fx-background-color: #1A2529; -fx-text-fill: white;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.upb.codingpirates.battleships.desktop.serverlogin.ServerLoginController">
   <ImageView fx:id="background" layoutX="-769.0" layoutY="-249.0" pickOnBounds="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
       <image>
          <Image url="@../images/Background.png" />
