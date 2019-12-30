@@ -42,22 +42,6 @@ public class SettingsController implements Initializable {
         stage.close();
     }
 
-    @FXML
-    public void handleButton() throws Exception {
-        System.out.println("in methode");
-        ServerLogin login = new ServerLogin();
-        Stage loginStage = new Stage();
-        try {
-            login.start(loginStage);
-            closeStage();
-        } catch (IOException e) {
-            e.printStackTrace();//TODO
-        }
-        loginStage.setOnCloseRequest(t -> {
-            Platform.exit();
-            System.exit(0);
-        });
-    }
 
     @FXML
     public void help() throws IOException {

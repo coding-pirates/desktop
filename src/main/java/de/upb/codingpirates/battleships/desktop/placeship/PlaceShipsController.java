@@ -1,6 +1,7 @@
 package de.upb.codingpirates.battleships.desktop.placeship;
 
 import de.upb.codingpirates.battleships.desktop.ingame.InGameModel;
+import de.upb.codingpirates.battleships.desktop.settings.Settings;
 import de.upb.codingpirates.battleships.desktop.util.GameView;
 import de.upb.codingpirates.battleships.desktop.util.Help;
 import javafx.application.Platform;
@@ -59,5 +60,22 @@ public class PlaceShipsController implements Initializable {
         catch (IOException e){
             e.printStackTrace();
         }
+    }
+
+    @FXML
+    public void settings() throws Exception {
+
+        Settings settings = new Settings();
+        Stage settingsStage = new Stage();
+        try {
+            settings.start(settingsStage);
+        }
+        catch (IOException e) {
+            e.printStackTrace();//TODO
+        }
+        settingsStage.setOnCloseRequest(t -> {
+            Platform.exit();
+            System.exit(0);
+        });
     }
 }

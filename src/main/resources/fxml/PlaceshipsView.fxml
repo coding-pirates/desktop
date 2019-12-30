@@ -54,26 +54,32 @@
                      </HBox.margin>
                   </Text>
                   <Label minHeight="-Infinity" minWidth="-Infinity" prefHeight="90.0" prefWidth="100.0" text="Label" />
-                  <Button fx:id="btn_rotate" contentDisplay="CENTER" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="60.0" prefWidth="150.0" style="-fx-background-color: #CFBE8E;" text="Rotate" textFill="#f8f7f7">
-                     <graphic>
-                        <ImageView fitHeight="39.0" fitWidth="149.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../images/button.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
+                  <Button fx:id="btn_rotate" contentDisplay="CENTER" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="36.0" prefWidth="111.0" style="-fx-background-color: #CFBE8E;" text="Rotate" textFill="#f8f7f7">
                      <HBox.margin>
                         <Insets top="20.0" />
                      </HBox.margin>
                   </Button>
-                  <Button cache="true" cacheHint="ROTATE" cacheShape="false" contentDisplay="TEXT_ONLY" focusTraversable="false" minHeight="-Infinity" minWidth="-Infinity" onAction="#help" prefHeight="44.0" prefWidth="55.0" style="-fx-background-color: #CFBE8E;" text="?" textFill="#472218">
-                     <font>
-                        <Font name="System Bold" size="22.0" />
-                     </font>
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                     <children>
+                        <Button cache="true" cacheHint="ROTATE" cacheShape="false" contentDisplay="TEXT_ONLY" focusTraversable="false" minHeight="-Infinity" minWidth="-Infinity" onAction="#help" prefHeight="44.0" prefWidth="55.0" style="-fx-background-color: #CFBE8E;" text="?" textFill="#472218">
+                           <font>
+                              <Font name="System Bold" size="22.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="btn_settings" cache="true" cacheHint="ROTATE" cacheShape="false" contentDisplay="GRAPHIC_ONLY" focusTraversable="false" layoutX="1.0" layoutY="50.0" minHeight="-Infinity" minWidth="-Infinity" onAction="#settings" prefHeight="40.0" prefWidth="53.0" style="-fx-background-color: #CFBE8E;" text="Settings">
+                           <graphic>
+                              <ImageView fitHeight="38.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../images/icon_settings.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                     </children>
                      <HBox.margin>
-                        <Insets left="20.0" />
+                        <Insets left="25.0" top="10.0" />
                      </HBox.margin>
-                  </Button>
+                  </AnchorPane>
                </children>
             </HBox>
             <Button mnemonicParsing="false" onAction="#handlerButton" text="next" />
