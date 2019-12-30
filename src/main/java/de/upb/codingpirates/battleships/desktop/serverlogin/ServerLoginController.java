@@ -6,6 +6,7 @@ import de.upb.codingpirates.battleships.client.listener.ServerJoinResponseListen
 import de.upb.codingpirates.battleships.desktop.BattleshipsDesktopClientApplication;
 import de.upb.codingpirates.battleships.desktop.lobby.Lobby;
 import de.upb.codingpirates.battleships.desktop.settings.Settings;
+import de.upb.codingpirates.battleships.desktop.util.Help;
 import de.upb.codingpirates.battleships.logic.ClientType;
 import de.upb.codingpirates.battleships.network.message.response.ServerJoinResponse;
 import javafx.application.Platform;
@@ -120,7 +121,6 @@ public class ServerLoginController implements Initializable, ServerJoinResponseL
         Stage settingsStage = new Stage();
         try {
             settings.start(settingsStage);
-            closeStage();
             }
         catch (IOException e) {
             e.printStackTrace();//TODO
@@ -145,6 +145,17 @@ public class ServerLoginController implements Initializable, ServerJoinResponseL
             Platform.exit();
             System.exit(0);
         });
+    }
+
+    @FXML
+    public void help() throws IOException {
+        Help help = new Help();
+        try{
+            help.display("Server-Login-Help", "Fill in your Username, Server-ID and Server-Port");
+        }
+        catch (IOException e){
+            e.printStackTrace();
+        }
     }
 
 

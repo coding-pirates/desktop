@@ -6,6 +6,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 /**
@@ -26,6 +27,7 @@ public class Settings extends Application {
         AnchorPane pane = loader.load();
         this.settingsController = loader.getController();
         settingsStage.setTitle("Settings");
+        settingsStage.initModality(Modality.APPLICATION_MODAL);
         settingsStage.setScene(new Scene(pane));
         settingsStage.show();
     }

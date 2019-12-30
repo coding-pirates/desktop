@@ -48,7 +48,7 @@
       <Glow level="0.29" />
     </effect>
   </TextField>
-  <Text fill="WHITE" layoutX="100.0" layoutY="253.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name:" wrappingWidth="53.13671875" AnchorPane.leftAnchor="100.0" AnchorPane.topAnchor="233.576171875">
+  <Text fill="WHITE" layoutX="100.0" layoutY="253.423828125" strokeType="OUTSIDE" strokeWidth="0.0" text="Username:" wrappingWidth="90.13671875" AnchorPane.leftAnchor="100.0" AnchorPane.topAnchor="234.0">
       <font>
          <Font size="18.0" />
       </font></Text>
@@ -73,5 +73,10 @@
             </image>
          </ImageView>
       </graphic>
+   </Button>
+   <Button cache="true" cacheHint="ROTATE" cacheShape="false" contentDisplay="TEXT_ONLY" focusTraversable="false" layoutX="1030.0" layoutY="69.0" minHeight="-Infinity" minWidth="-Infinity" onAction="#help" prefHeight="44.0" prefWidth="55.0" style="-fx-background-color: #CFBE8E;" text="?" textFill="#472218" AnchorPane.rightAnchor="115.0" AnchorPane.topAnchor="69.0">
+      <font>
+         <Font name="System Bold" size="22.0" />
+      </font>
    </Button>
 </AnchorPane>

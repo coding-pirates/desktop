@@ -77,6 +77,14 @@
                         <Insets left="10.0" top="15.0" />
                      </HBox.margin>
                </Label>
+                  <Button fx:id="btn_settings11" cache="true" cacheHint="ROTATE" cacheShape="false" contentDisplay="TEXT_ONLY" focusTraversable="false" minHeight="-Infinity" minWidth="-Infinity" onAction="#settings" prefHeight="44.0" prefWidth="55.0" style="-fx-background-color: #CFBE8E;" text="?" textFill="#472218">
+                     <font>
+                        <Font name="System Bold" size="22.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="175.0" right="25.0" />
+                     </HBox.margin>
+                  </Button>
                </children>
             </HBox>
             <HBox minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="1200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
@@ -141,9 +149,6 @@
                  <font>
                    <Font size="18.0" />
                  </font>
-                     <HBox.margin>
-                        <Insets bottom="15.0" left="10.0" />
-                     </HBox.margin>
                </Label>
                </children>
             </HBox>

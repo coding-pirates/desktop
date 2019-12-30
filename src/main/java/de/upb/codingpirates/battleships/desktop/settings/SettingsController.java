@@ -2,6 +2,7 @@ package de.upb.codingpirates.battleships.desktop.settings;
 
 import de.upb.codingpirates.battleships.desktop.BattleshipsDesktopClientApplication;
 import de.upb.codingpirates.battleships.desktop.serverlogin.ServerLogin;
+import de.upb.codingpirates.battleships.desktop.util.Help;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -36,18 +37,19 @@ public class SettingsController implements Initializable {
         this.main = main;
     }
 
-    public void closeMain(){
-        main.close();
+    public void closeStage(){
+        Stage stage = (Stage) btn_back.getScene().getWindow();
+        stage.close();
     }
 
     @FXML
     public void handleButton() throws Exception {
         System.out.println("in methode");
-        //closeMain();
         ServerLogin login = new ServerLogin();
         Stage loginStage = new Stage();
         try {
             login.start(loginStage);
+            closeStage();
         } catch (IOException e) {
             e.printStackTrace();//TODO
         }
@@ -57,4 +59,14 @@ public class SettingsController implements Initializable {
         });
     }
 
+    @FXML
+    public void help() throws IOException {
+        Help help = new Help();
+        try{
+            help.display("Settings-Help", "Settings");
+        }
+        catch (IOException e){
+            e.printStackTrace();
+        }
+    }
 }

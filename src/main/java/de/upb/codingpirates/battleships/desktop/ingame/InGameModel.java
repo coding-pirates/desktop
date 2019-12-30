@@ -138,7 +138,7 @@ public class InGameModel extends Application implements InGameModelMessageListen
         AnchorPane pane = loader.load();
         inGameController = loader.getController();
         inGameController.setModel(this);
-        inGameStage.setTitle("");
+        inGameStage.setTitle("InGame");
         inGameStage.setScene(new Scene(pane));
         inGameStage.setMaximized(true);
         inGameStage.show();

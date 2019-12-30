@@ -8,6 +8,7 @@ import java.util.ResourceBundle;
 
 import de.upb.codingpirates.battleships.desktop.placeship.Placeships;
 import de.upb.codingpirates.battleships.desktop.settings.Settings;
+import de.upb.codingpirates.battleships.desktop.util.Help;
 import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
 import javafx.collections.FXCollections;
@@ -154,7 +155,6 @@ public class LobbyController implements Initializable , LobbyResponseListener {
         Stage settingsStage = new Stage();
         try {
             settings.start(settingsStage);
-            closeStage();
         } catch (IOException e) {
             e.printStackTrace();//TODO
         }
@@ -177,6 +177,17 @@ public class LobbyController implements Initializable , LobbyResponseListener {
                 Platform.exit();
                 System.exit(0);
             });
+        }
+    }
+
+    @FXML
+    public void help() throws IOException {
+        Help help = new Help();
+        try{
+            help.display("Lobby-Help", "Lobby-Help");
+        }
+        catch (IOException e){
+            e.printStackTrace();
         }
     }
 

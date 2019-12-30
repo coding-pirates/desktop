@@ -1,5 +1,13 @@
 package de.upb.codingpirates.battleships.desktop.endgame;
 
+import de.upb.codingpirates.battleships.desktop.util.Help;
+import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+
+import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
+
 /**
  * Controller Class for the PlaceShips Window.
  */
@@ -12,6 +20,17 @@ public class EndgameController implements Initializable {
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
 
+    }
+
+    @FXML
+    public void help() throws IOException {
+        Help help = new Help();
+        try{
+            help.display("Endgame-Help", "Endgame-Help");
+        }
+        catch (IOException e){
+            e.printStackTrace();
+        }
     }
 
 }
