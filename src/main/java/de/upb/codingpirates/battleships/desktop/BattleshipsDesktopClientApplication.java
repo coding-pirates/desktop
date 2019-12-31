@@ -49,8 +49,8 @@ public final class BattleshipsDesktopClientApplication extends Application {
         StartController startcontroller = loader.getController();
         startcontroller.setMain(this);
 
-        //Image icon = new Image("app_icon.png");
-        //startStage.getIcons().add(icon);
+        Image icon = new Image(String.valueOf(getClass().getResource("/images/app_icon.png")));
+        startStage.getIcons().add(icon);
 
         Scene scene = new Scene(pane);
         startStage.setTitle(TITLE);

@@ -5,6 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -31,6 +32,8 @@ public class Help {
         FXMLLoader loader = new FXMLLoader(this.getClass().getResource("/fxml/HelpView.fxml"));
         AnchorPane pane = loader.load();
 
+        Image icon = new Image(String.valueOf(getClass().getResource("/images/app_icon.png")));
+        window.getIcons().add(icon);
         Scene scene = new Scene(pane);
         window.setScene(scene);
         window.showAndWait();

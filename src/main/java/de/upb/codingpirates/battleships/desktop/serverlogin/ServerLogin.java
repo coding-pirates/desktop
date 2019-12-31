@@ -47,6 +47,9 @@ public class ServerLogin extends Application {
         FXMLLoader loader = new FXMLLoader(ServerLogin.class.getResource("/fxml/ServerLogin.fxml"));
         AnchorPane pane = loader.load();
 
+        Image icon = new Image(String.valueOf(getClass().getResource("/images/app_icon.png")));
+        loginStage.getIcons().add(icon);
+
         this.serverLoginController = loader.getController();
         loginStage.setTitle("Login");
         loginStage.setScene(new Scene(pane));

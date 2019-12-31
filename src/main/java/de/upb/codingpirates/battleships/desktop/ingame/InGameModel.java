@@ -12,6 +12,7 @@ import de.upb.codingpirates.battleships.network.message.response.*;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
@@ -138,6 +139,8 @@ public class InGameModel extends Application implements InGameModelMessageListen
         AnchorPane pane = loader.load();
         inGameController = loader.getController();
         inGameController.setModel(this);
+        Image icon = new Image(String.valueOf(getClass().getResource("/images/app_icon.png")));
+        inGameStage.getIcons().add(icon);
         inGameStage.setTitle("InGame");
         inGameStage.setScene(new Scene(pane));
         inGameStage.setMaximized(true);

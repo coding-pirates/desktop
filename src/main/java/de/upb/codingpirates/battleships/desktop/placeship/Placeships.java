@@ -5,6 +5,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Control;
+import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
@@ -25,6 +26,8 @@ public class Placeships extends Application {
         FXMLLoader loader = new FXMLLoader(this.getClass().getResource("/fxml/PlaceshipsView.fxml"));
         AnchorPane pane = loader.load();
         this.placeshipsController = loader.getController();
+        Image icon = new Image(String.valueOf(getClass().getResource("/images/app_icon.png")));
+        placeshipsStage.getIcons().add(icon);
         placeshipsStage.setTitle("PlaceShips");
         placeshipsStage.setScene(new Scene(pane));
         placeshipsStage.show();
