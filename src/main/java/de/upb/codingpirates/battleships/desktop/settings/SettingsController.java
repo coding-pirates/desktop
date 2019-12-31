@@ -7,6 +7,7 @@ import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.Slider;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -24,6 +25,7 @@ public class SettingsController implements Initializable {
     @FXML
     private Button btn_back;
 
+
     /**
      * Initial Method.
      */
@@ -37,6 +39,7 @@ public class SettingsController implements Initializable {
         this.main = main;
     }
 
+    @FXML
     public void closeStage(){
         Stage stage = (Stage) btn_back.getScene().getWindow();
         stage.close();
@@ -53,4 +56,8 @@ public class SettingsController implements Initializable {
             e.printStackTrace();
         }
     }
+
+
+
+
 }

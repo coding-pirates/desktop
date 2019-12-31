@@ -78,7 +78,4 @@ public final class BattleshipsDesktopClientApplication extends Application {
         return tcpConnector;
     }
 
-    public void close() {
-        this.close();
-    }
 }

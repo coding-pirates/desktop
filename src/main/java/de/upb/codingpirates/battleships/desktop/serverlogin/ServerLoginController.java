@@ -120,7 +120,7 @@ public class ServerLoginController implements Initializable, ServerJoinResponseL
         Settings settings = new Settings();
         Stage settingsStage = new Stage();
         try {
-            settings.start(settingsStage);
+            settings.start();
             }
         catch (IOException e) {
             e.printStackTrace();//TODO
