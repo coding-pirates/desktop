@@ -20,7 +20,7 @@ dependencies {
 targetCompatibility = '1.8'
 sourceCompatibility = '1.8'
 
-mainClassName = 'de.upb.codingpirates.battleships.desktop.SpectatorApp'
+mainClassName = 'de.upb.codingpirates.battleships.desktop.BattleshipsDesktopClientApplication'
 
 sourceSets {
     main {

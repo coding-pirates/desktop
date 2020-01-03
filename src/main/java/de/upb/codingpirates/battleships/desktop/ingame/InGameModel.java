@@ -1,13 +1,11 @@
 package de.upb.codingpirates.battleships.desktop.ingame;
 
+import com.google.common.collect.Lists;
 import de.upb.codingpirates.battleships.client.ListenerHandler;
 import de.upb.codingpirates.battleships.desktop.BattleshipsDesktopClientApplication;
 import de.upb.codingpirates.battleships.logic.*;
 import de.upb.codingpirates.battleships.network.message.notification.*;
-import de.upb.codingpirates.battleships.network.message.request.GameJoinSpectatorRequest;
-import de.upb.codingpirates.battleships.network.message.request.PointsRequest;
-import de.upb.codingpirates.battleships.network.message.request.RemainingTimeRequest;
-import de.upb.codingpirates.battleships.network.message.request.SpectatorGameStateRequest;
+import de.upb.codingpirates.battleships.network.message.request.RequestBuilder;
 import de.upb.codingpirates.battleships.network.message.response.GameJoinSpectatorResponse;
 import de.upb.codingpirates.battleships.network.message.response.PointsResponse;
 import de.upb.codingpirates.battleships.network.message.response.RemainingTimeResponse;
@@ -20,6 +18,7 @@ import javafx.stage.Stage;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -159,7 +158,7 @@ public class InGameModel extends Application implements InGameModelMessageListen
             BattleshipsDesktopClientApplication
                 .getInstance()
                 .getTcpConnector()
-                .sendMessageToServer(new GameJoinSpectatorRequest(ausgewaehltesSpiel.getId()));
+                .sendMessageToServer(RequestBuilder.gameJoinSpectatorRequest(ausgewaehltesSpiel.getId()));
 
         } catch (Exception e) {
             System.out.println("Konnte GameJoin Request nicht schicken: " + e);
@@ -179,7 +178,7 @@ public class InGameModel extends Application implements InGameModelMessageListen
             BattleshipsDesktopClientApplication
                 .getInstance()
                 .getTcpConnector()
-                .sendMessageToServer(new SpectatorGameStateRequest());
+                .sendMessageToServer(RequestBuilder.spectatorGameStateRequest());
         } catch (Exception e) {
             System.out.println("Konnte GameState Request nicht schicken: " + e);
         }
@@ -209,7 +208,7 @@ public class InGameModel extends Application implements InGameModelMessageListen
             BattleshipsDesktopClientApplication
                 .getInstance()
                 .getTcpConnector()
-                .sendMessageToServer(new RemainingTimeRequest());
+                .sendMessageToServer(RequestBuilder.remainingTimeRequest());
         } catch (Exception e) {
             System.out.println("Konnte Remaining Time Request nicht schicken: " + e);
         }
@@ -226,7 +225,7 @@ public class InGameModel extends Application implements InGameModelMessageListen
             BattleshipsDesktopClientApplication
                 .getInstance()
                 .getTcpConnector()
-                .sendMessageToServer(new PointsRequest());
+                .sendMessageToServer(RequestBuilder.pointsRequest());
         } catch (Exception e) {
             System.out.println("Konnte Points Request nicht schicken: " + e);
         }
@@ -240,8 +239,8 @@ public class InGameModel extends Application implements InGameModelMessageListen
     @Override
     public void onFinishNotification(FinishNotification message, int clientId) {
         Map<Integer, Integer> points = message.getPoints();
-        int winner = message.getWinner();
-        inGameController.FinishNotification(points, winner);
+        List<Integer> winner = Lists.newArrayList(message.getWinner());
+        inGameController.FinishNotification(points, winner.get(0));
     }
 
     @Override

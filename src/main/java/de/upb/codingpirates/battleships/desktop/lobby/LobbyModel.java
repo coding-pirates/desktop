@@ -1,7 +1,7 @@
 package de.upb.codingpirates.battleships.desktop.lobby;
 
 import de.upb.codingpirates.battleships.desktop.BattleshipsDesktopClientApplication;
-import de.upb.codingpirates.battleships.network.message.request.LobbyRequest;
+import de.upb.codingpirates.battleships.network.message.request.RequestBuilder;
 
 /**
  * Model Class for the Lobby Window.
@@ -27,7 +27,7 @@ public class LobbyModel {
             BattleshipsDesktopClientApplication
                 .getInstance()
                 .getTcpConnector()
-                .sendMessageToServer(new LobbyRequest());
+                .sendMessageToServer(RequestBuilder.lobbyRequest());
         } catch (Exception e) {
             e.printStackTrace();
         }

@@ -4,7 +4,7 @@ import de.upb.codingpirates.battleships.client.ListenerHandler;
 import de.upb.codingpirates.battleships.client.listener.ServerJoinResponseListener;
 import de.upb.codingpirates.battleships.desktop.BattleshipsDesktopClientApplication;
 import de.upb.codingpirates.battleships.logic.ClientType;
-import de.upb.codingpirates.battleships.network.message.request.ServerJoinRequest;
+import de.upb.codingpirates.battleships.network.message.request.RequestBuilder;
 import de.upb.codingpirates.battleships.network.message.response.ServerJoinResponse;
 
 import java.io.IOException;
@@ -95,7 +95,7 @@ public class ServerLoginModel implements ServerJoinResponseListener {
             BattleshipsDesktopClientApplication
                 .getInstance()
                 .getTcpConnector()
-                .sendMessageToServer(new ServerJoinRequest(spielerName, clientKind));
+                .sendMessageToServer(RequestBuilder.serverJoinRequest(spielerName, clientKind));
         } catch (IOException e) {
             e.printStackTrace();
         }
