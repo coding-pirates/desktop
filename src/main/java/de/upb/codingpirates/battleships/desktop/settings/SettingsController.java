@@ -3,6 +3,7 @@ package de.upb.codingpirates.battleships.desktop.settings;
 import de.upb.codingpirates.battleships.desktop.BattleshipsDesktopClientApplication;
 import de.upb.codingpirates.battleships.desktop.serverlogin.ServerLogin;
 import de.upb.codingpirates.battleships.desktop.util.Help;
+import de.upb.codingpirates.battleships.desktop.util.Impressum;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -56,6 +57,29 @@ public class SettingsController implements Initializable {
             e.printStackTrace();
         }
     }
+
+    @FXML
+    public void impressum() throws IOException{
+        Impressum impressum = new Impressum();
+        try{
+            impressum.display("Impressum");
+        }
+        catch (IOException e){
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    public void piratenkodex() throws IOException{
+        Impressum impressum = new Impressum();
+        try{
+            impressum.display("piratenkodex");
+        }
+        catch (IOException e){
+            e.printStackTrace();
+        }
+    }
+
 
 
 
