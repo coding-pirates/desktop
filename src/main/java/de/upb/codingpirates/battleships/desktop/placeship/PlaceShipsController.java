@@ -1,6 +1,9 @@
 package de.upb.codingpirates.battleships.desktop.placeship;
 
+import de.upb.codingpirates.battleships.desktop.endgame.Endgame;
 import de.upb.codingpirates.battleships.desktop.ingame.InGameModel;
+import de.upb.codingpirates.battleships.desktop.lobby.Lobby;
+import de.upb.codingpirates.battleships.desktop.ranking.Ranking;
 import de.upb.codingpirates.battleships.desktop.settings.Settings;
 import de.upb.codingpirates.battleships.desktop.util.GameView;
 import de.upb.codingpirates.battleships.desktop.util.Help;
@@ -35,7 +38,8 @@ public class PlaceShipsController implements Initializable {
 
     @FXML
     public void handlerButton() throws Exception {
-        ChangeListener<GameView> changeListener = (arg0, arg1, arg2) -> {
+
+        /**ChangeListener<GameView> changeListener = (arg0, arg1, arg2) -> {
             InGameModel inGameModel = new InGameModel(arg2.getContent());
             Stage inGameStage = new Stage();
             try {
@@ -49,6 +53,19 @@ public class PlaceShipsController implements Initializable {
                 }));
             }
         };
+    }**/
+        Endgame endgame = new Endgame();
+        Stage endstage = new Stage();
+        try {
+            endgame.start(endstage);
+            closeStage();
+        } catch (IOException e) {
+            e.printStackTrace();//TODO
+        }
+        endstage.setOnCloseRequest(t -> {
+            Platform.exit();
+            System.exit(0);
+        });
     }
 
     @FXML
@@ -77,5 +94,6 @@ public class PlaceShipsController implements Initializable {
             Platform.exit();
             System.exit(0);
         });
+
     }
 }

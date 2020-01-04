@@ -6,6 +6,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.util.*;
@@ -13,7 +14,7 @@ import java.util.*;
 /**
  * Class that implements a Window with the Ranking when i Game is finished.
  */
-public class Ranking extends Application {
+public class Ranking {
 
     private Stage rankingStage;
     private RankingController rankingController;
@@ -22,8 +23,9 @@ public class Ranking extends Application {
     /**
      * Start Method that creates a new Window and a related Controller.
      */
-    public void start(Stage rankingStage) throws Exception {
-        this.rankingStage = rankingStage;
+    public void start() throws Exception {
+        this.rankingStage = new Stage();
+        rankingStage.initModality(Modality.APPLICATION_MODAL);
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/RankingView.fxml"));
         AnchorPane pane = loader.load();
         this.rankingController = loader.getController();
