@@ -134,7 +134,9 @@ public class LobbyController implements Initializable , LobbyResponseListener {
 
     @Override
     public void onLobbyResponse(LobbyResponse message, int clientId) {
-        parseToGameView(message.getGames());
+        Platform.runLater(()->
+         parseToGameView(message.getGames())
+        );
     }
 
     public void closeStage() {

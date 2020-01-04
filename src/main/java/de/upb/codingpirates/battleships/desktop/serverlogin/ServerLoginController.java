@@ -51,7 +51,7 @@ public class ServerLoginController implements Initializable, ServerJoinResponseL
     private StringPropertyBase text = new SimpleStringProperty();
 
     public ServerLoginController() {
-        //ListenerHandler.registerListener((MessageHandlerListener) this);
+        ListenerHandler.registerListener((MessageHandlerListener) this);
     }
 
     /**
@@ -107,25 +107,26 @@ public class ServerLoginController implements Initializable, ServerJoinResponseL
     }
 
     @Override
-    public void onServerJoinResponse(ServerJoinResponse response, int clientId){
-        Platform.runLater(()-> {
+    public void onServerJoinResponse(ServerJoinResponse response, int clientId) {
+        Platform.runLater(() -> {
             setLblStatus("");
 
-        BattleshipsDesktopClientApplication
-            .getInstance()
-            .getLoginStage()
-            .close();
+            BattleshipsDesktopClientApplication
+                    .getInstance()
+                    .getLoginStage()
+                    .close();
 
-        Lobby lobby = new Lobby();
-        Stage lobbyStage = new Stage();
-        try {
-            lobby.start(lobbyStage);
-        } catch (IOException e) {
-            e.printStackTrace();//TODO
-        }
-        lobbyStage.setOnCloseRequest(t -> {
-            Platform.exit();
-            System.exit(0);
+            Lobby lobby = new Lobby();
+            Stage lobbyStage = new Stage();
+            try {
+                lobby.start(lobbyStage);
+            } catch (IOException e) {
+                e.printStackTrace();//TODO
+            }
+            lobbyStage.setOnCloseRequest(t -> {
+                Platform.exit();
+                System.exit(0);
+            });
         });
     }
         @FXML

@@ -1,17 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.Cursor?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.effect.Glow?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane minHeight="400.0" minWidth="600.0" prefHeight="800.0" prefWidth="1200.0" style="-fx-background-color: #1A2529; -fx-text-fill: white;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.upb.codingpirates.battleships.desktop.serverlogin.ServerLoginController">
+<AnchorPane minHeight="400.0" minWidth="600.0" prefHeight="800.0" prefWidth="1200.0" style="-fx-background-color: #1A2529; -fx-text-fill: white;" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.upb.codingpirates.battleships.desktop.serverlogin.ServerLoginController">
   <ImageView fx:id="background" layoutX="-769.0" layoutY="-249.0" pickOnBounds="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
       <image>
          <Image url="@../images/Background.png" />
@@ -33,17 +29,17 @@
       <Font size="30.0" />
     </font>
   </Text>
-  <TextField fx:id="portField" layoutX="71.0" layoutY="388.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="60.0" prefWidth="1060.0" promptText="Server-Port hier eingeben" style="-fx-background-color: #472218; -fx-border-radius: 25; -fx-text-inner-color: white;" AnchorPane.leftAnchor="71.0" AnchorPane.rightAnchor="69.0" AnchorPane.topAnchor="388.0">
+  <TextField fx:id="portField" layoutX="71.0" layoutY="388.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="60.0" prefWidth="1060.0" promptText="Server-Port hier eingeben" style="-fx-background-color: #472218; -fx-border-radius: 25; -fx-text-inner-color: white;" text="47345" AnchorPane.leftAnchor="71.0" AnchorPane.rightAnchor="69.0" AnchorPane.topAnchor="388.0">
     <effect>
       <Glow />
     </effect>
   </TextField>
-  <TextField fx:id="ipField" layoutX="70.0" layoutY="496.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="60.0" prefWidth="1060.0" promptText="Server-IP hier eingeben" style="-fx-background-color: #472218; -fx-border-radius: 25; -fx-text-inner-color: white;" AnchorPane.leftAnchor="70.0" AnchorPane.rightAnchor="71.0" AnchorPane.topAnchor="496.0">
+  <TextField fx:id="ipField" layoutX="70.0" layoutY="496.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="60.0" prefWidth="1060.0" promptText="Server-IP hier eingeben" style="-fx-background-color: #472218; -fx-border-radius: 25; -fx-text-inner-color: white;" text="192.168.178.45" AnchorPane.leftAnchor="70.0" AnchorPane.rightAnchor="71.0" AnchorPane.topAnchor="496.0">
     <effect>
       <Glow />
     </effect>
   </TextField>
-  <TextField fx:id="nameField" layoutX="70.0" layoutY="265.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="60.0" prefWidth="1060.0" promptText="Name hier eingeben" style="-fx-background-color: #472218; -fx-border-radius: 25; -fx-text-inner-color: white;" AnchorPane.leftAnchor="70.0" AnchorPane.rightAnchor="70.0" AnchorPane.topAnchor="265.0">
+  <TextField fx:id="nameField" layoutX="70.0" layoutY="265.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="60.0" prefWidth="1060.0" promptText="Name hier eingeben" style="-fx-background-color: #472218; -fx-border-radius: 25; -fx-text-inner-color: white;" text="testName" AnchorPane.leftAnchor="70.0" AnchorPane.rightAnchor="70.0" AnchorPane.topAnchor="265.0">
     <effect>
       <Glow level="0.29" />
     </effect>
