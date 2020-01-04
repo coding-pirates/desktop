@@ -2,6 +2,7 @@ package de.upb.codingpirates.battleships.desktop.ingame;
 
 import de.upb.codingpirates.battleships.desktop.gamefield.GameFieldController;
 import de.upb.codingpirates.battleships.desktop.ranking.Ranking;
+import de.upb.codingpirates.battleships.desktop.util.Help;
 import de.upb.codingpirates.battleships.logic.*;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
@@ -21,6 +22,7 @@ import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.*;
 
@@ -472,4 +474,15 @@ public class InGameController implements Initializable {
         });
     }
 
+
+    @FXML
+    public void help() throws IOException {
+        Help help = new Help();
+        try{
+            help.display("InGame-Help", "InGame-Help");
+        }
+        catch (IOException e){
+            e.printStackTrace();
+        }
+    }
 }

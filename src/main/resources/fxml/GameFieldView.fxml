@@ -1,34 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Text?>
-<AnchorPane xmlns:fx="http://javafx.com/fxml/1" style="-fx-background-color: darkgrey; -fx-border-color: black;"
-            maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity"
-            minWidth="-Infinity" onMouseClicked="#enlargeBoard" prefHeight="330.0" prefWidth="300.0"
-            xmlns="http://javafx.com/javafx/11.0.1"
-            fx:controller="de.upb.codingpirates.battleships.desktop.gamefield.GameFieldController">
-  <BorderPane AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0"
-              AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0" maxHeight="1.7976931348623157E308"
-              maxWidth="1.7976931348623157E308" fx:id="borderPane">
+
+<AnchorPane minHeight="330.0" minWidth="300.0" onMouseClicked="#enlargeBoard" prefHeight="660.0" prefWidth="600.0" style="-fx-background-color: #CFBE8E;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.upb.codingpirates.battleships.desktop.gamefield.GameFieldController">
+  <BorderPane fx:id="borderPane" prefHeight="330.0" prefWidth="300.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
     <top>
-      <GridPane style="-fx-background-color: lightgrey; -fx-border-color: black;"
-                BorderPane.alignment="CENTER"
-                alignment="CENTER"
-                prefWidth="552.0">
+      <GridPane alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="552.0" style="-fx-background-color: #CFBE8E;" BorderPane.alignment="CENTER">
         <BorderPane.margin>
-          <Insets bottom="10.0" top="5.0"/>
+          <Insets bottom="10.0" top="5.0" />
         </BorderPane.margin>
         <columnConstraints>
-          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
-          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
         </columnConstraints>
         <rowConstraints>
-          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
-        <Text strokeType="OUTSIDE" strokeWidth="0.0" text=" Spieler:" fx:id="name"/>
-        <Text GridPane.columnIndex="1" strokeType="OUTSIDE" strokeWidth="0.0" text="Punkte:"
-              fx:id="points"/>
+            <ImageView fitHeight="56.0" fitWidth="296.0" opacity="0.33" pickOnBounds="true">
+               <image>
+                  <Image url="@../images/button.png" />
+               </image>
+            </ImageView>
+        <Text fx:id="name" fill="#472218" fontSmoothingType="LCD" strokeType="OUTSIDE" strokeWidth="0.0" text=" Spieler:" />
+        <Text fx:id="points" fill="#472218" strokeType="OUTSIDE" strokeWidth="0.0" text="Punkte:" GridPane.columnIndex="1" />
+            <ImageView fitHeight="56.0" fitWidth="296.0" opacity="0.33" pickOnBounds="true" GridPane.columnIndex="1">
+               <image>
+                  <Image url="@../images/button.png" />
+               </image>
+            </ImageView>
       </GridPane>
     </top>
   </BorderPane>

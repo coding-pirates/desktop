@@ -1,20 +1,93 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Slider?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0"
-            prefWidth="825.0" style="-fx-background-color: #1A2529;" xmlns="http://javafx.com/javafx/8.0.171"
-            xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="de.upb.codingpirates.battleships.desktop.endgame.EndgameController">
-  <VBox alignment="CENTER" layoutY="-1.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
-        AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-    <Label text="EndView" textFill="#dd1212">
-      <font>
-        <Font size="62.0"/>
-      </font>
-    </Label>
+<AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #1A2529;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.upb.codingpirates.battleships.desktop.settings.SettingsController">
+   <ImageView fitHeight="400.0" fitWidth="600.0" nodeOrientation="INHERIT" pickOnBounds="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <image>
+         <Image url="@../images/Background.png" />
+      </image>
+   </ImageView>
+  <VBox alignment="CENTER" fillWidth="false" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <children>
+       <Label alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="100.0" prefWidth="150.0" text="Settings" textFill="#f5f5f5">
+         <font>
+           <Font size="38.0" />
+         </font>
+            <VBox.margin>
+               <Insets />
+            </VBox.margin>
+       </Label>
+         <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="600.0">
+            <children>
+               <Slider layoutX="107.0" layoutY="106.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="89.0" prefWidth="434.0" value="100.0" AnchorPane.bottomAnchor="105.0" AnchorPane.leftAnchor="107.0" AnchorPane.topAnchor="106.0" />
+               <Slider layoutX="107.0" layoutY="57.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="98.0" prefWidth="434.0" value="100.0" AnchorPane.bottomAnchor="145.0" AnchorPane.leftAnchor="107.0" AnchorPane.topAnchor="57.0" />
+               <Button alignment="CENTER" contentDisplay="CENTER" layoutX="107.0" layoutY="201.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="50.0" prefWidth="150.0" style="-fx-background-color: #CFBE8E;" text="Impressum" textAlignment="CENTER" textFill="WHITE">
+                  <font>
+                     <Font name="System Bold" size="20.0" />
+                  </font>
+                  <graphic>
+                     <ImageView fitHeight="50.0" fitWidth="150.0">
+                        <image>
+                           <Image url="@../images/button.png" />
+                        </image>
+                     </ImageView>
+                  </graphic>
+               </Button>
+               <Button alignment="CENTER" contentDisplay="CENTER" layoutX="300.0" layoutY="201.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="50.0" prefWidth="176.0" style="-fx-background-color: #CFBE8E;" text="Piratencodex" textAlignment="CENTER" textFill="WHITE">
+                  <font>
+                     <Font name="System Bold" size="20.0" />
+                  </font>
+                  <graphic>
+                     <ImageView fitHeight="50.0" fitWidth="192.0">
+                        <image>
+                           <Image url="@../images/button.png" />
+                        </image>
+                     </ImageView>
+                  </graphic>
+               </Button>
+               <Button contentDisplay="GRAPHIC_ONLY" layoutX="59.0" layoutY="112.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="40.0" prefWidth="48.0" style="-fx-background-color: #CFBE8E;" text="Button" AnchorPane.bottomAnchor="111.0" AnchorPane.leftAnchor="59.0" AnchorPane.topAnchor="112.0">
+                  <graphic>
+                     <ImageView fitHeight="31.0" fitWidth="21.0">
+                        <image>
+                           <Image url="@../images/icon_music.png" />
+                        </image>
+                     </ImageView>
+                  </graphic>
+               </Button>
+               <Button contentDisplay="GRAPHIC_ONLY" layoutX="59.0" layoutY="61.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="40.0" prefWidth="48.0" style="-fx-background-color: #CFBE8E;" text="Button" AnchorPane.bottomAnchor="162.0" AnchorPane.leftAnchor="59.0" AnchorPane.topAnchor="61.0">
+                  <graphic>
+                     <ImageView fitHeight="31.0" fitWidth="40.0">
+                        <image>
+                           <Image url="@../images/icon_sound.png" />
+                        </image>
+                     </ImageView>
+                  </graphic>
+               </Button>
+            </children>
+         </AnchorPane>
+      </children>
   </VBox>
+   <Button fx:id="btn_back" layoutX="992.0" layoutY="75.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#closeStage" prefHeight="44.0" prefWidth="100.0" style="-fx-background-color: #CFBE8E;" text="back" AnchorPane.rightAnchor="108.0" AnchorPane.topAnchor="30.0">
+      <graphic>
+         <ImageView fitHeight="49.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+               <Image url="@../images/icon_leave.png" />
+            </image>
+         </ImageView>
+      </graphic>
+   </Button>
+   <Button cache="true" cacheHint="ROTATE" cacheShape="false" contentDisplay="TEXT_ONLY" focusTraversable="false" layoutX="1103.0" layoutY="75.0" minHeight="-Infinity" minWidth="-Infinity" onAction="#help" prefHeight="44.0" prefWidth="55.0" style="-fx-background-color: #CFBE8E;" text="?" textFill="#472218" AnchorPane.rightAnchor="42.0" AnchorPane.topAnchor="30.0">
+      <font>
+         <Font name="System Bold" size="22.0" />
+      </font>
+   </Button>
 </AnchorPane>

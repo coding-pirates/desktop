@@ -1,79 +1,105 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
-<AnchorPane xmlns:fx="http://javafx.com/fxml/1" style="-fx-background-color: #1A2529;" minHeight="-Infinity"
-            minWidth="-Infinity"
-            prefHeight="400.0" prefWidth="600.0"
-            xmlns="http://javafx.com/javafx/11.0.1"
-            fx:controller="de.upb.codingpirates.battleships.desktop.lobby.LobbyController">
-  <VBox AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
-        AnchorPane.topAnchor="0.0"
-        prefHeight="400.0" prefWidth="600.0">
-    <VBox VBox.vgrow="ALWAYS" alignment="TOP_CENTER">
-      <Label VBox.vgrow="ALWAYS" alignment="CENTER" prefHeight="57.0" prefWidth="126.0" text="LOBBY"
-             textFill="WHITE">
-        <font>
-          <Font size="35.0"/>
-        </font>
-      </Label>
-      <Separator style="-fx-background-color: black;" VBox.vgrow="ALWAYS" prefHeight="5.0" prefWidth="200.0">
-        <VBox.margin>
-          <Insets left="20.0" right="20.0"/>
-        </VBox.margin>
-      </Separator>
-    </VBox>
-    <HBox VBox.vgrow="ALWAYS" alignment="CENTER">
-      <VBox HBox.hgrow="ALWAYS" alignment="CENTER">
-        <Button style="-fx-background-color: #E5AC30;" VBox.vgrow="ALWAYS" alignment="CENTER"
-                mnemonicParsing="false"
-                onMouseClicked="#showgames" prefHeight="25.0" prefWidth="152.0"
-                text="Aktualisieren" textAlignment="CENTER" textFill="WHITE">
-          <VBox.margin>
-            <Insets bottom="30.0" top="20.0"/>
-          </VBox.margin>
-          <font>
-            <Font name="System Bold" size="12.0"/>
-          </font>
-        </Button>
-        <Accordion VBox.vgrow="ALWAYS" minHeight="151.0" minWidth="558.0">
-          <padding>
-            <Insets bottom="20.0" left="20.0" right="20.0"/>
-          </padding>
-          <panes>
-            <TitledPane
-              style="-fx-body-color: #739797; -fx-inner-border: #92BFBF; -fx-box-border: #92BFBF; -fx-mark-color: black; -fx-focus-color: #E4FFFF;"
-              minHeight="100.0"
-              prefWidth="527.0"
-              text="Startende Spiele">
-              <font>
-                <Font name="System Bold" size="25.0"/>
-              </font>
-              <ListView minWidth="100.0" prefHeight="200.0" prefWidth="200.0" fx:id="lstvwStart"/>
-            </TitledPane>
-            <TitledPane
-              style="-fx-body-color: #739797; -fx-inner-border: #92BFBF; -fx-box-border: #92BFBF; -fx-mark-color: black; -fx-focus-color: #E4FFFF;"
-              minHeight="100.0"
-              text="Laufende Spiele">
-              <font>
-                <Font name="System Bold" size="25.0"/>
-              </font>
-              <ListView minWidth="100.0" prefHeight="200.0" prefWidth="200.0" fx:id="lstvwRunning"/>
-            </TitledPane>
-            <TitledPane
-              style="-fx-body-color: #739797; -fx-inner-border: #92BFBF; -fx-box-border: #92BFBF; -fx-mark-color: black; -fx-focus-color: #E4FFFF;"
-              minHeight="100.0"
-              text="Beendete Spiele">
-              <font>
-                <Font name="System Bold" size="25.0"/>
-              </font>
-              <ListView minWidth="100.0" prefHeight="200.0" prefWidth="200.0" fx:id="lstvwEnd"/>
-            </TitledPane>
-          </panes>
-        </Accordion>
-      </VBox>
-    </HBox>
+<?import javafx.scene.control.Accordion?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane minHeight="400.0" minWidth="600.0" prefHeight="800.0" prefWidth="1200.0" style="-fx-background-color: #CFBE8E #CFBE8E #CFBE8E;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.upb.codingpirates.battleships.desktop.lobby.LobbyController">
+   <ImageView nodeOrientation="INHERIT" pickOnBounds="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <image>
+         <Image url="@../images/Background.png" />
+      </image>
+   </ImageView>
+  <VBox minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <AnchorPane prefHeight="219.0" prefWidth="1200.0">
+         <children>
+         <Label alignment="CENTER" layoutX="511.0" layoutY="71.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="76.0" prefWidth="179.0" text="LOBBY" textFill="WHITE" AnchorPane.leftAnchor="511.0" AnchorPane.rightAnchor="510.0" AnchorPane.topAnchor="71.0">
+           <font>
+             <Font size="35.0" />
+           </font>
+         </Label>
+         <Separator layoutX="284.0" layoutY="145.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="4.0" prefWidth="668.0" style="-fx-background-color: black;" AnchorPane.leftAnchor="284.0" AnchorPane.rightAnchor="248.0" />
+            <Button fx:id="btn_settings1" cache="true" cacheHint="ROTATE" cacheShape="false" contentDisplay="GRAPHIC_ONLY" focusTraversable="false" layoutX="1083.0" layoutY="78.0" minHeight="-Infinity" minWidth="-Infinity" onAction="#settings" prefHeight="44.0" prefWidth="55.0" style="-fx-background-color: #CFBE8E;" text="Settings" AnchorPane.rightAnchor="62.0" AnchorPane.topAnchor="78.0">
+               <graphic>
+                  <ImageView fitHeight="38.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/icon_settings.png" />
+                     </image>
+                  </ImageView>
+               </graphic></Button>
+            <Button cache="true" cacheHint="ROTATE" cacheShape="false" contentDisplay="TEXT_ONLY" focusTraversable="false" layoutX="1008.0" layoutY="78.0" minHeight="-Infinity" minWidth="-Infinity" onAction="#help" prefHeight="44.0" prefWidth="55.0" style="-fx-background-color: #CFBE8E;" text="?" textFill="#472218" AnchorPane.rightAnchor="137.0" AnchorPane.topAnchor="78.0">
+               <font>
+                  <Font name="System Bold" size="22.0" />
+               </font>
+            </Button>
+         </children>
+      </AnchorPane>
+   <VBox alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="620.0" prefWidth="1200.0">
+     <Button fx:id="refreshButton" alignment="CENTER" contentDisplay="CENTER" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#showgames" prefHeight="70.0" prefWidth="242.0" style="-fx-background-color: #CFBE8E;" text="Aktualisieren" textAlignment="CENTER" textFill="WHITE">
+       <VBox.margin>
+         <Insets bottom="30.0" top="20.0" />
+       </VBox.margin>
+       <font>
+         <Font name="System Bold" size="20.0" />
+       </font>
+            <graphic>
+               <ImageView fitHeight="88.0" fitWidth="281.0">
+                  <image>
+                     <Image url="@../images/button.png" />
+                  </image>
+               </ImageView>
+            </graphic>
+     </Button>
+     <Accordion minHeight="145.0" minWidth="558.0" prefHeight="400.0" prefWidth="1100.0" VBox.vgrow="ALWAYS">
+       <padding>
+         <Insets bottom="20.0" left="20.0" right="20.0" />
+       </padding>
+       <panes>
+         <TitledPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="150.0" prefWidth="1000.0" style="-fx-body-color: #472218; -fx-inner-border: #92BFBF; -fx-box-border: #92BFBF; -fx-mark-color: white; -fx-focus-color: #E4FFFF;" text="Startende Spiele" textFill="#fcfcfc">
+           <font>
+             <Font name="System Bold" size="25.0" />
+           </font>
+           <ListView fx:id="lstvwStart" minWidth="100.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #CFBE8E;" />
+         </TitledPane>
+         <TitledPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="150.0" prefWidth="1000.0" style="-fx-body-color: #472218; -fx-inner-border: #92BFBF; -fx-box-border: #92BFBF; -fx-mark-color: white; -fx-focus-color: #E4FFFF;" text="Laufende Spiele" textFill="#fcfcfc">
+           <font>
+             <Font name="System Bold" size="25.0" />
+           </font>
+           <ListView fx:id="lstvwRunning" minWidth="100.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #CFBE8E;" />
+         </TitledPane>
+         <TitledPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="150.0" prefWidth="1000.0" style="-fx-body-color: #472218; -fx-inner-border: #92BFBF; -fx-box-border: #92BFBF; -fx-mark-color: white; -fx-focus-color: #E4FFFF;" text="Beendete Spiele" textFill="#f8f7f7">
+           <font>
+             <Font name="System Bold" size="25.0" />
+           </font>
+           <ListView fx:id="lstvwEnd" minWidth="100.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #CFBE8E;" />
+         </TitledPane>
+       </panes>
+            <VBox.margin>
+               <Insets top="30.0" />
+            </VBox.margin>
+     </Accordion>
+         <Button fx:id="refreshButton1" alignment="CENTER" contentDisplay="CENTER" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#showgames" prefHeight="70.0" prefWidth="242.0" style="-fx-background-color: #CFBE8E;" text="Zufällige Auswahl" textAlignment="CENTER" textFill="WHITE">
+            <font>
+               <Font name="System Bold" size="20.0" />
+            </font>
+            <graphic>
+               <ImageView fitHeight="88.0" fitWidth="281.0">
+                  <image>
+                     <Image url="@../images/button.png" />
+                  </image>
+               </ImageView>
+            </graphic>
+         </Button>
+         <Button mnemonicParsing="false" onAction="#handlerButton" text="next" />
+   </VBox>
   </VBox>
 </AnchorPane>

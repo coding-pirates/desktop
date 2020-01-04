@@ -14,6 +14,7 @@ import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
@@ -141,7 +142,9 @@ public class InGameModel extends Application implements InGameModelMessageListen
         AnchorPane pane = loader.load();
         inGameController = loader.getController();
         inGameController.setModel(this);
-        inGameStage.setTitle("");
+        Image icon = new Image(String.valueOf(getClass().getResource("/images/app_icon.png")));
+        inGameStage.getIcons().add(icon);
+        inGameStage.setTitle("InGame");
         inGameStage.setScene(new Scene(pane));
         inGameStage.setMaximized(true);
         inGameStage.show();
@@ -246,7 +249,6 @@ public class InGameModel extends Application implements InGameModelMessageListen
 
     @Override
     public void onGameInitNotification(GameInitNotification message, int clientId) {
-        sendGameStateRequest();
         Collection<Client> clients = message.getClientList();
         Configuration config = message.getConfiguration();
         try {

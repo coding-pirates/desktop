@@ -3,6 +3,7 @@ package de.upb.codingpirates.battleships.desktop.lobby;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
@@ -20,10 +21,12 @@ public class Lobby extends Application {
      */
     public void start(Stage lobbyStage) throws IOException {
         this.lobbyStage = lobbyStage;
-      FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/Lobby.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/Lobby.fxml"));
         AnchorPane pane = loader.load();
         LobbyController lobbyController = loader.getController();
         lobbyController.setLobby(this);
+        Image icon = new Image(String.valueOf(getClass().getResource("/images/app_icon.png")));
+        lobbyStage.getIcons().add(icon);
         lobbyStage.setTitle("Lobby");
         lobbyStage.setScene(new Scene(pane));
         lobbyStage.show();
@@ -35,6 +38,7 @@ public class Lobby extends Application {
      * Closes the Lobby Window.
      */
     protected void close() {
+
         lobbyStage.close();
     }
 }

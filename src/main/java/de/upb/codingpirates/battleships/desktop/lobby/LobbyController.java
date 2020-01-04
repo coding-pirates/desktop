@@ -1,8 +1,14 @@
 package de.upb.codingpirates.battleships.desktop.lobby;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.*;
 
+import de.upb.codingpirates.battleships.desktop.placeship.Placeships;
+import de.upb.codingpirates.battleships.desktop.settings.Settings;
+import de.upb.codingpirates.battleships.desktop.util.ClientType;
+import de.upb.codingpirates.battleships.desktop.util.Help;
+import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -105,15 +111,15 @@ public class LobbyController implements Initializable , LobbyResponseListener {
             final GameView view = new GameView(game);
 
             switch (game.getState()) {
-            case LOBBY:
-                startList.add(view);
-                break;
-            case IN_PROGRESS:
-            case PAUSED:
-                runningList.add(view);
-                break;
-            case FINISHED:
-                endList.add(view);
+                case LOBBY:
+                    startList.add(view);
+                    break;
+                case IN_PROGRESS:
+                case PAUSED:
+                    runningList.add(view);
+                    break;
+                case FINISHED:
+                    endList.add(view);
             }
         }
     }
@@ -130,4 +136,56 @@ public class LobbyController implements Initializable , LobbyResponseListener {
     public void onLobbyResponse(LobbyResponse message, int clientId) {
         parseToGameView(message.getGames());
     }
+
+    public void closeStage() {
+        Stage stage = (Stage) refreshButton.getScene().getWindow();
+        stage.close();
+    }
+
+    @FXML
+    public void settings() throws Exception {
+
+        Settings settings = new Settings();
+        Stage settingsStage = new Stage();
+        try {
+            settings.start();
+        } catch (IOException e) {
+            e.printStackTrace();//TODO
+        }
+        settingsStage.setOnCloseRequest(t -> {
+            Platform.exit();
+            System.exit(0);
+        });
+    }
+
+    @FXML
+    public void handlerButton() throws Exception {
+        Placeships placeships = new Placeships();
+        Stage placeStage = new Stage();
+        try {
+            ClientType cType = new ClientType();
+            cType.display();
+            placeships.start(placeStage);
+            closeStage();
+        } catch (IOException e) {
+            e.printStackTrace();//TODO
+            placeStage.setOnCloseRequest(t -> {
+                Platform.exit();
+                System.exit(0);
+            });
+        }
+    }
+
+    @FXML
+    public void help() throws IOException {
+        Help help = new Help();
+        try{
+            help.display("Lobby-Help", "Lobby-Help");
+        }
+        catch (IOException e){
+            e.printStackTrace();
+        }
+    }
+
+
 }
