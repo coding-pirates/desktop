@@ -3,6 +3,7 @@ package de.upb.codingpirates.battleships.desktop.util;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.image.Image;
@@ -15,11 +16,13 @@ import java.io.IOException;
 public class ClientType {
 
     @FXML
-    RadioButton btn_spectator;
+    RadioButton rb_spectator;
     @FXML
-    RadioButton btn_player;
+    RadioButton rb_player;
     @FXML
     Label lb_choice;
+    @FXML
+    Button closeButton;
 
     public void display() throws IOException {
         Stage window = new Stage();
@@ -38,14 +41,19 @@ public class ClientType {
         window.showAndWait();
     }
 
-    public void player(){
-        lb_choice.setText("Player is choosen");
+    /**public void player(){
+        lb_choice.setText("Player is chosen");
+    }**/
+
+    /**public void spectator(){
+        lb_choice.setText("Spectator is chosen");
+    }**/
+
+
+    @FXML
+    public void closeStage(){
+        Stage stage = (Stage) closeButton.getScene().getWindow();
+        stage.close();
     }
-
-    public void spectator(){
-        lb_choice.setText("Spectator is choosen");
-    }
-
-
 
 }

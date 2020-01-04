@@ -73,7 +73,7 @@ public class SettingsController implements Initializable {
     public void piratenkodex() throws IOException{
         Impressum impressum = new Impressum();
         try{
-            impressum.display("piratenkodex");
+            impressum.display("Piratenkodex");
         }
         catch (IOException e){
             e.printStackTrace();
