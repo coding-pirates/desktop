@@ -11,6 +11,7 @@ import de.upb.codingpirates.battleships.network.message.response.PointsResponse;
 import de.upb.codingpirates.battleships.network.message.response.RemainingTimeResponse;
 import de.upb.codingpirates.battleships.network.message.response.SpectatorGameStateResponse;
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
@@ -132,7 +133,7 @@ public class InGameModel extends Application implements InGameModelMessageListen
     }
 
     public void start() {
-        sendGameStateRequest();
+     //   sendGameStateRequest();
     }
 
     public void start2() throws Exception {
@@ -245,6 +246,7 @@ public class InGameModel extends Application implements InGameModelMessageListen
 
     @Override
     public void onGameInitNotification(GameInitNotification message, int clientId) {
+        sendGameStateRequest();
         Collection<Client> clients = message.getClientList();
         Configuration config = message.getConfiguration();
         try {
@@ -297,11 +299,15 @@ public class InGameModel extends Application implements InGameModelMessageListen
     @Override
     public void onSpectatorGameStateResponse(SpectatorGameStateResponse message, int clientId) {
         setGameStateResult(message);
-        try {
-            start2();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        Platform.runLater(()-> {
+            try {
+
+                start2();
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        });
     }
 
     @Override

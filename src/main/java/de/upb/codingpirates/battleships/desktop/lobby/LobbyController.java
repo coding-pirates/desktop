@@ -1,9 +1,7 @@
 package de.upb.codingpirates.battleships.desktop.lobby;
 
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.ResourceBundle;
+import java.util.*;
 
 import javafx.beans.value.ChangeListener;
 import javafx.collections.FXCollections;
@@ -37,9 +35,9 @@ public class LobbyController implements Initializable , LobbyResponseListener {
     private ListView<GameView> lstvwEnd;
     @FXML
     private Button refreshButton;
-    private ArrayList<GameView> startList = null;
-    private ArrayList<GameView> runningList = null;
-    private ArrayList<GameView> endList = null;
+    private ObservableList<GameView> startList = FXCollections.synchronizedObservableList(FXCollections.observableArrayList());
+    private ObservableList<GameView> runningList = FXCollections.synchronizedObservableList(FXCollections.observableArrayList());
+    private ObservableList<GameView> endList = FXCollections.synchronizedObservableList(FXCollections.observableArrayList());
 
     public LobbyController() {
         ListenerHandler.registerListener(this);
@@ -66,20 +64,16 @@ public class LobbyController implements Initializable , LobbyResponseListener {
             System.out.println("Fehler: " + e);
         }
 
-        this.startList = new ArrayList<>();
-        this.runningList = new ArrayList<>();
-        this.endList = new ArrayList<>();
+        this.startList.clear();
+        this.runningList.clear();
+        this.endList.clear();
 
         //Show GameList
 
-        ObservableList<GameView> startGames = FXCollections.observableArrayList(startList);
-        lstvwStart.setItems(startGames);
 
-        ObservableList<GameView> runningGames = FXCollections.observableArrayList(runningList);
-        lstvwRunning.setItems(runningGames);
-
-        ObservableList<GameView> endGames = FXCollections.observableArrayList(endList);
-        lstvwEnd.setItems(endGames);
+        lstvwStart.setItems(startList);
+        lstvwRunning.setItems(runningList);
+        lstvwEnd.setItems(endList);
 
         ChangeListener<GameView> changeListener = (arg0, arg1, arg2) -> {
             InGameModel inGameModel = new InGameModel(arg2.getContent());

@@ -14,6 +14,7 @@ import de.upb.codingpirates.battleships.desktop.BattleshipsDesktopClientApplicat
 import de.upb.codingpirates.battleships.desktop.lobby.Lobby;
 import de.upb.codingpirates.battleships.logic.ClientType;
 import de.upb.codingpirates.battleships.network.message.response.ServerJoinResponse;
+import org.apache.logging.log4j.LogManager;
 
 /**
  * Controller Class for the ServerLogin Window.
@@ -53,6 +54,7 @@ public class ServerLoginController implements ServerJoinResponseListener {
                 slm.sendRequest(serverIP);
             } catch (Exception e) {
                 lblStatus.setText("Anmeldung fehlgeschlagen: Server nicht erreichbar!");
+                LogManager.getLogger().error(e);
             }
     }
 
@@ -62,23 +64,25 @@ public class ServerLoginController implements ServerJoinResponseListener {
 
     @Override
     public void onServerJoinResponse(ServerJoinResponse response, int clientId){
-        setLblStatus("");
+        Platform.runLater(()-> {
+            setLblStatus("");
 
-        BattleshipsDesktopClientApplication
-            .getInstance()
-            .getLoginStage()
-            .close();
+            BattleshipsDesktopClientApplication
+                    .getInstance()
+                    .getLoginStage()
+                    .close();
 
-        Lobby lobby = new Lobby();
-        Stage lobbyStage = new Stage();
-        try {
-            lobby.start(lobbyStage);
-        } catch (IOException e) {
-            e.printStackTrace();//TODO
-        }
-        lobbyStage.setOnCloseRequest(t -> {
-            Platform.exit();
-            System.exit(0);
+            Lobby lobby = new Lobby();
+            Stage lobbyStage = new Stage();
+            try {
+                lobby.start(lobbyStage);
+            } catch (IOException e) {
+                e.printStackTrace();//TODO
+            }
+            lobbyStage.setOnCloseRequest(t -> {
+                Platform.exit();
+                System.exit(0);
+            });
         });
     }
 }
