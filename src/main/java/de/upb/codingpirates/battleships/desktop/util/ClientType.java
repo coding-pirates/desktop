@@ -41,11 +41,12 @@ public class ClientType {
         window.showAndWait();
     }
 
-    /**public void player(){
-        lb_choice.setText("Player is chosen");
-    }**/
+    /**@FXML
+    public void player(){
+        lb_choice.setText("Player is chosen");}**/
 
-    /**public void spectator(){
+    /**@FXML
+    public void spectator(){
         lb_choice.setText("Spectator is chosen");
     }**/
 
