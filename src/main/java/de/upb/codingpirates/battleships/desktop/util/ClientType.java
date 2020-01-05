@@ -70,6 +70,9 @@ public class ClientType {
         if(chosenClient=="Spectator"){
             waiting();
         }
+        else{
+            back();
+        }
         closeStage();
     }
 
