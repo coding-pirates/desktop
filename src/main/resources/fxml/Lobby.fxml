@@ -100,7 +100,6 @@
             </graphic>
          </Button>
          <Button mnemonicParsing="false" onAction="#handlerButton" text="placeShips" />
-         <Button mnemonicParsing="false" onAction="#waiting" text="Waitingscreen" />
    </VBox>
   </VBox>
 </AnchorPane>

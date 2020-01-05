@@ -36,7 +36,7 @@
             <Label text="Choose your perspective" />
             <VBox prefHeight="78.0" prefWidth="604.0">
                <children>
-                  <RadioButton fx:id="rb_player" contentDisplay="CENTER" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="50.0" prefWidth="283.0" text="Player" textFill="WHITE">
+                  <RadioButton fx:id="rb_player" contentDisplay="CENTER" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#player" prefHeight="50.0" prefWidth="283.0" text="Player" textFill="WHITE">
                      <graphic>
                         <ImageView fitHeight="54.0" fitWidth="190.0" pickOnBounds="true">
                            <image>
@@ -51,7 +51,7 @@
                         <ToggleGroup fx:id="group" />
                      </toggleGroup>
                   </RadioButton>
-                  <RadioButton fx:id="rb_spectator" contentDisplay="CENTER" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="47.0" prefWidth="321.0" text="Spectator" textFill="#f2f2f2" toggleGroup="$group">
+                  <RadioButton fx:id="rb_spectator" contentDisplay="CENTER" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#spectator" prefHeight="47.0" prefWidth="321.0" text="Spectator" textFill="#f2f2f2" toggleGroup="$group">
                      <graphic>
                         <ImageView fitHeight="54.0" fitWidth="190.0" pickOnBounds="true">
                            <image>

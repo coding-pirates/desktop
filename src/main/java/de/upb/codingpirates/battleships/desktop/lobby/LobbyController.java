@@ -173,7 +173,6 @@ public class LobbyController implements Initializable , LobbyResponseListener {
         try {
             ClientType cType = new ClientType();
             cType.display();
-            placeships.start(placeStage);
             closeStage();
         } catch (IOException e) {
             e.printStackTrace();//TODO
@@ -181,16 +180,6 @@ public class LobbyController implements Initializable , LobbyResponseListener {
                 Platform.exit();
                 System.exit(0);
             });
-        }
-    }
-
-    @FXML
-    public void waiting() throws Exception {
-        Waiting waitingView = new Waiting();
-        try {
-            waitingView.start();
-        } catch (IOException e) {
-            e.printStackTrace();
         }
     }
 

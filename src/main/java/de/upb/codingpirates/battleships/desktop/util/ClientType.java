@@ -1,5 +1,7 @@
 package de.upb.codingpirates.battleships.desktop.util;
 
+import de.upb.codingpirates.battleships.desktop.placeship.Placeships;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -16,13 +18,15 @@ import java.io.IOException;
 public class ClientType {
 
     @FXML
-    RadioButton rb_spectator;
+    private RadioButton rb_spectator;
     @FXML
-    RadioButton rb_player;
+    private RadioButton rb_player;
     @FXML
-    Label lb_choice;
+    private Label lb_choice;
     @FXML
-    Button closeButton;
+    private Button closeButton;
+
+    private String chosenClient;
 
     public void display() throws IOException {
         Stage window = new Stage();
@@ -41,20 +45,54 @@ public class ClientType {
         window.showAndWait();
     }
 
-    /**@FXML
+    @FXML
     public void player(){
-        lb_choice.setText("Player is chosen");}**/
+        System.out.println("Player");
+        chosenClient="Player";
+        //lb_choice.setText("Player is chosen");
+        }
 
-    /**@FXML
+    @FXML
     public void spectator(){
-        lb_choice.setText("Spectator is chosen");
-    }**/
+        System.out.println("Spectator");
+        chosenClient="Spectator";
+        //lb_choice.setText("Spectator is chosen");
+    }
 
 
     @FXML
-    public void closeStage(){
+    public void closeStage() throws Exception {
+        if(chosenClient=="Player"){
+            placeShips();
+        }
+        if(chosenClient=="Spectator"){
+            waiting();
+        }
         Stage stage = (Stage) closeButton.getScene().getWindow();
         stage.close();
+    }
+
+    public void placeShips() throws Exception {
+        Placeships placeships = new Placeships();
+        Stage placeStage = new Stage();
+        try {
+            placeships.start(placeStage);
+        } catch (IOException e) {
+            e.printStackTrace();//TODO
+            placeStage.setOnCloseRequest(t -> {
+                Platform.exit();
+                System.exit(0);
+            });
+        }
+    }
+
+    public void waiting() throws Exception {
+        Waiting waitingView = new Waiting();
+        try {
+            waitingView.start();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
 }
