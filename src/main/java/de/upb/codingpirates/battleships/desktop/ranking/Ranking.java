@@ -1,7 +1,6 @@
 package de.upb.codingpirates.battleships.desktop.ranking;
 
 import de.upb.codingpirates.battleships.logic.Client;
-import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
@@ -33,7 +32,6 @@ public class Ranking {
         Image icon = new Image(String.valueOf(getClass().getResource("/images/app_icon.png")));
         rankingStage.getIcons().add(icon);
         rankingStage.setTitle("Rangliste");
-        rankingStage.setResizable(false);
         rankingStage.setScene(new Scene(pane));
         rankingStage.show();
     }

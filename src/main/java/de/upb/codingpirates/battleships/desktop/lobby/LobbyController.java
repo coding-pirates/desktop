@@ -10,6 +10,7 @@ import de.upb.codingpirates.battleships.desktop.placeship.Placeships;
 import de.upb.codingpirates.battleships.desktop.settings.Settings;
 import de.upb.codingpirates.battleships.desktop.util.ClientType;
 import de.upb.codingpirates.battleships.desktop.util.Help;
+import de.upb.codingpirates.battleships.desktop.util.Waiting;
 import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
 import javafx.collections.FXCollections;
@@ -180,6 +181,16 @@ public class LobbyController implements Initializable , LobbyResponseListener {
                 Platform.exit();
                 System.exit(0);
             });
+        }
+    }
+
+    @FXML
+    public void waiting() throws Exception {
+        Waiting waitingView = new Waiting();
+        try {
+            waitingView.start();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 
