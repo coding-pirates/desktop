@@ -168,18 +168,12 @@ public class LobbyController implements Initializable , LobbyResponseListener {
 
     @FXML
     public void handlerButton() throws Exception {
-        Placeships placeships = new Placeships();
-        Stage placeStage = new Stage();
         try {
             ClientType cType = new ClientType();
             cType.display();
             closeStage();
         } catch (IOException e) {
-            e.printStackTrace();//TODO
-            placeStage.setOnCloseRequest(t -> {
-                Platform.exit();
-                System.exit(0);
-            });
+            e.printStackTrace();
         }
     }
 

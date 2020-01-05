@@ -1,5 +1,7 @@
 package de.upb.codingpirates.battleships.desktop.util;
 
+import de.upb.codingpirates.battleships.desktop.lobby.Lobby;
+import de.upb.codingpirates.battleships.desktop.lobby.LobbyController;
 import de.upb.codingpirates.battleships.desktop.placeship.Placeships;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
@@ -61,15 +63,35 @@ public class ClientType {
 
 
     @FXML
-    public void closeStage() throws Exception {
+    public void next() throws Exception {
         if(chosenClient=="Player"){
             placeShips();
         }
         if(chosenClient=="Spectator"){
             waiting();
         }
+        closeStage();
+    }
+
+    public void closeStage(){
         Stage stage = (Stage) closeButton.getScene().getWindow();
         stage.close();
+    }
+
+    @FXML
+    public void back(){
+        Lobby lobby = new Lobby();
+        Stage lobbyStage = new Stage();
+        try {
+            lobby.start(lobbyStage);
+            closeStage();
+        } catch (IOException e) {
+            e.printStackTrace();//TODO
+        }
+        lobbyStage.setOnCloseRequest(t -> {
+            Platform.exit();
+            System.exit(0);
+        });
     }
 
     public void placeShips() throws Exception {
