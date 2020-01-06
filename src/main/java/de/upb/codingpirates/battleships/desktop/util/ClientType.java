@@ -43,6 +43,7 @@ public class ClientType {
         window.getIcons().add(icon);
 
         Scene scene = new Scene(pane);
+        window.setResizable(false);
         window.setScene(scene);
         window.showAndWait();
     }
