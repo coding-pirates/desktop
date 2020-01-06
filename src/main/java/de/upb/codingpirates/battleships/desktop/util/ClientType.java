@@ -66,15 +66,17 @@ public class ClientType {
     @FXML
     public void next() throws Exception {
         if(chosenClient=="Player"){
+            closeStage();
             placeShips();
+
         }
-        if(chosenClient=="Spectator"){
+        else if(chosenClient=="Spectator"){
+            closeStage();
             waiting();
         }
         else{
-            back();
+            //back();
         }
-        closeStage();
     }
 
     public void closeStage(){
