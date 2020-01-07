@@ -1,8 +1,13 @@
 package de.upb.codingpirates.battleships.desktop.util;
 
+import de.upb.codingpirates.battleships.desktop.lobby.Lobby;
+import de.upb.codingpirates.battleships.desktop.lobby.LobbyController;
+import de.upb.codingpirates.battleships.desktop.placeship.Placeships;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.image.Image;
@@ -15,11 +20,15 @@ import java.io.IOException;
 public class ClientType {
 
     @FXML
-    RadioButton btn_spectator;
+    private RadioButton rb_spectator;
     @FXML
-    RadioButton btn_player;
+    private RadioButton rb_player;
     @FXML
-    Label lb_choice;
+    private Label lb_choice;
+    @FXML
+    private Button closeButton;
+
+    private String chosenClient;
 
     public void display() throws IOException {
         Stage window = new Stage();
@@ -38,14 +47,77 @@ public class ClientType {
         window.showAndWait();
     }
 
+    @FXML
     public void player(){
-        lb_choice.setText("Player is choosen");
-    }
+        System.out.println("Player");
+        chosenClient="Player";
+        //lb_choice.setText("Player is chosen");
+        }
 
+    @FXML
     public void spectator(){
-        lb_choice.setText("Spectator is choosen");
+        System.out.println("Spectator");
+        chosenClient="Spectator";
+        //lb_choice.setText("Spectator is chosen");
     }
 
 
+    @FXML
+    public void next() throws Exception {
+        if(chosenClient=="Player"){
+            placeShips();
+        }
+        if(chosenClient=="Spectator"){
+            waiting();
+        }
+        else{
+            back();
+        }
+        closeStage();
+    }
+
+    public void closeStage(){
+        Stage stage = (Stage) closeButton.getScene().getWindow();
+        stage.close();
+    }
+
+    @FXML
+    public void back(){
+        Lobby lobby = new Lobby();
+        Stage lobbyStage = new Stage();
+        try {
+            lobby.start(lobbyStage);
+            closeStage();
+        } catch (IOException e) {
+            e.printStackTrace();//TODO
+        }
+        lobbyStage.setOnCloseRequest(t -> {
+            Platform.exit();
+            System.exit(0);
+        });
+    }
+
+    public void placeShips() throws Exception {
+        Placeships placeships = new Placeships();
+        Stage placeStage = new Stage();
+        try {
+            placeships.start(placeStage);
+        } catch (IOException e) {
+            e.printStackTrace();//TODO
+            placeStage.setOnCloseRequest(t -> {
+                Platform.exit();
+                System.exit(0);
+            });
+        }
+    }
+
+    public void waiting() throws Exception {
+        Waiting waitingView = new Waiting();
+        try {
+            waitingView.start();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
 }

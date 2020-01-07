@@ -16,7 +16,7 @@ public class Endgame extends Application {
 
 
     private Stage endStage;
-    private Control EndgameController;
+    private EndgameController EndgameController;
 
     /**
      * Start Method that creates a new Window and a related Controller.

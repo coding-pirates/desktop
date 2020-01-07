@@ -8,6 +8,7 @@ import de.upb.codingpirates.battleships.desktop.placeship.Placeships;
 import de.upb.codingpirates.battleships.desktop.settings.Settings;
 import de.upb.codingpirates.battleships.desktop.util.ClientType;
 import de.upb.codingpirates.battleships.desktop.util.Help;
+import de.upb.codingpirates.battleships.desktop.util.Waiting;
 import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
 import javafx.collections.FXCollections;
@@ -162,19 +163,12 @@ public class LobbyController implements Initializable , LobbyResponseListener {
 
     @FXML
     public void handlerButton() throws Exception {
-        Placeships placeships = new Placeships();
-        Stage placeStage = new Stage();
         try {
             ClientType cType = new ClientType();
             cType.display();
-            placeships.start(placeStage);
             closeStage();
         } catch (IOException e) {
-            e.printStackTrace();//TODO
-            placeStage.setOnCloseRequest(t -> {
-                Platform.exit();
-                System.exit(0);
-            });
+            e.printStackTrace();
         }
     }
 

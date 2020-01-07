@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane minHeight="300.0" minWidth="150.0" prefHeight="600.0" prefWidth="300.0" style="-fx-background-color: #CFBE8E; -fx-border-color: #CFBE8E;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.upb.codingpirates.battleships.desktop.util.Impressum">
+   <children>
+      <VBox alignment="TOP_CENTER" fillWidth="false" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="300.0" style="-fx-background-color: #CFBE8E;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="59.0" prefWidth="300.0" style="-fx-background-color: #CFBE8E#;">
+               <children>
+                  <ImageView fitHeight="50.0" fitWidth="300.0" pickOnBounds="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <image>
+                        <Image url="@../images/button.png" />
+                     </image>
+                  </ImageView>
+                  <Text fx:id="txt_title" fill="WHITE" layoutX="3.0" layoutY="37.740234375" nodeOrientation="RIGHT_TO_LEFT" smooth="false" strokeType="OUTSIDE" strokeWidth="0.0" text="Impressum" textAlignment="CENTER" wrappingWidth="297.9999992620433" AnchorPane.bottomAnchor="16.0" AnchorPane.leftAnchor="3.0" AnchorPane.rightAnchor="-1.0" AnchorPane.topAnchor="14.0">
+                     <font>
+                        <Font name="System Bold" size="22.0" />
+                     </font>
+                  </Text>
+               </children>
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin>
+            </AnchorPane>
+            <AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="468.0" prefWidth="300.0" style="-fx-background-color: #CFBE8E;">
+               <children>
+                  <Label fx:id="lb_message" layoutX="16.0" layoutY="85.0" prefHeight="362.0" prefWidth="263.0" text="Ansprechpartner:  Raphael Reimann        &#10;&#10;Anschrift:&#10;Universität Paderborn&#10;Warburger Str. 100,&#10; 33100 Paderborn &#10;&#10;Music by Sea of Thieves:&#10;1.Maiden Voyage,&#10;2.Sea of Thieves Main Track,&#10;3.Bosun Bill (Concertina and Hurdy Gurdy), &#10;4.Becalmed - Concertina and Hurdy-Gurdy, &#10;5.Grogg Mayles (Concertina and Hurdy-Gurdy), &#10;6.Ride of the Valkyries (Concertina)" textFill="#472218" wrapText="true" AnchorPane.bottomAnchor="21.0" AnchorPane.leftAnchor="16.0" AnchorPane.rightAnchor="21.0" AnchorPane.topAnchor="85.0">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <ImageView fitHeight="104.0" fitWidth="116.0" layoutX="88.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="426.0" AnchorPane.leftAnchor="88.0" AnchorPane.rightAnchor="108.0" AnchorPane.topAnchor="0.0">
+                     <image>
+                        <Image url="@../images/Coding%20Pirates%20Logo_Gold.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </AnchorPane>
+            <Button fx:id="closeButton" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#closeStage" prefHeight="44.0" prefWidth="100.0" style="-fx-background-color: #CFBE8E; -fx-border-color: #472218;" text="back">
+               <graphic>
+                  <ImageView fitHeight="49.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/icon_leave.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>
