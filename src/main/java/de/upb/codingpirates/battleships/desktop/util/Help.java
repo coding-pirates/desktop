@@ -34,6 +34,7 @@ public class Help {
 
         Image icon = new Image(String.valueOf(getClass().getResource("/images/app_icon.png")));
         window.getIcons().add(icon);
+
         Scene scene = new Scene(pane);
         window.setResizable(false);
         window.setScene(scene);
@@ -47,6 +48,10 @@ public class Help {
         stage.close();
     }
 
+    private String helpingText(String title){
+        //TODO
+        return null;
+    }
 
 
 }

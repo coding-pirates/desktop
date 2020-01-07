@@ -96,4 +96,9 @@ public class PlaceShipsController implements Initializable {
         });
 
     }
+
+    @FXML
+    public void rotate(){
+        //TODO
+    }
 }

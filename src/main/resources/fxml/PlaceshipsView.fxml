@@ -54,7 +54,7 @@
                      </HBox.margin>
                   </Text>
                   <Label minHeight="-Infinity" minWidth="-Infinity" prefHeight="90.0" prefWidth="100.0" text="Label" />
-                  <Button fx:id="btn_rotate" contentDisplay="CENTER" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="36.0" prefWidth="111.0" style="-fx-background-color: #CFBE8E;" text="Rotate" textFill="#f8f7f7">
+                  <Button fx:id="btn_rotate" contentDisplay="CENTER" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#rotate" prefHeight="36.0" prefWidth="111.0" style="-fx-background-color: #CFBE8E;" text="Rotate" textFill="#f8f7f7">
                      <HBox.margin>
                         <Insets top="20.0" />
                      </HBox.margin>

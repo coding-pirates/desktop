@@ -75,7 +75,7 @@ public class ClientType {
             waiting();
         }
         else{
-            //back();
+            back();
         }
     }
 
