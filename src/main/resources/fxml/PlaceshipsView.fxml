@@ -34,7 +34,7 @@
                         <Font size="18.0" />
                      </font>
                      <HBox.margin>
-                        <Insets left="50.0" top="30.0" />
+                        <Insets left="100.0" top="30.0" />
                      </HBox.margin>
                   </Text>
                   <Label minHeight="-Infinity" minWidth="-Infinity" prefHeight="90.0" prefWidth="100.0" textFill="WHITE" />
@@ -82,6 +82,7 @@
                   </AnchorPane>
                </children>
             </HBox>
+            <Button contentDisplay="CENTER" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#gamestart" prefHeight="36.0" prefWidth="170.0" style="-fx-background-color: #CFBE8E;" text="Let's start the Game!" textFill="#f8f7f7" />
             <Button mnemonicParsing="false" onAction="#handlerButton" text="next" />
             <SplitPane fx:id="splitPane" dividerPositions="1.0" prefHeight="160.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
                <items>
@@ -131,5 +132,14 @@
             </SplitPane>
          </children>
       </VBox>
+      <Button minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#back" prefHeight="44.0" prefWidth="92.0" style="-fx-background-color: #CFBE8E; -fx-border-color: #472218;" text="back" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="5.0">
+         <graphic>
+            <ImageView fitHeight="49.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/icon_leave.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
    </children>
 </AnchorPane>
