@@ -82,9 +82,9 @@ public class LobbyController implements Initializable , LobbyResponseListener {
 
         ChangeListener<GameView> changeListener = (arg0, arg1, arg2) -> {
             try {
-                InGameModel inGameModel = new InGameModel(arg2.getContent());
                 ClientType cType = new ClientType();
                 cType.display();
+                cType.setSelectedGame(arg2.getContent());
                 closeStage();
             } catch (IOException e) {
                 e.printStackTrace();

@@ -42,12 +42,13 @@ public class InGameModel extends Application implements InGameModelMessageListen
 
     /**
      * Constructor. Sets a tcpConnector and the chosen Game.
-     *
-     * @param g Chosen Game.
      */
-    public InGameModel(Game g) {
-        ausgewaehltesSpiel = g;
+    public InGameModel() {
         ListenerHandler.registerListener(this);
+    }
+
+    public void setGame(Game game){
+        this.ausgewaehltesSpiel = game;
     }
 
     /**
@@ -138,6 +139,10 @@ public class InGameModel extends Application implements InGameModelMessageListen
     }
 
     public void start2() throws Exception {
+        inGameController.setModel(this);
+        inGameController.spectatorGameStateResponse(player, shots, ships, gameState);
+        inGameController.setGame(ausgewaehltesSpiel);
+        /*
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/InGameView.fxml"));
         AnchorPane pane = loader.load();
         inGameController = loader.getController();
@@ -148,8 +153,7 @@ public class InGameModel extends Application implements InGameModelMessageListen
         inGameStage.setScene(new Scene(pane));
         inGameStage.setMaximized(true);
         inGameStage.show();
-        inGameController.spectatorGameStateResponse(player, shots, ships, gameState);
-        inGameController.setGame(ausgewaehltesSpiel);
+         */
     }
 
     /**
@@ -265,10 +269,10 @@ public class InGameModel extends Application implements InGameModelMessageListen
         start();
     }*/
 
-    @Override
+ /*   @Override
     public void onGameStartNotification(GameStartNotification message, int clientId) {
         inGameController.gameStartNotification();
-    }
+    } */
 
     @Override
     public void onLeaveNotification(LeaveNotification message, int clientId) {

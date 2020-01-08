@@ -70,7 +70,7 @@ public class InGameController implements Initializable {
 
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
-        // TODO Auto-generated method stub
+        this.model = new InGameModel();
     }
 
     /**
@@ -89,6 +89,7 @@ public class InGameController implements Initializable {
      */
     public void setGame(Game game) {
         this.game = game;
+        model.setGame(game);
     }
 
     /**
@@ -189,7 +190,7 @@ public class InGameController implements Initializable {
      * @param tempConfig Configuration of the Game.
      * @param clientList List of all Clients taking part in the Game.
      */
-    public void gameInitNotification(Configuration tempConfig, Collection<Client> clientList) {
+    public void gameInit(Configuration tempConfig, Collection<Client> clientList) {
         config = tempConfig;
         height = config.getHeight();
         width = config.getWidth();

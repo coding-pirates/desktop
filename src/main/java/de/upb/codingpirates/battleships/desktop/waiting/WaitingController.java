@@ -3,10 +3,12 @@ package de.upb.codingpirates.battleships.desktop.waiting;
 import de.upb.codingpirates.battleships.client.ListenerHandler;
 import de.upb.codingpirates.battleships.client.listener.GameInitNotificationListener;
 import de.upb.codingpirates.battleships.client.listener.GameStartNotificationListener;
+import de.upb.codingpirates.battleships.desktop.ingame.InGame;
 import de.upb.codingpirates.battleships.desktop.ingame.InGameModel;
 import de.upb.codingpirates.battleships.desktop.lobby.LobbyController;
 import de.upb.codingpirates.battleships.desktop.settings.Settings;
 import de.upb.codingpirates.battleships.desktop.util.Help;
+import de.upb.codingpirates.battleships.logic.Game;
 import de.upb.codingpirates.battleships.network.message.notification.GameInitNotification;
 import de.upb.codingpirates.battleships.network.message.notification.GameStartNotification;
 import javafx.application.Platform;
@@ -24,6 +26,8 @@ public class WaitingController implements Initializable, GameStartNotificationLi
     @FXML
     private Button closeButton;
 
+    private Game currentGame;
+
     public WaitingController(){
         ListenerHandler.registerListener(this);
     }
@@ -37,16 +41,16 @@ public class WaitingController implements Initializable, GameStartNotificationLi
     }
     @Override
     public void onGameStartNotification(GameStartNotification message, int messageId){
-        Platform.runLater(()-> closeStage());
-       /* Platform.runLater(()->{
-                InGameModel inGameModel = new InGameModel();
+        Platform.runLater(()->{
+            InGame inGame = new InGame();
         Stage inGameStage = new Stage();
         try {
-            inGameModel.start(inGameStage);
+            inGame.start(inGameStage);
+            inGame.setCurrentGame(currentGame);
         } catch (Exception e) {
             e.printStackTrace();
         }
-        }); */
+        });
        /* LobbyController lobbyControl = new LobbyController();
         lobbyControl.parseToGameView(message.getGames());
         */
@@ -88,5 +92,9 @@ public class WaitingController implements Initializable, GameStartNotificationLi
             Platform.exit();
             System.exit(0);
         });
+    }
+
+    public void setCurrentGame(Game currentGame){
+        this.currentGame = currentGame;
     }
 }

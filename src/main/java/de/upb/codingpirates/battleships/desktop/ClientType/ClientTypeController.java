@@ -1,21 +1,28 @@
 package de.upb.codingpirates.battleships.desktop.ClientType;
 
 import de.upb.codingpirates.battleships.client.ListenerHandler;
+import de.upb.codingpirates.battleships.client.handler.GameInitNotificationHandler;
+import de.upb.codingpirates.battleships.client.listener.GameInitNotificationListener;
 import de.upb.codingpirates.battleships.client.listener.GameJoinSpectatorResponseListener;
 import de.upb.codingpirates.battleships.desktop.lobby.Lobby;
 import de.upb.codingpirates.battleships.desktop.placeship.Placeships;
 import de.upb.codingpirates.battleships.desktop.waiting.Waiting;
+import de.upb.codingpirates.battleships.logic.Game;
+import de.upb.codingpirates.battleships.network.message.notification.GameInitNotification;
 import de.upb.codingpirates.battleships.network.message.response.GameJoinSpectatorResponse;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
-public class ClientTypeController implements GameJoinSpectatorResponseListener {
+public class ClientTypeController implements Initializable, GameJoinSpectatorResponseListener {
 
     @FXML
     private RadioButton rb_spectator;
@@ -27,14 +34,18 @@ public class ClientTypeController implements GameJoinSpectatorResponseListener {
     private Button closeButton;
 
     private String chosenClient;
-
+    private ClientTypeModel clientTypeModel;
 
     public ClientTypeController() {
         ListenerHandler.registerListener(this);
     }
     @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        clientTypeModel = new ClientTypeModel();
+    }
+    @Override
     public void onGameJoinSpectatorResponse(GameJoinSpectatorResponse message, int messageId){
-
+        this.waiting();
     }
 
     @FXML
@@ -101,13 +112,19 @@ public class ClientTypeController implements GameJoinSpectatorResponseListener {
         }
     }
 
-    public void waiting() throws Exception {
+    public void waiting(){
         Waiting waitingView = new Waiting();
         try {
             waitingView.start(new Stage());
+            waitingView.setCurrentGame(clientTypeModel.getSelectedGame());
             this.closeStage();
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
+
+    public void setSelectedGame(Game selectedGame){
+        clientTypeModel.setSelectedGame(selectedGame);
+    }
+
 }

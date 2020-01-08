@@ -5,6 +5,7 @@ import de.upb.codingpirates.battleships.client.listener.LobbyResponseListener;
 import de.upb.codingpirates.battleships.desktop.lobby.LobbyController;
 import de.upb.codingpirates.battleships.desktop.settings.Settings;
 import de.upb.codingpirates.battleships.desktop.util.Help;
+import de.upb.codingpirates.battleships.logic.Game;
 import de.upb.codingpirates.battleships.network.message.response.LobbyResponse;
 import javafx.application.Application;
 import javafx.application.Platform;
@@ -22,6 +23,7 @@ import java.io.IOException;
 public class Waiting extends Application {
 
     private Stage waitingStage;
+    private WaitingController waitingController;
     public void start(Stage waitingStage) throws IOException {
         this.waitingStage = waitingStage;
 
@@ -31,7 +33,7 @@ public class Waiting extends Application {
         FXMLLoader loader = new FXMLLoader(this.getClass().getResource("/fxml/WaitingView.fxml"));
         AnchorPane pane = loader.load();
 
-        WaitingController waitingController = loader.getController();
+        waitingController = loader.getController();
 
         Image icon = new Image(String.valueOf(getClass().getResource("/images/app_icon.png")));
         waitingStage.getIcons().add(icon);
@@ -39,5 +41,7 @@ public class Waiting extends Application {
         waitingStage.setScene(scene);
         waitingStage.showAndWait();
     }
-
+    public void setCurrentGame(Game currentGame){
+        waitingController.setCurrentGame(currentGame);
+    }
 }
