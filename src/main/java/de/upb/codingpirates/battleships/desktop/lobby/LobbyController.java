@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.*;
 
+import de.upb.codingpirates.battleships.desktop.ingame.InGameModel;
 import de.upb.codingpirates.battleships.desktop.settings.Settings;
 import de.upb.codingpirates.battleships.desktop.ClientType.ClientType;
 import de.upb.codingpirates.battleships.desktop.util.Help;
@@ -81,6 +82,7 @@ public class LobbyController implements Initializable , LobbyResponseListener {
 
         ChangeListener<GameView> changeListener = (arg0, arg1, arg2) -> {
             try {
+                InGameModel inGameModel = new InGameModel(arg2.getContent());
                 ClientType cType = new ClientType();
                 cType.display();
                 closeStage();

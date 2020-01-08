@@ -247,7 +247,7 @@ public class InGameModel extends Application implements InGameModelMessageListen
         inGameController.FinishNotification(points, winner.get(0));
     }
 
-    @Override
+    /*@Override
     public void onGameInitNotification(GameInitNotification message, int clientId) {
         Collection<Client> clients = message.getClientList();
         Configuration config = message.getConfiguration();
@@ -258,12 +258,12 @@ public class InGameModel extends Application implements InGameModelMessageListen
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
-    }
+    } */
 
-    @Override
+    /*@Override
     public void onGameJoinSpectatorResponse(GameJoinSpectatorResponse message, int clientId) {
         start();
-    }
+    }*/
 
     @Override
     public void onGameStartNotification(GameStartNotification message, int clientId) {

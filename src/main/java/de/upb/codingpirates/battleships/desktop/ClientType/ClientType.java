@@ -19,17 +19,6 @@ import java.io.IOException;
 
 public class ClientType {
 
-    @FXML
-    private RadioButton rb_spectator;
-    @FXML
-    private RadioButton rb_player;
-    @FXML
-    private Label lb_choice;
-    @FXML
-    private Button closeButton;
-
-    private String chosenClient;
-
     public void display() throws IOException {
         Stage window = new Stage();
 
@@ -39,6 +28,8 @@ public class ClientType {
         FXMLLoader loader = new FXMLLoader(this.getClass().getResource("/fxml/ClientTypeView.fxml"));
         AnchorPane pane = loader.load();
 
+        ClientTypeController clientTypeController = loader.getController();
+
         Image icon = new Image(String.valueOf(ClientType.class.getResource("/images/app_icon.png")));
         window.getIcons().add(icon);
 
@@ -47,77 +38,5 @@ public class ClientType {
         window.showAndWait();
     }
 
-    @FXML
-    public void player(){
-        System.out.println("Player");
-        chosenClient="Player";
-        //lb_choice.setText("Player is chosen");
-        }
-
-    @FXML
-    public void spectator(){
-        System.out.println("Spectator");
-        chosenClient="Spectator";
-        //lb_choice.setText("Spectator is chosen");
-    }
-
-
-    @FXML
-    public void next() throws Exception {
-        if(chosenClient=="Player"){
-            placeShips();
-        }
-        if(chosenClient=="Spectator"){
-            waiting();
-        }
-        else{
-            back();
-        }
-        closeStage();
-    }
-
-    public void closeStage(){
-        Stage stage = (Stage) closeButton.getScene().getWindow();
-        stage.close();
-    }
-
-    @FXML
-    public void back(){
-        Lobby lobby = new Lobby();
-        Stage lobbyStage = new Stage();
-        try {
-            lobby.start(lobbyStage);
-            closeStage();
-        } catch (IOException e) {
-            e.printStackTrace();//TODO
-        }
-        lobbyStage.setOnCloseRequest(t -> {
-            Platform.exit();
-            System.exit(0);
-        });
-    }
-
-    public void placeShips() throws Exception {
-        Placeships placeships = new Placeships();
-        Stage placeStage = new Stage();
-        try {
-            placeships.start(placeStage);
-        } catch (IOException e) {
-            e.printStackTrace();//TODO
-            placeStage.setOnCloseRequest(t -> {
-                Platform.exit();
-                System.exit(0);
-            });
-        }
-    }
-
-    public void waiting() throws Exception {
-        Waiting waitingView = new Waiting();
-        try {
-            waitingView.start();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
 
 }

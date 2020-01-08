@@ -1,10 +1,12 @@
 package de.upb.codingpirates.battleships.desktop.waiting;
 
+import de.upb.codingpirates.battleships.client.listener.GameInitNotificationListener;
 import de.upb.codingpirates.battleships.client.listener.LobbyResponseListener;
 import de.upb.codingpirates.battleships.desktop.lobby.LobbyController;
 import de.upb.codingpirates.battleships.desktop.settings.Settings;
 import de.upb.codingpirates.battleships.desktop.util.Help;
 import de.upb.codingpirates.battleships.network.message.response.LobbyResponse;
+import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -17,70 +19,25 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class Waiting implements LobbyResponseListener {
-    @FXML
-    private Button closeButton;
+public class Waiting extends Application {
 
-    public void start() throws IOException {
-        Stage window = new Stage();
+    private Stage waitingStage;
+    public void start(Stage waitingStage) throws IOException {
+        this.waitingStage = waitingStage;
 
-        window.initModality(Modality.APPLICATION_MODAL);
-        window.setTitle("Waiting");
+        waitingStage.initModality(Modality.APPLICATION_MODAL);
+        waitingStage.setTitle("Waiting");
 
         FXMLLoader loader = new FXMLLoader(this.getClass().getResource("/fxml/WaitingView.fxml"));
         AnchorPane pane = loader.load();
 
+        WaitingController waitingController = loader.getController();
+
         Image icon = new Image(String.valueOf(getClass().getResource("/images/app_icon.png")));
-        window.getIcons().add(icon);
+        waitingStage.getIcons().add(icon);
         Scene scene = new Scene(pane);
-        window.setScene(scene);
-        window.showAndWait();
+        waitingStage.setScene(scene);
+        waitingStage.showAndWait();
     }
 
-
-    @FXML
-    public void closeStage(){
-        Stage stage = (Stage) closeButton.getScene().getWindow();
-        stage.close();
-    }
-
-    @FXML
-    public void handlerButton(){
-        closeStage();
-        //this.onLobbyResponse();
-
-    }
-
-    @FXML
-    public void help() throws IOException {
-        Help help = new Help();
-        try{
-            help.display("Settings-Help", "Settings");
-        }
-        catch (IOException e){
-            e.printStackTrace();
-        }
-    }
-
-    @FXML
-    public void settings() throws Exception {
-
-        Settings settings = new Settings();
-        Stage settingsStage = new Stage();
-        try {
-            settings.start();
-        } catch (IOException e) {
-            e.printStackTrace();//TODO
-        }
-        settingsStage.setOnCloseRequest(t -> {
-            Platform.exit();
-            System.exit(0);
-        });
-    }
-
-    @Override
-    public void onLobbyResponse(LobbyResponse message, int clientId) {
-        LobbyController lobbyControl = new LobbyController();
-        lobbyControl.parseToGameView(message.getGames());
-    }
 }
