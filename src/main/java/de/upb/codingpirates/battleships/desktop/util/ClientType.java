@@ -50,14 +50,12 @@ public class ClientType {
 
     @FXML
     public void player(){
-        System.out.println("Player");
         chosenClient="Player";
         //lb_choice.setText("Player is chosen");
         }
 
     @FXML
     public void spectator(){
-        System.out.println("Spectator");
         chosenClient="Spectator";
         //lb_choice.setText("Spectator is chosen");
     }

@@ -36,25 +36,13 @@ public class PlaceShipsController implements Initializable {
         stage.close();
     }
 
+    /**
+     * next_Button
+     * @throws Exception
+     */
     @FXML
     public void handlerButton() throws Exception {
-
-        ChangeListener<GameView> changeListener = (arg0, arg1, arg2) -> {
-            InGameModel inGameModel = new InGameModel(arg2.getContent());
-            Stage inGameStage = new Stage();
-            try {
-                inGameModel.start2();
-                closeStage();
-            } catch (Exception e) {
-                e.printStackTrace();
-                inGameStage.setOnCloseRequest((t -> {
-                    Platform.exit();
-                    System.exit(0);
-                }));
-            }
-
-
-        /**Endgame endgame = new Endgame();
+        Endgame endgame = new Endgame();
         Stage endstage = new Stage();
         try {
             endgame.start(endstage);
@@ -65,8 +53,8 @@ public class PlaceShipsController implements Initializable {
         endstage.setOnCloseRequest(t -> {
             Platform.exit();
             System.exit(0);
-        });**/
-    };}
+        });
+    }
 
     @FXML
     public void help() throws IOException {
@@ -121,5 +109,16 @@ public class PlaceShipsController implements Initializable {
     @FXML
     public void gamestart(){
         //TODO
+        Stage inGameStage = new Stage();
+        try {
+            inGameStage.show();
+            closeStage();
+        } catch (Exception e) {
+            e.printStackTrace();
+            inGameStage.setOnCloseRequest((t -> {
+                Platform.exit();
+                System.exit(0);
+            }));
+        };
     }
 }

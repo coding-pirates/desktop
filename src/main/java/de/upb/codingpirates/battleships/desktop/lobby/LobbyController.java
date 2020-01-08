@@ -90,10 +90,12 @@ public class LobbyController implements Initializable , LobbyResponseListener {
         lstvwEnd.setItems(endGames);
 
         ChangeListener<GameView> changeListener = (arg0, arg1, arg2) -> {
-            InGameModel inGameModel = new InGameModel(arg2.getContent());
-            Stage inGameStage = new Stage();
+            ClientType client = new ClientType();
+            //InGameModel inGameModel = new InGameModel(arg2.getContent());
+            //Stage inGameStage = new Stage();
             try {
-                inGameModel.start(inGameStage);
+                client.display();
+                //inGameModel.start(inGameStage);
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -166,8 +168,12 @@ public class LobbyController implements Initializable , LobbyResponseListener {
         });
     }
 
+    /**
+     * nextButton
+     * @throws IOException
+     */
     @FXML
-    public void handlerButton() throws Exception {
+    public void handlerButton() throws IOException {
         try {
             ClientType cType = new ClientType();
             cType.display();

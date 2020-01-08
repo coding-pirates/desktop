@@ -494,7 +494,6 @@ public class InGameController implements Initializable {
 
     @FXML
     public void leave(){
-        //TODO
         Lobby lobby = new Lobby();
         Stage lobbyStage = new Stage();
         try {
