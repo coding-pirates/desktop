@@ -77,7 +77,7 @@
                         <Insets left="10.0" top="15.0" />
                      </HBox.margin>
                </Label>
-                  <Button fx:id="btn_settings11" cache="true" cacheHint="ROTATE" cacheShape="false" contentDisplay="TEXT_ONLY" focusTraversable="false" minHeight="-Infinity" minWidth="-Infinity" onAction="#settings" prefHeight="44.0" prefWidth="55.0" style="-fx-background-color: #CFBE8E;" text="?" textFill="#472218">
+                  <Button cache="true" cacheHint="ROTATE" cacheShape="false" contentDisplay="TEXT_ONLY" focusTraversable="false" minHeight="-Infinity" minWidth="-Infinity" onAction="#settings" prefHeight="44.0" prefWidth="55.0" style="-fx-background-color: #CFBE8E;" text="?" textFill="#472218">
                      <font>
                         <Font name="System Bold" size="22.0" />
                      </font>
@@ -159,12 +159,12 @@
         <Insets bottom="10.0" top="10.0" />
       </VBox.margin>
       <children>
-        <Button contentDisplay="CENTER" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#showRanking" prefHeight="30.0" prefWidth="150.0" style="-fx-background-color: #CFBE8E;" text="Rangliste anzeigen" textFill="WHITE">
+        <Button contentDisplay="CENTER" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#showRanking" onMouseClicked="#showRanking" prefHeight="30.0" prefWidth="162.0" style="-fx-background-color: #CFBE8E;" text="Rangliste anzeigen" textFill="WHITE">
           <font>
             <Font name="System Bold" size="15.0" />
           </font>
                <graphic>
-                  <ImageView fitHeight="55.0" fitWidth="238.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="55.0" fitWidth="221.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../images/button.png" />
                      </image>
@@ -174,7 +174,7 @@
                   <Insets bottom="20.0" top="20.0" />
                </HBox.margin>
         </Button>
-        <Button alignment="CENTER" contentDisplay="CENTER" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#closeModus" prefHeight="30.0" prefWidth="150.0" style="-fx-background-color: #CFBE8E;" text="Schlacht verlassen" textFill="WHITE" HBox.hgrow="ALWAYS">
+        <Button alignment="CENTER" contentDisplay="CENTER" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#leave" onMouseClicked="#closeModus" prefHeight="30.0" prefWidth="150.0" style="-fx-background-color: #CFBE8E;" text="Schlacht verlassen" textFill="WHITE" HBox.hgrow="ALWAYS">
           <font>
             <Font name="System Bold" size="15.0" />
           </font>
@@ -216,16 +216,6 @@
         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="0.0" prefWidth="0.0" style="-fx-background-color: #1A2529;" SplitPane.resizableWithParent="false">
           <children>
             <BorderPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-              <bottom>
-                <Button mnemonicParsing="false" onMouseClicked="#backToView" style="-fx-background-color: #472218;" text="Zurück zur Spielübersicht" textFill="WHITE" BorderPane.alignment="CENTER">
-                  <BorderPane.margin>
-                    <Insets bottom="30.0" />
-                  </BorderPane.margin>
-                  <font>
-                    <Font name="System Bold" size="20.0" />
-                  </font>
-                </Button>
-              </bottom>
               <center>
                 <GridPane fx:id="grid" alignment="CENTER" prefHeight="123.0" prefWidth="5.0" BorderPane.alignment="CENTER">
                   <BorderPane.margin>
