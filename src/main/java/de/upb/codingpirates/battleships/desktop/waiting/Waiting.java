@@ -1,8 +1,9 @@
-package de.upb.codingpirates.battleships.desktop.util;
+package de.upb.codingpirates.battleships.desktop.waiting;
 
 import de.upb.codingpirates.battleships.client.listener.LobbyResponseListener;
 import de.upb.codingpirates.battleships.desktop.lobby.LobbyController;
 import de.upb.codingpirates.battleships.desktop.settings.Settings;
+import de.upb.codingpirates.battleships.desktop.util.Help;
 import de.upb.codingpirates.battleships.network.message.response.LobbyResponse;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
