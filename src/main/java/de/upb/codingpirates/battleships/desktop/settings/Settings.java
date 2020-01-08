@@ -2,7 +2,6 @@ package de.upb.codingpirates.battleships.desktop.settings;
 
 
 
-import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
@@ -23,8 +22,8 @@ public class Settings {
     /**
      * Start Method that creates a new Window and a related Controller.
      */
-    public void start() throws Exception {
-        this.settingsStage = new Stage();
+    public void display(Stage settingsStage) throws Exception {
+        this.settingsStage = settingsStage;
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/SettingsView.fxml"));
         AnchorPane pane = loader.load();
         this.settingsController = loader.getController();

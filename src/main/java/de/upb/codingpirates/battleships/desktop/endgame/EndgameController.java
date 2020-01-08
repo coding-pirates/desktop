@@ -47,7 +47,7 @@ public class EndgameController implements Initializable {
         Settings settings = new Settings();
         Stage settingsStage = new Stage();
         try {
-            settings.start();
+            settings.display(settingsStage);
         }
         catch (IOException e) {
             e.printStackTrace();//TODO
@@ -64,7 +64,7 @@ public class EndgameController implements Initializable {
         Ranking ranking = new Ranking();
         Stage rankingstage = new Stage();
         try {
-            ranking.start();
+            ranking.display(rankingstage);
         } catch (IOException e) {
             e.printStackTrace();//TODO
         }
@@ -79,7 +79,7 @@ public class EndgameController implements Initializable {
         Lobby lobby = new Lobby();
         Stage lobbyStage = new Stage();
         try {
-            lobby.start(lobbyStage);
+            lobby.display(lobbyStage);
             closeStage();
         } catch (IOException e) {
             e.printStackTrace();//TODO

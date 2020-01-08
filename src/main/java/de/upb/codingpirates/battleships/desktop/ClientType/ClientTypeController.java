@@ -76,7 +76,7 @@ public class ClientTypeController implements GameJoinSpectatorResponseListener {
         Lobby lobby = new Lobby();
         Stage lobbyStage = new Stage();
         try {
-            lobby.start(lobbyStage);
+            lobby.display(lobbyStage);
             closeStage();
         } catch (IOException e) {
             e.printStackTrace();//TODO
@@ -91,7 +91,7 @@ public class ClientTypeController implements GameJoinSpectatorResponseListener {
         Placeships placeships = new Placeships();
         Stage placeStage = new Stage();
         try {
-            placeships.start(placeStage);
+            placeships.display(placeStage);
         } catch (IOException e) {
             e.printStackTrace();//TODO
             placeStage.setOnCloseRequest(t -> {
@@ -103,8 +103,9 @@ public class ClientTypeController implements GameJoinSpectatorResponseListener {
 
     public void waiting() throws Exception {
         Waiting waitingView = new Waiting();
+        Stage waitingStage = new Stage();
         try {
-            waitingView.start(new Stage());
+            waitingView.display(waitingStage);
             this.closeStage();
         } catch (IOException e) {
             e.printStackTrace();

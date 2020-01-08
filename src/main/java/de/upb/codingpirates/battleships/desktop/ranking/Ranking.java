@@ -22,8 +22,8 @@ public class Ranking {
     /**
      * Start Method that creates a new Window and a related Controller.
      */
-    public void start() throws Exception {
-        this.rankingStage = new Stage();
+    public void display(Stage rankingStage) throws Exception {
+        this.rankingStage = rankingStage;
         rankingStage.initModality(Modality.APPLICATION_MODAL);
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/RankingView.fxml"));
         AnchorPane pane = loader.load();

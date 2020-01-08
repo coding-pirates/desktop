@@ -17,7 +17,7 @@ import javax.annotation.Nonnull;
 import java.io.IOException;
 import java.net.URL;
 
-public final class BattleshipsDesktopClientApplication extends Application {
+public final class BattleshipsDesktopClientApplication extends Application  {
 
     private Stage startStage;
 
@@ -34,6 +34,7 @@ public final class BattleshipsDesktopClientApplication extends Application {
     public static BattleshipsDesktopClientApplication getInstance() {
         return instance;
     }
+
 
     @Override
     public void init() {

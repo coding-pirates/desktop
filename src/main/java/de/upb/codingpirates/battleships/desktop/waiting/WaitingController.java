@@ -1,13 +1,9 @@
 package de.upb.codingpirates.battleships.desktop.waiting;
 
 import de.upb.codingpirates.battleships.client.ListenerHandler;
-import de.upb.codingpirates.battleships.client.listener.GameInitNotificationListener;
 import de.upb.codingpirates.battleships.client.listener.GameStartNotificationListener;
-import de.upb.codingpirates.battleships.desktop.ingame.InGameModel;
-import de.upb.codingpirates.battleships.desktop.lobby.LobbyController;
 import de.upb.codingpirates.battleships.desktop.settings.Settings;
 import de.upb.codingpirates.battleships.desktop.util.Help;
-import de.upb.codingpirates.battleships.network.message.notification.GameInitNotification;
 import de.upb.codingpirates.battleships.network.message.notification.GameStartNotification;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
@@ -80,7 +76,7 @@ public class WaitingController implements Initializable, GameStartNotificationLi
         Settings settings = new Settings();
         Stage settingsStage = new Stage();
         try {
-            settings.start();
+            settings.display(settingsStage);
         } catch (IOException e) {
             e.printStackTrace();//TODO
         }
