@@ -1,6 +1,5 @@
 package de.upb.codingpirates.battleships.desktop.lobby;
 
-import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
@@ -12,14 +11,14 @@ import java.io.IOException;
 /**
  * Class that initials the Lobby Window.
  */
-public class Lobby extends Application {
+public class Lobby  {
 
     private Stage lobbyStage;
 
     /**
      * Creates a Lobby Window and the related Controller.
      */
-    public void start(Stage lobbyStage) throws IOException {
+    public void display(Stage lobbyStage) throws IOException {
         this.lobbyStage = lobbyStage;
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/Lobby.fxml"));
         AnchorPane pane = loader.load();

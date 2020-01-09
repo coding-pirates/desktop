@@ -84,7 +84,7 @@ public class WaitingController implements Initializable, GameStartNotificationLi
         Settings settings = new Settings();
         Stage settingsStage = new Stage();
         try {
-            settings.start();
+            settings.display(settingsStage);
         } catch (IOException e) {
             e.printStackTrace();//TODO
         }

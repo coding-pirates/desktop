@@ -20,11 +20,11 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class Waiting extends Application {
+public class Waiting  {
 
     private Stage waitingStage;
     private WaitingController waitingController;
-    public void start(Stage waitingStage) throws IOException {
+    public void display(Stage waitingStage) throws IOException {
         this.waitingStage = waitingStage;
 
         waitingStage.initModality(Modality.APPLICATION_MODAL);

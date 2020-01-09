@@ -8,6 +8,8 @@ import de.upb.codingpirates.battleships.desktop.ingame.InGameModel;
 import de.upb.codingpirates.battleships.desktop.settings.Settings;
 import de.upb.codingpirates.battleships.desktop.ClientType.ClientType;
 import de.upb.codingpirates.battleships.desktop.util.Help;
+import de.upb.codingpirates.battleships.logic.Game;
+import de.upb.codingpirates.battleships.network.message.response.LobbyResponse;
 import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
 import javafx.collections.FXCollections;
@@ -83,7 +85,8 @@ public class LobbyController implements Initializable , LobbyResponseListener {
         ChangeListener<GameView> changeListener = (arg0, arg1, arg2) -> {
             try {
                 ClientType cType = new ClientType();
-                cType.display();
+                Stage window = new Stage();
+                cType.display(window);
                 cType.setSelectedGame(arg2.getContent());
                 closeStage();
             } catch (IOException e) {
@@ -157,7 +160,7 @@ public class LobbyController implements Initializable , LobbyResponseListener {
         Settings settings = new Settings();
         Stage settingsStage = new Stage();
         try {
-            settings.start();
+            settings.display(settingsStage);
         } catch (IOException e) {
             e.printStackTrace();//TODO
         }
@@ -171,7 +174,8 @@ public class LobbyController implements Initializable , LobbyResponseListener {
     public void handlerButton() throws Exception {
         try {
             ClientType cType = new ClientType();
-            cType.display();
+            Stage window = new Stage();
+            cType.display(window);
             closeStage();
         } catch (IOException e) {
             e.printStackTrace();

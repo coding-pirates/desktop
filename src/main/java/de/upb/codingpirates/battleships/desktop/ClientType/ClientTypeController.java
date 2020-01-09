@@ -87,7 +87,7 @@ public class ClientTypeController implements Initializable, GameJoinSpectatorRes
         Lobby lobby = new Lobby();
         Stage lobbyStage = new Stage();
         try {
-            lobby.start(lobbyStage);
+            lobby.display(lobbyStage);
             closeStage();
         } catch (IOException e) {
             e.printStackTrace();//TODO
@@ -102,7 +102,7 @@ public class ClientTypeController implements Initializable, GameJoinSpectatorRes
         Placeships placeships = new Placeships();
         Stage placeStage = new Stage();
         try {
-            placeships.start(placeStage);
+            placeships.display(placeStage);
         } catch (IOException e) {
             e.printStackTrace();//TODO
             placeStage.setOnCloseRequest(t -> {
@@ -114,8 +114,9 @@ public class ClientTypeController implements Initializable, GameJoinSpectatorRes
 
     public void waiting(){
         Waiting waitingView = new Waiting();
+        Stage waitingStage = new Stage();
         try {
-            waitingView.start(new Stage());
+            waitingView.display(waitingStage);
             waitingView.setCurrentGame(clientTypeModel.getSelectedGame());
             this.closeStage();
         } catch (IOException e) {

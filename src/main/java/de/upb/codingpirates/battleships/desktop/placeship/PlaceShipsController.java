@@ -1,14 +1,9 @@
 package de.upb.codingpirates.battleships.desktop.placeship;
 
 import de.upb.codingpirates.battleships.desktop.endgame.Endgame;
-import de.upb.codingpirates.battleships.desktop.ingame.InGameModel;
-import de.upb.codingpirates.battleships.desktop.lobby.Lobby;
-import de.upb.codingpirates.battleships.desktop.ranking.Ranking;
 import de.upb.codingpirates.battleships.desktop.settings.Settings;
-import de.upb.codingpirates.battleships.desktop.util.GameView;
 import de.upb.codingpirates.battleships.desktop.util.Help;
 import javafx.application.Platform;
-import javafx.beans.value.ChangeListener;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -57,7 +52,7 @@ public class PlaceShipsController implements Initializable {
         Endgame endgame = new Endgame();
         Stage endstage = new Stage();
         try {
-            endgame.start(endstage);
+            endgame.display(endstage);
             closeStage();
         } catch (IOException e) {
             e.printStackTrace();//TODO
@@ -85,7 +80,7 @@ public class PlaceShipsController implements Initializable {
         Settings settings = new Settings();
         Stage settingsStage = new Stage();
         try {
-            settings.start();
+            settings.display(settingsStage);
         }
         catch (IOException e) {
             e.printStackTrace();//TODO

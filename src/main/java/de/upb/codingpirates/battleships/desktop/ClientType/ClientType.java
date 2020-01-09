@@ -8,9 +8,6 @@ import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.RadioButton;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
@@ -20,8 +17,10 @@ import java.io.IOException;
 
 public class ClientType {
     private ClientTypeController clientTypeController;
-    public void display() throws IOException {
-        Stage window = new Stage();
+    private Stage window;
+
+    public void display(Stage window) throws IOException {
+        this.window=window;
 
         window.initModality(Modality.APPLICATION_MODAL);
         window.setTitle("ClientType");

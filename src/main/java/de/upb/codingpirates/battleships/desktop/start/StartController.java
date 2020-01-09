@@ -48,7 +48,7 @@ public class StartController implements Initializable {
         ServerLogin login = new ServerLogin();
         Stage loginStage = new Stage();
         try {
-            login.start(loginStage);
+            login.display(loginStage);
             closeStage();
         } catch (IOException e) {
             e.printStackTrace();//TODO

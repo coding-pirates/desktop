@@ -146,8 +146,9 @@ public class InGameController implements Initializable {
      */
     public void showRanking() {
         this.ranking = new Ranking();
+        Stage rankingStage = new Stage();
         try {
-            ranking.start();
+            ranking.display(rankingStage);
             if (points != null) {
                 ranking.sortPoints(points);
                 ranking.setPlayer(players);

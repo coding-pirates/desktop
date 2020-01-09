@@ -1,13 +1,5 @@
 package de.upb.codingpirates.battleships.desktop.serverlogin;
 
-import java.io.IOException;
-
-import javafx.application.Platform;
-import javafx.fxml.FXML;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
-import javafx.stage.Stage;
-
 import de.upb.codingpirates.battleships.client.ListenerHandler;
 import de.upb.codingpirates.battleships.client.listener.MessageHandlerListener;
 import de.upb.codingpirates.battleships.client.listener.ServerJoinResponseListener;
@@ -17,7 +9,6 @@ import de.upb.codingpirates.battleships.desktop.settings.Settings;
 import de.upb.codingpirates.battleships.desktop.util.Help;
 import de.upb.codingpirates.battleships.logic.ClientType;
 import de.upb.codingpirates.battleships.network.message.response.ServerJoinResponse;
-import org.apache.logging.log4j.LogManager;
 import javafx.application.Platform;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringPropertyBase;
@@ -119,7 +110,7 @@ public class ServerLoginController implements Initializable, ServerJoinResponseL
             Lobby lobby = new Lobby();
             Stage lobbyStage = new Stage();
             try {
-                lobby.start(lobbyStage);
+                lobby.display(lobbyStage);
             } catch (IOException e) {
                 e.printStackTrace();//TODO
             }
@@ -135,7 +126,7 @@ public class ServerLoginController implements Initializable, ServerJoinResponseL
             Settings settings = new Settings();
             Stage settingsStage = new Stage();
             try {
-                settings.start();
+                settings.display(settingsStage);
             }
             catch (IOException e) {
                 e.printStackTrace();//TODO
@@ -151,7 +142,7 @@ public class ServerLoginController implements Initializable, ServerJoinResponseL
             Lobby lobby = new Lobby();
             Stage lobbyStage = new Stage();
             try {
-                lobby.start(lobbyStage);
+                lobby.display(lobbyStage);
                 closeStage();
             } catch (IOException e) {
                 e.printStackTrace();//TODO
