@@ -11,6 +11,11 @@
 <?import javafx.scene.text.Text?>
 
 <AnchorPane minHeight="330.0" minWidth="300.0" onMouseClicked="#enlargeBoard" prefHeight="660.0" prefWidth="600.0" style="-fx-background-color: #CFBE8E;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.upb.codingpirates.battleships.desktop.gamefield.GameFieldController">
+   <ImageView fitHeight="660.0" fitWidth="600.0" pickOnBounds="true">
+      <image>
+         <Image url="@../images/Background.png" />
+      </image>
+   </ImageView>
   <BorderPane fx:id="borderPane" prefHeight="330.0" prefWidth="300.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
     <top>
       <GridPane alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="552.0" style="-fx-background-color: #CFBE8E;" BorderPane.alignment="CENTER">

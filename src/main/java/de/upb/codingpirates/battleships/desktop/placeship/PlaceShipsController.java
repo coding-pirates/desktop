@@ -1,30 +1,44 @@
 package de.upb.codingpirates.battleships.desktop.placeship;
 
 import de.upb.codingpirates.battleships.desktop.endgame.Endgame;
-import de.upb.codingpirates.battleships.desktop.ingame.InGameModel;
+import de.upb.codingpirates.battleships.desktop.gamefield.GameFieldController;
+import de.upb.codingpirates.battleships.desktop.ingame.InGameController;
 import de.upb.codingpirates.battleships.desktop.lobby.Lobby;
-import de.upb.codingpirates.battleships.desktop.ranking.Ranking;
 import de.upb.codingpirates.battleships.desktop.settings.Settings;
-import de.upb.codingpirates.battleships.desktop.util.GameView;
 import de.upb.codingpirates.battleships.desktop.util.Help;
+import de.upb.codingpirates.battleships.logic.Client;
+import de.upb.codingpirates.battleships.logic.Game;
 import javafx.application.Platform;
-import javafx.beans.value.ChangeListener;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.FlowPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.Collection;
+import java.util.HashMap;
 import java.util.ResourceBundle;
 
 /**
  * Controller Class for the PlaceShips Window.
  */
-public class PlaceShipsController implements Initializable {
+public class PlaceShipsController extends InGameController implements Initializable {
 
     @FXML
     private Button btn_rotate;
+    @FXML
+    private AnchorPane spielfelder;
+    @FXML
+    private BorderPane borderPane;
+    private Game game;
+    private HashMap<Integer, GameFieldController> controllerMap = new HashMap<Integer, GameFieldController>();
+    private HashMap<Integer, Node> fieldMap = new HashMap<Integer, Node>();
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -121,4 +135,27 @@ public class PlaceShipsController implements Initializable {
             }));
         };
     }
+
+    /**
+     * Adds a new GameField and related Controller for every Player.
+     *
+     * @param clientList Collection of all Players.
+     * @throws Exception
+     */
+    public void fieldInit(Collection<Client> clientList) throws Exception {
+            Client client = new Client(1, "self");
+            FXMLLoader loader = new FXMLLoader(this.getClass().getResource("/fxml/GameFieldView.fxml"));
+            Node inGame = loader.load();
+            spielfelder.getChildren().add(inGame);
+            GameFieldController gameFieldController = loader.getController();
+            gameFieldController.setParent(this);
+            gameFieldController.setConfig(client.getName(), game, inGame);
+            gameFieldController.enlargeBoard();
+            gameFieldController.buildBoard(5,5);
+            //controllerMap.put(client.getId(), gameFieldController);                //Create a Map of PlayerId and Controller Object
+            //fieldMap.put(client.getId(), inGame);
+
+    }
+
+
 }

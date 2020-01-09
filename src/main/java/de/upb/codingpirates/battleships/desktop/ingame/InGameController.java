@@ -1,8 +1,10 @@
 package de.upb.codingpirates.battleships.desktop.ingame;
 
+import de.upb.codingpirates.battleships.desktop.endgame.Endgame;
 import de.upb.codingpirates.battleships.desktop.gamefield.GameFieldController;
 import de.upb.codingpirates.battleships.desktop.lobby.Lobby;
 import de.upb.codingpirates.battleships.desktop.ranking.Ranking;
+import de.upb.codingpirates.battleships.desktop.settings.Settings;
 import de.upb.codingpirates.battleships.desktop.util.Help;
 import de.upb.codingpirates.battleships.logic.*;
 import javafx.animation.KeyFrame;
@@ -18,6 +20,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.SplitPane;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
@@ -63,7 +66,7 @@ public class InGameController implements Initializable {
     @FXML
     private Label status;
     @FXML
-    private FlowPane spielfelder;
+    private AnchorPane spielfelder;
     @FXML
     private SplitPane splitPane;
     @FXML
@@ -144,6 +147,7 @@ public class InGameController implements Initializable {
     /**
      * Initializes a Ranking with the Rank, Name and Points of every Player.
      */
+
     @FXML
     public void showRanking() {
         this.ranking = new Ranking();
@@ -313,7 +317,7 @@ public class InGameController implements Initializable {
         Object[] clientArray = clientList.toArray();
         for (Object o : clientArray) {
             Client client = (Client) o;
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("../../../../../resources/GameFieldView.fxml"));
+            FXMLLoader loader = new FXMLLoader(this.getClass().getResource("/fxml/GameFieldView.fxml"));
             inGame = loader.load();
             spielfelder.getChildren().add(inGame);
             GameFieldController gameFieldController = loader.getController();
@@ -471,7 +475,31 @@ public class InGameController implements Initializable {
             Alert alertFinish = new Alert(Alert.AlertType.INFORMATION,
                     "Das Spiel ist vorbei. Der Gewinner ist " + winner, ButtonType.OK);
             alertFinish.showAndWait();
-            showRanking();
+            try {
+                startEndView();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        });
+    }
+
+    /**
+     * starts the EndView with the Winners of the game
+     *
+     * @throws Exception
+     */
+    private void startEndView() throws Exception {
+        Endgame endgame = new Endgame();
+        Stage endStage = new Stage();
+        try {
+            endgame.start(endStage);
+            closeStage();
+        } catch (IOException e) {
+            e.printStackTrace();//TODO
+        }
+        endStage.setOnCloseRequest(t -> {
+            Platform.exit();
+            System.exit(0);
         });
     }
 
@@ -493,14 +521,30 @@ public class InGameController implements Initializable {
     }
 
     @FXML
-    public void leave(){
+    public void settings() throws Exception {
+
+        Settings settings = new Settings();
+        Stage settingsStage = new Stage();
+        try {
+            settings.start();
+        } catch (IOException e) {
+            e.printStackTrace();//TODO
+        }
+        settingsStage.setOnCloseRequest(t -> {
+            Platform.exit();
+            System.exit(0);
+        });
+    }
+
+    @FXML
+    public void leave() throws Exception{
         Lobby lobby = new Lobby();
         Stage lobbyStage = new Stage();
         try {
             lobby.start(lobbyStage);
             closeStage();
         } catch (IOException e) {
-            e.printStackTrace();//TODO
+            e.printStackTrace();
         }
         lobbyStage.setOnCloseRequest(t -> {
             Platform.exit();

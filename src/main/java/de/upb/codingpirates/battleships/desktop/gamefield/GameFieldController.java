@@ -1,6 +1,7 @@
 package de.upb.codingpirates.battleships.desktop.gamefield;
 
 import de.upb.codingpirates.battleships.desktop.ingame.InGameController;
+import de.upb.codingpirates.battleships.desktop.placeship.PlaceShipsController;
 import de.upb.codingpirates.battleships.logic.Game;
 import de.upb.codingpirates.battleships.logic.PlacementInfo;
 import de.upb.codingpirates.battleships.logic.Point2D;
@@ -46,6 +47,7 @@ public class GameFieldController implements Initializable {
     public void setParent(InGameController temp) {
         parent = temp;
     }
+    public void setParent(PlaceShipsController temp){parent = temp;}
 
     public Node getInGame() {
         return inGame;

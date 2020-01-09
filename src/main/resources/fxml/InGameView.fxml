@@ -77,7 +77,7 @@
                         <Insets left="10.0" top="15.0" />
                      </HBox.margin>
                </Label>
-                  <Button cache="true" cacheHint="ROTATE" cacheShape="false" contentDisplay="TEXT_ONLY" focusTraversable="false" minHeight="-Infinity" minWidth="-Infinity" onAction="#settings" prefHeight="44.0" prefWidth="55.0" style="-fx-background-color: #CFBE8E;" text="?" textFill="#472218">
+                  <Button cache="true" cacheHint="ROTATE" cacheShape="false" contentDisplay="TEXT_ONLY" focusTraversable="false" minHeight="-Infinity" minWidth="-Infinity" onAction="#rotate" prefHeight="44.0" prefWidth="55.0" style="-fx-background-color: #CFBE8E;" text="?" textFill="#472218">
                      <font>
                         <Font name="System Bold" size="22.0" />
                      </font>
@@ -150,6 +150,18 @@
                    <Font size="18.0" />
                  </font>
                </Label>
+                  <Button fx:id="btn_settings" cache="true" cacheHint="ROTATE" cacheShape="false" contentDisplay="GRAPHIC_ONLY" focusTraversable="false" minHeight="-Infinity" minWidth="-Infinity" onAction="#settings" prefHeight="40.0" prefWidth="53.0" style="-fx-background-color: #CFBE8E;" text="Settings">
+                     <graphic>
+                        <ImageView fitHeight="38.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/icon_settings.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <HBox.margin>
+                        <Insets left="113.0" />
+                     </HBox.margin>
+                  </Button>
                </children>
             </HBox>
          </children>
@@ -159,7 +171,7 @@
         <Insets bottom="10.0" top="10.0" />
       </VBox.margin>
       <children>
-        <Button contentDisplay="CENTER" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#showRanking" onMouseClicked="#showRanking" prefHeight="30.0" prefWidth="162.0" style="-fx-background-color: #CFBE8E;" text="Rangliste anzeigen" textFill="WHITE">
+        <Button contentDisplay="CENTER" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#showRanking" prefHeight="30.0" prefWidth="162.0" style="-fx-background-color: #CFBE8E;" text="Rangliste anzeigen" textFill="WHITE">
           <font>
             <Font name="System Bold" size="15.0" />
           </font>
@@ -174,7 +186,7 @@
                   <Insets bottom="20.0" top="20.0" />
                </HBox.margin>
         </Button>
-        <Button alignment="CENTER" contentDisplay="CENTER" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#leave" onMouseClicked="#closeModus" prefHeight="30.0" prefWidth="150.0" style="-fx-background-color: #CFBE8E;" text="Schlacht verlassen" textFill="WHITE" HBox.hgrow="ALWAYS">
+        <Button alignment="CENTER" contentDisplay="CENTER" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#leave" prefHeight="30.0" prefWidth="150.0" style="-fx-background-color: #CFBE8E;" text="Schlacht verlassen" textFill="WHITE" HBox.hgrow="ALWAYS">
           <font>
             <Font name="System Bold" size="15.0" />
           </font>
@@ -197,23 +209,16 @@
           <children>
             <ScrollPane fitToHeight="true" fitToWidth="true" prefHeight="257.0" prefWidth="600.0" style="-fx-background-color: #1A2529;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
               <content>
-                <FlowPane fx:id="spielfelder" hgap="10.0" style="-fx-background-color: #1A2529;" vgap="10.0">
+                <FlowPane fx:id="spielfelder" hgap="10.0" style="-fx-background-color: #CFBE8E;" vgap="10.0">
                   <padding>
                     <Insets bottom="10.0" left="10.0" top="10.0" />
                   </padding>
-                           <children>
-                              <ImageView pickOnBounds="true">
-                                 <image>
-                                    <Image url="@../images/Background.png" />
-                                 </image>
-                              </ImageView>
-                           </children>
                 </FlowPane>
               </content>
             </ScrollPane>
           </children>
         </AnchorPane>
-        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="0.0" prefWidth="0.0" style="-fx-background-color: #1A2529;" SplitPane.resizableWithParent="false">
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="0.0" prefWidth="0.0" style="-fx-background-color: #CFBE8E;" SplitPane.resizableWithParent="false">
           <children>
             <BorderPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
               <center>

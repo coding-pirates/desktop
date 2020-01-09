@@ -3,14 +3,12 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
@@ -84,36 +82,16 @@
             </HBox>
             <Button contentDisplay="CENTER" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#gamestart" prefHeight="36.0" prefWidth="170.0" style="-fx-background-color: #CFBE8E;" text="Let's start the Game!" textFill="#f8f7f7" />
             <Button mnemonicParsing="false" onAction="#handlerButton" text="next" />
-            <SplitPane fx:id="splitPane" dividerPositions="1.0" prefHeight="160.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+            <SplitPane fx:id="splitPane" prefHeight="160.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
                <items>
-                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" SplitPane.resizableWithParent="false">
+                  <AnchorPane fx:id="spielfelder" minHeight="0.0" minWidth="0.0" prefHeight="710.0" prefWidth="1200.0" style="-fx-background-color: #CFBE8E;" SplitPane.resizableWithParent="false">
                      <children>
-                        <ScrollPane fitToHeight="true" fitToWidth="true" prefHeight="257.0" prefWidth="600.0" style="-fx-background-color: #1A2529;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                           <content>
-                              <FlowPane fx:id="spielfelder" hgap="10.0" style="-fx-background-color: #1A2529;" vgap="10.0">
-                                 <padding>
-                                    <Insets bottom="10.0" left="10.0" top="10.0" />
-                                 </padding>
-                                 <children>
-                                    <ImageView pickOnBounds="true">
-                                       <image>
-                                          <Image url="@../images/Background.png" />
-                                       </image>
-                                    </ImageView>
-                                 </children>
-                              </FlowPane>
-                           </content>
-                        </ScrollPane>
-                     </children>
-                  </AnchorPane>
-                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="710.0" prefWidth="1200.0" style="-fx-background-color: #1A2529;" SplitPane.resizableWithParent="false">
-                     <children>
-                        <BorderPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                        <BorderPane fx:id="borderPane" style="-fx-background-color: #CFBE8E;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <padding>
+                              <Insets top="30.0" />
+                           </padding>
                            <center>
                               <GridPane fx:id="grid" alignment="CENTER" prefHeight="123.0" prefWidth="5.0" BorderPane.alignment="CENTER">
-                                 <BorderPane.margin>
-                                    <Insets bottom="30.0" left="30.0" right="30.0" />
-                                 </BorderPane.margin>
                                  <columnConstraints>
                                     <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="10.0" prefWidth="600.0" />
                                  </columnConstraints>
@@ -122,9 +100,6 @@
                                  </rowConstraints>
                               </GridPane>
                            </center>
-                           <padding>
-                              <Insets top="30.0" />
-                           </padding>
                         </BorderPane>
                      </children>
                   </AnchorPane>
