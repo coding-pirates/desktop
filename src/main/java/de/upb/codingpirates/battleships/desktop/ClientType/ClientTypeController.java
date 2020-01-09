@@ -45,7 +45,10 @@ public class ClientTypeController implements Initializable, GameJoinSpectatorRes
     }
     @Override
     public void onGameJoinSpectatorResponse(GameJoinSpectatorResponse message, int messageId){
+        Platform.runLater(()->{
         this.waiting();
+        this.closeStage();
+        });
     }
 
     @FXML
@@ -69,12 +72,11 @@ public class ClientTypeController implements Initializable, GameJoinSpectatorRes
             placeShips();
         }
         if(chosenClient=="Spectator"){
-            waiting();
+           clientTypeModel.sendGameJoinSpectatorRequest();
         }
         else{
             back();
         }
-        closeStage();
     }
 
     public void closeStage(){

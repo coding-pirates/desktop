@@ -86,8 +86,7 @@ public class LobbyController implements Initializable , LobbyResponseListener {
             try {
                 ClientType cType = new ClientType();
                 Stage window = new Stage();
-                cType.display(window);
-                cType.setSelectedGame(arg2.getContent());
+                cType.display(window, arg2.getContent());
                 closeStage();
             } catch (IOException e) {
                 e.printStackTrace();
@@ -172,14 +171,14 @@ public class LobbyController implements Initializable , LobbyResponseListener {
 
     @FXML
     public void handlerButton() throws Exception {
-        try {
+       /* try {
             ClientType cType = new ClientType();
             Stage window = new Stage();
-            cType.display(window);
+            //cType.display(window);
             closeStage();
         } catch (IOException e) {
             e.printStackTrace();
-        }
+        } */
     }
 
     @FXML
