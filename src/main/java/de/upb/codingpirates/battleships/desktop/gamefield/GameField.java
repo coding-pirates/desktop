@@ -4,8 +4,10 @@ import de.upb.codingpirates.battleships.logic.Point2D;
 import javafx.beans.property.ReadOnlyDoubleProperty;
 import javafx.geometry.Pos;
 import javafx.scene.control.Tooltip;
+import javafx.scene.image.Image;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
+import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Rectangle;
 
 import java.util.HashMap;
@@ -48,7 +50,8 @@ public class GameField {
                 Rectangle rectangle = new Rectangle(1, 1);
                 rectangle.widthProperty().bind(widthProperty.divide(nbColumn + (nbColumn - 1) * 0.4));
                 rectangle.heightProperty().bind(heightProperty.divide(nbRow + (nbRow - 1) * 0.4));
-                rectangle.setFill(Color.WHITE);
+                Image img = new Image(String.valueOf(GameField.class.getResource("/images/field.png")));
+                rectangle.setFill(new ImagePattern(img));
                 gameField.add(rectangle, i, j);
                 map.put(i + "," + ((nbRow - 1) - j), rectangle);
             }

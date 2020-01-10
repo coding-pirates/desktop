@@ -87,13 +87,13 @@
                <items>
                   <AnchorPane fx:id="spielfelder" minHeight="0.0" minWidth="0.0" prefHeight="710.0" prefWidth="1200.0" style="-fx-background-color: #CFBE8E;" SplitPane.resizableWithParent="false">
                      <children>
-                        <ScrollPane prefHeight="633.0" prefWidth="1200.0">
+                        <ScrollPane prefHeight="633.0" prefWidth="1200.0" AnchorPane.bottomAnchor="-2.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-2.0" AnchorPane.topAnchor="0.0">
                           <content>
                             <AnchorPane fx:id="anchorPane" minHeight="0.0" minWidth="0.0" prefHeight="632.0" prefWidth="1197.0" style="-fx-background-color: #CFBE8E;">
                                  <children>
                                     <BorderPane fx:id="borderPane" prefHeight="200.0" prefWidth="200.0">
                                        <center>
-                                          <GridPane fx:id="grid" alignment="CENTER" prefHeight="357.0" prefWidth="720.0" BorderPane.alignment="CENTER">
+                                          <GridPane fx:id="grid" alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="633.0" prefWidth="1200.0" BorderPane.alignment="CENTER">
                                              <columnConstraints>
                                                 <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="10.0" prefWidth="600.0" />
                                              </columnConstraints>
