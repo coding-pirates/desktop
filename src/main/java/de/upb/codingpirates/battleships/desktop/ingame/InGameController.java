@@ -2,6 +2,7 @@ package de.upb.codingpirates.battleships.desktop.ingame;
 
 import de.upb.codingpirates.battleships.desktop.gamefield.GameFieldController;
 import de.upb.codingpirates.battleships.desktop.ranking.Ranking;
+import de.upb.codingpirates.battleships.desktop.settings.Settings;
 import de.upb.codingpirates.battleships.desktop.util.Help;
 import de.upb.codingpirates.battleships.logic.*;
 import javafx.animation.KeyFrame;
@@ -71,6 +72,7 @@ public class InGameController implements Initializable {
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
         this.model = new InGameModel();
+        model.setInGameController(this);
     }
 
     /**
@@ -313,7 +315,7 @@ public class InGameController implements Initializable {
         Object[] clientArray = clientList.toArray();
         for (Object o : clientArray) {
             Client client = (Client) o;
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("../../../../../resources/GameFieldView.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/GameFieldView.fxml"));
             inGame = loader.load();
             spielfelder.getChildren().add(inGame);
             GameFieldController gameFieldController = loader.getController();
@@ -485,5 +487,20 @@ public class InGameController implements Initializable {
         catch (IOException e){
             e.printStackTrace();
         }
+    }
+    @FXML
+    public void settings() throws Exception {
+
+        Settings settings = new Settings();
+        Stage settingsStage = new Stage();
+        try {
+            settings.display(settingsStage);
+        } catch (IOException e) {
+            e.printStackTrace();//TODO
+        }
+        settingsStage.setOnCloseRequest(t -> {
+            Platform.exit();
+            System.exit(0);
+        });
     }
 }

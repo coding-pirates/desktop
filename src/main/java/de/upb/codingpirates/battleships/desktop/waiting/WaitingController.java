@@ -8,6 +8,7 @@ import de.upb.codingpirates.battleships.desktop.ingame.InGameModel;
 import de.upb.codingpirates.battleships.desktop.lobby.LobbyController;
 import de.upb.codingpirates.battleships.desktop.settings.Settings;
 import de.upb.codingpirates.battleships.desktop.util.Help;
+import de.upb.codingpirates.battleships.logic.Client;
 import de.upb.codingpirates.battleships.logic.Game;
 import de.upb.codingpirates.battleships.network.message.notification.GameInitNotification;
 import de.upb.codingpirates.battleships.network.message.notification.GameStartNotification;
@@ -19,14 +20,16 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.Collection;
 import java.util.ResourceBundle;
 
-public class WaitingController implements Initializable, GameStartNotificationListener {
+public class WaitingController implements Initializable, GameStartNotificationListener, GameInitNotificationListener {
 
     @FXML
     private Button closeButton;
 
     private Game currentGame;
+    private Collection<Client> clientList;
 
     public WaitingController(){
         ListenerHandler.registerListener(this);
@@ -45,8 +48,7 @@ public class WaitingController implements Initializable, GameStartNotificationLi
             InGame inGame = new InGame();
         Stage inGameStage = new Stage();
         try {
-            inGame.start(inGameStage);
-            inGame.setCurrentGame(currentGame);
+            inGame.start(inGameStage,currentGame, clientList);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -54,6 +56,10 @@ public class WaitingController implements Initializable, GameStartNotificationLi
        /* LobbyController lobbyControl = new LobbyController();
         lobbyControl.parseToGameView(message.getGames());
         */
+    }
+    @Override
+    public void onGameInitNotification(GameInitNotification message, int clientId) {
+        this.clientList = message.getClientList();
     }
     @FXML
     public void closeStage(){

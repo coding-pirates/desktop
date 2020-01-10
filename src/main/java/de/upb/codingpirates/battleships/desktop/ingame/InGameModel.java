@@ -47,6 +47,10 @@ public class InGameModel extends Application implements InGameModelMessageListen
         ListenerHandler.registerListener(this);
     }
 
+    public void setInGameController(InGameController controller){
+        this.inGameController = controller;
+    }
+
     public void setGame(Game game){
         this.ausgewaehltesSpiel = game;
     }
@@ -140,8 +144,9 @@ public class InGameModel extends Application implements InGameModelMessageListen
 
     public void start2() throws Exception {
         inGameController.setModel(this);
-        inGameController.spectatorGameStateResponse(player, shots, ships, gameState);
         inGameController.setGame(ausgewaehltesSpiel);
+        inGameController.spectatorGameStateResponse(player, shots, ships, gameState);
+
         /*
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/InGameView.fxml"));
         AnchorPane pane = loader.load();
@@ -241,14 +246,18 @@ public class InGameModel extends Application implements InGameModelMessageListen
 
     @Override
     public void onContinueNotification(ContinueNotification message, int clientId) {
-        inGameController.continueNotification();
+        Platform.runLater(()-> {
+            inGameController.continueNotification();
+        });
     }
 
     @Override
     public void onFinishNotification(FinishNotification message, int clientId) {
-        Map<Integer, Integer> points = message.getPoints();
-        List<Integer> winner = Lists.newArrayList(message.getWinner());
-        inGameController.FinishNotification(points, winner.get(0));
+        Platform.runLater(()-> {
+            Map<Integer, Integer> points = message.getPoints();
+            List<Integer> winner = Lists.newArrayList(message.getWinner());
+            inGameController.FinishNotification(points, winner.get(0));
+        });
     }
 
     /*@Override
@@ -276,38 +285,47 @@ public class InGameModel extends Application implements InGameModelMessageListen
 
     @Override
     public void onLeaveNotification(LeaveNotification message, int clientId) {
-        int playerId = message.getPlayerId();
-        inGameController.leaveNotification(playerId);
+        Platform.runLater(()-> {
+            int playerId = message.getPlayerId();
+            inGameController.leaveNotification(playerId);
+        });
     }
 
     @Override
     public void onPauseNotification(PauseNotification message, int clientId) {
-        inGameController.pauseNotification();
+        Platform.runLater(()-> {
+            inGameController.pauseNotification();
+        });
     }
 
     @Override
     public void onPointsResponse(PointsResponse message, int clientId) {
-        Map<Integer, Integer> points = message.getPoints();
-        inGameController.setPoints(points);
+        Platform.runLater(()-> {
+            Map<Integer, Integer> points = message.getPoints();
+            inGameController.setPoints(points);
+        });
     }
 
     @Override
     public void onRemainingTimeResponse(RemainingTimeResponse message, int clientId) {
-        Long rtime = message.getTime();
-        inGameController.remainingTimeResponse(rtime);
+        Platform.runLater(()-> {
+            Long rtime = message.getTime();
+            inGameController.remainingTimeResponse(rtime);
+        });
     }
 
     @Override
     public void onRoundStartNotification(RoundStartNotification message, int clientId) {
-        inGameController.roundStartNotification();
+        Platform.runLater(()-> {
+            inGameController.roundStartNotification();
+        });
     }
 
     @Override
     public void onSpectatorGameStateResponse(SpectatorGameStateResponse message, int clientId) {
-        setGameStateResult(message);
         Platform.runLater(()-> {
+            setGameStateResult(message);
             try {
-
                 start2();
 
             } catch (Exception e) {
@@ -318,10 +336,12 @@ public class InGameModel extends Application implements InGameModelMessageListen
 
     @Override
     public void onSpectatorUpdateNotification(SpectatorUpdateNotification message, int clientId) {
-        Collection<Shot> hits = message.getHits();
-        Map<Integer, Integer> points = message.getPoints();
-        Collection<Shot> sunk = message.getSunk();
-        Collection<Shot> missed = message.getMissed();
-        inGameController.spectatorUpdateNotification(hits, points, sunk, missed);
+        Platform.runLater(()-> {
+            Collection<Shot> hits = message.getHits();
+            Map<Integer, Integer> points = message.getPoints();
+            Collection<Shot> sunk = message.getSunk();
+            Collection<Shot> missed = message.getMissed();
+            inGameController.spectatorUpdateNotification(hits, points, sunk, missed);
+        });
     }
 }

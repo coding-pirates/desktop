@@ -24,7 +24,7 @@ public class Waiting  {
 
     private Stage waitingStage;
     private WaitingController waitingController;
-    public void display(Stage waitingStage) throws IOException {
+    public void display(Stage waitingStage, Game currentGame) throws IOException {
         this.waitingStage = waitingStage;
 
         waitingStage.initModality(Modality.APPLICATION_MODAL);
@@ -34,6 +34,7 @@ public class Waiting  {
         AnchorPane pane = loader.load();
 
         waitingController = loader.getController();
+        waitingController.setCurrentGame(currentGame);
 
         Image icon = new Image(String.valueOf(getClass().getResource("/images/app_icon.png")));
         waitingStage.getIcons().add(icon);
