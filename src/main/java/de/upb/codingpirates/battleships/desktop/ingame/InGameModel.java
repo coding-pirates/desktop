@@ -10,6 +10,7 @@ import de.upb.codingpirates.battleships.network.message.request.RemainingTimeReq
 import de.upb.codingpirates.battleships.network.message.request.SpectatorGameStateRequest;
 import de.upb.codingpirates.battleships.network.message.response.*;
 import javafx.application.Application;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
@@ -146,7 +147,7 @@ public class InGameModel extends Application implements InGameModelMessageListen
         inGameStage.show();
         //inGameController.spectatorGameStateResponse(player, shots, ships, gameState);
         inGameController.setGame(ausgewaehltesSpiel);
-        
+
     }
 
     /**
@@ -318,4 +319,6 @@ public class InGameModel extends Application implements InGameModelMessageListen
     public void onLobbyResponse(LobbyResponse message, int clientId) {
 
     }
+
+
 }

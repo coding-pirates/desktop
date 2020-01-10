@@ -182,7 +182,7 @@ public class InGameController implements Initializable {
             sunkPoints.setText(Integer.toString(game.getConfig().getSunkPoints()));
             roundTime.setText(Long.toString(game.getConfig().getRoundTime()));
             controllerMap.forEach((client, controller) -> {
-                controller.buildBoard(10,10);
+                controller.buildBoard(10, 10);
                 //controller.buildBoard(game.getConfig().getHeight(), game.getConfig().getWidth());
             });
 
@@ -293,7 +293,6 @@ public class InGameController implements Initializable {
             controller.shot(shot.getTargetField());
         }
     }
-
 
 
     /**
@@ -496,15 +495,14 @@ public class InGameController implements Initializable {
     @FXML
     public void help() throws IOException {
         Help help = new Help();
-        try{
+        try {
             help.display("InGame-Help", "InGame-Help");
-        }
-        catch (IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    public void closeStage(){
+    public void closeStage() {
         Stage stage = (Stage) shotCount.getScene().getWindow();
         stage.close();
     }
@@ -526,7 +524,7 @@ public class InGameController implements Initializable {
     }
 
     @FXML
-    public void leave() throws Exception{
+    public void leave() throws Exception {
         Lobby lobby = new Lobby();
         Stage lobbyStage = new Stage();
         try {
@@ -536,6 +534,22 @@ public class InGameController implements Initializable {
             e.printStackTrace();
         }
         lobbyStage.setOnCloseRequest(t -> {
+            Platform.exit();
+            System.exit(0);
+        });
+    }
+
+    @FXML
+    public void next() {
+        Endgame endgame = new Endgame();
+        Stage endstage = new Stage();
+        try {
+            endgame.start(endstage);
+            closeStage();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        endstage.setOnCloseRequest(t -> {
             Platform.exit();
             System.exit(0);
         });

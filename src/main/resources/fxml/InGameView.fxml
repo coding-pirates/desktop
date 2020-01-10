@@ -77,7 +77,7 @@
                         <Insets left="10.0" top="15.0" />
                      </HBox.margin>
                </Label>
-                  <Button cache="true" cacheHint="ROTATE" cacheShape="false" contentDisplay="TEXT_ONLY" focusTraversable="false" minHeight="-Infinity" minWidth="-Infinity" onAction="#rotate" prefHeight="44.0" prefWidth="55.0" style="-fx-background-color: #CFBE8E;" text="?" textFill="#472218">
+                  <Button cache="true" cacheHint="ROTATE" cacheShape="false" contentDisplay="TEXT_ONLY" focusTraversable="false" minHeight="-Infinity" minWidth="-Infinity" onAction="#help" prefHeight="44.0" prefWidth="55.0" style="-fx-background-color: #CFBE8E;" text="?" textFill="#472218">
                      <font>
                         <Font name="System Bold" size="22.0" />
                      </font>
@@ -218,7 +218,7 @@
             </ScrollPane>
           </children>
         </AnchorPane>
-        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="0.0" prefWidth="0.0" style="-fx-background-color: #CFBE8E;" SplitPane.resizableWithParent="false">
+        <AnchorPane fx:id="pane" minHeight="0.0" minWidth="0.0" prefHeight="0.0" prefWidth="0.0" style="-fx-background-color: #CFBE8E;" SplitPane.resizableWithParent="false">
           <children>
             <BorderPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
               <center>
@@ -243,4 +243,5 @@
       </items>
     </SplitPane>
   </VBox>
+   <Button mnemonicParsing="false" onAction="#next" text="next" />
 </AnchorPane>
