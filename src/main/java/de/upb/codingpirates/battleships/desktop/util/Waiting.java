@@ -1,8 +1,10 @@
 package de.upb.codingpirates.battleships.desktop.util;
 
 import de.upb.codingpirates.battleships.client.listener.LobbyResponseListener;
+import de.upb.codingpirates.battleships.desktop.ingame.InGameModel;
 import de.upb.codingpirates.battleships.desktop.lobby.LobbyController;
 import de.upb.codingpirates.battleships.desktop.settings.Settings;
+import de.upb.codingpirates.battleships.logic.Game;
 import de.upb.codingpirates.battleships.network.message.response.LobbyResponse;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
@@ -19,6 +21,7 @@ import java.io.IOException;
 public class Waiting implements LobbyResponseListener {
     @FXML
     private Button closeButton;
+    Game game;
 
     public void start() throws IOException {
         Stage window = new Stage();
@@ -46,7 +49,18 @@ public class Waiting implements LobbyResponseListener {
 
     @FXML
     public void handlerButton(){
-        closeStage();
+        InGameModel inGameModel = new InGameModel(game);
+        Stage inGameStage = new Stage();
+        try {
+            inGameModel.start2(inGameStage);
+            closeStage();
+        } catch (Exception e) {
+            e.printStackTrace();
+            inGameStage.setOnCloseRequest((t -> {
+                Platform.exit();
+                System.exit(0);
+            }));
+        };
         //this.onLobbyResponse();
 
     }
