@@ -4,29 +4,26 @@ import de.upb.codingpirates.battleships.desktop.endgame.Endgame;
 import de.upb.codingpirates.battleships.desktop.gamefield.GameField;
 import de.upb.codingpirates.battleships.desktop.gamefield.GameFieldController;
 import de.upb.codingpirates.battleships.desktop.ingame.InGameController;
+import de.upb.codingpirates.battleships.desktop.ingame.InGameModel;
 import de.upb.codingpirates.battleships.desktop.lobby.Lobby;
 import de.upb.codingpirates.battleships.desktop.settings.Settings;
 import de.upb.codingpirates.battleships.desktop.util.Help;
 import de.upb.codingpirates.battleships.logic.Client;
 import de.upb.codingpirates.battleships.logic.Game;
+import de.upb.codingpirates.battleships.logic.PlacementInfo;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.FlowPane;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.ResourceBundle;
+import java.util.*;
 
 /**
  * Controller Class for the PlaceShips Window.
@@ -37,11 +34,17 @@ public class PlaceShipsController extends InGameController implements Initializa
     private Button btn_rotate;
     @FXML
     private BorderPane borderPane;
+    @FXML
+    private GridPane grid;
 
     private int height;
     private int width;
     private GameField gameField;
     private String[][] type;
+    private HashMap<Integer, GameFieldController> controllerMap = new HashMap<Integer, GameFieldController>();
+    private Game game;
+
+
 
     public PlaceShipsController() {
     }
@@ -130,9 +133,10 @@ public class PlaceShipsController extends InGameController implements Initializa
     @FXML
     public void gamestart(){
         //TODO
+        InGameModel inGameModel = new InGameModel(game);
         Stage inGameStage = new Stage();
         try {
-            inGameStage.show();
+            inGameModel.start2(inGameStage);
             closeStage();
         } catch (Exception e) {
             e.printStackTrace();
@@ -152,6 +156,8 @@ public class PlaceShipsController extends InGameController implements Initializa
     public void fieldInit(Collection<Client> clientList) throws Exception {
         buildBoard(20,20);
 
+
+
     }
 
     /**
@@ -169,7 +175,31 @@ public class PlaceShipsController extends InGameController implements Initializa
                 type[i][j] = "water";
             }
         }
+
     }
 
+    /**
+     * Starts placeShip() in the Controller of every GameField.
+     *
+     * @param ships Map of Ships and PlacementInfo
+     */
+    public void placeShips(Map<Integer, Map<Integer, PlacementInfo>> ships) {
+        Set<Integer> keys = ships.keySet();
+        Object[] keysArray = keys.toArray();
+        for (Object o : keysArray) {
+            GameFieldController controller = controllerMap.get(o);
+            controller.placeShips(ships.get(o), game.getConfig().getShips());
+        }
+    }
+
+    public void clickGrid(javafx.scene.input.MouseEvent event) {
+        Node clickedNode = event.getPickResult().getIntersectedNode();
+        if (clickedNode != grid) {
+            // click on descendant node
+            Integer colIndex = GridPane.getColumnIndex(clickedNode);
+            Integer rowIndex = GridPane.getRowIndex(clickedNode);
+            System.out.println("Mouse clicked cell: " + colIndex + " And: " + rowIndex);
+        }
+    }
 
 }

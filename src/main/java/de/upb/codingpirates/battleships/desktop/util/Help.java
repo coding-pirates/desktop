@@ -20,6 +20,9 @@ public class Help {
     @FXML
     private Label lb_message;
 
+    @FXML
+    private AnchorPane anchorPane;
+
 
     public void display(String title, String message) throws IOException {
         Stage window = new Stage();
@@ -31,6 +34,7 @@ public class Help {
 
         FXMLLoader loader = new FXMLLoader(this.getClass().getResource("/fxml/HelpView.fxml"));
         AnchorPane pane = loader.load();
+
 
         Image icon = new Image(String.valueOf(getClass().getResource("/images/app_icon.png")));
         window.getIcons().add(icon);

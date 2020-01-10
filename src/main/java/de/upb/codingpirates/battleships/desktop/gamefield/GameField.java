@@ -76,19 +76,21 @@ public class GameField {
      */
     public void shipHit(Point2D shot) {
         String point = (shot.getX() + "," + shot.getY());
-        map.get(point).setFill(Color.GREY);
+        Image img = new Image(String.valueOf(GameField.class.getResource("/images/field_hit.png")));
+        map.get(point).setFill(new ImagePattern(img));
         Tooltip toolTip = new Tooltip("Beschossen von Spieler");
         Tooltip.install(map.get(point), toolTip);
     }
 
     /**
-     * Paints the Field blue where a WaterField was hit by a Shot.
+     * Points the Field blue where a WaterField was hit by a Shot.
      *
      * @param shot
      */
     public void waterHit(Point2D shot) {
         String point = (shot.getX() + "," + shot.getY());
-        map.get(point).setFill(Color.BLUE);
+        Image img = new Image(String.valueOf(GameField.class.getResource("/images/field_hit.png")));
+        map.get(point).setFill(new ImagePattern(img));
         Tooltip toolTip = new Tooltip("Beschossen von Spieler");
         Tooltip.install(map.get(point), toolTip);
     }

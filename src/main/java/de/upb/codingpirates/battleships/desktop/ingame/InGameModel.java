@@ -134,7 +134,7 @@ public class InGameModel extends Application implements InGameModelMessageListen
         sendGameStateRequest();
     }
 
-    public void start2() throws Exception {
+    public void start2(Stage inGameStage) throws Exception {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/InGameView.fxml"));
         AnchorPane pane = loader.load();
         inGameController = loader.getController();
@@ -143,10 +143,10 @@ public class InGameModel extends Application implements InGameModelMessageListen
         inGameStage.getIcons().add(icon);
         inGameStage.setTitle("InGame");
         inGameStage.setScene(new Scene(pane));
-        inGameStage.setMaximized(true);
         inGameStage.show();
-        inGameController.spectatorGameStateResponse(player, shots, ships, gameState);
+        //inGameController.spectatorGameStateResponse(player, shots, ships, gameState);
         inGameController.setGame(ausgewaehltesSpiel);
+        
     }
 
     /**
@@ -157,9 +157,9 @@ public class InGameModel extends Application implements InGameModelMessageListen
     public void sendGameJoinSpectatorRequest() {
         try {
             BattleshipsDesktopClientApplication
-                .getInstance()
-                .getTcpConnector()
-                .sendMessageToServer(new GameJoinSpectatorRequest(ausgewaehltesSpiel.getId()));
+                    .getInstance()
+                    .getTcpConnector()
+                    .sendMessageToServer(new GameJoinSpectatorRequest(ausgewaehltesSpiel.getId()));
 
         } catch (Exception e) {
             System.out.println("Konnte GameJoin Request nicht schicken: " + e);
@@ -177,9 +177,9 @@ public class InGameModel extends Application implements InGameModelMessageListen
         // send to server
         try {
             BattleshipsDesktopClientApplication
-                .getInstance()
-                .getTcpConnector()
-                .sendMessageToServer(new SpectatorGameStateRequest());
+                    .getInstance()
+                    .getTcpConnector()
+                    .sendMessageToServer(new SpectatorGameStateRequest());
         } catch (Exception e) {
             System.out.println("Konnte GameState Request nicht schicken: " + e);
         }
@@ -207,9 +207,9 @@ public class InGameModel extends Application implements InGameModelMessageListen
     public void remainingTimeRequest() {
         try {
             BattleshipsDesktopClientApplication
-                .getInstance()
-                .getTcpConnector()
-                .sendMessageToServer(new RemainingTimeRequest());
+                    .getInstance()
+                    .getTcpConnector()
+                    .sendMessageToServer(new RemainingTimeRequest());
         } catch (Exception e) {
             System.out.println("Konnte Remaining Time Request nicht schicken: " + e);
         }
@@ -224,9 +224,9 @@ public class InGameModel extends Application implements InGameModelMessageListen
     public void pointsRequest() {
         try {
             BattleshipsDesktopClientApplication
-                .getInstance()
-                .getTcpConnector()
-                .sendMessageToServer(new PointsRequest());
+                    .getInstance()
+                    .getTcpConnector()
+                    .sendMessageToServer(new PointsRequest());
         } catch (Exception e) {
             System.out.println("Konnte Points Request nicht schicken: " + e);
         }
@@ -299,7 +299,7 @@ public class InGameModel extends Application implements InGameModelMessageListen
     public void onSpectatorGameStateResponse(SpectatorGameStateResponse message, int clientId) {
         setGameStateResult(message);
         try {
-            start2();
+            start2(inGameStage);
         } catch (Exception e) {
             e.printStackTrace();
         }

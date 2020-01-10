@@ -66,7 +66,7 @@ public class InGameController implements Initializable {
     @FXML
     private Label status;
     @FXML
-    private AnchorPane spielfelder;
+    private FlowPane spielfelder;
     @FXML
     private SplitPane splitPane;
     @FXML
@@ -182,7 +182,8 @@ public class InGameController implements Initializable {
             sunkPoints.setText(Integer.toString(game.getConfig().getSunkPoints()));
             roundTime.setText(Long.toString(game.getConfig().getRoundTime()));
             controllerMap.forEach((client, controller) -> {
-                controller.buildBoard(game.getConfig().getHeight(), game.getConfig().getWidth());
+                controller.buildBoard(10,10);
+                //controller.buildBoard(game.getConfig().getHeight(), game.getConfig().getWidth());
             });
 
         });
@@ -245,7 +246,7 @@ public class InGameController implements Initializable {
             } catch (Exception e) {
                 e.printStackTrace();
             }
-            placeShips(ships);
+            //placeShips(ships);
             redoShots(shots);
 
         });
@@ -293,19 +294,7 @@ public class InGameController implements Initializable {
         }
     }
 
-    /**
-     * Starts placeShip() in the Controller of every GameField.
-     *
-     * @param ships Map of Ships and PlacementInfo
-     */
-    public void placeShips(Map<Integer, Map<Integer, PlacementInfo>> ships) {
-        Set<Integer> keys = ships.keySet();
-        Object[] keysArray = keys.toArray();
-        for (Object o : keysArray) {
-            GameFieldController controller = controllerMap.get(o);
-            controller.placeShips(ships.get(o), game.getConfig().getShips());
-        }
-    }
+
 
     /**
      * Adds a new GameField and related Controller for every Player.
