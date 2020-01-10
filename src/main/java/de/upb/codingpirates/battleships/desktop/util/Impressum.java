@@ -41,6 +41,7 @@ public class Impressum {
         Image icon = new Image(String.valueOf(getClass().getResource("/images/app_icon.png")));
         window.getIcons().add(icon);
         Scene scene = new Scene(pane);
+        window.setResizable(false);
         window.setScene(scene);
         window.showAndWait();
     }

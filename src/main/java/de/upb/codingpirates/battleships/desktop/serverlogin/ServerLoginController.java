@@ -8,6 +8,7 @@ import de.upb.codingpirates.battleships.desktop.lobby.Lobby;
 import de.upb.codingpirates.battleships.desktop.settings.Settings;
 import de.upb.codingpirates.battleships.desktop.util.Help;
 import de.upb.codingpirates.battleships.logic.ClientType;
+import de.upb.codingpirates.battleships.network.message.response.LobbyResponse;
 import de.upb.codingpirates.battleships.network.message.response.ServerJoinResponse;
 import javafx.application.Platform;
 import javafx.beans.property.SimpleStringProperty;
@@ -164,4 +165,8 @@ public class ServerLoginController implements Initializable, ServerJoinResponseL
     }
 
 
+    @Override
+    public void onLobbyResponse(LobbyResponse message, int clientId) {
+
+    }
 }

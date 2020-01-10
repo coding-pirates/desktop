@@ -169,6 +169,10 @@ public class LobbyController implements Initializable , LobbyResponseListener {
         });
     }
 
+    /**
+     * nextButton
+     * @throws IOException
+     */
     @FXML
     public void handlerButton() throws Exception {
        /* try {

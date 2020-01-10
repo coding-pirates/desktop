@@ -5,6 +5,7 @@ import de.upb.codingpirates.battleships.client.handler.GameInitNotificationHandl
 import de.upb.codingpirates.battleships.client.listener.GameInitNotificationListener;
 import de.upb.codingpirates.battleships.client.listener.GameJoinSpectatorResponseListener;
 import de.upb.codingpirates.battleships.desktop.lobby.Lobby;
+import de.upb.codingpirates.battleships.desktop.lobby.LobbyController;
 import de.upb.codingpirates.battleships.desktop.placeship.Placeships;
 import de.upb.codingpirates.battleships.desktop.waiting.Waiting;
 import de.upb.codingpirates.battleships.logic.Game;
@@ -16,6 +17,9 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
+import javafx.scene.image.Image;
+import javafx.scene.layout.AnchorPane;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -69,9 +73,11 @@ public class ClientTypeController implements Initializable, GameJoinSpectatorRes
     @FXML
     public void next() throws Exception {
         if(chosenClient=="Player"){
+            closeStage();
             placeShips();
         }
         if(chosenClient=="Spectator"){
+            closeStage();
            clientTypeModel.sendGameJoinSpectatorRequest();
         }
         else{

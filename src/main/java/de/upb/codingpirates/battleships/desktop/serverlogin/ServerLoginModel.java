@@ -7,7 +7,8 @@ import de.upb.codingpirates.battleships.desktop.BattleshipsDesktopClientApplicat
 import de.upb.codingpirates.battleships.logic.ClientType;
 import de.upb.codingpirates.battleships.network.message.request.RequestBuilder;
 import de.upb.codingpirates.battleships.network.message.response.ServerJoinResponse;
-
+import de.upb.codingpirates.battleships.network.message.request.ServerJoinRequest;
+import de.upb.codingpirates.battleships.network.message.response.LobbyResponse;
 import java.io.IOException;
 
 /**

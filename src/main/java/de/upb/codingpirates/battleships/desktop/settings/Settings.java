@@ -33,6 +33,7 @@ public class Settings {
 
         settingsStage.setTitle("Settings");
         settingsStage.initModality(Modality.APPLICATION_MODAL);
+        settingsStage.setResizable(false);
         settingsStage.setScene(new Scene(pane));
         settingsStage.showAndWait();
     }

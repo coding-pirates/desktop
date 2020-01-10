@@ -1,6 +1,7 @@
 package de.upb.codingpirates.battleships.desktop.ingame;
 
 import de.upb.codingpirates.battleships.desktop.gamefield.GameFieldController;
+import de.upb.codingpirates.battleships.desktop.lobby.Lobby;
 import de.upb.codingpirates.battleships.desktop.ranking.Ranking;
 import de.upb.codingpirates.battleships.desktop.settings.Settings;
 import de.upb.codingpirates.battleships.desktop.util.Help;
@@ -146,6 +147,7 @@ public class InGameController implements Initializable {
     /**
      * Initializes a Ranking with the Rank, Name and Points of every Player.
      */
+    @FXML
     public void showRanking() {
         this.ranking = new Ranking();
         Stage rankingStage = new Stage();
@@ -499,6 +501,26 @@ public class InGameController implements Initializable {
             e.printStackTrace();//TODO
         }
         settingsStage.setOnCloseRequest(t -> {
+            Platform.exit();
+            System.exit(0);
+        });
+    }
+    public void closeStage(){
+        Stage stage = (Stage) shotCount.getScene().getWindow();
+        stage.close();
+    }
+
+    @FXML
+    public void leave(){
+        Lobby lobby = new Lobby();
+        Stage lobbyStage = new Stage();
+        try {
+            lobby.start(lobbyStage);
+            closeStage();
+        } catch (IOException e) {
+            e.printStackTrace();//TODO
+        }
+        lobbyStage.setOnCloseRequest(t -> {
             Platform.exit();
             System.exit(0);
         });

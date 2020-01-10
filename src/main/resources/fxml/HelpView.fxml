@@ -32,11 +32,11 @@
                   <Insets top="10.0" />
                </VBox.margin>
             </AnchorPane>
-            <ScrollPane hbarPolicy="NEVER" prefHeight="500.0" prefWidth="325.0" style="-fx-background-color: #CFBE8E; -fx-border-color: #CFBE8E;" VBox.vgrow="ALWAYS">
+            <ScrollPane hbarPolicy="NEVER" prefHeight="500.0" prefWidth="325.0" style="-fx-background-color: #CFBE8E; -fx-border-color: #CFBE8E; -fx-region-background: #CFBE8E;" VBox.vgrow="ALWAYS">
                <content>
                   <AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="530.0" prefWidth="300.0" style="-fx-background-color: #CFBE8E;">
                      <children>
-                        <Label fx:id="lb_message" prefHeight="485.0" prefWidth="279.0" text="help" textFill="#472218" AnchorPane.bottomAnchor="45.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="21.0" AnchorPane.topAnchor="0.0">
+                        <Label fx:id="lb_message" cacheShape="false" centerShape="false" focusTraversable="false" prefHeight="485.0" prefWidth="279.0" text="help" textFill="#472218" AnchorPane.bottomAnchor="45.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="21.0" AnchorPane.topAnchor="0.0">
                            <font>
                               <Font size="25.0" />
                            </font></Label>
