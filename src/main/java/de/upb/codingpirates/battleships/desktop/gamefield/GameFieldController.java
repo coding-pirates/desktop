@@ -91,6 +91,8 @@ public class GameFieldController implements Initializable {
         }
     }
 
+
+
     /**
      * Places a Shot. Decides if a Ship or Water was hit.
      *

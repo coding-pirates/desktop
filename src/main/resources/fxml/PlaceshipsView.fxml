@@ -3,6 +3,7 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -82,25 +83,30 @@
             </HBox>
             <Button contentDisplay="CENTER" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#gamestart" prefHeight="36.0" prefWidth="170.0" style="-fx-background-color: #CFBE8E;" text="Let's start the Game!" textFill="#f8f7f7" />
             <Button mnemonicParsing="false" onAction="#handlerButton" text="next" />
-            <SplitPane fx:id="splitPane" prefHeight="160.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+            <SplitPane fx:id="splitPane" prefHeight="160.0" prefWidth="200.0" style="-fx-background-color: #CFBE8E;" VBox.vgrow="ALWAYS">
                <items>
                   <AnchorPane fx:id="spielfelder" minHeight="0.0" minWidth="0.0" prefHeight="710.0" prefWidth="1200.0" style="-fx-background-color: #CFBE8E;" SplitPane.resizableWithParent="false">
                      <children>
-                        <BorderPane fx:id="borderPane" style="-fx-background-color: #CFBE8E;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                           <padding>
-                              <Insets top="30.0" />
-                           </padding>
-                           <center>
-                              <GridPane fx:id="grid" alignment="CENTER" prefHeight="123.0" prefWidth="5.0" BorderPane.alignment="CENTER">
-                                 <columnConstraints>
-                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="10.0" prefWidth="600.0" />
-                                 </columnConstraints>
-                                 <rowConstraints>
-                                    <RowConstraints prefHeight="500.0" vgrow="ALWAYS" />
-                                 </rowConstraints>
-                              </GridPane>
-                           </center>
-                        </BorderPane>
+                        <ScrollPane prefHeight="633.0" prefWidth="1200.0">
+                          <content>
+                            <AnchorPane fx:id="anchorPane" minHeight="0.0" minWidth="0.0" prefHeight="632.0" prefWidth="1197.0" style="-fx-background-color: #CFBE8E;">
+                                 <children>
+                                    <BorderPane fx:id="borderPane" prefHeight="200.0" prefWidth="200.0">
+                                       <center>
+                                          <GridPane fx:id="grid" alignment="CENTER" prefHeight="357.0" prefWidth="720.0" BorderPane.alignment="CENTER">
+                                             <columnConstraints>
+                                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="10.0" prefWidth="600.0" />
+                                             </columnConstraints>
+                                             <rowConstraints>
+                                                <RowConstraints prefHeight="500.0" vgrow="ALWAYS" />
+                                             </rowConstraints>
+                                          </GridPane>
+                                       </center>
+                                    </BorderPane>
+                                 </children>
+                              </AnchorPane>
+                          </content>
+                        </ScrollPane>
                      </children>
                   </AnchorPane>
                </items>

@@ -1,6 +1,7 @@
 package de.upb.codingpirates.battleships.desktop.placeship;
 
 import de.upb.codingpirates.battleships.desktop.endgame.Endgame;
+import de.upb.codingpirates.battleships.desktop.gamefield.GameField;
 import de.upb.codingpirates.battleships.desktop.gamefield.GameFieldController;
 import de.upb.codingpirates.battleships.desktop.ingame.InGameController;
 import de.upb.codingpirates.battleships.desktop.lobby.Lobby;
@@ -12,6 +13,7 @@ import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
@@ -36,9 +38,18 @@ public class PlaceShipsController extends InGameController implements Initializa
     private AnchorPane spielfelder;
     @FXML
     private BorderPane borderPane;
+
     private Game game;
     private HashMap<Integer, GameFieldController> controllerMap = new HashMap<Integer, GameFieldController>();
     private HashMap<Integer, Node> fieldMap = new HashMap<Integer, Node>();
+    private int height;
+    private int width;
+    private GameField gameField;
+    private String[][] type;
+
+    public PlaceShipsController() {
+    }
+
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -143,18 +154,38 @@ public class PlaceShipsController extends InGameController implements Initializa
      * @throws Exception
      */
     public void fieldInit(Collection<Client> clientList) throws Exception {
-            Client client = new Client(1, "self");
-            FXMLLoader loader = new FXMLLoader(this.getClass().getResource("/fxml/GameFieldView.fxml"));
-            Node inGame = loader.load();
-            spielfelder.getChildren().add(inGame);
-            GameFieldController gameFieldController = loader.getController();
-            gameFieldController.setParent(this);
-            gameFieldController.setConfig(client.getName(), game, inGame);
-            gameFieldController.enlargeBoard();
-            gameFieldController.buildBoard(5,5);
+            //Client client = new Client(1, "self");
+            //FXMLLoader loader = new FXMLLoader(this.getClass().getResource("/fxml/GameFieldView.fxml"));
+            //Node inGame = loader.load();
+            //spielfelder.getChildren().add(inGame);
+            //GameFieldController gameFieldController =  loader.getController();
+            //gameFieldController.setParent(this);
+            //gameFieldController.setConfig(client.getName(), game, inGame);
+            //gameFieldController.enlargeBoard();
+            //gameFieldController.buildBoard(20,20);
+            //gameFieldController.enlargeBoard();
             //controllerMap.put(client.getId(), gameFieldController);                //Create a Map of PlayerId and Controller Object
             //fieldMap.put(client.getId(), inGame);
+        buildBoard(20,20);
 
+    }
+
+    /**
+     * Builds the GameField. Sets all Fields to WaterFields.
+     */
+    public void buildBoard(int height, int width) {
+        this.height = height;
+        this.width = width;
+        gameField = new GameField(height, width);
+        borderPane.setPadding(new Insets(1, 1, 1, 1));
+        borderPane.setCenter(gameField.getDisplay());
+
+        for (int i = 0; i < height; i++) {
+            for (int j = 0; j < width; j++) {
+                type = new String[height][width];
+                type[i][j] = "water";
+            }
+        }
     }
 
 
