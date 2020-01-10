@@ -61,14 +61,13 @@ public class EndgameController implements Initializable {
     @FXML
     public void ranking() throws Exception {
 
-        Ranking ranking = new Ranking();
-        Stage rankingstage = new Stage();
+         Ranking ranking = new Ranking();
+         Stage rankingStage = new Stage();
         try {
             ranking.start();
-        } catch (IOException e) {
-            e.printStackTrace();//TODO
-        }
-        rankingstage.setOnCloseRequest(t -> {
+        } catch (Exception e) {
+            System.out.println("Fehler: " + e);
+        }rankingStage.setOnCloseRequest(t -> {
             Platform.exit();
             System.exit(0);
         });
