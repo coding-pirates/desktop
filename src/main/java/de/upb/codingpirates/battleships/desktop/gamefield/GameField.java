@@ -11,6 +11,7 @@ import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Rectangle;
 
 import java.util.HashMap;
+import java.util.Random;
 
 /**
  * Class that implements the GameField of one Player.
@@ -70,7 +71,7 @@ public class GameField {
     }
 
     /**
-     * Paints the Field grey where a Ship was hit by a Shot.
+     * Changes the Image where a Ship was hit by a Shot.
      *
      * @param shot
      */
@@ -83,7 +84,7 @@ public class GameField {
     }
 
     /**
-     * Points the Field blue where a WaterField was hit by a Shot.
+     * Changes the Image where a WaterField was hit by a Shot.
      *
      * @param shot
      */
@@ -95,6 +96,25 @@ public class GameField {
         Tooltip.install(map.get(point), toolTip);
     }
 
+    public void shipPlaced(Point2D ship){
+        String point = (ship.getX() + "," + ship.getY());
+        switch(new Random().nextInt(3)){
+            case 0:
+                Image img0 = new Image(String.valueOf(GameField.class.getResource("/images/ship1.png")));
+                map.get(point).setFill(new ImagePattern(img0));
+                break;
+            case 1:
+                Image img1 = new Image(String.valueOf(GameField.class.getResource("/images/ship2.png")));
+                map.get(point).setFill(new ImagePattern(img1));
+                break;
+            case 2:
+                Image img2 = new Image(String.valueOf(GameField.class.getResource("/images/ship3.png")));
+                map.get(point).setFill(new ImagePattern(img2));
+        }
+        Tooltip toolTip = new Tooltip("Schiff gesetzt");
+        Tooltip.install(map.get(point), toolTip);
+    }
+
     /**
      * Get Method for HashMap.
      *
@@ -103,4 +123,7 @@ public class GameField {
     public HashMap<String, Rectangle> getHashmap() {
         return map;
     }
+
+    public int getRow(){return nbRow;};
+    public int getCol(){return nbColumn;}
 }

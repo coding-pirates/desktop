@@ -11,6 +11,7 @@ import de.upb.codingpirates.battleships.desktop.util.Help;
 import de.upb.codingpirates.battleships.logic.Client;
 import de.upb.codingpirates.battleships.logic.Game;
 import de.upb.codingpirates.battleships.logic.PlacementInfo;
+import de.upb.codingpirates.battleships.logic.Point2D;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -155,7 +156,7 @@ public class PlaceShipsController extends InGameController implements Initializa
      * @throws Exception
      */
     public void fieldInit(Collection<Client> clientList) throws Exception {
-        buildBoard(30,50);
+        buildBoard(20,20);
 
 
 
@@ -190,8 +191,11 @@ public class PlaceShipsController extends InGameController implements Initializa
             // click on descendant node
             Integer colIndex = GridPane.getColumnIndex(clickedNode);
             Integer rowIndex = GridPane.getRowIndex(clickedNode);
+            int row = gameField.getRow();
+            int col = gameField.getCol();
             System.out.println("Mouse clicked cell: " + colIndex + " And: " + rowIndex);
-
+            gameField.shipPlaced(new Point2D(colIndex, row - rowIndex-1));
+            //placeShips aufrufen für Aktualisierung der Map
         }
     }
 
