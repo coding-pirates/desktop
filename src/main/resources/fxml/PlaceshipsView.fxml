@@ -91,7 +91,7 @@
                                  <children>
                                     <FlowPane fx:id="anchorPane" prefHeight="200.0" prefWidth="200.0">
                                        <children>
-                                          <BorderPane fx:id="borderPane" prefHeight="616.0" prefWidth="1183.0" />
+                                          <BorderPane fx:id="borderPane" onMouseClicked="#clickGrid" prefHeight="616.0" prefWidth="1183.0" />
                                        </children>
                                     </FlowPane>
                                  </children>

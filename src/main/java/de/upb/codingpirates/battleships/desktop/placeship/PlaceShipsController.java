@@ -42,6 +42,7 @@ public class PlaceShipsController extends InGameController implements Initializa
     private GameField gameField;
     private String[][] type;
     private HashMap<Integer, GameFieldController> controllerMap = new HashMap<Integer, GameFieldController>();
+    private HashMap<Integer, Node> fieldMap = new HashMap<Integer, Node>();
     private Game game;
 
 
@@ -174,25 +175,15 @@ public class PlaceShipsController extends InGameController implements Initializa
             for (int j = 0; j < width; j++) {
                 type = new String[height][width];
                 type[i][j] = "water";
-            }
-        }
+            }}
+
 
     }
 
     /**
-     * Starts placeShip() in the Controller of every GameField.
-     *
-     * @param ships Map of Ships and PlacementInfo
+     * Clickevent for GridPane (print grid-cell, which is clicked)
+     * @param event
      */
-    public void placeShips(Map<Integer, Map<Integer, PlacementInfo>> ships) {
-        Set<Integer> keys = ships.keySet();
-        Object[] keysArray = keys.toArray();
-        for (Object o : keysArray) {
-            GameFieldController controller = controllerMap.get(o);
-            controller.placeShips(ships.get(o), game.getConfig().getShips());
-        }
-    }
-
     public void clickGrid(javafx.scene.input.MouseEvent event) {
         Node clickedNode = event.getPickResult().getIntersectedNode();
         if (clickedNode != grid) {
@@ -200,6 +191,7 @@ public class PlaceShipsController extends InGameController implements Initializa
             Integer colIndex = GridPane.getColumnIndex(clickedNode);
             Integer rowIndex = GridPane.getRowIndex(clickedNode);
             System.out.println("Mouse clicked cell: " + colIndex + " And: " + rowIndex);
+
         }
     }
 
