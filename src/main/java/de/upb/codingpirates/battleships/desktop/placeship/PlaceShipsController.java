@@ -154,7 +154,7 @@ public class PlaceShipsController extends InGameController implements Initializa
      * @throws Exception
      */
     public void fieldInit(Collection<Client> clientList) throws Exception {
-        buildBoard(20,20);
+        buildBoard(30,50);
 
 
 
@@ -169,6 +169,7 @@ public class PlaceShipsController extends InGameController implements Initializa
         gameField = new GameField(height, width);
         borderPane.setPadding(new Insets(1, 1, 1, 1));
         borderPane.setCenter(gameField.getDisplay());
+
         for (int i = 0; i < height; i++) {
             for (int j = 0; j < width; j++) {
                 type = new String[height][width];
