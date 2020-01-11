@@ -34,9 +34,9 @@
             </AnchorPane>
             <ScrollPane hbarPolicy="NEVER" prefHeight="500.0" prefWidth="325.0" style="-fx-background-color: #CFBE8E; -fx-border-color: #CFBE8E;" VBox.vgrow="ALWAYS">
                <content>
-                  <AnchorPane fx:id="anchorPane" minHeight="-Infinity" minWidth="-Infinity" prefHeight="530.0" prefWidth="300.0" style="-fx-background-color: #CFBE8E;">
+                  <AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="530.0" prefWidth="300.0" style="-fx-background-color: #CFBE8E;">
                      <children>
-                        <Label fx:id="lb_message" cacheShape="false" centerShape="false" focusTraversable="false" prefHeight="59.0" prefWidth="279.0" text="help" textFill="#472218" AnchorPane.bottomAnchor="471.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="21.0" AnchorPane.topAnchor="0.0">
+                        <Label fx:id="lb_message" cacheShape="false" centerShape="false" focusTraversable="false" prefHeight="708.0" prefWidth="279.0" text="help" textFill="#472218" AnchorPane.bottomAnchor="-178.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="21.0" AnchorPane.topAnchor="0.0">
                            <font>
                               <Font size="25.0" />
                            </font></Label>
