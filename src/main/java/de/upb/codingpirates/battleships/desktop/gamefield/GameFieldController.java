@@ -10,6 +10,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.scene.Node;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.text.Text;
 
@@ -38,6 +39,8 @@ public class GameFieldController implements Initializable {
     private Text name;
     @FXML
     private Text points;
+    @FXML
+    private ImageView background;
 
     /**
      * Set Method for Parent.
@@ -71,6 +74,7 @@ public class GameFieldController implements Initializable {
      */
     public void enlargeBoard() {
         parent.enlargeBoard(this);
+
     }
 
     /**
@@ -79,7 +83,8 @@ public class GameFieldController implements Initializable {
     public void buildBoard(int height, int width) {
         this.height = height;
         this.width = width;
-        gameField = new GameField(height, width);
+        //gameField = new GameField(height, width);
+        gameField = new GameField(20,20);
         borderPane.setPadding(new Insets(1, 1, 1, 1));
         borderPane.setCenter(gameField.getDisplay());
 
@@ -89,6 +94,7 @@ public class GameFieldController implements Initializable {
                 type[i][j] = "water";
             }
         }
+        System.out.println(borderPane.getCenter());
     }
 
 

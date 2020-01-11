@@ -145,6 +145,7 @@ public class InGameModel extends Application implements InGameModelMessageListen
         inGameStage.setTitle("InGame");
         inGameStage.setScene(new Scene(pane));
         inGameStage.show();
+        inGameController.fieldInit(null);
         //inGameController.spectatorGameStateResponse(player, shots, ships, gameState);
         inGameController.setGame(ausgewaehltesSpiel);
 

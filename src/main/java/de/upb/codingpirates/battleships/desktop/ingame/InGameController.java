@@ -302,8 +302,15 @@ public class InGameController implements Initializable {
      * @throws Exception
      */
     public void fieldInit(Collection<Client> clientList) throws Exception {
-        Object[] clientArray = clientList.toArray();
-        for (Object o : clientArray) {
+        //Object[] clientArray = clientList.toArray();
+        //for testing the UI
+        Client c1 = new Client(1, "player1");
+        Client c2 = new Client(2, "player2");
+        Client c3 = new Client(3, "player3");
+        Client c4 = new Client(4, "player4");
+        Collection<Client> clients= new HashSet<>(Arrays.asList(c1, c2, c3, c4));
+
+        for (Object o : clients) {
             Client client = (Client) o;
             FXMLLoader loader = new FXMLLoader(this.getClass().getResource("/fxml/GameFieldView.fxml"));
             inGame = loader.load();
@@ -311,6 +318,9 @@ public class InGameController implements Initializable {
             GameFieldController gameFieldController = loader.getController();
             gameFieldController.setParent(this);
             gameFieldController.setConfig(client.getName(), game, inGame);
+            //for testing UI
+            gameFieldController.buildBoard(10,10);
+
             controllerMap.put(client.getId(), gameFieldController);                //Create a Map of PlayerId and Controller Object
             fieldMap.put(client.getId(), inGame);
         }
