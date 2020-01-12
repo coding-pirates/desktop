@@ -11,7 +11,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane minHeight="300.0" minWidth="150.0" prefHeight="600.0" prefWidth="300.0" style="-fx-background-color: #CFBE8E; -fx-border-color: #CFBE8E;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.upb.codingpirates.battleships.desktop.ranking.RankingController">
+<AnchorPane minHeight="600.0" minWidth="300.0" prefHeight="800.0" prefWidth="800.0" style="-fx-background-color: #CFBE8E; -fx-border-color: #CFBE8E;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.upb.codingpirates.battleships.desktop.ranking.RankingController">
   <VBox alignment="TOP_CENTER" fillWidth="false" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="300.0" style="-fx-background-color: #CFBE8E; -fx-border-color: #472218; -fx-border-width: 5;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
       <AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="59.0" prefWidth="300.0" style="-fx-background-color: #CFBE8E#;">
          <children>
@@ -30,13 +30,13 @@
             <Insets top="10.0" />
          </VBox.margin>
       </AnchorPane>
-    <ScrollPane hbarPolicy="NEVER" prefHeight="500.0" prefWidth="325.0" style="-fx-background-color: #CFBE8E; -fx-border-color: #CFBE8E;" VBox.vgrow="ALWAYS">
-      <AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="530.0" prefWidth="300.0" style="-fx-background-color: #CFBE8E;">
-        <TableView fx:id="tableRangList" cacheShape="false" focusTraversable="false" layoutY="12.0" prefHeight="458.0" prefWidth="298.0" scaleShape="false" style="-fx-background-color: button-0-color-base; -fx-region-background: #472218;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+    <ScrollPane hbarPolicy="NEVER" prefHeight="719.0" prefWidth="731.0" style="-fx-background-color: #CFBE8E; -fx-border-color: #CFBE8E;" VBox.vgrow="ALWAYS">
+      <AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="728.0" style="-fx-background-color: #CFBE8E;">
+        <TableView fx:id="tableRangList" cacheShape="false" focusTraversable="false" layoutY="12.0" prefHeight="800.0" prefWidth="725.0" scaleShape="false" style="-fx-background-color: #CFBE8E #CFBE8E;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
           <columns>
-            <TableColumn fx:id="rang" prefWidth="54.66665768623352" text="Platz" />
-            <TableColumn fx:id="name" prefWidth="128.00006484985352" text="Name" />
-            <TableColumn fx:id="points" prefWidth="113.99992370605469" text="Punkte" />
+            <TableColumn fx:id="rang" prefWidth="143.0" resizable="false" text="Platz" />
+            <TableColumn fx:id="name" minWidth="0.0" prefWidth="319.0" resizable="false" text="Name" />
+            <TableColumn fx:id="points" prefWidth="245.0" resizable="false" text="Punkte" />
           </columns>
         </TableView>
       </AnchorPane>
