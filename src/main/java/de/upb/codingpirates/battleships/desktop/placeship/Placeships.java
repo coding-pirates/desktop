@@ -33,7 +33,7 @@ public class Placeships extends Application {
         Image icon = new Image(String.valueOf(getClass().getResource("/images/app_icon.png")));
         placeshipsStage.getIcons().add(icon);
         placeshipsStage.setResizable(false);
-        placeshipsStage.setFullScreen(true);
+        placeshipsStage.setMaximized(true);
         placeshipsStage.setTitle("PlaceShips");
         placeshipsStage.setScene(new Scene(pane, 1920, 1080));
         placeshipsStage.show();

@@ -144,7 +144,7 @@ public class InGameModel extends Application implements InGameModelMessageListen
         inGameStage.getIcons().add(icon);
         inGameStage.setTitle("InGame");
         inGameStage.setScene(new Scene(pane, 1920, 1080));
-        inGameStage.setFullScreen(true);
+        inGameStage.setMaximized(true);
         inGameStage.setResizable(false);
         inGameStage.show();
         inGameController.fieldInit(null);

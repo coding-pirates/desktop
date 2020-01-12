@@ -27,7 +27,7 @@ public class Lobby extends Application {
         lobbyController.setLobby(this);
         Image icon = new Image(String.valueOf(getClass().getResource("/images/app_icon.png")));
         lobbyStage.getIcons().add(icon);
-        lobbyStage.setFullScreen(true);
+        lobbyStage.setMaximized(true);
         lobbyStage.setResizable(false);
         lobbyStage.setTitle("Lobby");
         lobbyStage.setScene(new Scene(pane));

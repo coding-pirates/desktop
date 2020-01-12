@@ -29,7 +29,7 @@ public class Endgame extends Application {
         Image icon = new Image(String.valueOf(getClass().getResource("/images/app_icon.png")));
         endStage.getIcons().add(icon);
         endStage.setTitle("Endgame");
-        endStage.setFullScreen(true);
+        endStage.setMaximized(true);
         endStage.setResizable(false);
         endStage.setScene(new Scene(pane));
         endStage.show();
