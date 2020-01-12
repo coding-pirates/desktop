@@ -96,7 +96,7 @@
                </ImageView>
             </graphic>
             <VBox.margin>
-               <Insets left="800.0" top="100.0" />
+               <Insets left="800.0" top="200.0" />
             </VBox.margin>
          </Button>
          <Button mnemonicParsing="false" onAction="#handlerButton" text="next" />

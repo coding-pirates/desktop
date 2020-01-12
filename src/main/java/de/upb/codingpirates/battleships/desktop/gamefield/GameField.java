@@ -45,13 +45,13 @@ public class GameField {
     public void build() {
         ReadOnlyDoubleProperty heightProperty = gameField.heightProperty();
         ReadOnlyDoubleProperty widthProperty = gameField.widthProperty();
+        Image img = new Image(String.valueOf(GameField.class.getResource("/images/field.png")));
 
         for (int i = 0; i < nbColumn; i++) {
             for (int j = 0; j < nbRow; j++) {
                 Rectangle rectangle = new Rectangle(1, 1);
                 rectangle.widthProperty().bind(widthProperty.divide(nbColumn + (nbColumn - 1) * 0.4));
                 rectangle.heightProperty().bind(heightProperty.divide(nbRow + (nbRow - 1) * 0.4));
-                Image img = new Image(String.valueOf(GameField.class.getResource("/images/field.png")));
                 rectangle.setFill(new ImagePattern(img));
                 gameField.add(rectangle, i, j);
                 map.put(i + "," + ((nbRow - 1) - j), rectangle);
@@ -98,17 +98,17 @@ public class GameField {
 
     public void shipPlaced(Point2D ship){
         String point = (ship.getX() + "," + ship.getY());
+        Image img0 = new Image(String.valueOf(GameField.class.getResource("/images/ship1.png")));
+        Image img1 = new Image(String.valueOf(GameField.class.getResource("/images/ship2.png")));
+        Image img2 = new Image(String.valueOf(GameField.class.getResource("/images/ship3.png")));
         switch(new Random().nextInt(3)){
             case 0:
-                Image img0 = new Image(String.valueOf(GameField.class.getResource("/images/ship1.png")));
                 map.get(point).setFill(new ImagePattern(img0));
                 break;
             case 1:
-                Image img1 = new Image(String.valueOf(GameField.class.getResource("/images/ship2.png")));
                 map.get(point).setFill(new ImagePattern(img1));
                 break;
             case 2:
-                Image img2 = new Image(String.valueOf(GameField.class.getResource("/images/ship3.png")));
                 map.get(point).setFill(new ImagePattern(img2));
         }
         Tooltip toolTip = new Tooltip("Schiff gesetzt");

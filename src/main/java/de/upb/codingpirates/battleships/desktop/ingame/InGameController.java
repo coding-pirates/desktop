@@ -16,10 +16,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
-import javafx.scene.control.Alert;
-import javafx.scene.control.ButtonType;
-import javafx.scene.control.Label;
-import javafx.scene.control.SplitPane;
+import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.GridPane;
@@ -71,6 +68,8 @@ public class InGameController implements Initializable {
     private SplitPane splitPane;
     @FXML
     private Label restTime;
+    @FXML
+    private ProgressIndicator progressindicator;
 
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
@@ -314,16 +313,17 @@ public class InGameController implements Initializable {
             Client client = (Client) o;
             FXMLLoader loader = new FXMLLoader(this.getClass().getResource("/fxml/GameFieldView.fxml"));
             inGame = loader.load();
+
             spielfelder.getChildren().add(inGame);
             GameFieldController gameFieldController = loader.getController();
             gameFieldController.setParent(this);
             gameFieldController.setConfig(client.getName(), game, inGame);
             //for testing UI
             gameFieldController.buildBoard(10,10);
-
             controllerMap.put(client.getId(), gameFieldController);                //Create a Map of PlayerId and Controller Object
             fieldMap.put(client.getId(), inGame);
         }
+        progressindicator.setVisible(false);
     }
 
     /**
