@@ -52,6 +52,8 @@ public class ServerLogin extends Application {
 
         this.serverLoginController = loader.getController();
         loginStage.setTitle("Login");
+        loginStage.setFullScreen(true);
+        loginStage.setResizable(false);
         loginStage.setScene(new Scene(pane));
         loginStage.show();
     }

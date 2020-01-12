@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane minHeight="400.0" minWidth="600.0" prefHeight="800.0" prefWidth="1200.0" style="-fx-background-color: #CFBE8E #CFBE8E #CFBE8E;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.upb.codingpirates.battleships.desktop.lobby.LobbyController">
+<AnchorPane style="-fx-background-color: #CFBE8E #CFBE8E #CFBE8E;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.upb.codingpirates.battleships.desktop.lobby.LobbyController">
    <ImageView nodeOrientation="INHERIT" pickOnBounds="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
       <image>
          <Image url="@../images/Background.png" />
@@ -27,7 +27,7 @@
              <Font size="35.0" />
            </font>
          </Label>
-         <Separator layoutX="284.0" layoutY="145.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="4.0" prefWidth="668.0" style="-fx-background-color: black;" AnchorPane.leftAnchor="284.0" AnchorPane.rightAnchor="248.0" />
+         <Separator layoutX="284.0" layoutY="149.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="0.0" prefWidth="1388.0" style="-fx-background-color: black;" AnchorPane.leftAnchor="284.0" AnchorPane.rightAnchor="248.0" />
             <Button fx:id="btn_settings" cache="true" cacheHint="ROTATE" cacheShape="false" contentDisplay="GRAPHIC_ONLY" focusTraversable="false" layoutX="1083.0" layoutY="78.0" minHeight="-Infinity" minWidth="-Infinity" onAction="#settings" prefHeight="44.0" prefWidth="55.0" style="-fx-background-color: #CFBE8E;" text="Settings" AnchorPane.rightAnchor="62.0" AnchorPane.topAnchor="78.0">
                <graphic>
                   <ImageView fitHeight="38.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
@@ -43,7 +43,7 @@
             </Button>
          </children>
       </AnchorPane>
-   <VBox alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="620.0" prefWidth="1200.0">
+   <VBox alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="771.0" prefWidth="1920.0">
      <Button fx:id="refreshButton" alignment="CENTER" contentDisplay="CENTER" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#showgames" prefHeight="70.0" prefWidth="242.0" style="-fx-background-color: #CFBE8E;" text="Aktualisieren" textAlignment="CENTER" textFill="WHITE">
        <VBox.margin>
          <Insets bottom="30.0" top="20.0" />
@@ -84,7 +84,7 @@
          </TitledPane>
        </panes>
             <VBox.margin>
-               <Insets top="30.0" />
+               <Insets left="100.0" right="100.0" top="30.0" />
             </VBox.margin>
      </Accordion>
          <Button fx:id="refreshButton1" alignment="CENTER" contentDisplay="CENTER" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#showgames" prefHeight="70.0" prefWidth="242.0" style="-fx-background-color: #CFBE8E;" text="Zufällige Auswahl" textAlignment="CENTER" textFill="WHITE">
@@ -98,6 +98,9 @@
                   </image>
                </ImageView>
             </graphic>
+            <VBox.margin>
+               <Insets />
+            </VBox.margin>
          </Button>
          <Button mnemonicParsing="false" onAction="#handlerButton" text="placeShips" />
    </VBox>

@@ -11,7 +11,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane minHeight="400.0" minWidth="600.0" prefHeight="800.0" prefWidth="1200.0" style="-fx-background-color: #1A2529; -fx-text-fill: white;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.upb.codingpirates.battleships.desktop.util.Waiting">
+<AnchorPane style="-fx-background-color: #1A2529; -fx-text-fill: white;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.upb.codingpirates.battleships.desktop.util.Waiting">
    <children>
       <ImageView fx:id="background" layoutX="-769.0" layoutY="-249.0" pickOnBounds="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <image>
@@ -31,7 +31,7 @@
                   <Insets top="150.0" />
                </VBox.margin>
             </Text>
-            <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" style="-fx-scale-x: 1.5; -fx-scale-y: 1.5;">
+            <ImageView fitHeight="205.0" fitWidth="133.0" pickOnBounds="true" preserveRatio="true" style="-fx-scale-x: 1.5; -fx-scale-y: 1.5;">
                <image>
                   <Image url="@../images/icon_player.png" />
                </image>
@@ -39,12 +39,12 @@
                   <Insets top="100.0" />
                </VBox.margin>
             </ImageView>
-            <ProgressIndicator style="-fx-progress-color: #472218;">
+            <ProgressIndicator prefHeight="118.0" prefWidth="1420.0" style="-fx-progress-color: #472218;">
                <cursor>
                   <Cursor fx:constant="WAIT" />
                </cursor>
                <VBox.margin>
-                  <Insets top="50.0" />
+                  <Insets top="100.0" />
                </VBox.margin>
             </ProgressIndicator>
             <Button fx:id="closeButton" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#closeStage" prefHeight="44.0" prefWidth="100.0" style="-fx-background-color: #CFBE8E; -fx-border-color: #472218;" text="back">
@@ -56,7 +56,7 @@
                   </ImageView>
                </graphic>
                <VBox.margin>
-                  <Insets top="200.0" />
+                  <Insets top="50.0" />
                </VBox.margin>
             </Button>
          </children>

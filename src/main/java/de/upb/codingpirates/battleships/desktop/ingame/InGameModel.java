@@ -143,7 +143,9 @@ public class InGameModel extends Application implements InGameModelMessageListen
         Image icon = new Image(String.valueOf(getClass().getResource("/images/app_icon.png")));
         inGameStage.getIcons().add(icon);
         inGameStage.setTitle("InGame");
-        inGameStage.setScene(new Scene(pane));
+        inGameStage.setScene(new Scene(pane, 1920, 1080));
+        inGameStage.setFullScreen(true);
+        inGameStage.setResizable(false);
         inGameStage.show();
         inGameController.fieldInit(null);
         //inGameController.spectatorGameStateResponse(player, shots, ships, gameState);

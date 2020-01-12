@@ -31,6 +31,7 @@ public class Ranking {
         rankingController.setRanking(this);
         Image icon = new Image(String.valueOf(getClass().getResource("/images/app_icon.png")));
         rankingStage.getIcons().add(icon);
+        rankingStage.setResizable(false);
         rankingStage.setTitle("Rangliste");
         rankingStage.setScene(new Scene(pane));
         rankingStage.show();

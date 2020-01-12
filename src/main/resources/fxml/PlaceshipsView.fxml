@@ -15,14 +15,14 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane minHeight="400.0" minWidth="600.0" prefHeight="800.0" prefWidth="1200.0" style="-fx-background-color: #CFBE8E;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.upb.codingpirates.battleships.desktop.placeship.PlaceShipsController">
+<AnchorPane style="-fx-background-color: #CFBE8E;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.upb.codingpirates.battleships.desktop.placeship.PlaceShipsController">
    <children>
-      <ImageView fitHeight="162.0" fitWidth="1200.0" pickOnBounds="true" AnchorPane.bottomAnchor="638.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <ImageView fitHeight="162.0" fitWidth="1920.0" pickOnBounds="true" AnchorPane.bottomAnchor="638.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <image>
             <Image url="@../images/button.png" />
          </image>
       </ImageView>
-      <VBox alignment="CENTER" layoutY="-1.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <VBox alignment="CENTER" layoutY="-1.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" AnchorPane.bottomAnchor="-122.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <HBox prefHeight="100.0" prefWidth="200.0">
                <children>
@@ -83,15 +83,15 @@
             <Button mnemonicParsing="false" onAction="#handlerButton" text="next" />
             <SplitPane fx:id="splitPane" prefHeight="160.0" prefWidth="200.0" style="-fx-background-color: #CFBE8E;" VBox.vgrow="ALWAYS">
                <items>
-                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="710.0" prefWidth="1200.0" style="-fx-background-color: #CFBE8E;" SplitPane.resizableWithParent="false">
+                  <AnchorPane style="-fx-background-color: #CFBE8E;" SplitPane.resizableWithParent="false">
                      <children>
                         <ScrollPane prefHeight="633.0" prefWidth="1200.0" AnchorPane.bottomAnchor="-2.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-2.0" AnchorPane.topAnchor="0.0">
                           <content>
-                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="632.0" prefWidth="1197.0" style="-fx-background-color: #CFBE8E;">
+                            <AnchorPane prefHeight="635.0" prefWidth="1920.0" style="-fx-background-color: #CFBE8E;">
                                  <children>
-                                    <FlowPane fx:id="anchorPane" prefHeight="200.0" prefWidth="200.0">
+                                    <FlowPane fx:id="anchorPane" prefHeight="718.0" prefWidth="1918.0">
                                        <children>
-                                          <BorderPane fx:id="borderPane" onMouseClicked="#clickGrid" prefHeight="616.0" prefWidth="1183.0" />
+                                          <BorderPane fx:id="borderPane" onMouseClicked="#clickGrid" prefHeight="913.0" prefWidth="1919.0" />
                                        </children>
                                     </FlowPane>
                                  </children>

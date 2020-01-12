@@ -12,7 +12,7 @@
 
 <AnchorPane minHeight="300.0" minWidth="150.0" prefHeight="600.0" prefWidth="300.0" style="-fx-background-color: #CFBE8E; -fx-border-color: #CFBE8E;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.upb.codingpirates.battleships.desktop.util.Impressum">
    <children>
-      <VBox alignment="TOP_CENTER" fillWidth="false" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="300.0" style="-fx-background-color: #CFBE8E;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <VBox alignment="TOP_CENTER" fillWidth="false" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="300.0" style="-fx-background-color: #CFBE8E; -fx-border-color: #472218; -fx-border-width: 5;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="59.0" prefWidth="300.0" style="-fx-background-color: #CFBE8E#;">
                <children>
@@ -31,7 +31,7 @@
                   <Insets top="10.0" />
                </VBox.margin>
             </AnchorPane>
-            <AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="468.0" prefWidth="300.0" style="-fx-background-color: #CFBE8E;">
+            <AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="468.0" prefWidth="285.0" style="-fx-background-color: #CFBE8E;">
                <children>
                   <Label fx:id="lb_message" layoutX="16.0" layoutY="85.0" prefHeight="362.0" prefWidth="263.0" text="Ansprechpartner:  Raphael Reimann        &#10;&#10;Anschrift:&#10;Universität Paderborn&#10;Warburger Str. 100,&#10; 33100 Paderborn &#10;&#10;Music by Sea of Thieves:&#10;1.Maiden Voyage,&#10;2.Sea of Thieves Main Track,&#10;3.Bosun Bill (Concertina and Hurdy Gurdy), &#10;4.Becalmed - Concertina and Hurdy-Gurdy, &#10;5.Grogg Mayles (Concertina and Hurdy-Gurdy), &#10;6.Ride of the Valkyries (Concertina)" textFill="#472218" wrapText="true" AnchorPane.bottomAnchor="21.0" AnchorPane.leftAnchor="16.0" AnchorPane.rightAnchor="21.0" AnchorPane.topAnchor="85.0">
                      <font>
@@ -44,6 +44,9 @@
                      </image>
                   </ImageView>
                </children>
+               <VBox.margin>
+                  <Insets left="10.0" right="10.0" />
+               </VBox.margin>
             </AnchorPane>
             <Button fx:id="closeButton" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#closeStage" prefHeight="44.0" prefWidth="100.0" style="-fx-background-color: #CFBE8E; -fx-border-color: #472218;" text="back">
                <graphic>

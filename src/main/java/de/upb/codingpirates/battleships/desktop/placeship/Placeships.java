@@ -29,17 +29,13 @@ public class Placeships extends Application {
         FXMLLoader loader = new FXMLLoader(this.getClass().getResource("/fxml/PlaceshipsView.fxml"));
         AnchorPane pane = loader.load();
         this.placeshipsController = loader.getController();
-        Client c1 = new Client(1, "player1");
-        Client c2 = new Client(2,"player2");
-        Collection<Client> liste= Collections.unmodifiableList(new ArrayList<Client>() {{
-            add(c1);
-            add(c2);
-        }});
-        placeshipsController.fieldInit(liste);
+        placeshipsController.fieldInit(null);
         Image icon = new Image(String.valueOf(getClass().getResource("/images/app_icon.png")));
         placeshipsStage.getIcons().add(icon);
+        placeshipsStage.setResizable(false);
+        placeshipsStage.setFullScreen(true);
         placeshipsStage.setTitle("PlaceShips");
-        placeshipsStage.setScene(new Scene(pane));
+        placeshipsStage.setScene(new Scene(pane, 1920, 1080));
         placeshipsStage.show();
     }
 
