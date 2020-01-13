@@ -27,6 +27,7 @@ public class Endgame {
         Image icon = new Image(String.valueOf(getClass().getResource("/images/app_icon.png")));
         endStage.getIcons().add(icon);
         endStage.setTitle("Endgame");
+        endStage.setMaximized(true);
         endStage.setResizable(false);
         endStage.setScene(new Scene(pane));
         endStage.show();

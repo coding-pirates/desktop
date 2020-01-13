@@ -3,7 +3,6 @@ package de.upb.codingpirates.battleships.desktop.ingame;
 import de.upb.codingpirates.battleships.desktop.gamefield.GameFieldController;
 import de.upb.codingpirates.battleships.desktop.lobby.Lobby;
 import de.upb.codingpirates.battleships.desktop.ranking.Ranking;
-import de.upb.codingpirates.battleships.desktop.settings.Settings;
 import de.upb.codingpirates.battleships.desktop.util.Help;
 import de.upb.codingpirates.battleships.logic.*;
 import javafx.animation.KeyFrame;
@@ -69,6 +68,8 @@ public class InGameController implements Initializable {
     private SplitPane splitPane;
     @FXML
     private Label restTime;
+    @FXML
+    private ProgressIndicator progressindicator;
 
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
@@ -92,7 +93,6 @@ public class InGameController implements Initializable {
      */
     public void setGame(Game game) {
         this.game = game;
-        model.setGame(game);
     }
 
     /**
@@ -318,7 +318,7 @@ public class InGameController implements Initializable {
         Object[] clientArray = clientList.toArray();
         for (Object o : clientArray) {
             Client client = (Client) o;
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/GameFieldView.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("../../../../../resources/GameFieldView.fxml"));
             inGame = loader.load();
             spielfelder.getChildren().add(inGame);
             GameFieldController gameFieldController = loader.getController();
@@ -327,6 +327,7 @@ public class InGameController implements Initializable {
             controllerMap.put(client.getId(), gameFieldController);                //Create a Map of PlayerId and Controller Object
             fieldMap.put(client.getId(), inGame);
         }
+        progressindicator.setVisible(false);
     }
 
     /**
@@ -476,10 +477,32 @@ public class InGameController implements Initializable {
             Alert alertFinish = new Alert(Alert.AlertType.INFORMATION,
                     "Das Spiel ist vorbei. Der Gewinner ist " + winner, ButtonType.OK);
             alertFinish.showAndWait();
-            showRanking();
+            try {
+                startEndView();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         });
     }
-
+    /**
+     * starts the EndView with the Winners of the game
+     *
+     * @throws Exception
+     */
+    private void startEndView() throws Exception {
+        Endgame endgame = new Endgame();
+        Stage endStage = new Stage();
+        try {
+            endgame.start(endStage);
+            closeStage();
+        } catch (IOException e) {
+            e.printStackTrace();//TODO
+        }
+        endStage.setOnCloseRequest(t -> {
+            Platform.exit();
+            System.exit(0);
+        });
+    }
 
     @FXML
     public void help() throws IOException {

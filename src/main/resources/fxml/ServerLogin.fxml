@@ -9,12 +9,11 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane minHeight="400.0" minWidth="600.0" prefHeight="800.0" prefWidth="1200.0" style="-fx-background-color: #1A2529; -fx-text-fill: white;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.upb.codingpirates.battleships.desktop.serverlogin.ServerLoginController">
+<AnchorPane style="-fx-background-color: #1A2529; -fx-text-fill: white;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.upb.codingpirates.battleships.desktop.serverlogin.ServerLoginController">
   <ImageView fx:id="background" layoutX="-769.0" layoutY="-249.0" pickOnBounds="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
       <image>
          <Image url="@../images/Background.png" />
@@ -25,15 +24,18 @@
   </ImageView>
    <VBox prefHeight="800.0" prefWidth="1200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
       <children>
-        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Server Login" textAlignment="CENTER" textOrigin="CENTER" wrappingWidth="1200.0">
+        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Server Login" textAlignment="CENTER" textOrigin="CENTER" wrappingWidth="1736.0">
           <font>
             <Font size="30.0" />
           </font>
             <VBox.margin>
-               <Insets top="120.0" />
+               <Insets left="100.0" top="120.0" />
             </VBox.margin>
         </Text>
-         <Label fx:id="lblStatus" prefHeight="54.0" prefWidth="859.0" textAlignment="CENTER" textFill="RED" />
+         <Label fx:id="lblStatus" prefHeight="54.0" prefWidth="1568.0" textAlignment="CENTER" textFill="RED">
+            <VBox.margin>
+               <Insets left="100.0" />
+            </VBox.margin></Label>
         <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Username:" wrappingWidth="90.13671875">
             <font>
                <Font size="18.0" />
@@ -82,28 +84,22 @@
                <Insets left="100.0" right="100.0" />
             </VBox.margin>
         </TextField>
-         <HBox prefHeight="100.0" prefWidth="200.0">
-            <children>
-               <Button id="button_login" fx:id="btn_login" alignment="CENTER" contentDisplay="GRAPHIC_ONLY" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#login" prefHeight="60.0" prefWidth="181.0" style="-fx-background-color: #CFBE8E;" textAlignment="CENTER">
-                  <font>
-                     <Font size="18.0" />
-                  </font>
-                  <graphic>
-                     <ImageView fitHeight="208.0" fitWidth="337.0" pickOnBounds="true" preserveRatio="true">
-                        <image>
-                           <Image url="@../images/button_login.png" />
-                        </image>
-                     </ImageView>
-                  </graphic>
-                  <HBox.margin>
-                     <Insets left="500.0" />
-                  </HBox.margin>
-               </Button>
-            </children>
+         <Button id="button_login" fx:id="btn_login" alignment="CENTER" contentDisplay="GRAPHIC_ONLY" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#login" prefHeight="60.0" prefWidth="300.0" style="-fx-background-color: #CFBE8E;" textAlignment="CENTER">
+            <font>
+               <Font size="18.0" />
+            </font>
+            <graphic>
+               <ImageView fitHeight="208.0" fitWidth="337.0" pickOnBounds="true" preserveRatio="true">
+                  <image>
+                     <Image url="@../images/button_login.png" />
+                  </image>
+               </ImageView>
+            </graphic>
             <VBox.margin>
-               <Insets top="75.0" />
+               <Insets left="800.0" top="200.0" />
             </VBox.margin>
-         </HBox>
+         </Button>
+         <Button mnemonicParsing="false" onAction="#handlerButton" text="next" />
       </children>
    </VBox>
    <Button fx:id="btn_settings" cache="true" cacheHint="ROTATE" cacheShape="false" contentDisplay="GRAPHIC_ONLY" focusTraversable="false" layoutX="1093.0" layoutY="71.0" minHeight="-Infinity" minWidth="-Infinity" onAction="#settings" prefHeight="40.0" prefWidth="53.0" style="-fx-background-color: #CFBE8E;" text="Settings" AnchorPane.rightAnchor="54.0" AnchorPane.topAnchor="71.0">
@@ -114,7 +110,6 @@
             </image>
          </ImageView>
       </graphic></Button>
-   <Button layoutX="1097.0" layoutY="743.0" mnemonicParsing="false" onAction="#handlerButton" text="next" AnchorPane.bottomAnchor="26.0" AnchorPane.rightAnchor="54.0" />
    <Button cache="true" cacheHint="ROTATE" cacheShape="false" contentDisplay="TEXT_ONLY" focusTraversable="false" layoutX="1030.0" layoutY="69.0" minHeight="-Infinity" minWidth="-Infinity" onAction="#help" prefHeight="44.0" prefWidth="55.0" style="-fx-background-color: #CFBE8E;" text="?" textFill="#472218" AnchorPane.rightAnchor="115.0" AnchorPane.topAnchor="69.0">
       <font>
          <Font name="System Bold" size="22.0" />

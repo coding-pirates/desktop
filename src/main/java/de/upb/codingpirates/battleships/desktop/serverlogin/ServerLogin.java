@@ -48,6 +48,8 @@ public class ServerLogin {
 
         this.serverLoginController = loader.getController();
         loginStage.setTitle("Login");
+        loginStage.setMaximized(true);
+        loginStage.setResizable(false);
         loginStage.setScene(new Scene(pane));
         loginStage.show();
     }

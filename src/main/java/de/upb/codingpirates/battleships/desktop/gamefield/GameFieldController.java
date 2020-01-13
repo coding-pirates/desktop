@@ -1,6 +1,7 @@
 package de.upb.codingpirates.battleships.desktop.gamefield;
 
 import de.upb.codingpirates.battleships.desktop.ingame.InGameController;
+import de.upb.codingpirates.battleships.desktop.placeship.PlaceShipsController;
 import de.upb.codingpirates.battleships.logic.Game;
 import de.upb.codingpirates.battleships.logic.PlacementInfo;
 import de.upb.codingpirates.battleships.logic.Point2D;
@@ -9,6 +10,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.scene.Node;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.text.Text;
 
@@ -37,6 +39,8 @@ public class GameFieldController implements Initializable {
     private Text name;
     @FXML
     private Text points;
+    @FXML
+    private ImageView background;
 
     /**
      * Set Method for Parent.
@@ -46,6 +50,7 @@ public class GameFieldController implements Initializable {
     public void setParent(InGameController temp) {
         parent = temp;
     }
+    public void setParent(PlaceShipsController temp){parent = temp;}
 
     public Node getInGame() {
         return inGame;
@@ -69,6 +74,7 @@ public class GameFieldController implements Initializable {
      */
     public void enlargeBoard() {
         parent.enlargeBoard(this);
+
     }
 
     /**
@@ -77,7 +83,8 @@ public class GameFieldController implements Initializable {
     public void buildBoard(int height, int width) {
         this.height = height;
         this.width = width;
-        gameField = new GameField(height, width);
+        //gameField = new GameField(height, width);
+        gameField = new GameField(20,20);
         borderPane.setPadding(new Insets(1, 1, 1, 1));
         borderPane.setCenter(gameField.getDisplay());
 
@@ -87,7 +94,10 @@ public class GameFieldController implements Initializable {
                 type[i][j] = "water";
             }
         }
+        System.out.println(borderPane.getCenter());
     }
+
+
 
     /**
      * Places a Shot. Decides if a Ship or Water was hit.

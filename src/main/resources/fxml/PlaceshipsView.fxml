@@ -9,23 +9,20 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.FlowPane?>
-<?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane minHeight="400.0" minWidth="600.0" prefHeight="800.0" prefWidth="1200.0" style="-fx-background-color: #CFBE8E;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.upb.codingpirates.battleships.desktop.placeship.PlaceShipsController">
+<AnchorPane style="-fx-background-color: #CFBE8E;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.upb.codingpirates.battleships.desktop.placeship.PlaceShipsController">
    <children>
-      <ImageView fitHeight="162.0" fitWidth="1200.0" pickOnBounds="true" AnchorPane.bottomAnchor="638.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <ImageView fitHeight="162.0" fitWidth="1920.0" pickOnBounds="true" AnchorPane.bottomAnchor="638.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <image>
             <Image url="@../images/button.png" />
          </image>
       </ImageView>
-      <VBox alignment="CENTER" layoutY="-1.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <VBox alignment="CENTER" layoutY="-1.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" AnchorPane.bottomAnchor="-122.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <HBox prefHeight="100.0" prefWidth="200.0">
                <children>
@@ -84,48 +81,23 @@
             </HBox>
             <Button contentDisplay="CENTER" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#gamestart" prefHeight="36.0" prefWidth="170.0" style="-fx-background-color: #CFBE8E;" text="Let's start the Game!" textFill="#f8f7f7" />
             <Button mnemonicParsing="false" onAction="#handlerButton" text="next" />
-            <SplitPane fx:id="splitPane" dividerPositions="1.0" prefHeight="160.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+            <SplitPane fx:id="splitPane" prefHeight="160.0" prefWidth="200.0" style="-fx-background-color: #CFBE8E;" VBox.vgrow="ALWAYS">
                <items>
-                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" SplitPane.resizableWithParent="false">
+                  <AnchorPane style="-fx-background-color: #CFBE8E;" SplitPane.resizableWithParent="false">
                      <children>
-                        <ScrollPane fitToHeight="true" fitToWidth="true" prefHeight="257.0" prefWidth="600.0" style="-fx-background-color: #1A2529;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                           <content>
-                              <FlowPane fx:id="spielfelder" hgap="10.0" style="-fx-background-color: #1A2529;" vgap="10.0">
-                                 <padding>
-                                    <Insets bottom="10.0" left="10.0" top="10.0" />
-                                 </padding>
+                        <ScrollPane prefHeight="633.0" prefWidth="1200.0" AnchorPane.bottomAnchor="-2.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-2.0" AnchorPane.topAnchor="0.0">
+                          <content>
+                            <AnchorPane prefHeight="635.0" prefWidth="1920.0" style="-fx-background-color: #CFBE8E;">
                                  <children>
-                                    <ImageView pickOnBounds="true">
-                                       <image>
-                                          <Image url="@../images/Background.png" />
-                                       </image>
-                                    </ImageView>
+                                    <FlowPane fx:id="anchorPane" prefHeight="718.0" prefWidth="1918.0">
+                                       <children>
+                                          <BorderPane fx:id="borderPane" onMouseClicked="#clickGrid" prefHeight="913.0" prefWidth="1919.0" />
+                                       </children>
+                                    </FlowPane>
                                  </children>
-                              </FlowPane>
-                           </content>
+                              </AnchorPane>
+                          </content>
                         </ScrollPane>
-                     </children>
-                  </AnchorPane>
-                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="710.0" prefWidth="1200.0" style="-fx-background-color: #1A2529;" SplitPane.resizableWithParent="false">
-                     <children>
-                        <BorderPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                           <center>
-                              <GridPane fx:id="grid" alignment="CENTER" prefHeight="123.0" prefWidth="5.0" BorderPane.alignment="CENTER">
-                                 <BorderPane.margin>
-                                    <Insets bottom="30.0" left="30.0" right="30.0" />
-                                 </BorderPane.margin>
-                                 <columnConstraints>
-                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="10.0" prefWidth="600.0" />
-                                 </columnConstraints>
-                                 <rowConstraints>
-                                    <RowConstraints prefHeight="500.0" vgrow="ALWAYS" />
-                                 </rowConstraints>
-                              </GridPane>
-                           </center>
-                           <padding>
-                              <Insets top="30.0" />
-                           </padding>
-                        </BorderPane>
                      </children>
                   </AnchorPane>
                </items>

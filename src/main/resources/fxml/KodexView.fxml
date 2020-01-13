@@ -13,7 +13,7 @@
 
 <AnchorPane minHeight="300.0" minWidth="150.0" prefHeight="600.0" prefWidth="600.0" style="-fx-background-color: #CFBE8E; -fx-border-color: #CFBE8E;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.upb.codingpirates.battleships.desktop.util.Impressum">
    <children>
-      <VBox alignment="TOP_CENTER" fillWidth="false" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="300.0" style="-fx-background-color: #CFBE8E;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <VBox alignment="TOP_CENTER" fillWidth="false" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="300.0" style="-fx-background-color: #CFBE8E; -fx-border-color: #472218; -fx-border-width: 5;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="59.0" prefWidth="300.0" style="-fx-background-color: #CFBE8E#;">
                <children>
@@ -55,6 +55,9 @@
                </graphic>
             </Button>
          </children>
+         <padding>
+            <Insets bottom="10.0" />
+         </padding>
       </VBox>
    </children>
 </AnchorPane>
