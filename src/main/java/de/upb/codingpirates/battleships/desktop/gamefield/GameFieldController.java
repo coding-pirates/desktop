@@ -12,6 +12,7 @@ import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
 
 import java.net.URL;
@@ -32,6 +33,7 @@ public class GameFieldController implements Initializable {
     private GameField gameField;
     private Node inGame;
     private Game game;
+    private GridPane grid;
 
     @FXML
     private BorderPane borderPane;
@@ -39,8 +41,6 @@ public class GameFieldController implements Initializable {
     private Text name;
     @FXML
     private Text points;
-    @FXML
-    private ImageView background;
 
     /**
      * Set Method for Parent.
@@ -50,7 +50,6 @@ public class GameFieldController implements Initializable {
     public void setParent(InGameController temp) {
         parent = temp;
     }
-    public void setParent(PlaceShipsController temp){parent = temp;}
 
     public Node getInGame() {
         return inGame;
@@ -84,9 +83,10 @@ public class GameFieldController implements Initializable {
         this.height = height;
         this.width = width;
         //gameField = new GameField(height, width);
-        gameField = new GameField(20,20);
+        gameField = new GameField(40, 40);
         borderPane.setPadding(new Insets(1, 1, 1, 1));
-        borderPane.setCenter(gameField.getDisplay());
+        grid = gameField.getDisplay();
+        borderPane.setCenter(grid);
 
         for (int i = 0; i < height; i++) {
             for (int j = 0; j < width; j++) {
@@ -96,7 +96,6 @@ public class GameFieldController implements Initializable {
         }
         System.out.println(borderPane.getCenter());
     }
-
 
 
     /**
@@ -162,4 +161,25 @@ public class GameFieldController implements Initializable {
 
     }
 
+    /**
+     * Clickevent for GridPane (print grid-cell, which is clicked)
+     *
+     * @param event
+     */
+    public void clickGrid(javafx.scene.input.MouseEvent event) {
+        Node clickedNode = event.getPickResult().getIntersectedNode();
+        if (clickedNode != grid) {
+            // click on descendant node
+            Node parent = clickedNode.getParent();
+            while (parent != grid) {
+                clickedNode = parent;
+                parent = clickedNode.getParent();
+            }
+            Integer colIndex = GridPane.getColumnIndex(clickedNode);
+            Integer rowIndex = GridPane.getRowIndex(clickedNode);
+            int row = gameField.getRow();
+            System.out.println("Mouse clicked cell: " + colIndex + " And: " + rowIndex);
+            gameField.shootPlaced(new Point2D(colIndex, row - rowIndex-1));
+        }
+    }
 }

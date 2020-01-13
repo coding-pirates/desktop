@@ -15,9 +15,11 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
@@ -70,6 +72,8 @@ public class InGameController implements Initializable {
     private Label restTime;
     @FXML
     private ProgressIndicator progressindicator;
+    @FXML
+    private BorderPane borderpane;
 
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
@@ -103,7 +107,8 @@ public class InGameController implements Initializable {
         }
         grid.getChildren().clear();
         grid.add(controller.getInGame(), 0, 0);
-        splitPane.setDividerPositions(0.27);
+        borderpane.setPadding(new Insets(1, 1, 1, 1));
+        splitPane.setDividerPositions(0.18);
         this.inGame = controller.getInGame();
         enlarged = true;
     }
@@ -564,4 +569,27 @@ public class InGameController implements Initializable {
             System.exit(0);
         });
     }
+
+    /**
+     * Clickevent for GridPane (print grid-cell, which is clicked)
+     * @param event
+     */
+        public void clickGrid(javafx.scene.input.MouseEvent event) {
+            Node clickedNode = event.getPickResult().getIntersectedNode();
+            if (clickedNode != grid) {
+                // click on descendant node
+                Integer colIndex = GridPane.getColumnIndex(clickedNode);
+                Integer rowIndex = GridPane.getRowIndex(clickedNode);
+                System.out.println("Mouse clicked cell: " + colIndex + " And: " + rowIndex);
+
+            }
+        }
+
+
+
+     @FXML
+     public void shoot(){
+        
+     }
 }
+

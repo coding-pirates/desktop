@@ -1,6 +1,7 @@
 package de.upb.codingpirates.battleships.desktop.gamefield;
 
 import de.upb.codingpirates.battleships.logic.Point2D;
+import de.upb.codingpirates.battleships.logic.Shot;
 import javafx.beans.property.ReadOnlyDoubleProperty;
 import javafx.geometry.Pos;
 import javafx.scene.control.Tooltip;
@@ -22,6 +23,7 @@ public class GameField {
     private int nbRow;
     private int nbColumn;
     private HashMap<String, Rectangle> map = new HashMap<>();
+    private int imageShip;
 
     /**
      * Constructor sets a new GridPane.
@@ -77,8 +79,21 @@ public class GameField {
      */
     public void shipHit(Point2D shot) {
         String point = (shot.getX() + "," + shot.getY());
-        Image img = new Image(String.valueOf(GameField.class.getResource("/images/field_hit.png")));
-        map.get(point).setFill(new ImagePattern(img));
+        Image img1 = new Image(String.valueOf(GameField.class.getResource("/images/ship1_hit.png")));
+        Image img2 = new Image(String.valueOf(GameField.class.getResource("/images/ship2_hit.png")));
+        Image img3 = new Image(String.valueOf(GameField.class.getResource("/images/ship3_hit.png")));
+        switch(imageShip){
+            case 1:
+                map.get(point).setFill(new ImagePattern(img1));
+                break;
+            case 2:
+                map.get(point).setFill(new ImagePattern(img2));
+                break;
+            case 3:
+                map.get(point).setFill(new ImagePattern(img3));
+                break;
+        }
+
         Tooltip toolTip = new Tooltip("Beschossen von Spieler");
         Tooltip.install(map.get(point), toolTip);
     }
@@ -96,6 +111,14 @@ public class GameField {
         Tooltip.install(map.get(point), toolTip);
     }
 
+    public void shootPlaced(Point2D shot){
+        String point = (shot.getX() + "," + shot.getY());
+        Image img = new Image(String.valueOf(GameField.class.getResource("/images/icon_player.png")));
+        map.get(point).setFill(new ImagePattern(img));
+        Tooltip toolTip = new Tooltip("Beschossen von Spieler");
+        Tooltip.install(map.get(point), toolTip);
+    }
+
     public void shipPlaced(Point2D ship){
         String point = (ship.getX() + "," + ship.getY());
         Image img0 = new Image(String.valueOf(GameField.class.getResource("/images/ship1.png")));
@@ -103,12 +126,15 @@ public class GameField {
         Image img2 = new Image(String.valueOf(GameField.class.getResource("/images/ship3.png")));
         switch(new Random().nextInt(3)){
             case 0:
+                imageShip=1;
                 map.get(point).setFill(new ImagePattern(img0));
                 break;
             case 1:
+                imageShip=2;
                 map.get(point).setFill(new ImagePattern(img1));
                 break;
             case 2:
+                imageShip=3;
                 map.get(point).setFill(new ImagePattern(img2));
         }
         Tooltip toolTip = new Tooltip("Schiff gesetzt");
