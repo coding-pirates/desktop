@@ -123,8 +123,9 @@ public class InGameController implements Initializable {
             @Override
             public void handle(ActionEvent event) {
 
-                millis--;
-                restTime.setText(millis.toString());
+                millis = millis-1000;
+                Long seconds = millis/1000;
+                restTime.setText((seconds.toString()));
                 if (millis <= 0) {
                     time.stop();
                 }
@@ -180,7 +181,7 @@ public class InGameController implements Initializable {
             shotCount.setText(Integer.toString(game.getConfig().getShotCount()));
             hitPoints.setText(Integer.toString(game.getConfig().getHitPoints()));
             sunkPoints.setText(Integer.toString(game.getConfig().getSunkPoints()));
-            roundTime.setText(Long.toString(game.getConfig().getRoundTime()));
+            roundTime.setText(Long.toString(game.getConfig().getRoundTime()/1000));
             controllerMap.forEach((client, controller) -> {
                 controller.buildBoard(game.getConfig().getHeight(), game.getConfig().getWidth());
             });
@@ -515,7 +516,7 @@ public class InGameController implements Initializable {
         Lobby lobby = new Lobby();
         Stage lobbyStage = new Stage();
         try {
-            lobby.start(lobbyStage);
+            lobby.display(lobbyStage);
             closeStage();
         } catch (IOException e) {
             e.printStackTrace();//TODO

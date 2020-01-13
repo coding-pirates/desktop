@@ -112,7 +112,7 @@ public class GameFieldController implements Initializable {
         Set<Integer> keys = ships.keySet();
         Object[] keysArray = keys.toArray();
         for (int i = 0; i < keysArray.length; i++) {
-            Point2D[] places = (Point2D[]) place.get(keysArray[i]).getPositions().toArray();
+            Point2D[] places = place.get(keysArray[i]).getPositions().toArray(new Point2D[place.size()]);
             for (int j = 0; j < places.length; j++) {
                 type[places[j].getX()][places[j].getY()] = "ship";
                 System.out.println("Schiff auf " + places[j].getX() + "," + places[j].getY());

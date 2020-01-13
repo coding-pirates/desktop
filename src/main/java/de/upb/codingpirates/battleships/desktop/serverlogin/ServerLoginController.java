@@ -163,10 +163,4 @@ public class ServerLoginController implements Initializable, ServerJoinResponseL
             e.printStackTrace();
         }
     }
-
-
-    @Override
-    public void onLobbyResponse(LobbyResponse message, int clientId) {
-
-    }
 }

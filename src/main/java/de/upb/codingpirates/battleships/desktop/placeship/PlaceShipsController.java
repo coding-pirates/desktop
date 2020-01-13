@@ -1,6 +1,7 @@
 package de.upb.codingpirates.battleships.desktop.placeship;
 
 import de.upb.codingpirates.battleships.desktop.endgame.Endgame;
+import de.upb.codingpirates.battleships.desktop.lobby.Lobby;
 import de.upb.codingpirates.battleships.desktop.settings.Settings;
 import de.upb.codingpirates.battleships.desktop.util.Help;
 import javafx.application.Platform;
@@ -85,7 +86,7 @@ public class PlaceShipsController implements Initializable {
         Lobby lobby = new Lobby();
         Stage lobbyStage = new Stage();
         try {
-            lobby.start(lobbyStage);
+            lobby.display(lobbyStage);
             closeStage();
         } catch (IOException e) {
             e.printStackTrace();//TODO
