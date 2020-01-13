@@ -110,7 +110,7 @@ public class ClientTypeController implements Initializable, GameJoinSpectatorRes
         Placeships placeships = new Placeships();
         Stage placeStage = new Stage();
         try {
-            placeships.display(placeStage);
+            placeships.display(placeStage,clientTypeModel.getSelectedGame());
         } catch (IOException e) {
             e.printStackTrace();//TODO
             placeStage.setOnCloseRequest(t -> {

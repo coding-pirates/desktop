@@ -47,7 +47,7 @@ public class PlaceShipsController extends InGameController implements Initializa
     private String[][] type;
     private HashMap<Integer, GameFieldController> controllerMap = new HashMap<Integer, GameFieldController>();
     private HashMap<Integer, Node> fieldMap = new HashMap<Integer, Node>();
-    private Game game;
+    private Game currentGame;
 
 
 
@@ -58,6 +58,10 @@ public class PlaceShipsController extends InGameController implements Initializa
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
+    }
+
+    public void setCurrentGame(Game currentGame){
+        this.currentGame = currentGame;
     }
 
     public void closeStage() {
@@ -138,10 +142,10 @@ public class PlaceShipsController extends InGameController implements Initializa
     @FXML
     public void gamestart(){
         //TODO
-        InGameModel inGameModel = new InGameModel(game);
+       // InGameModel inGameModel = new InGameModel(game);
         Stage inGameStage = new Stage();
         try {
-            inGameStage.display();
+          //  inGameStage.start();
             closeStage();
         } catch (Exception e) {
             e.printStackTrace();
@@ -155,14 +159,10 @@ public class PlaceShipsController extends InGameController implements Initializa
     /**
      * Adds a new GameField
      *
-     * @param clientList Collection of all Players.
      * @throws Exception
      */
-    public void fieldInit(Collection<Client> clientList) throws Exception {
-        buildBoard(20,20);
-
-
-
+    public void fieldInit() throws Exception {
+        buildBoard(currentGame.getConfig().getHeight(),currentGame.getConfig().getWidth());
     }
 
     /**
@@ -175,11 +175,12 @@ public class PlaceShipsController extends InGameController implements Initializa
         borderPane.setPadding(new Insets(1, 1, 1, 1));
         borderPane.setCenter(gameField.getDisplay());
 
-        for (int i = 0; i < height; i++) {
+       /* for (int i = 0; i < height; i++) {
             for (int j = 0; j < width; j++) {
                 type = new String[height][width];
                 type[i][j] = "water";
             }}
+        */
 
 
     }

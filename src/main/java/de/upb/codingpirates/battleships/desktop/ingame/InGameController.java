@@ -1,8 +1,10 @@
 package de.upb.codingpirates.battleships.desktop.ingame;
 
+import de.upb.codingpirates.battleships.desktop.endgame.Endgame;
 import de.upb.codingpirates.battleships.desktop.gamefield.GameFieldController;
 import de.upb.codingpirates.battleships.desktop.lobby.Lobby;
 import de.upb.codingpirates.battleships.desktop.ranking.Ranking;
+import de.upb.codingpirates.battleships.desktop.settings.Settings;
 import de.upb.codingpirates.battleships.desktop.util.Help;
 import de.upb.codingpirates.battleships.logic.*;
 import javafx.animation.KeyFrame;
@@ -14,10 +16,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
-import javafx.scene.control.Alert;
-import javafx.scene.control.ButtonType;
-import javafx.scene.control.Label;
-import javafx.scene.control.SplitPane;
+import javafx.scene.control.*;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
@@ -92,6 +91,7 @@ public class InGameController implements Initializable {
      * @param game
      */
     public void setGame(Game game) {
+        model.setGame(game);
         this.game = game;
     }
 
@@ -209,7 +209,7 @@ public class InGameController implements Initializable {
             sunkPoints.setText(Integer.toString(config.getSunkPoints()));
             roundTime.setText(Long.toString(config.getRoundTime()));
             controllerMap.forEach((client, controller) -> {
-                controller.buildBoard(height, width);
+                controller.buildBoard(tempConfig.getHeight(), tempConfig.getWidth());
             });
 
         });
@@ -318,7 +318,7 @@ public class InGameController implements Initializable {
         Object[] clientArray = clientList.toArray();
         for (Object o : clientArray) {
             Client client = (Client) o;
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("../../../../../resources/GameFieldView.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/GameFieldView.fxml"));
             inGame = loader.load();
             spielfelder.getChildren().add(inGame);
             GameFieldController gameFieldController = loader.getController();
@@ -493,7 +493,7 @@ public class InGameController implements Initializable {
         Endgame endgame = new Endgame();
         Stage endStage = new Stage();
         try {
-            endgame.start(endStage);
+            endgame.display(endStage);
             closeStage();
         } catch (IOException e) {
             e.printStackTrace();//TODO
@@ -549,4 +549,7 @@ public class InGameController implements Initializable {
             System.exit(0);
         });
     }
+
+    @FXML
+    public void next(){}
 }

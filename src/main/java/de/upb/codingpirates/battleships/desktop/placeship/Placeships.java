@@ -2,6 +2,7 @@ package de.upb.codingpirates.battleships.desktop.placeship;
 
 
 import de.upb.codingpirates.battleships.logic.Client;
+import de.upb.codingpirates.battleships.logic.Game;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -24,12 +25,13 @@ public class Placeships  {
     /**
      * Start Method that creates a new Window and a related Controller.
      */
-    public void display(Stage placeshipsStage) throws Exception {
+    public void display(Stage placeshipsStage, Game currentGame) throws Exception {
         this.placeshipsStage = placeshipsStage;
         FXMLLoader loader = new FXMLLoader(this.getClass().getResource("/fxml/PlaceshipsView.fxml"));
         AnchorPane pane = loader.load();
         this.placeshipsController = loader.getController();
-        placeshipsController.fieldInit(null);
+        placeshipsController.setCurrentGame(currentGame);
+        placeshipsController.fieldInit();
         Image icon = new Image(String.valueOf(getClass().getResource("/images/app_icon.png")));
         placeshipsStage.getIcons().add(icon);
         placeshipsStage.setResizable(false);

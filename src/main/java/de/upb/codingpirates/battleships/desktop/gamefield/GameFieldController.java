@@ -84,13 +84,12 @@ public class GameFieldController implements Initializable {
         this.height = height;
         this.width = width;
         //gameField = new GameField(height, width);
-        gameField = new GameField(20,20);
+        gameField = new GameField(height, width);
         borderPane.setPadding(new Insets(1, 1, 1, 1));
         borderPane.setCenter(gameField.getDisplay());
-
+        type = new String[height][width];
         for (int i = 0; i < height; i++) {
             for (int j = 0; j < width; j++) {
-                type = new String[height][width];
                 type[i][j] = "water";
             }
         }
