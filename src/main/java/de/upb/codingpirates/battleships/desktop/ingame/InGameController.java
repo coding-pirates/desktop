@@ -575,6 +575,7 @@ public class InGameController implements Initializable {
      * @param event
      */
         public void clickGrid(javafx.scene.input.MouseEvent event) {
+            if(event.getClickCount() == 2){
             Node clickedNode = event.getPickResult().getIntersectedNode();
             if (clickedNode != grid) {
                 // click on descendant node
@@ -582,7 +583,7 @@ public class InGameController implements Initializable {
                 Integer rowIndex = GridPane.getRowIndex(clickedNode);
                 System.out.println("Mouse clicked cell: " + colIndex + " And: " + rowIndex);
 
-            }
+            }}
         }
 
 

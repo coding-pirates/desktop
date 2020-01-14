@@ -167,6 +167,7 @@ public class GameFieldController implements Initializable {
      * @param event
      */
     public void clickGrid(javafx.scene.input.MouseEvent event) {
+        if(event.getClickCount() == 2){
         Node clickedNode = event.getPickResult().getIntersectedNode();
         if (clickedNode != grid) {
             // click on descendant node
@@ -178,8 +179,8 @@ public class GameFieldController implements Initializable {
             Integer colIndex = GridPane.getColumnIndex(clickedNode);
             Integer rowIndex = GridPane.getRowIndex(clickedNode);
             int row = gameField.getRow();
-            System.out.println("Mouse clicked cell: " + colIndex + " And: " + rowIndex);
+            //System.out.println("Mouse clicked cell: " + colIndex + " And: " + rowIndex);
             gameField.shootPlaced(new Point2D(colIndex, row - rowIndex-1));
-        }
+        }}
     }
 }

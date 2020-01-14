@@ -113,7 +113,7 @@ public class GameField {
 
     public void shootPlaced(Point2D shot){
         String point = (shot.getX() + "," + shot.getY());
-        Image img = new Image(String.valueOf(GameField.class.getResource("/images/icon_player.png")));
+        Image img = new Image(String.valueOf(GameField.class.getResource("/images/app_icon.png")));
         map.get(point).setFill(new ImagePattern(img));
         Tooltip toolTip = new Tooltip("Beschossen von Spieler");
         Tooltip.install(map.get(point), toolTip);
