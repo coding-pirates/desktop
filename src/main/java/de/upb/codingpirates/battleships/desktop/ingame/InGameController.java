@@ -198,7 +198,7 @@ public class InGameController implements Initializable {
     /**
      * Takes Configuration of the Game and displays the Information in the TextFields.
      */
-    public void sendGameStateRequest() { //TODO delete Parameters
+    public void sendGameStateRequest() {
        /* config = tempConfig;
         height = config.getHeight();
         width = config.getWidth();
