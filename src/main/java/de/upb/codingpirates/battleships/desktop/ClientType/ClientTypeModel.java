@@ -16,6 +16,16 @@ public class ClientTypeModel {
             e.printStackTrace();
         }
     }
+    public void sendGameJoinPlayerRequest(){
+        try {
+            BattleshipsDesktopClientApplication
+                    .getInstance()
+                    .getTcpConnector()
+                    .sendMessageToServer(RequestBuilder.gameJoinPlayerRequest(selectedGame.getId()));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
     public void setSelectedGame(Game selectedGame){
         this.selectedGame = selectedGame;
     }

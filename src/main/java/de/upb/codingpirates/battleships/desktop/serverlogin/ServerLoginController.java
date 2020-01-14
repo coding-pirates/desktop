@@ -82,7 +82,7 @@ public class ServerLoginController implements Initializable, ServerJoinResponseL
                     .connect(serverIP, Integer.parseInt(port));
 
             //Send request to server
-            ServerLoginModel slm = new ServerLoginModel(nameField.getText(), ClientType.SPECTATOR);
+            ServerLoginModel slm = new ServerLoginModel(nameField.getText(), ClientType.PLAYER);
             slm.sendRequest(serverIP);
         } catch (Exception e) {
             lblStatus.setText("Anmeldung fehlgeschlagen: Server nicht erreichbar!");
