@@ -7,10 +7,13 @@ import javafx.geometry.Pos;
 import javafx.scene.control.Tooltip;
 import javafx.scene.image.Image;
 import javafx.scene.layout.GridPane;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Rectangle;
 
+import java.net.URL;
 import java.util.HashMap;
 import java.util.Random;
 
@@ -78,6 +81,9 @@ public class GameField {
      * @param shot
      */
     public void shipHit(Point2D shot) {
+        final URL resource = getClass().getResource("/raw/shipHit.mp3");
+        final MediaPlayer mediaplayer = new MediaPlayer(new Media(resource.toString()));
+        mediaplayer.play();
         String point = (shot.getX() + "," + shot.getY());
         Image img1 = new Image(String.valueOf(GameField.class.getResource("/images/ship1_hit.png")));
         Image img2 = new Image(String.valueOf(GameField.class.getResource("/images/ship2_hit.png")));
@@ -104,6 +110,9 @@ public class GameField {
      * @param shot
      */
     public void waterHit(Point2D shot) {
+        final URL resource = getClass().getResource("/raw/waterHit.mp3");
+        final MediaPlayer mediaplayer = new MediaPlayer(new Media(resource.toString()));
+        mediaplayer.play();
         String point = (shot.getX() + "," + shot.getY());
         Image img = new Image(String.valueOf(GameField.class.getResource("/images/field_hit.png")));
         map.get(point).setFill(new ImagePattern(img));
@@ -111,7 +120,10 @@ public class GameField {
         Tooltip.install(map.get(point), toolTip);
     }
 
-    public void shootPlaced(Point2D shot){
+    public void shotPlaced(Point2D shot){
+        final URL resource = getClass().getResource("/raw/click.mp3");
+        final MediaPlayer mediaplayer = new MediaPlayer(new Media(resource.toString()));
+        mediaplayer.play();
         String point = (shot.getX() + "," + shot.getY());
         Image img = new Image(String.valueOf(GameField.class.getResource("/images/app_icon.png")));
         map.get(point).setFill(new ImagePattern(img));
@@ -120,6 +132,9 @@ public class GameField {
     }
 
     public void shipPlaced(Point2D ship){
+        final URL resource = getClass().getResource("/raw/shipPlaced.mp3");
+        final MediaPlayer mediaplayer = new MediaPlayer(new Media(resource.toString()));
+        mediaplayer.play();
         String point = (ship.getX() + "," + ship.getY());
         Image img0 = new Image(String.valueOf(GameField.class.getResource("/images/ship1.png")));
         Image img1 = new Image(String.valueOf(GameField.class.getResource("/images/ship2.png")));

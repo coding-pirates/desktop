@@ -180,7 +180,7 @@ public class GameFieldController implements Initializable {
             Integer rowIndex = GridPane.getRowIndex(clickedNode);
             int row = gameField.getRow();
             //System.out.println("Mouse clicked cell: " + colIndex + " And: " + rowIndex);
-            gameField.shootPlaced(new Point2D(colIndex, row - rowIndex-1));
+            gameField.shotPlaced(new Point2D(colIndex, row - rowIndex-1));
         }}
     }
 }
