@@ -32,6 +32,8 @@ public final class BattleshipsDesktopClientApplication extends Application {
 
     private static BattleshipsDesktopClientApplication instance;
 
+    public static MediaView mediaView;
+
     public static void main(@Nonnull final String... args) {
         launch(args);
     }
@@ -80,7 +82,7 @@ public final class BattleshipsDesktopClientApplication extends Application {
         final List<MediaPlayer> players = new ArrayList<MediaPlayer>(Arrays.asList(mediaplayer1, mediaplayer2, mediaplayer3, mediaplayer4, mediaplayer5, mediaplayer6));
 
 
-        final MediaView mediaView = new MediaView(players.get( new Random().nextInt(5)));
+        mediaView = new MediaView(players.get( new Random().nextInt(5)));
             for (int i = 0; i < players.size(); i++) {
                 final MediaPlayer player     = players.get(i);
                 final MediaPlayer nextPlayer = players.get((i + 1) % players.size());
@@ -116,6 +118,10 @@ public final class BattleshipsDesktopClientApplication extends Application {
 
     public ClientConnector getTcpConnector() {
         return tcpConnector;
+    }
+
+    public float getVolume(){
+        return (int) mediaView.getMediaPlayer().getVolume();
     }
 
 }

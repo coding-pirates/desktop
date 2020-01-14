@@ -31,7 +31,7 @@
          <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="600.0">
             <children>
                <Slider fx:id="sounds" layoutX="107.0" layoutY="106.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="89.0" prefWidth="434.0" value="100.0" AnchorPane.bottomAnchor="105.0" AnchorPane.leftAnchor="107.0" AnchorPane.topAnchor="106.0" />
-               <Slider fx:id="volume" layoutX="107.0" layoutY="57.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="98.0" prefWidth="434.0" value="100.0" AnchorPane.bottomAnchor="145.0" AnchorPane.leftAnchor="107.0" AnchorPane.topAnchor="57.0" />
+               <Slider fx:id="volume" layoutX="107.0" layoutY="57.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="98.0" prefWidth="434.0" AnchorPane.bottomAnchor="145.0" AnchorPane.leftAnchor="107.0" AnchorPane.topAnchor="57.0" />
                <Button alignment="CENTER" contentDisplay="CENTER" layoutX="107.0" layoutY="226.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#impressum" prefHeight="50.0" prefWidth="150.0" style="-fx-background-color: #CFBE8E;" text="Impressum" textAlignment="CENTER" textFill="WHITE" AnchorPane.leftAnchor="107.0" AnchorPane.rightAnchor="343.0">
                   <font>
                      <Font name="System Bold" size="20.0" />

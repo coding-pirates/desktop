@@ -5,10 +5,13 @@ import de.upb.codingpirates.battleships.desktop.serverlogin.ServerLogin;
 import de.upb.codingpirates.battleships.desktop.util.Help;
 import de.upb.codingpirates.battleships.desktop.util.Impressum;
 import javafx.application.Platform;
+import javafx.beans.InvalidationListener;
+import javafx.beans.Observable;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Slider;
+import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -82,7 +85,17 @@ public class SettingsController implements Initializable {
         }
     }
 
+    public void setVolume(){
+        System.out.println(BattleshipsDesktopClientApplication.mediaView.getMediaPlayer().getVolume());
+        volume.setValue(BattleshipsDesktopClientApplication.mediaView.getMediaPlayer().getVolume()*100);
+        volume.valueProperty().addListener(new InvalidationListener() {
+            @Override
+            public void invalidated(Observable observable) {
 
+                BattleshipsDesktopClientApplication.mediaView.getMediaPlayer().setVolume(volume.getValue()/100);
+            }
+        });
+}
 
 
 

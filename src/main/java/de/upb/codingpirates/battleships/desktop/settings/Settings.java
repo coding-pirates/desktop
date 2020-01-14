@@ -31,7 +31,7 @@ public class Settings {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/SettingsView.fxml"));
         AnchorPane pane = loader.load();
         this.settingsController = loader.getController();
-
+        settingsController.setVolume();
         Image icon = new Image(String.valueOf(getClass().getResource("/images/app_icon.png")));
         settingsStage.getIcons().add(icon);
 
