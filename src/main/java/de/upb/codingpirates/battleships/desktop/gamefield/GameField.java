@@ -1,5 +1,6 @@
 package de.upb.codingpirates.battleships.desktop.gamefield;
 
+import de.upb.codingpirates.battleships.desktop.BattleshipsDesktopClientApplication;
 import de.upb.codingpirates.battleships.logic.Point2D;
 import de.upb.codingpirates.battleships.logic.Shot;
 import javafx.beans.property.ReadOnlyDoubleProperty;
@@ -81,9 +82,10 @@ public class GameField {
      * @param shot
      */
     public void shipHit(Point2D shot) {
+        if (!BattleshipsDesktopClientApplication.getSoundsOff()){
         final URL resource = getClass().getResource("/raw/shipHit.mp3");
         final MediaPlayer mediaplayer = new MediaPlayer(new Media(resource.toString()));
-        mediaplayer.play();
+        mediaplayer.play();}
         String point = (shot.getX() + "," + shot.getY());
         Image img1 = new Image(String.valueOf(GameField.class.getResource("/images/ship1_hit.png")));
         Image img2 = new Image(String.valueOf(GameField.class.getResource("/images/ship2_hit.png")));
@@ -110,9 +112,10 @@ public class GameField {
      * @param shot
      */
     public void waterHit(Point2D shot) {
+        if (!BattleshipsDesktopClientApplication.getSoundsOff()){
         final URL resource = getClass().getResource("/raw/waterHit.mp3");
         final MediaPlayer mediaplayer = new MediaPlayer(new Media(resource.toString()));
-        mediaplayer.play();
+        mediaplayer.play();}
         String point = (shot.getX() + "," + shot.getY());
         Image img = new Image(String.valueOf(GameField.class.getResource("/images/field_hit.png")));
         map.get(point).setFill(new ImagePattern(img));
@@ -121,9 +124,10 @@ public class GameField {
     }
 
     public void shotPlaced(Point2D shot){
+        if (!BattleshipsDesktopClientApplication.getSoundsOff()){
         final URL resource = getClass().getResource("/raw/click.mp3");
         final MediaPlayer mediaplayer = new MediaPlayer(new Media(resource.toString()));
-        mediaplayer.play();
+        mediaplayer.play();}
         String point = (shot.getX() + "," + shot.getY());
         Image img = new Image(String.valueOf(GameField.class.getResource("/images/app_icon.png")));
         map.get(point).setFill(new ImagePattern(img));
@@ -132,9 +136,10 @@ public class GameField {
     }
 
     public void shipPlaced(Point2D ship){
+        if (!BattleshipsDesktopClientApplication.getSoundsOff()){
         final URL resource = getClass().getResource("/raw/shipPlaced.mp3");
         final MediaPlayer mediaplayer = new MediaPlayer(new Media(resource.toString()));
-        mediaplayer.play();
+        mediaplayer.play();}
         String point = (ship.getX() + "," + ship.getY());
         Image img0 = new Image(String.valueOf(GameField.class.getResource("/images/ship1.png")));
         Image img1 = new Image(String.valueOf(GameField.class.getResource("/images/ship2.png")));
