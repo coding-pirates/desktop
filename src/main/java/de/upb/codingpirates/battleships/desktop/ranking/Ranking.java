@@ -63,17 +63,17 @@ public class Ranking {
         Queue<Integer> playerIDS = new LinkedList<>();
         while (!tempPoints.isEmpty()) {
             Integer aktMaxPunkt = 0;
-            Integer aktMaxClient =0;
+            Integer aktMaxClientId =0;
             Set<Integer> clientIds = points.keySet();
             for (Integer clientId : clientIds) {
                 if (tempPoints.get(clientId) >= aktMaxPunkt) {
                     aktMaxPunkt = points.get(clientId);
-                    aktMaxClient = clientId;
+                    aktMaxClientId = clientId;
 
                 }
             }
-            playerIDS.add(aktMaxClient);
-            tempPoints.remove(aktMaxClient);
+            playerIDS.add(aktMaxClientId);
+            tempPoints.remove(aktMaxClientId);
             aktMaxPunkt = 0;
         }
         rankingController.setPointsList(playerIDS, points, players);
