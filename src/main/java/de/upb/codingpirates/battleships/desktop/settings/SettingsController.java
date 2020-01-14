@@ -26,6 +26,8 @@ public class SettingsController implements Initializable {
     @FXML
     private Button btn_back;
 
+    @FXML
+    private Slider volume;
 
     /**
      * Initial Method.

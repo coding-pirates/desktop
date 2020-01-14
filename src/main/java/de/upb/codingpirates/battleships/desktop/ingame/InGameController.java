@@ -589,7 +589,7 @@ public class InGameController implements Initializable {
 
 
      @FXML
-     public void shoot(){
+     public void shot(){
         
      }
 }

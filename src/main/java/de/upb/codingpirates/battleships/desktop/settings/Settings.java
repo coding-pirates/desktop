@@ -2,9 +2,12 @@ package de.upb.codingpirates.battleships.desktop.settings;
 
 
 
+import de.upb.codingpirates.battleships.desktop.BattleshipsDesktopClientApplication;
 import javafx.application.Application;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.control.Slider;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
@@ -31,6 +34,7 @@ public class Settings {
 
         Image icon = new Image(String.valueOf(getClass().getResource("/images/app_icon.png")));
         settingsStage.getIcons().add(icon);
+
 
         settingsStage.setTitle("Settings");
         settingsStage.initModality(Modality.APPLICATION_MODAL);

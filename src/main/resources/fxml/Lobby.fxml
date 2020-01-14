@@ -87,21 +87,6 @@
                <Insets left="100.0" right="100.0" top="30.0" />
             </VBox.margin>
      </Accordion>
-         <Button fx:id="refreshButton1" alignment="CENTER" contentDisplay="CENTER" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#showgames" prefHeight="70.0" prefWidth="242.0" style="-fx-background-color: #CFBE8E;" text="Zufällige Auswahl" textAlignment="CENTER" textFill="WHITE">
-            <font>
-               <Font name="System Bold" size="20.0" />
-            </font>
-            <graphic>
-               <ImageView fitHeight="88.0" fitWidth="281.0">
-                  <image>
-                     <Image url="@../images/button.png" />
-                  </image>
-               </ImageView>
-            </graphic>
-            <VBox.margin>
-               <Insets />
-            </VBox.margin>
-         </Button>
          <Button mnemonicParsing="false" onAction="#handlerButton" text="placeShips" />
    </VBox>
   </VBox>
