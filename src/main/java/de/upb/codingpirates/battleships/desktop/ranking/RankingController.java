@@ -61,12 +61,20 @@ public class RankingController implements Initializable {
         int i = 1;
         while (!pointsList.isEmpty()) {
             int playerInt = pointsList.remove();
-            String player = Integer.toString(playerInt);
+            String playerName = "";
+            for (Client player:players) {
+                if(player.getId() == playerInt) {
+                    playerName = player.getName();
+                    break;
+                }
+            }
+            //TODO
+            //String Player is just a number
             int points = pointsMap.get(playerInt);
             int rang = i;
             i++;
             playerList = FXCollections.observableArrayList(
-                    new Player(rang, player, points));
+                    new Player(rang, playerName, points));
         }
         rang.setCellValueFactory(new PropertyValueFactory<>("rang"));
         name.setCellValueFactory(new PropertyValueFactory<>("name"));
