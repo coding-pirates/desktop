@@ -86,7 +86,6 @@ public class SettingsController implements Initializable {
     }
 
     public void setVolume(){
-        System.out.println(BattleshipsDesktopClientApplication.mediaView.getMediaPlayer().getVolume());
         volume.setValue(BattleshipsDesktopClientApplication.mediaView.getMediaPlayer().getVolume()*100);
         volume.valueProperty().addListener(new InvalidationListener() {
             @Override
@@ -97,6 +96,31 @@ public class SettingsController implements Initializable {
         });
 }
 
+    @FXML
+    public void volumeOff(){
+        if (BattleshipsDesktopClientApplication.mediaView.getMediaPlayer().isMute()){
+            BattleshipsDesktopClientApplication.mediaView.getMediaPlayer().setMute(false);
+            //TODO Icon switching
+        }
+        else{
+            BattleshipsDesktopClientApplication.mediaView.getMediaPlayer().setMute(true);
+            //TODO Icon switching
+        }
+
+    }
+
+    @FXML
+    public void soundsOff(){
+        if (BattleshipsDesktopClientApplication.sounds){
+            BattleshipsDesktopClientApplication.setSoundsOff(false);
+            //TODO Icon switching
+        }
+        else
+        {
+            BattleshipsDesktopClientApplication.setSoundsOff((true));
+            //TODO Icon switchung
+        }
+    }
 
 
 }

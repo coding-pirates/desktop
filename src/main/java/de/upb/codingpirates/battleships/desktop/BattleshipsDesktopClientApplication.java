@@ -34,6 +34,8 @@ public final class BattleshipsDesktopClientApplication extends Application {
 
     public static MediaView mediaView;
 
+    public static boolean sounds = true;
+
     public static void main(@Nonnull final String... args) {
         launch(args);
     }
@@ -120,8 +122,12 @@ public final class BattleshipsDesktopClientApplication extends Application {
         return tcpConnector;
     }
 
-    public float getVolume(){
-        return (int) mediaView.getMediaPlayer().getVolume();
+    public static boolean getSoundsOff(){
+        return sounds;
+    }
+
+    public static void setSoundsOff(boolean value){
+        sounds = value;
     }
 
 }
