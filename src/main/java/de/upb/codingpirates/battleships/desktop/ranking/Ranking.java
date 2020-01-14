@@ -73,7 +73,7 @@ public class Ranking {
                 }
             }
             playerIDS.add(aktMaxClient);
-            points.remove(aktMaxClient);
+            tempPoints.remove(aktMaxClient);
             aktMaxPunkt = 0;
         }
         rankingController.setPointsList(playerIDS, points, players);
