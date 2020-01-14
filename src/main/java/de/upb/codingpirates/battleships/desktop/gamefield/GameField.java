@@ -10,6 +10,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Rectangle;
 
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Random;
 
@@ -96,23 +97,25 @@ public class GameField {
         Tooltip.install(map.get(point), toolTip);
     }
 
-    public void shipPlaced(Point2D ship){
-        String point = (ship.getX() + "," + ship.getY());
-        Image img0 = new Image(String.valueOf(GameField.class.getResource("/images/ship1.png")));
-        Image img1 = new Image(String.valueOf(GameField.class.getResource("/images/ship2.png")));
-        Image img2 = new Image(String.valueOf(GameField.class.getResource("/images/ship3.png")));
-        switch(new Random().nextInt(3)){
-            case 0:
-                map.get(point).setFill(new ImagePattern(img0));
-                break;
-            case 1:
-                map.get(point).setFill(new ImagePattern(img1));
-                break;
-            case 2:
-                map.get(point).setFill(new ImagePattern(img2));
+    public void shipPlaced(Collection<Point2D> shipPoints){
+        for(Point2D point: shipPoints) {
+            String pointStr = (point.getX() + "," + point.getY());
+            Image img0 = new Image(String.valueOf(GameField.class.getResource("/images/ship1.png")));
+            Image img1 = new Image(String.valueOf(GameField.class.getResource("/images/ship2.png")));
+            Image img2 = new Image(String.valueOf(GameField.class.getResource("/images/ship3.png")));
+            switch (new Random().nextInt(3)) {
+                case 0:
+                    map.get(pointStr).setFill(new ImagePattern(img0));
+                    break;
+                case 1:
+                    map.get(pointStr).setFill(new ImagePattern(img1));
+                    break;
+                case 2:
+                    map.get(pointStr).setFill(new ImagePattern(img2));
+            }
+            Tooltip toolTip = new Tooltip("Schiff gesetzt");
+            Tooltip.install(map.get(pointStr), toolTip);
         }
-        Tooltip toolTip = new Tooltip("Schiff gesetzt");
-        Tooltip.install(map.get(point), toolTip);
     }
 
     /**

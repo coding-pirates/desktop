@@ -10,10 +10,7 @@ import de.upb.codingpirates.battleships.desktop.ranking.Ranking;
 import de.upb.codingpirates.battleships.desktop.settings.Settings;
 import de.upb.codingpirates.battleships.desktop.util.GameView;
 import de.upb.codingpirates.battleships.desktop.util.Help;
-import de.upb.codingpirates.battleships.logic.Client;
-import de.upb.codingpirates.battleships.logic.Game;
-import de.upb.codingpirates.battleships.logic.PlacementInfo;
-import de.upb.codingpirates.battleships.logic.Point2D;
+import de.upb.codingpirates.battleships.logic.*;
 import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
 import javafx.fxml.FXML;
@@ -48,7 +45,9 @@ public class PlaceShipsController extends InGameController implements Initializa
     private HashMap<Integer, GameFieldController> controllerMap = new HashMap<Integer, GameFieldController>();
     private HashMap<Integer, Node> fieldMap = new HashMap<Integer, Node>();
     private Game currentGame;
-
+    private Map<Integer,PlacementInfo> placedShips;
+    private Map<Integer,ShipType> shipsToPlace;
+    private int selectedShip;
 
 
     public PlaceShipsController() {
@@ -57,11 +56,14 @@ public class PlaceShipsController extends InGameController implements Initializa
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
+        placedShips = new HashMap<>();
+        shipsToPlace = new HashMap<>();
+        selectedShip = 0;
     }
 
     public void setCurrentGame(Game currentGame){
         this.currentGame = currentGame;
+        this.shipsToPlace.putAll(currentGame.getConfig().getShips());
     }
 
     public void closeStage() {
@@ -161,7 +163,7 @@ public class PlaceShipsController extends InGameController implements Initializa
      *
      * @throws Exception
      */
-    public void fieldInit() throws Exception {
+    public void fieldInit() {
         buildBoard(currentGame.getConfig().getHeight(),currentGame.getConfig().getWidth());
     }
 
@@ -175,14 +177,6 @@ public class PlaceShipsController extends InGameController implements Initializa
         borderPane.setPadding(new Insets(1, 1, 1, 1));
         borderPane.setCenter(gameField.getDisplay());
 
-       /* for (int i = 0; i < height; i++) {
-            for (int j = 0; j < width; j++) {
-                type = new String[height][width];
-                type[i][j] = "water";
-            }}
-        */
-
-
     }
 
     /**
@@ -190,16 +184,27 @@ public class PlaceShipsController extends InGameController implements Initializa
      * @param event
      */
     public void clickGrid(javafx.scene.input.MouseEvent event) {
-        Node clickedNode = event.getPickResult().getIntersectedNode();
-        if (clickedNode != grid) {
-            // click on descendant node
-            Integer colIndex = GridPane.getColumnIndex(clickedNode);
-            Integer rowIndex = GridPane.getRowIndex(clickedNode);
-            int row = gameField.getRow();
-            int col = gameField.getCol();
-            System.out.println("Mouse clicked cell: " + colIndex + " And: " + rowIndex);
-            gameField.shipPlaced(new Point2D(colIndex, row - rowIndex-1));
-            //placeShips aufrufen für Aktualisierung der Map
+        if(!shipsToPlace.isEmpty()) {
+            Node clickedNode = event.getPickResult().getIntersectedNode();
+            if (clickedNode != grid) {
+                // click on descendant node
+                Integer colIndex = GridPane.getColumnIndex(clickedNode);
+                Integer rowIndex = GridPane.getRowIndex(clickedNode);
+                int row = gameField.getRow();
+                int col = gameField.getCol();
+                System.out.println("Mouse clicked cell: " + colIndex + " And: " + rowIndex);
+                Point2D clickedPoint = new Point2D(colIndex, row - rowIndex-1);
+                ArrayList<Point2D> movedShipPoints = new ArrayList<>();
+                for (Point2D point : shipsToPlace.get(selectedShip).getPositions()) {
+                    movedShipPoints.add(new Point2D(clickedPoint.getX()+point.getX(), clickedPoint.getY() + point.getY()));
+                }
+                gameField.shipPlaced(movedShipPoints);
+                shipsToPlace.remove(selectedShip);
+                placedShips.put(selectedShip, new PlacementInfo(clickedPoint,Rotation.NONE));
+                if(!shipsToPlace.isEmpty()){
+                    selectedShip = shipsToPlace.keySet().iterator().next();
+                }
+            }
         }
     }
 

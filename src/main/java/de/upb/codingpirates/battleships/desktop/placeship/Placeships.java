@@ -11,6 +11,7 @@ import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.util.*;
 
 /**
@@ -25,7 +26,7 @@ public class Placeships  {
     /**
      * Start Method that creates a new Window and a related Controller.
      */
-    public void display(Stage placeshipsStage, Game currentGame) throws Exception {
+    public void display(Stage placeshipsStage, Game currentGame) throws IOException {
         this.placeshipsStage = placeshipsStage;
         FXMLLoader loader = new FXMLLoader(this.getClass().getResource("/fxml/PlaceshipsView.fxml"));
         AnchorPane pane = loader.load();
