@@ -511,7 +511,7 @@ public class InGameController implements Initializable {
     public void help() throws IOException {
         Help help = new Help();
         try {
-            help.display("InGame-Help", "InGame-Help");
+            help.display("InGame-Help");
         } catch (IOException e) {
             e.printStackTrace();
         }

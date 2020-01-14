@@ -185,7 +185,7 @@ public class LobbyController implements Initializable , LobbyResponseListener {
     public void help() throws IOException {
         Help help = new Help();
         try{
-            help.display("Lobby-Help", "Lobby-Help");
+            help.display("Lobby-Help");
         }
         catch (IOException e){
             e.printStackTrace();

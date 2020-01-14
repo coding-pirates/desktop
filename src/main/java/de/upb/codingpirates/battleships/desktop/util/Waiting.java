@@ -69,7 +69,7 @@ public class Waiting implements LobbyResponseListener {
     public void help() throws IOException {
         Help help = new Help();
         try{
-            help.display("Settings-Help", "Settings");
+            help.display("Waiting-Help");
         }
         catch (IOException e){
             e.printStackTrace();

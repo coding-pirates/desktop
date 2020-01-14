@@ -152,7 +152,7 @@ public class ServerLoginController implements Initializable, ServerJoinResponseL
     public void help() throws IOException {
         Help help = new Help();
         try{
-            help.display("Server-Login-Help", "Fill in your Username, Server-ID and Server-Port");
+            help.display("Server-Login-Help");
         }
         catch (IOException e){
             e.printStackTrace();

@@ -86,7 +86,7 @@ public class PlaceShipsController extends InGameController implements Initializa
     public void help() throws IOException {
         Help help = new Help();
         try{
-            help.display("PlaceShip-Help", "PlaceShip-Help");
+            help.display("PlaceShip-Help");
         }
         catch (IOException e){
             e.printStackTrace();

@@ -34,7 +34,7 @@ public class EndgameController implements Initializable {
     public void help() throws IOException {
         Help help = new Help();
         try{
-            help.display("Endgame-Help", "Endgame-Help");
+            help.display("Endgame-Help");
         }
         catch (IOException e){
             e.printStackTrace();
