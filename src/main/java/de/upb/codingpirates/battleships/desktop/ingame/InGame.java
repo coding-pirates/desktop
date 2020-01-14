@@ -17,7 +17,7 @@ public class InGame {
         AnchorPane pane = loader.load();
         inGameController = loader.getController();
         inGameController.setGame(currentGame);
-        inGameController.gameInit(currentGame.getConfig(),clientList);
+        inGameController.sendGameStateRequest(currentGame.getConfig(),clientList);
         Image icon = new Image(String.valueOf(getClass().getResource("/images/app_icon.png")));
         inGameStage.getIcons().add(icon);
         inGameStage.setTitle("InGame");

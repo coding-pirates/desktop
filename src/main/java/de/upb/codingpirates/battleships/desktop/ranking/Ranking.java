@@ -60,12 +60,12 @@ public class Ranking {
      * @param points Map of PlayerIds and Points
      */
     public void sortPoints(Map<Integer, Integer> points) {
-        Map<Integer, Integer> tempPoints = points;
+        Map<Integer, Integer> tempPoints = new HashMap<Integer, Integer>(points);
         Queue<Integer> playerIDS = new LinkedList<>();
         while (!tempPoints.isEmpty()) {
             Integer aktMaxPunkt = 0;
             Integer aktMaxClientId =0;
-            Set<Integer> clientIds = points.keySet();
+            Set<Integer> clientIds = tempPoints.keySet();
             for (Integer clientId : clientIds) {
                 if (tempPoints.get(clientId) >= aktMaxPunkt) {
                     aktMaxPunkt = points.get(clientId);
@@ -75,7 +75,6 @@ public class Ranking {
             }
             playerIDS.add(aktMaxClientId);
             tempPoints.remove(aktMaxClientId);
-            aktMaxPunkt = 0;
         }
         rankingController.setPointsList(playerIDS, points, players);
     }

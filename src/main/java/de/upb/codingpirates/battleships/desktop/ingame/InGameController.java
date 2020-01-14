@@ -44,7 +44,7 @@ public class InGameController implements Initializable {
     private Timeline time = new Timeline();
     private Collection<Client> players = null;
     private boolean enlarged = false;
-    private Map<Integer, Integer> points = null;
+    private Map<Integer, Integer> points;
     private Game game;
 
     @FXML
@@ -74,6 +74,7 @@ public class InGameController implements Initializable {
     public void initialize(URL arg0, ResourceBundle arg1) {
         this.model = new InGameModel();
         model.setInGameController(this);
+        points = new HashMap<Integer,Integer>();
     }
 
     /**
@@ -152,15 +153,16 @@ public class InGameController implements Initializable {
     public void showRanking() {
         this.ranking = new Ranking();
         Stage rankingStage = new Stage();
-        try {
 
-            if (points != null) {
-                ranking.setPlayer(players);
-                ranking.sortPoints(points);
-            }
+        try {
             ranking.display(rankingStage);
+
         } catch (Exception e) {
             System.out.println("Fehler: " + e);
+        }
+        if (points != null) {
+            ranking.setPlayer(players);
+            ranking.sortPoints(points);
         }
     }
 
@@ -177,7 +179,10 @@ public class InGameController implements Initializable {
      * Takes Configuration of the running or ended Game and displays the Information in the TextFields.
      */
     public void setConfig() {
-        Platform.runLater(() -> {
+        config = game.getConfig();
+        height = config.getHeight();
+        width = config.getWidth();
+        millis = config.getRoundTime();
             maxPlayerCount.setText(Integer.toString(game.getConfig().getMaxPlayerCount()));
             shotCount.setText(Integer.toString(game.getConfig().getShotCount()));
             hitPoints.setText(Integer.toString(game.getConfig().getHitPoints()));
@@ -187,7 +192,6 @@ public class InGameController implements Initializable {
                 controller.buildBoard(game.getConfig().getHeight(), game.getConfig().getWidth());
             });
 
-        });
 
     }
 
@@ -197,8 +201,8 @@ public class InGameController implements Initializable {
      * @param tempConfig Configuration of the Game.
      * @param clientList List of all Clients taking part in the Game.
      */
-    public void gameInit(Configuration tempConfig, Collection<Client> clientList) {
-        config = tempConfig;
+    public void sendGameStateRequest(Configuration tempConfig, Collection<Client> clientList) { //TODO delete Parameters
+       /* config = tempConfig;
         height = config.getHeight();
         width = config.getWidth();
         millis = config.getRoundTime();
@@ -213,7 +217,7 @@ public class InGameController implements Initializable {
                 controller.buildBoard(tempConfig.getHeight(), tempConfig.getWidth());
             });
 
-        });
+        }); */
         try {
             model.sendGameStateRequest();
         } catch (Exception e) {
@@ -247,10 +251,6 @@ public class InGameController implements Initializable {
             } catch (Exception e) {
                 e.printStackTrace();
             }
-            placeShips(ships);
-            redoShots(shots);
-
-        });
 
         switch (state) {
             case LOBBY:
@@ -277,7 +277,10 @@ public class InGameController implements Initializable {
                 model.pointsRequest();
                 break;
         }
+            placeShips(ships);
+            redoShots(shots);
 
+        });
     }
 
     /**

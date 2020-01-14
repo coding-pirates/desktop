@@ -58,6 +58,7 @@ public class RankingController implements Initializable {
      */
     public void setPointsList(Queue<Integer> pointsList, Map<Integer, Integer> pointsMap, Collection<Client> players) {  //ToDo Tabelle füllen
         ObservableList<Player> playerList = null;
+        playerList = FXCollections.observableArrayList();
         int i = 1;
         while (!pointsList.isEmpty()) {
             int playerInt = pointsList.remove();
@@ -73,8 +74,8 @@ public class RankingController implements Initializable {
             int points = pointsMap.get(playerInt);
             int rang = i;
             i++;
-            playerList = FXCollections.observableArrayList(
-                    new Player(rang, playerName, points));
+            playerList.add(new Player(rang, playerName, points));
+
         }
         rang.setCellValueFactory(new PropertyValueFactory<>("rang"));
         name.setCellValueFactory(new PropertyValueFactory<>("name"));
