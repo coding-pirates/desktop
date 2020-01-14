@@ -196,6 +196,7 @@ public class PlaceShipsController extends InGameController implements Initializa
             System.out.println("Mouse clicked cell: " + colIndex + " And: " + rowIndex);
             gameField.shipPlaced(new Point2D(colIndex, row - rowIndex-1));
             //placeShips aufrufen für Aktualisierung der Map
+
         }
     }
 

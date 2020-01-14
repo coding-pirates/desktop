@@ -35,7 +35,7 @@ public class Placeships extends Application {
         placeshipsStage.setResizable(false);
         placeshipsStage.setMaximized(true);
         placeshipsStage.setTitle("PlaceShips");
-        placeshipsStage.setScene(new Scene(pane, 1920, 1080));
+        placeshipsStage.setScene(new Scene(pane));
         placeshipsStage.show();
     }
 
