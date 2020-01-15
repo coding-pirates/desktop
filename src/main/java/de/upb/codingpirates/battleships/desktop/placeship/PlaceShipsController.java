@@ -1,18 +1,18 @@
 package de.upb.codingpirates.battleships.desktop.placeship;
 
+import de.upb.codingpirates.battleships.client.ListenerHandler;
+import de.upb.codingpirates.battleships.client.listener.MessageHandlerListener;
+import de.upb.codingpirates.battleships.client.listener.PlaceShipsResponseListener;
 import de.upb.codingpirates.battleships.desktop.endgame.Endgame;
 import de.upb.codingpirates.battleships.desktop.gamefield.GameField;
 import de.upb.codingpirates.battleships.desktop.gamefield.GameFieldController;
 import de.upb.codingpirates.battleships.desktop.ingame.InGameController;
-import de.upb.codingpirates.battleships.desktop.ingame.InGameModel;
 import de.upb.codingpirates.battleships.desktop.lobby.Lobby;
-import de.upb.codingpirates.battleships.desktop.ranking.Ranking;
 import de.upb.codingpirates.battleships.desktop.settings.Settings;
-import de.upb.codingpirates.battleships.desktop.util.GameView;
 import de.upb.codingpirates.battleships.desktop.util.Help;
 import de.upb.codingpirates.battleships.logic.*;
+import de.upb.codingpirates.battleships.network.message.response.PlaceShipsResponse;
 import javafx.application.Platform;
-import javafx.beans.value.ChangeListener;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
@@ -38,6 +38,7 @@ public class PlaceShipsController extends InGameController implements Initializa
     @FXML
     private GridPane grid;
 
+    private PlaceshipsModel model;
     private int height;
     private int width;
     private GameField gameField;
@@ -46,24 +47,27 @@ public class PlaceShipsController extends InGameController implements Initializa
     private HashMap<Integer, Node> fieldMap = new HashMap<Integer, Node>();
     private Game currentGame;
     private Map<Integer,PlacementInfo> placedShips;
-    private Map<Integer,ShipType> shipsToPlace;
+    private Map<Integer,ShipType> shipTypes;
     private int selectedShip;
+    private Rotation currentRotation = Rotation.NONE;
 
 
     public PlaceShipsController() {
+        this.model = new PlaceshipsModel();
     }
 
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         placedShips = new HashMap<>();
-        shipsToPlace = new HashMap<>();
+        shipTypes = new HashMap<>();
         selectedShip = 0;
     }
 
     public void setCurrentGame(Game currentGame){
         this.currentGame = currentGame;
-        this.shipsToPlace.putAll(currentGame.getConfig().getShips());
+       // this.shipTypes.putAll(currentGame.getConfig().getShips());
+        model.addShipTypes(currentGame.getConfig().getShips());
     }
 
     public void closeStage() {
@@ -143,19 +147,7 @@ public class PlaceShipsController extends InGameController implements Initializa
 
     @FXML
     public void gamestart(){
-        //TODO
-       // InGameModel inGameModel = new InGameModel(game);
-        Stage inGameStage = new Stage();
-        try {
-          //  inGameStage.start();
-            closeStage();
-        } catch (Exception e) {
-            e.printStackTrace();
-            inGameStage.setOnCloseRequest((t -> {
-                Platform.exit();
-                System.exit(0);
-            }));
-        };
+        model.sendPlaceShipsRequest();
     }
 
     /**
@@ -184,7 +176,8 @@ public class PlaceShipsController extends InGameController implements Initializa
      * @param event
      */
     public void clickGrid(javafx.scene.input.MouseEvent event) {
-        if(!shipsToPlace.isEmpty()) {
+        selectedShip = new Random().nextInt(3); //for testing only
+        if(model.getShipTypes().size()!= model.getPlacedShips().size()) {
             Node clickedNode = event.getPickResult().getIntersectedNode();
             if (clickedNode != grid) {
                 // click on descendant node
@@ -194,15 +187,14 @@ public class PlaceShipsController extends InGameController implements Initializa
                 int col = gameField.getCol();
                 System.out.println("Mouse clicked cell: " + colIndex + " And: " + rowIndex);
                 Point2D clickedPoint = new Point2D(colIndex, row - rowIndex-1);
-                ArrayList<Point2D> movedShipPoints = new ArrayList<>();
-                for (Point2D point : shipsToPlace.get(selectedShip).getPositions()) {
-                    movedShipPoints.add(new Point2D(clickedPoint.getX()+point.getX(), clickedPoint.getY() + point.getY()));
-                }
-                gameField.shipPlaced(movedShipPoints);
-                shipsToPlace.remove(selectedShip);
-                placedShips.put(selectedShip, new PlacementInfo(clickedPoint,Rotation.NONE));
-                if(!shipsToPlace.isEmpty()){
-                    selectedShip = shipsToPlace.keySet().iterator().next();
+                ArrayList<Point2D> shipPoints = model.getShipPoints(new PlacementInfo(clickedPoint, currentRotation), model.getShipTypes().get(selectedShip));
+                if(model.proofShip(shipPoints)) {
+                    if (model.getPlacedShips().containsKey(selectedShip)) {
+                        gameField.removePlacedShip(model.getShipPoints(new PlacementInfo(model.getPlacedShips().get(selectedShip).getPosition(),currentRotation), model.getShipTypes().get(selectedShip)));
+                    }
+                    gameField.placeShip(shipPoints);
+                    model.addShipPlacement(selectedShip, new PlacementInfo(clickedPoint, currentRotation));
+                   // placedShips.put(selectedShip, new PlacementInfo(clickedPoint, currentRotation));
                 }
             }
         }

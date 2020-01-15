@@ -1,6 +1,8 @@
 package de.upb.codingpirates.battleships.desktop.gamefield;
 
 import de.upb.codingpirates.battleships.logic.Point2D;
+import de.upb.codingpirates.battleships.logic.Rotation;
+import de.upb.codingpirates.battleships.logic.ShipType;
 import javafx.beans.property.ReadOnlyDoubleProperty;
 import javafx.geometry.Pos;
 import javafx.scene.control.Tooltip;
@@ -10,6 +12,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Rectangle;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Random;
@@ -97,7 +100,7 @@ public class GameField {
         Tooltip.install(map.get(point), toolTip);
     }
 
-    public void shipPlaced(Collection<Point2D> shipPoints){
+    public void placeShip(ArrayList<Point2D> shipPoints){
         for(Point2D point: shipPoints) {
             String pointStr = (point.getX() + "," + point.getY());
             Image img0 = new Image(String.valueOf(GameField.class.getResource("/images/ship1.png")));
@@ -118,6 +121,13 @@ public class GameField {
         }
     }
 
+    public void removePlacedShip(ArrayList<Point2D> oldShipPoints){
+        Image imgField = new Image(String.valueOf(GameField.class.getResource("/images/field.png")));
+        for(Point2D point : oldShipPoints){
+            String pointStr = (point.getX() + "," + point.getY());
+            map.get(pointStr).setFill(new ImagePattern(imgField));
+        }
+    }
     /**
      * Get Method for HashMap.
      *
