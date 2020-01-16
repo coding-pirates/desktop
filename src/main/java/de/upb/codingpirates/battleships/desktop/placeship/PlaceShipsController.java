@@ -220,7 +220,7 @@ public class PlaceShipsController extends InGameController implements Initializa
             InGame inGame = new InGame();
             Stage inGameStage = new Stage();
             try {
-                inGame.start(inGameStage,model.getCurrentGame(), model.getClientList());
+                inGame.start(inGameStage,model.getCurrentGame(), ClientType.PLAYER);
             } catch (Exception e) {
                 e.printStackTrace();
             }

@@ -1,6 +1,7 @@
 package de.upb.codingpirates.battleships.desktop.ingame;
 
 import de.upb.codingpirates.battleships.logic.Client;
+import de.upb.codingpirates.battleships.logic.ClientType;
 import de.upb.codingpirates.battleships.logic.Game;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -12,11 +13,12 @@ import java.util.Collection;
 
 public class InGame {
     private InGameController inGameController;
-    public void start(Stage inGameStage, Game currentGame, Collection<Client> clientList) throws Exception {
+    public void start(Stage inGameStage, Game currentGame, ClientType clientType) throws Exception {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/InGameView.fxml"));
         AnchorPane pane = loader.load();
         inGameController = loader.getController();
         inGameController.setGame(currentGame);
+        inGameController.setClientType(clientType);
         inGameController.sendGameStateRequest();
         Image icon = new Image(String.valueOf(getClass().getResource("/images/app_icon.png")));
         inGameStage.getIcons().add(icon);

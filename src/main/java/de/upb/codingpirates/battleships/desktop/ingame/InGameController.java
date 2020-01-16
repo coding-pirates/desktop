@@ -96,6 +96,9 @@ public class InGameController implements Initializable {
         this.game = game;
     }
 
+    public void setClientType(ClientType clientType){
+        model.setClientType(clientType);
+    }
     /**
      * Shows the klicked GameField of one Player on a bigger Screen in detail.
      */
@@ -199,22 +202,6 @@ public class InGameController implements Initializable {
      * Takes Configuration of the Game and displays the Information in the TextFields.
      */
     public void sendGameStateRequest() {
-       /* config = tempConfig;
-        height = config.getHeight();
-        width = config.getWidth();
-        millis = config.getRoundTime();
-
-        Platform.runLater(() -> {
-            maxPlayerCount.setText(Integer.toString(config.getMaxPlayerCount()));
-            shotCount.setText(Integer.toString(config.getShotCount()));
-            hitPoints.setText(Integer.toString(config.getHitPoints()));
-            sunkPoints.setText(Integer.toString(config.getSunkPoints()));
-            roundTime.setText(Long.toString(config.getRoundTime()));
-            controllerMap.forEach((client, controller) -> {
-                controller.buildBoard(tempConfig.getHeight(), tempConfig.getWidth());
-            });
-
-        }); */
         try {
             model.sendGameStateRequest();
         } catch (Exception e) {
@@ -234,7 +221,7 @@ public class InGameController implements Initializable {
      * @param state   GameState
      * @throws Exception
      */
-    public void spectatorGameStateResponse(Collection<Client> players, Collection<Shot> shots, Map<Integer, Map<Integer, PlacementInfo>> ships, GameState state) throws Exception {
+    public void spectatorGameStateResponse(ClientType clientType, Collection<Client> players, Collection<Shot> shots, Map<Integer, Map<Integer, PlacementInfo>> ships, GameState state) throws Exception {
 
         if (this.players != null) {
             players.removeIf(client -> this.players.contains(client));
@@ -274,7 +261,9 @@ public class InGameController implements Initializable {
                 model.pointsRequest();
                 break;
         }
-            placeShips(ships);
+            if(clientType == ClientType.SPECTATOR) {
+                placeShips(ships);
+            }
             redoShots(shots);
 
         });
@@ -345,6 +334,16 @@ public class InGameController implements Initializable {
 
         Platform.runLater(() -> {
             thisOb.missedShots(missed);
+            thisOb.hitShots(hits);
+            thisOb.setPoints(points);
+            thisOb.points = points;
+        });
+    }
+
+    public void playerUpdateNotification(Collection<Shot> hits, Map<Integer, Integer> points) {
+        InGameController thisOb = this;
+
+        Platform.runLater(() -> {
             thisOb.hitShots(hits);
             thisOb.setPoints(points);
             thisOb.points = points;
