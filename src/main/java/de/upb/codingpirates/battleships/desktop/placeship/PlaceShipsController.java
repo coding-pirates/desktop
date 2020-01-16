@@ -48,6 +48,7 @@ public class PlaceShipsController extends InGameController implements Initializa
 
 
     public PlaceShipsController() {
+        ListenerHandler.registerListener((MessageHandlerListener) this);
         this.model = new PlaceshipsModel();
     }
 

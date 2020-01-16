@@ -21,7 +21,7 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
-public class PlaceshipsModel implements PlaceShipsResponseListener, GameStartNotificationListener, GameInitNotificationListener {
+public class PlaceshipsModel{
     private Map<Integer, PlacementInfo> placedShips;
     private Map<Integer,ShipType> shipTypes;
     private Collection<Client> clientList;
@@ -32,7 +32,6 @@ public class PlaceshipsModel implements PlaceShipsResponseListener, GameStartNot
 
     public PlaceshipsModel(){
         placedShips = new HashMap<>();
-        ListenerHandler.registerListener((MessageHandlerListener) this);
     }
 
     public void setPlacedShips(Map<Integer, PlacementInfo> placedShips) {
@@ -128,7 +127,7 @@ public class PlaceshipsModel implements PlaceShipsResponseListener, GameStartNot
 
     public void sendPlaceShipsRequest(PlaceShipsController sender){
         if(placedShips.size() == shipTypes.size()) {
-            if(gameInitReceived) {
+            if(clientList!= null) {
                 try {
                     BattleshipsDesktopClientApplication
                             .getInstance()
@@ -146,42 +145,5 @@ public class PlaceshipsModel implements PlaceShipsResponseListener, GameStartNot
             sender.showPlaceAllShips();
         }
     }
-    @Override
-    public void onPlaceShipsResponse(PlaceShipsResponse message, int clientId) {
-       //TODO Message Ships placed successfully
-        /*Platform.runLater(()->{
-            // InGameModel inGameModel = new InGameModel(game);
-            Stage inGameStage = new Stage();
-            try {
-                inGameStage.display();
-              //  closeStage();
-            } catch (Exception e) {
-                e.printStackTrace();
-                inGameStage.setOnCloseRequest((t -> {
-                    Platform.exit();
-                    System.exit(0);
-                }));
-            };
-        });*/
-    }
 
-    @Override
-    public void onGameStartNotification(GameStartNotification message, int clientId) {
-        Platform.runLater(()->{
-            InGame inGame = new InGame();
-            Stage inGameStage = new Stage();
-            try {
-                inGame.start(inGameStage,currentGame, clientList);
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-            gameInitReceived = false;
-        });
-    }
-
-    @Override
-    public void onGameInitNotification(GameInitNotification message, int clientId) {
-        gameInitReceived = true;
-        this.clientList = message.getClientList();
-    }
 }
