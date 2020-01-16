@@ -26,11 +26,54 @@ public class PlaceshipsModel implements PlaceShipsResponseListener, GameStartNot
     private Map<Integer,ShipType> shipTypes;
     private Collection<Client> clientList;
     private Game currentGame;
+    private int selectedShip;
+    private Rotation currentRotation = Rotation.NONE;
     private boolean gameInitReceived = false;
 
     public PlaceshipsModel(){
         placedShips = new HashMap<>();
         ListenerHandler.registerListener((MessageHandlerListener) this);
+    }
+
+    public void setPlacedShips(Map<Integer, PlacementInfo> placedShips) {
+        this.placedShips = placedShips;
+    }
+
+    public void setShipTypes(Map<Integer, ShipType> shipTypes) {
+        this.shipTypes = shipTypes;
+    }
+
+    public Game getCurrentGame() {
+        return currentGame;
+    }
+
+    public void setCurrentGame(Game currentGame) {
+        this.currentGame = currentGame;
+    }
+
+
+    public int getSelectedShip() {
+        return selectedShip;
+    }
+
+    public void setSelectedShip(int selectedShip) {
+        this.selectedShip = selectedShip;
+    }
+
+    public Rotation getCurrentRotation() {
+        return currentRotation;
+    }
+
+    public void setCurrentRotation(Rotation currentRotation) {
+        this.currentRotation = currentRotation;
+    }
+
+    public Collection<Client> getClientList() {
+        return clientList;
+    }
+
+    public void setClientList(Collection<Client> clientList) {
+        this.clientList = clientList;
     }
 
     public void addShipTypes(Map<Integer,ShipType> shipTypes){
@@ -83,7 +126,7 @@ public class PlaceshipsModel implements PlaceShipsResponseListener, GameStartNot
 
     }
 
-    public void sendPlaceShipsRequest(){
+    public void sendPlaceShipsRequest(PlaceShipsController sender){
         if(placedShips.size() == shipTypes.size()) {
             if(gameInitReceived) {
                 try {
@@ -96,11 +139,11 @@ public class PlaceshipsModel implements PlaceShipsResponseListener, GameStartNot
                 }
             }
             else{
-                //TODO message "wait for GAmeInit"
+                sender.showWaitForGameInit();
             }
         }
         else{
-            //TODO message "please place all ships"
+            sender.showPlaceAllShips();
         }
     }
     @Override

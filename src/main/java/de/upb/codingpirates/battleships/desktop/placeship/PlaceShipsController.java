@@ -1,16 +1,21 @@
 package de.upb.codingpirates.battleships.desktop.placeship;
 
 import de.upb.codingpirates.battleships.client.ListenerHandler;
+import de.upb.codingpirates.battleships.client.listener.GameInitNotificationListener;
+import de.upb.codingpirates.battleships.client.listener.GameStartNotificationListener;
 import de.upb.codingpirates.battleships.client.listener.MessageHandlerListener;
 import de.upb.codingpirates.battleships.client.listener.PlaceShipsResponseListener;
 import de.upb.codingpirates.battleships.desktop.endgame.Endgame;
 import de.upb.codingpirates.battleships.desktop.gamefield.GameField;
 import de.upb.codingpirates.battleships.desktop.gamefield.GameFieldController;
+import de.upb.codingpirates.battleships.desktop.ingame.InGame;
 import de.upb.codingpirates.battleships.desktop.ingame.InGameController;
 import de.upb.codingpirates.battleships.desktop.lobby.Lobby;
 import de.upb.codingpirates.battleships.desktop.settings.Settings;
 import de.upb.codingpirates.battleships.desktop.util.Help;
 import de.upb.codingpirates.battleships.logic.*;
+import de.upb.codingpirates.battleships.network.message.notification.GameInitNotification;
+import de.upb.codingpirates.battleships.network.message.notification.GameStartNotification;
 import de.upb.codingpirates.battleships.network.message.response.PlaceShipsResponse;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
@@ -29,7 +34,7 @@ import java.util.*;
 /**
  * Controller Class for the PlaceShips Window.
  */
-public class PlaceShipsController extends InGameController implements Initializable {
+public class PlaceShipsController extends InGameController implements Initializable, PlaceShipsResponseListener, GameStartNotificationListener, GameInitNotificationListener {
 
     @FXML
     private Button btn_rotate;
@@ -39,17 +44,7 @@ public class PlaceShipsController extends InGameController implements Initializa
     private GridPane grid;
 
     private PlaceshipsModel model;
-    private int height;
-    private int width;
     private GameField gameField;
-    private String[][] type;
-    private HashMap<Integer, GameFieldController> controllerMap = new HashMap<Integer, GameFieldController>();
-    private HashMap<Integer, Node> fieldMap = new HashMap<Integer, Node>();
-    private Game currentGame;
-    private Map<Integer,PlacementInfo> placedShips;
-    private Map<Integer,ShipType> shipTypes;
-    private int selectedShip;
-    private Rotation currentRotation = Rotation.NONE;
 
 
     public PlaceShipsController() {
@@ -59,15 +54,12 @@ public class PlaceShipsController extends InGameController implements Initializa
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        placedShips = new HashMap<>();
-        shipTypes = new HashMap<>();
-        selectedShip = 0;
+        model.setSelectedShip(0);
     }
 
     public void setCurrentGame(Game currentGame){
-        this.currentGame = currentGame;
-       // this.shipTypes.putAll(currentGame.getConfig().getShips());
-        model.addShipTypes(currentGame.getConfig().getShips());
+       model.setCurrentGame(currentGame);
+        model.addShipTypes(currentGame.getConfig().getShips()); //TODO maybe direct in Model
     }
 
     public void closeStage() {
@@ -147,7 +139,7 @@ public class PlaceShipsController extends InGameController implements Initializa
 
     @FXML
     public void gamestart(){
-        model.sendPlaceShipsRequest();
+        model.sendPlaceShipsRequest(this);
     }
 
     /**
@@ -156,19 +148,16 @@ public class PlaceShipsController extends InGameController implements Initializa
      * @throws Exception
      */
     public void fieldInit() {
-        buildBoard(currentGame.getConfig().getHeight(),currentGame.getConfig().getWidth());
+        buildBoard(model.getCurrentGame().getConfig().getHeight(),model.getCurrentGame().getConfig().getWidth());
     }
 
     /**
      * Builds the GameField. Sets all Fields to WaterFields.
      */
     public void buildBoard(int height, int width) {
-        this.height = height;
-        this.width = width;
         gameField = new GameField(height, width);
         borderPane.setPadding(new Insets(1, 1, 1, 1));
         borderPane.setCenter(gameField.getDisplay());
-
     }
 
     /**
@@ -176,8 +165,7 @@ public class PlaceShipsController extends InGameController implements Initializa
      * @param event
      */
     public void clickGrid(javafx.scene.input.MouseEvent event) {
-        selectedShip = new Random().nextInt(3); //for testing only
-        if(model.getShipTypes().size()!= model.getPlacedShips().size()) {
+        model.setSelectedShip(new Random().nextInt(3)); //for testing only
             Node clickedNode = event.getPickResult().getIntersectedNode();
             if (clickedNode != grid) {
                 // click on descendant node
@@ -187,17 +175,59 @@ public class PlaceShipsController extends InGameController implements Initializa
                 int col = gameField.getCol();
                 System.out.println("Mouse clicked cell: " + colIndex + " And: " + rowIndex);
                 Point2D clickedPoint = new Point2D(colIndex, row - rowIndex-1);
-                ArrayList<Point2D> shipPoints = model.getShipPoints(new PlacementInfo(clickedPoint, currentRotation), model.getShipTypes().get(selectedShip));
-                if(model.proofShip(shipPoints)) {
-                    if (model.getPlacedShips().containsKey(selectedShip)) {
-                        gameField.removePlacedShip(model.getShipPoints(new PlacementInfo(model.getPlacedShips().get(selectedShip).getPosition(),currentRotation), model.getShipTypes().get(selectedShip)));
+                ArrayList<Point2D> shipPoints = model.getShipPoints(new PlacementInfo(clickedPoint, model.getCurrentRotation()), model.getShipTypes().get(model.getSelectedShip()));
+                if(model.proofShip(shipPoints)) {//TODO ships which doesnt contain (0,0) ???
+                    if (model.getPlacedShips().containsKey(model.getSelectedShip())) {
+                        gameField.removePlacedShip(model.getShipPoints(new PlacementInfo(model.getPlacedShips().get(model.getSelectedShip()).getPosition(),model.getCurrentRotation()), model.getShipTypes().get(model.getSelectedShip())));
                     }
                     gameField.placeShip(shipPoints);
-                    model.addShipPlacement(selectedShip, new PlacementInfo(clickedPoint, currentRotation));
-                   // placedShips.put(selectedShip, new PlacementInfo(clickedPoint, currentRotation));
+                    model.addShipPlacement(model.getSelectedShip(), new PlacementInfo(clickedPoint, model.getCurrentRotation()));
                 }
             }
-        }
     }
 
+
+    public void showWaitForGameInit(){
+        //TODO Show "Please wait for GameInit"
+    }
+    public void showPlaceAllShips(){
+        //TODO Show "Please place all Ships first"
+    }
+
+    @Override
+    public void onPlaceShipsResponse(PlaceShipsResponse message, int clientId) {
+        //TODO Message Ships placed successfully
+        /*Platform.runLater(()->{
+            // InGameModel inGameModel = new InGameModel(game);
+            Stage inGameStage = new Stage();
+            try {
+                inGameStage.display();
+              //  closeStage();
+            } catch (Exception e) {
+                e.printStackTrace();
+                inGameStage.setOnCloseRequest((t -> {
+                    Platform.exit();
+                    System.exit(0);
+                }));
+            };
+        });*/
+    }
+
+    @Override
+    public void onGameStartNotification(GameStartNotification message, int clientId) {
+        Platform.runLater(()->{
+            InGame inGame = new InGame();
+            Stage inGameStage = new Stage();
+            try {
+                inGame.start(inGameStage,model.getCurrentGame(), model.getClientList());
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        });
+    }
+
+    @Override
+    public void onGameInitNotification(GameInitNotification message, int clientId) {
+        model.setClientList(message.getClientList());
+    }
 }
