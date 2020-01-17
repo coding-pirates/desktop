@@ -8,16 +8,14 @@ import de.upb.codingpirates.battleships.desktop.ingame.InGameModel;
 import de.upb.codingpirates.battleships.desktop.lobby.Lobby;
 import de.upb.codingpirates.battleships.desktop.settings.Settings;
 import de.upb.codingpirates.battleships.desktop.util.Help;
-import de.upb.codingpirates.battleships.logic.Client;
-import de.upb.codingpirates.battleships.logic.Game;
-import de.upb.codingpirates.battleships.logic.PlacementInfo;
-import de.upb.codingpirates.battleships.logic.Point2D;
+import de.upb.codingpirates.battleships.logic.*;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
@@ -37,6 +35,8 @@ public class PlaceShipsController extends InGameController implements Initializa
     private BorderPane borderPane;
     @FXML
     private GridPane grid;
+    @FXML
+    private BorderPane smallBorderPane;
 
     private int height;
     private int width;
@@ -45,6 +45,7 @@ public class PlaceShipsController extends InGameController implements Initializa
     private HashMap<Integer, GameFieldController> controllerMap = new HashMap<Integer, GameFieldController>();
     private HashMap<Integer, Node> fieldMap = new HashMap<Integer, Node>();
     private Game game;
+    private ShipForm shipForm;
 
 
 
@@ -130,6 +131,7 @@ public class PlaceShipsController extends InGameController implements Initializa
     @FXML
     public void rotate(){
         //TODO
+        shipForm.rotate();
     }
 
     @FXML
@@ -200,4 +202,22 @@ public class PlaceShipsController extends InGameController implements Initializa
         }
     }
 
-}
+    public void setShipForm(){
+        //get ShipForm from server
+        this.height = height;
+        this.width = width;
+        //gameField = new GameField(height, width);
+        ArrayList<Point2D> positions= new ArrayList<>();
+        positions.add(new Point2D(0,0));
+        positions.add(new Point2D(0,1));
+        positions.add(new Point2D(0,2));
+        positions.add(new Point2D(1,2));
+        Ship s = new Ship(new ShipType(positions));
+        shipForm= new ShipForm(3, 3, positions);
+        smallBorderPane.setPadding(new Insets(1, 1, 1, 1));
+        grid = shipForm.getDisplay();
+        smallBorderPane.setCenter(grid);
+        System.out.println(smallBorderPane.getCenter());
+    }
+    }
+

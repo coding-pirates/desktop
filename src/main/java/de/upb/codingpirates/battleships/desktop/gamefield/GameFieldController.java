@@ -94,7 +94,7 @@ public class GameFieldController implements Initializable {
                 type[i][j] = "water";
             }
         }
-        System.out.println(borderPane.getCenter());
+
     }
 
 

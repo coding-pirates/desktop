@@ -2,7 +2,6 @@ package de.upb.codingpirates.battleships.desktop.gamefield;
 
 import de.upb.codingpirates.battleships.desktop.BattleshipsDesktopClientApplication;
 import de.upb.codingpirates.battleships.logic.Point2D;
-import de.upb.codingpirates.battleships.logic.Shot;
 import javafx.beans.property.ReadOnlyDoubleProperty;
 import javafx.geometry.Pos;
 import javafx.scene.control.Tooltip;
@@ -10,7 +9,6 @@ import javafx.scene.image.Image;
 import javafx.scene.layout.GridPane;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
-import javafx.scene.paint.Color;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Rectangle;
 

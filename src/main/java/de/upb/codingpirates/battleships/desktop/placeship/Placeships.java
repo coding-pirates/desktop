@@ -30,6 +30,7 @@ public class Placeships extends Application {
         AnchorPane pane = loader.load();
         this.placeshipsController = loader.getController();
         placeshipsController.fieldInit(null);
+        placeshipsController.setShipForm();
         Image icon = new Image(String.valueOf(getClass().getResource("/images/app_icon.png")));
         placeshipsStage.getIcons().add(icon);
         placeshipsStage.setResizable(false);
