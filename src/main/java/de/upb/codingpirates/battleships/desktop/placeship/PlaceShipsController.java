@@ -213,7 +213,7 @@ public class PlaceShipsController extends InGameController implements Initializa
         positions.add(new Point2D(0,2));
         positions.add(new Point2D(1,2));
         Ship s = new Ship(new ShipType(positions));
-        shipForm= new ShipForm(3, 3, positions);
+        shipForm= new ShipForm(positions);
         smallBorderPane.setPadding(new Insets(1, 1, 1, 1));
         grid = shipForm.getDisplay();
         smallBorderPane.setCenter(grid);

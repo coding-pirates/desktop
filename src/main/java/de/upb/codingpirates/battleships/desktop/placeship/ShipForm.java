@@ -20,16 +20,25 @@ public class ShipForm {
     private int nbRow;
     private int nbColumn;
 
-    public ShipForm(int nbRow, int nbColumn, Collection<Point2D> positions) {
+    public ShipForm(Collection<Point2D> positions) {
         this.shipForm = new GridPane();
         shipForm.setMinSize(1, 1);
         shipForm.setAlignment(Pos.CENTER);
         shipForm.setRotate(0.0);
-        this.nbRow = nbRow;
-        this.nbColumn = nbColumn;
+        this.nbRow = height(positions)+1;
+        this.nbColumn = height(positions)+1;
         System.out.println(positions);
         setShip(positions);
 
+    }
+
+    public int height(Collection<Point2D> positions){
+        int maxHeight=0;
+        for (Point2D pos:positions){
+            maxHeight = Math.max(pos.getY(), maxHeight);
+            maxHeight = Math.max(pos.getX(), maxHeight);
+        }
+        return maxHeight;
     }
 
     public void setShip(Collection<Point2D> positions){
