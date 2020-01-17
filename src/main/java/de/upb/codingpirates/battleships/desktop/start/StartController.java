@@ -39,8 +39,7 @@ public class StartController implements Initializable {
 
 
     public void closeStage(){
-        Stage stage = (Stage) btn_start.getScene().getWindow();
-        stage.close();
+        main.getStartStage().close();
     }
 
     @FXML

@@ -60,20 +60,19 @@ public final class BattleshipsDesktopClientApplication extends Application  {
         final MediaPlayer mediaplayer = new MediaPlayer(media);
 
 
-        Scene scene = new Scene(pane);
-        startStage.setMaximized(true);
+        startStage.setMaximized(false);
         startStage.setResizable(false);
         startStage.setTitle(TITLE);
-        startStage.setScene(scene);
-        mediaplayer.play();
-        startStage.show();}
+        startStage.setScene(new Scene(pane));
+        startStage.show();
+        mediaplayer.play();}
         catch (IOException e){
             e.printStackTrace();
         }
 
     }
 
-    public Stage getLoginStage() {
+    public Stage getStartStage() {
         return startStage;
     }
 
