@@ -88,7 +88,7 @@
                   </AnchorPane>
                </children>
             </HBox>
-            <Button contentDisplay="CENTER" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#gamestart" prefHeight="36.0" prefWidth="170.0" style="-fx-background-color: #CFBE8E; -fx-border-color: #472218;" text="Let's start the Game!" textFill="#f8f7f7" />
+            <Button contentDisplay="CENTER" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#gamestart" prefHeight="36.0" prefWidth="170.0" style="-fx-background-color: #CFBE8E;" text="Let's start the Game!" textFill="#f8f7f7" />
             <Button mnemonicParsing="false" onAction="#handlerButton" text="next" />
             <SplitPane fx:id="splitPane" prefHeight="160.0" prefWidth="200.0" style="-fx-background-color: #CFBE8E;" VBox.vgrow="ALWAYS">
                <items>
