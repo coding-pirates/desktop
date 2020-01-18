@@ -102,12 +102,13 @@ public class ServerLoginController implements Initializable, ServerJoinResponseL
         Platform.runLater(() -> {
             setLblStatus("");
 
-            closeStage();
+            
 
             Lobby lobby = new Lobby();
             Stage lobbyStage = new Stage();
             try {
                 lobby.display(lobbyStage);
+                closeStage();
             } catch (IOException e) {
                 e.printStackTrace();//TODO
             }
