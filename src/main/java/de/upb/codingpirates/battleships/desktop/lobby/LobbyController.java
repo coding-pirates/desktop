@@ -1,12 +1,10 @@
 package de.upb.codingpirates.battleships.desktop.lobby;
 
-import java.io.IOException;
-import java.net.URL;
-import java.util.*;
-
-import de.upb.codingpirates.battleships.desktop.ingame.InGameModel;
-import de.upb.codingpirates.battleships.desktop.settings.Settings;
+import de.upb.codingpirates.battleships.client.ListenerHandler;
+import de.upb.codingpirates.battleships.client.listener.LobbyResponseListener;
 import de.upb.codingpirates.battleships.desktop.ClientType.ClientType;
+import de.upb.codingpirates.battleships.desktop.settings.Settings;
+import de.upb.codingpirates.battleships.desktop.util.GameView;
 import de.upb.codingpirates.battleships.desktop.util.Help;
 import de.upb.codingpirates.battleships.logic.Game;
 import de.upb.codingpirates.battleships.network.message.response.LobbyResponse;
@@ -21,11 +19,10 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.SelectionModel;
 import javafx.stage.Stage;
 
-import de.upb.codingpirates.battleships.client.ListenerHandler;
-import de.upb.codingpirates.battleships.client.listener.LobbyResponseListener;
-import de.upb.codingpirates.battleships.desktop.util.GameView;
-import de.upb.codingpirates.battleships.logic.Game;
-import de.upb.codingpirates.battleships.network.message.response.LobbyResponse;
+import java.io.IOException;
+import java.net.URL;
+import java.util.Collection;
+import java.util.ResourceBundle;
 
 /**
  * Controller Class for the Lobby Window.
@@ -149,8 +146,7 @@ public class LobbyController implements Initializable , LobbyResponseListener {
     }
 
     public void closeStage() {
-        Stage stage = (Stage) refreshButton.getScene().getWindow();
-        stage.close();
+        lobby.close();
     }
 
     @FXML

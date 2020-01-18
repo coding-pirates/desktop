@@ -6,16 +6,11 @@ import de.upb.codingpirates.battleships.desktop.BattleshipsDesktopClientApplicat
 import de.upb.codingpirates.battleships.logic.*;
 import de.upb.codingpirates.battleships.network.message.notification.*;
 import de.upb.codingpirates.battleships.network.message.request.RequestBuilder;
-import de.upb.codingpirates.battleships.network.message.response.GameJoinSpectatorResponse;
 import de.upb.codingpirates.battleships.network.message.response.PointsResponse;
 import de.upb.codingpirates.battleships.network.message.response.RemainingTimeResponse;
 import de.upb.codingpirates.battleships.network.message.response.SpectatorGameStateResponse;
 import javafx.application.Application;
 import javafx.application.Platform;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
-import javafx.scene.image.Image;
-import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 import java.util.ArrayList;

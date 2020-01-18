@@ -4,8 +4,6 @@ import de.upb.codingpirates.battleships.client.ListenerHandler;
 import de.upb.codingpirates.battleships.client.listener.GameInitNotificationListener;
 import de.upb.codingpirates.battleships.client.listener.GameStartNotificationListener;
 import de.upb.codingpirates.battleships.desktop.ingame.InGame;
-import de.upb.codingpirates.battleships.desktop.ingame.InGameModel;
-import de.upb.codingpirates.battleships.desktop.lobby.LobbyController;
 import de.upb.codingpirates.battleships.desktop.settings.Settings;
 import de.upb.codingpirates.battleships.desktop.util.Help;
 import de.upb.codingpirates.battleships.logic.Client;
@@ -49,6 +47,7 @@ public class WaitingController implements Initializable, GameStartNotificationLi
         Stage inGameStage = new Stage();
         try {
             inGame.start(inGameStage,currentGame, clientList);
+            closeStage();
         } catch (Exception e) {
             e.printStackTrace();
         }

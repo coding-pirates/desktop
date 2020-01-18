@@ -102,10 +102,7 @@ public class ServerLoginController implements Initializable, ServerJoinResponseL
         Platform.runLater(() -> {
             setLblStatus("");
 
-            BattleshipsDesktopClientApplication
-                    .getInstance()
-                    .getStartStage()
-                    .close();
+            closeStage();
 
             Lobby lobby = new Lobby();
             Stage lobbyStage = new Stage();
