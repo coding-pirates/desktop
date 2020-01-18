@@ -57,7 +57,7 @@
                </Button>
                <Button contentDisplay="GRAPHIC_ONLY" layoutX="59.0" layoutY="112.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#soundsOff" prefHeight="40.0" prefWidth="48.0" style="-fx-background-color: #CFBE8E;" text="Button" AnchorPane.bottomAnchor="111.0" AnchorPane.leftAnchor="59.0" AnchorPane.topAnchor="112.0">
                   <graphic>
-                     <ImageView fitHeight="31.0" fitWidth="21.0">
+                     <ImageView fx:id="soundImg" fitHeight="31.0" fitWidth="32.0">
                         <image>
                            <Image url="@../images/icon_music.png" />
                         </image>
@@ -66,7 +66,7 @@
                </Button>
                <Button contentDisplay="GRAPHIC_ONLY" layoutX="59.0" layoutY="61.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#volumeOff" prefHeight="40.0" prefWidth="48.0" style="-fx-background-color: #CFBE8E;" text="Button" AnchorPane.bottomAnchor="162.0" AnchorPane.leftAnchor="59.0" AnchorPane.topAnchor="61.0">
                   <graphic>
-                     <ImageView fitHeight="31.0" fitWidth="40.0">
+                     <ImageView fx:id="volumeImg" fitHeight="31.0" fitWidth="40.0">
                         <image>
                            <Image url="@../images/icon_sound.png" />
                         </image>

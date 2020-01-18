@@ -1,17 +1,16 @@
 package de.upb.codingpirates.battleships.desktop.settings;
 
 import de.upb.codingpirates.battleships.desktop.BattleshipsDesktopClientApplication;
-import de.upb.codingpirates.battleships.desktop.serverlogin.ServerLogin;
 import de.upb.codingpirates.battleships.desktop.util.Help;
 import de.upb.codingpirates.battleships.desktop.util.Impressum;
-import javafx.application.Platform;
 import javafx.beans.InvalidationListener;
 import javafx.beans.Observable;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Slider;
-import javafx.scene.media.MediaPlayer;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -31,6 +30,12 @@ public class SettingsController implements Initializable {
 
     @FXML
     private Slider volume;
+
+    @FXML
+    private ImageView soundImg;
+
+    @FXML
+    private ImageView volumeImg;
 
     /**
      * Initial Method.
@@ -100,11 +105,12 @@ public class SettingsController implements Initializable {
     public void volumeOff(){
         if (BattleshipsDesktopClientApplication.mediaView.getMediaPlayer().isMute()){
             BattleshipsDesktopClientApplication.mediaView.getMediaPlayer().setMute(false);
-            //TODO Icon switching
+            volumeImg.setImage(new Image(String.valueOf(getClass().getResource("/images/icon_sound.png"))));
         }
         else{
             BattleshipsDesktopClientApplication.mediaView.getMediaPlayer().setMute(true);
-            //TODO Icon switching
+            volumeImg.setImage(new Image(String.valueOf(getClass().getResource("/images/SoundOff_Icon.png"))));
+
         }
 
     }
@@ -113,12 +119,14 @@ public class SettingsController implements Initializable {
     public void soundsOff(){
         if (BattleshipsDesktopClientApplication.sounds){
             BattleshipsDesktopClientApplication.setSoundsOff(false);
-            //TODO Icon switching
+            soundImg.setImage(new Image(String.valueOf(getClass().getResource("/images/SoundEffect_Icon.png"))));
+
         }
         else
         {
             BattleshipsDesktopClientApplication.setSoundsOff((true));
-            //TODO Icon switchung
+            soundImg.setImage(new Image(String.valueOf(getClass().getResource("/images/icon_music.png"))));
+
         }
     }
 
