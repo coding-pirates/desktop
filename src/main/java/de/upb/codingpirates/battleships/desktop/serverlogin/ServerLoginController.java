@@ -160,8 +160,8 @@ public class ServerLoginController implements Initializable, ServerJoinResponseL
     }
 
 
-    @Override
+   /* @Override
     public void onLobbyResponse(LobbyResponse message, int clientId) {
 
-    }
+    }*/
 }

@@ -108,8 +108,8 @@ public class ServerLoginModel implements ServerJoinResponseListener {
         this.setClientId(message.getClientId());
     }
 
-    @Override
+    /*@Override
     public void onLobbyResponse(LobbyResponse message, int clientId) {
 
-    }
+    }*/
 }
