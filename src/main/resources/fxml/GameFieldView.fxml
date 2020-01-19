@@ -9,22 +9,22 @@
 <?import javafx.scene.text.Text?>
 
 <AnchorPane minHeight="100.0" minWidth="100.0" onMouseClicked="#enlargeBoard" prefHeight="300.0" prefWidth="300.0" style="-fx-background-color: #CFBE8E; -fx-border-color: #472218; -fx-border-width: 5;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.upb.codingpirates.battleships.desktop.gamefield.GameFieldController">
-  <BorderPane fx:id="borderPane" prefHeight="100.0" prefWidth="100.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
-    <top>
-      <GridPane alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="100.0" style="-fx-background-color: #CFBE8E;" BorderPane.alignment="CENTER">
-        <BorderPane.margin>
-          <Insets bottom="10.0" top="5.0" />
-        </BorderPane.margin>
+  <BorderPane fx:id="borderPane" layoutX="16.0" layoutY="36.0" onMouseClicked="#clickGrid" prefHeight="266.0" prefWidth="273.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="10.0">
+      <top>
+      <GridPane alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="16.0" prefWidth="282.0" style="-fx-background-color: #CFBE8E;" BorderPane.alignment="CENTER">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
         </columnConstraints>
         <rowConstraints>
-          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="TOP" vgrow="SOMETIMES" />
         </rowConstraints>
         <Text fx:id="name" fill="#472218" fontSmoothingType="LCD" strokeType="OUTSIDE" strokeWidth="0.0" text=" Spieler:" />
         <Text fx:id="points" fill="#472218" strokeType="OUTSIDE" strokeWidth="0.0" text="Punkte:" GridPane.columnIndex="1" />
+            <BorderPane.margin>
+               <Insets top="-10.0" />
+            </BorderPane.margin>
       </GridPane>
-    </top>
+      </top>
   </BorderPane>
 </AnchorPane>

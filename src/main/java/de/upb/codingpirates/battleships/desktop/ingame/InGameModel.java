@@ -158,6 +158,7 @@ public class InGameModel extends Application implements InGameModelMessageListen
         inGameStage.setTitle("InGame");
         inGameStage.setScene(new Scene(pane));
         inGameStage.setMaximized(true);
+        inGameStage.setResizable(false);
         inGameStage.show();
          */
     }

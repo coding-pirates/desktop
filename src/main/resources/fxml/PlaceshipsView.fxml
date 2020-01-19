@@ -24,7 +24,7 @@
       </ImageView>
       <VBox alignment="CENTER" layoutY="-1.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" AnchorPane.bottomAnchor="-122.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <HBox prefHeight="100.0" prefWidth="200.0">
+            <HBox prefHeight="150.0" prefWidth="200.0">
                <children>
                   <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Place your ships!" textAlignment="CENTER" wrappingWidth="200.4072265625">
                      <font>
@@ -34,36 +34,45 @@
                         <Insets left="100.0" top="30.0" />
                      </HBox.margin>
                   </Text>
-                  <Label minHeight="-Infinity" minWidth="-Infinity" prefHeight="90.0" prefWidth="100.0" textFill="WHITE" />
-                  <Text fill="#fcf9f9" strokeType="OUTSIDE" strokeWidth="0.0" text="Size" wrappingWidth="44.22802734375">
-                     <HBox.margin>
-                        <Insets left="50.0" top="30.0" />
-                     </HBox.margin></Text>
-                  <Label minHeight="-Infinity" minWidth="-Infinity" prefHeight="90.0" prefWidth="100.0" textFill="#fcfafa" />
-                  <Text fill="#f8f6f6" strokeType="OUTSIDE" strokeWidth="0.0" text="Form">
-                     <HBox.margin>
-                        <Insets left="50.0" top="30.0" />
-                     </HBox.margin></Text>
-                  <Label minHeight="-Infinity" minWidth="-Infinity" prefHeight="90.0" prefWidth="100.0" textFill="#fcfafa" />
-                  <Text fill="#f8f7f7" strokeType="OUTSIDE" strokeWidth="0.0" text="Placed ships">
-                     <HBox.margin>
-                        <Insets left="50.0" top="30.0" />
-                     </HBox.margin>
-                  </Text>
-                  <Label minHeight="-Infinity" minWidth="-Infinity" prefHeight="90.0" prefWidth="100.0" text="Label" />
-                  <Button fx:id="btn_rotate" contentDisplay="CENTER" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#rotate" prefHeight="36.0" prefWidth="111.0" style="-fx-background-color: #CFBE8E;" text="Rotate" textFill="#f8f7f7">
+                  <BorderPane fx:id="smallBorderPane" prefHeight="200.0" prefWidth="130.0">
                      <HBox.margin>
                         <Insets top="20.0" />
+                     </HBox.margin></BorderPane>
+                  <Text fill="#fcf9f9" strokeType="OUTSIDE" strokeWidth="0.0" text="Size" wrappingWidth="44.22802734375">
+                     <HBox.margin>
+                        <Insets left="100.0" top="30.0" />
+                     </HBox.margin></Text>
+                  <Label minHeight="-Infinity" minWidth="-Infinity" prefHeight="90.0" prefWidth="150.0" textFill="#fcfafa">
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin></Label>
+                  <Text fill="#f8f6f6" strokeType="OUTSIDE" strokeWidth="0.0" text="Form">
+                     <HBox.margin>
+                        <Insets left="100.0" top="30.0" />
+                     </HBox.margin></Text>
+                  <Label minHeight="-Infinity" minWidth="-Infinity" prefHeight="90.0" prefWidth="200.0" textFill="#fcfafa">
+                     <HBox.margin>
+                        <Insets left="20.0" />
+                     </HBox.margin></Label>
+                  <Text fill="#f8f7f7" strokeType="OUTSIDE" strokeWidth="0.0" text="Placed ships">
+                     <HBox.margin>
+                        <Insets left="100.0" top="30.0" />
+                     </HBox.margin>
+                  </Text>
+                  <Label minHeight="-Infinity" minWidth="-Infinity" prefHeight="90.0" prefWidth="200.0" text="Label" />
+                  <Button fx:id="btn_rotate" contentDisplay="CENTER" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#rotate" prefHeight="36.0" prefWidth="111.0" style="-fx-background-color: #CFBE8E;" text="Rotate" textFill="#f8f7f7">
+                     <HBox.margin>
+                        <Insets left="50.0" top="20.0" />
                      </HBox.margin>
                   </Button>
                   <AnchorPane prefHeight="200.0" prefWidth="200.0">
                      <children>
-                        <Button cache="true" cacheHint="ROTATE" cacheShape="false" contentDisplay="TEXT_ONLY" focusTraversable="false" minHeight="-Infinity" minWidth="-Infinity" onAction="#help" prefHeight="44.0" prefWidth="55.0" style="-fx-background-color: #CFBE8E;" text="?" textFill="#472218">
+                        <Button cache="true" cacheHint="ROTATE" cacheShape="false" contentDisplay="TEXT_ONLY" focusTraversable="false" layoutX="85.0" minHeight="-Infinity" minWidth="-Infinity" onAction="#help" prefHeight="55.0" prefWidth="55.0" style="-fx-background-color: #CFBE8E;" text="?" textFill="#472218" AnchorPane.leftAnchor="85.0" AnchorPane.rightAnchor="60.0" AnchorPane.topAnchor="0.0">
                            <font>
                               <Font name="System Bold" size="22.0" />
                            </font>
                         </Button>
-                        <Button fx:id="btn_settings" cache="true" cacheHint="ROTATE" cacheShape="false" contentDisplay="GRAPHIC_ONLY" focusTraversable="false" layoutX="1.0" layoutY="50.0" minHeight="-Infinity" minWidth="-Infinity" onAction="#settings" prefHeight="40.0" prefWidth="53.0" style="-fx-background-color: #CFBE8E;" text="Settings">
+                        <Button fx:id="btn_settings" cache="true" cacheHint="ROTATE" cacheShape="false" contentDisplay="GRAPHIC_ONLY" focusTraversable="false" layoutX="85.0" layoutY="70.0" minHeight="-Infinity" minWidth="-Infinity" onAction="#settings" prefHeight="55.0" prefWidth="55.0" style="-fx-background-color: #CFBE8E;" text="Settings" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="85.0" AnchorPane.rightAnchor="60.0" AnchorPane.topAnchor="70.0">
                            <graphic>
                               <ImageView fitHeight="38.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -79,7 +88,7 @@
                   </AnchorPane>
                </children>
             </HBox>
-            <Button contentDisplay="CENTER" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#gamestart" prefHeight="36.0" prefWidth="170.0" style="-fx-background-color: #CFBE8E;" text="Let's start the Game!" textFill="#f8f7f7" />
+            <Button contentDisplay="CENTER" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#gamestart" prefHeight="36.0" prefWidth="170.0" style="-fx-background-color: #CFBE8E; -fx-border-color: #472218;" text="Let's start the Game!" textFill="#f8f7f7" />
             <Button mnemonicParsing="false" onAction="#handlerButton" text="next" />
             <SplitPane fx:id="splitPane" prefHeight="160.0" prefWidth="200.0" style="-fx-background-color: #CFBE8E;" VBox.vgrow="ALWAYS">
                <items>

@@ -7,9 +7,9 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefWidth="1980.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.upb.codingpirates.battleships.desktop.start.StartController">
+<AnchorPane xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.upb.codingpirates.battleships.desktop.start.StartController">
    <children>
-      <ImageView blendMode="SRC_ATOP" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <ImageView blendMode="SRC_ATOP" pickOnBounds="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <image>
             <Image url="@../images/Startscreen_BG.jpg" />
          </image>
@@ -22,7 +22,7 @@
             <Image url="@../images/Coding%20Pirates%20Logo_Gold.png" />
          </image>
       </ImageView>
-      <Button fx:id="btn_start" blendMode="OVERLAY" contentDisplay="CENTER" graphicTextGap="6.0" minHeight="40.0" minWidth="75.0" mnemonicParsing="false" onAction="#handleButton" prefHeight="75.0" prefWidth="288.0" style="-fx-background-color: #472218;" text="Start" textAlignment="CENTER" textFill="WHITE" AnchorPane.bottomAnchor="200.0" AnchorPane.leftAnchor="800.0" AnchorPane.topAnchor="800.0">
+      <Button fx:id="btn_start" blendMode="OVERLAY" contentDisplay="CENTER" graphicTextGap="6.0" layoutX="871.0" layoutY="799.0" minHeight="40.0" minWidth="75.0" mnemonicParsing="false" onAction="#handleButton" prefHeight="80.0" prefWidth="201.0" style="-fx-background-color: #472218;" text="Start" textAlignment="CENTER" textFill="WHITE">
          <font>
             <Font name="Pirata One" size="25.0" />
          </font>

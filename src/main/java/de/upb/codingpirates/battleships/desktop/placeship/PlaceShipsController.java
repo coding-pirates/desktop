@@ -10,6 +10,7 @@ import de.upb.codingpirates.battleships.desktop.gamefield.GameField;
 import de.upb.codingpirates.battleships.desktop.gamefield.GameFieldController;
 import de.upb.codingpirates.battleships.desktop.ingame.InGame;
 import de.upb.codingpirates.battleships.desktop.ingame.InGameController;
+import de.upb.codingpirates.battleships.desktop.ingame.InGameModel;
 import de.upb.codingpirates.battleships.desktop.lobby.Lobby;
 import de.upb.codingpirates.battleships.desktop.settings.Settings;
 import de.upb.codingpirates.battleships.desktop.util.Help;
@@ -17,12 +18,14 @@ import de.upb.codingpirates.battleships.logic.*;
 import de.upb.codingpirates.battleships.network.message.notification.GameInitNotification;
 import de.upb.codingpirates.battleships.network.message.notification.GameStartNotification;
 import de.upb.codingpirates.battleships.network.message.response.PlaceShipsResponse;
+import de.upb.codingpirates.battleships.logic.*;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
@@ -42,6 +45,8 @@ public class PlaceShipsController extends InGameController implements Initializa
     private BorderPane borderPane;
     @FXML
     private GridPane grid;
+    @FXML
+    private BorderPane smallBorderPane;
 
     private PlaceshipsModel model;
     private GameField gameField;
@@ -92,7 +97,7 @@ public class PlaceShipsController extends InGameController implements Initializa
     public void help() throws IOException {
         Help help = new Help();
         try{
-            help.display("PlaceShip-Help", "PlaceShip-Help");
+            help.display("PlaceShip-Help");
         }
         catch (IOException e){
             e.printStackTrace();
@@ -136,6 +141,7 @@ public class PlaceShipsController extends InGameController implements Initializa
     @FXML
     public void rotate(){
         //TODO
+        shipForm.rotate();
     }
 
     @FXML
@@ -185,6 +191,24 @@ public class PlaceShipsController extends InGameController implements Initializa
                     model.addShipPlacement(model.getSelectedShip(), new PlacementInfo(clickedPoint, model.getCurrentRotation()));
                 }
             }
+    }
+
+    public void setShipForm(){
+        //get ShipForm from server
+        this.height = height;
+        this.width = width;
+        //gameField = new GameField(height, width);
+        ArrayList<Point2D> positions= new ArrayList<>();
+        positions.add(new Point2D(0,0));
+        positions.add(new Point2D(0,1));
+        positions.add(new Point2D(0,2));
+        positions.add(new Point2D(1,2));
+        Ship s = new Ship(new ShipType(positions));
+        shipForm= new ShipForm(positions);
+        smallBorderPane.setPadding(new Insets(1, 1, 1, 1));
+        grid = shipForm.getDisplay();
+        smallBorderPane.setCenter(grid);
+        System.out.println(smallBorderPane.getCenter());
     }
 
 

@@ -31,6 +31,7 @@ public class Placeships  {
         FXMLLoader loader = new FXMLLoader(this.getClass().getResource("/fxml/PlaceshipsView.fxml"));
         AnchorPane pane = loader.load();
         this.placeshipsController = loader.getController();
+        placeshipsController.setShipForm();
         placeshipsController.setCurrentGame(currentGame);
         placeshipsController.fieldInit();
         Image icon = new Image(String.valueOf(getClass().getResource("/images/app_icon.png")));
@@ -38,7 +39,7 @@ public class Placeships  {
         placeshipsStage.setResizable(false);
         placeshipsStage.setMaximized(true);
         placeshipsStage.setTitle("PlaceShips");
-        placeshipsStage.setScene(new Scene(pane, 1920, 1080));
+        placeshipsStage.setScene(new Scene(pane));
         placeshipsStage.show();
     }
 
