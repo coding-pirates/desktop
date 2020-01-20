@@ -78,7 +78,7 @@ public class WaitingController implements Initializable, GameStartNotificationLi
     public void help() throws IOException {
         Help help = new Help();
         try{
-            help.display("Settings-Help", "Settings");
+            help.display("Settings-Help");
         }
         catch (IOException e){
             e.printStackTrace();

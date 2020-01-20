@@ -51,6 +51,8 @@ public class PlaceShipsController extends InGameController implements Initializa
     private PlaceshipsModel model;
     private GameField gameField;
 
+    private ShipForm shipForm;
+
 
     public PlaceShipsController() {
         ListenerHandler.registerListener((MessageHandlerListener) this);
@@ -195,8 +197,6 @@ public class PlaceShipsController extends InGameController implements Initializa
 
     public void setShipForm(){
         //get ShipForm from server
-        this.height = height;
-        this.width = width;
         //gameField = new GameField(height, width);
         ArrayList<Point2D> positions= new ArrayList<>();
         positions.add(new Point2D(0,0));

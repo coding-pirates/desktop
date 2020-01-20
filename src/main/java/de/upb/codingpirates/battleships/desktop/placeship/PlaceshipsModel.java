@@ -28,7 +28,6 @@ public class PlaceshipsModel{
     private Game currentGame;
     private int selectedShip;
     private Rotation currentRotation = Rotation.NONE;
-    private boolean gameInitReceived = false;
 
     public PlaceshipsModel(){
         placedShips = new HashMap<>();

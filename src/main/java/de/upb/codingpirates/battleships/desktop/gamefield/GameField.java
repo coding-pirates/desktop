@@ -5,9 +5,11 @@ import de.upb.codingpirates.battleships.logic.Point2D;
 import de.upb.codingpirates.battleships.logic.Rotation;
 import de.upb.codingpirates.battleships.logic.ShipType;
 import javafx.beans.property.ReadOnlyDoubleProperty;
+import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
 import javafx.scene.control.Tooltip;
 import javafx.scene.image.Image;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
@@ -30,6 +32,7 @@ public class GameField {
     private int nbColumn;
     private HashMap<String, Rectangle> map = new HashMap<>();
     private int imageShip;
+    private GameFieldController controller;
 
     /**
      * Constructor sets a new GridPane.
@@ -92,14 +95,14 @@ public class GameField {
         Image img1 = new Image(String.valueOf(GameField.class.getResource("/images/ship1_hit.png")));
         Image img2 = new Image(String.valueOf(GameField.class.getResource("/images/ship2_hit.png")));
         Image img3 = new Image(String.valueOf(GameField.class.getResource("/images/ship3_hit.png")));
-        switch(imageShip){
-            case 1:
+        switch(new Random().nextInt(3)){
+            case 0:
                 map.get(point).setFill(new ImagePattern(img1));
                 break;
-            case 2:
+            case 1:
                 map.get(point).setFill(new ImagePattern(img2));
                 break;
-            case 3:
+            case 2:
                 map.get(point).setFill(new ImagePattern(img3));
                 break;
         }
@@ -137,30 +140,33 @@ public class GameField {
         Tooltip.install(map.get(point), toolTip);
     }
 
-    public void shipPlaced(Point2D ship){
-        if (!BattleshipsDesktopClientApplication.getSoundsOff()){
-        final URL resource = getClass().getResource("/raw/shipPlaced.mp3");
-        final MediaPlayer mediaplayer = new MediaPlayer(new Media(resource.toString()));
-        mediaplayer.play();}
-        String point = (ship.getX() + "," + ship.getY());
-        Image img0 = new Image(String.valueOf(GameField.class.getResource("/images/ship1.png")));
-        Image img1 = new Image(String.valueOf(GameField.class.getResource("/images/ship2.png")));
-        Image img2 = new Image(String.valueOf(GameField.class.getResource("/images/ship3.png")));
-        switch(new Random().nextInt(3)){
-            case 0:
-                imageShip=1;
-                map.get(point).setFill(new ImagePattern(img0));
-                break;
-            case 1:
-                imageShip=2;
-                map.get(point).setFill(new ImagePattern(img1));
-                break;
-            case 2:
-                imageShip=3;
-                map.get(point).setFill(new ImagePattern(img2));
+    public void placeShip(ArrayList<Point2D> shipPoints){
+        for(Point2D point: shipPoints) {
+            if (!BattleshipsDesktopClientApplication.getSoundsOff()) {
+                final URL resource = getClass().getResource("/raw/shipPlaced.mp3");
+                final MediaPlayer mediaplayer = new MediaPlayer(new Media(resource.toString()));
+                mediaplayer.play();
+            }
+            String pointStr = (point.getX() + "," + point.getY());
+            Image img0 = new Image(String.valueOf(GameField.class.getResource("/images/ship1.png")));
+            Image img1 = new Image(String.valueOf(GameField.class.getResource("/images/ship2.png")));
+            Image img2 = new Image(String.valueOf(GameField.class.getResource("/images/ship3.png")));
+            switch (new Random().nextInt(3)) {
+                case 0:
+                    imageShip = 1;
+                    map.get(pointStr).setFill(new ImagePattern(img0));
+                    break;
+                case 1:
+                    imageShip = 2;
+                    map.get(pointStr).setFill(new ImagePattern(img1));
+                    break;
+                case 2:
+                    imageShip = 3;
+                    map.get(pointStr).setFill(new ImagePattern(img2));
+            }
+            Tooltip toolTip = new Tooltip("Schiff gesetzt");
+            Tooltip.install(map.get(pointStr), toolTip);
         }
-        Tooltip toolTip = new Tooltip("Schiff gesetzt");
-        Tooltip.install(map.get(point), toolTip);
     }
 
     public void removePlacedShip(ArrayList<Point2D> oldShipPoints){

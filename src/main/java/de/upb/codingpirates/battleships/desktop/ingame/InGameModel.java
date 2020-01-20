@@ -15,10 +15,7 @@ import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * Model class for the InGame Window.
@@ -37,6 +34,8 @@ public class InGameModel extends Application implements InGameModelMessageListen
     private GameState gameState = null;
     private Collection<Shot> shots = new ArrayList<Shot>();
     private ClientType clientType;
+    private int currentPlayerId;
+    private ArrayList<Shot> placedShots = new ArrayList<>();
 
     /**
      * Constructor. Sets a tcpConnector and the chosen Game.
@@ -123,6 +122,25 @@ public class InGameModel extends Application implements InGameModelMessageListen
      */
     public void setShots(Collection<Shot> shots) {
         this.shots = shots;
+    }
+
+    public int getCurrentPlayerId() {
+        return currentPlayerId;
+    }
+
+    public void setCurrentPlayerId(int currentPlayerId) {
+        this.currentPlayerId = currentPlayerId;
+    }
+    public ArrayList<Shot> getPlacedShots() {
+        return placedShots;
+    }
+
+    public void setPlacedShots(ArrayList<Shot> placedShots) {
+        this.placedShots = placedShots;
+    }
+
+    public void addShot(int playerId, Point2D shot){
+        this.placedShots.add(new Shot(playerId,shot));
     }
 
     public void setClientType(ClientType clientType){
@@ -248,6 +266,17 @@ public class InGameModel extends Application implements InGameModelMessageListen
         }
     }
 
+    public void sendShotRequest(){
+        try {
+            BattleshipsDesktopClientApplication
+                    .getInstance()
+                    .getTcpConnector()
+                    .sendMessageToServer(RequestBuilder.shotsRequest(placedShots));
+        } catch (Exception e) {
+            System.out.println("Konnte Points Request nicht schicken: " + e);
+        }
+        this.placedShots.clear();
+    }
     @Override
     public void onContinueNotification(ContinueNotification message, int clientId) {
         Platform.runLater(()-> {

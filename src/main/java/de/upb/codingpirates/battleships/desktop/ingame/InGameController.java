@@ -321,6 +321,7 @@ public class InGameController implements Initializable {
             GameFieldController gameFieldController = loader.getController();
             gameFieldController.setParent(this);
             gameFieldController.setConfig(client.getName(), game, inGame);
+            gameFieldController.setPlayerID(client.getId());
             controllerMap.put(client.getId(), gameFieldController);                //Create a Map of PlayerId and Controller Object
             fieldMap.put(client.getId(), inGame);
         }
@@ -339,22 +340,18 @@ public class InGameController implements Initializable {
                                             Collection<Shot> sunk, Collection<Shot> missed) {
         InGameController thisOb = this;
 
-        Platform.runLater(() -> {
             thisOb.missedShots(missed);
             thisOb.hitShots(hits);
             thisOb.setPoints(points);
             thisOb.points = points;
-        });
     }
 
     public void playerUpdateNotification(Collection<Shot> hits, Map<Integer, Integer> points) {
         InGameController thisOb = this;
 
-        Platform.runLater(() -> {
             thisOb.hitShots(hits);
             thisOb.setPoints(points);
             thisOb.points = points;
-        });
     }
 
     /**
@@ -370,6 +367,13 @@ public class InGameController implements Initializable {
         }
     }
 
+    public ArrayList<Shot> getPlacedShots(){
+        return model.getPlacedShots();
+    }
+
+    public void addShot(int playerId, Point2D shot){
+        model.addShot(playerId, shot);
+    }
     /**
      * Starts missHit for every missed Shot on the Controller its related to.
      *
@@ -515,7 +519,7 @@ public class InGameController implements Initializable {
     public void help() throws IOException {
         Help help = new Help();
         try{
-            help.display("InGame-Help", "InGame-Help");
+            help.display("InGame-Help");
         }
         catch (IOException e){
             e.printStackTrace();
@@ -559,4 +563,24 @@ public class InGameController implements Initializable {
 
     @FXML
     public void next(){}
+    @FXML
+    public void shot(){
+        model.sendShotRequest();
+    }
+
+    /**
+     * Clickevent for GridPane (print grid-cell, which is clicked)
+     * @param event
+     */
+  public void clickGrid(javafx.scene.input.MouseEvent event) {
+        if(event.getClickCount() == 2){
+            Node clickedNode = event.getPickResult().getIntersectedNode();
+            if (clickedNode != grid) {
+                // click on descendant node
+                Integer colIndex = GridPane.getColumnIndex(clickedNode);
+                Integer rowIndex = GridPane.getRowIndex(clickedNode);
+                System.out.println("Mouse clicked cell: " + colIndex + " And: " + rowIndex);
+
+            }}
+    }
 }
