@@ -18,10 +18,15 @@ import java.util.ResourceBundle;
 public class StartController implements Initializable {
 
     //Views
+    /**
+     * startingButton
+     */
     @FXML
     private Button btn_start;
 
-
+    /**
+     * main Application window
+     */
     private BattleshipsDesktopClientApplication main;
 
     /**
@@ -32,17 +37,27 @@ public class StartController implements Initializable {
 
     }
 
+    /**
+     * sets main Application
+     * @param main
+     */
     public void setMain(BattleshipsDesktopClientApplication main) {
 
         this.main = main;
     }
 
-
+    /**
+     * closes the startView
+     */
     public void closeStage(){
         Stage stage = (Stage) btn_start.getScene().getWindow();
         stage.close();
     }
 
+    /**
+     * starts the ServerLoginView and closes the startView
+     * @throws Exception
+     */
     @FXML
     public void handleButton() throws Exception {
         ServerLogin login = new ServerLogin();

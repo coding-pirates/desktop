@@ -15,7 +15,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 /**
- * Controller Class for the PlaceShips Window.
+ * Controller Class for the Endgame Window.
  */
 public class EndgameController implements Initializable {
 
@@ -30,6 +30,10 @@ public class EndgameController implements Initializable {
 
     }
 
+    /**
+     * starts the HelpView with accessibility tools in an extra window
+     * @throws IOException
+     */
     @FXML
     public void help() throws IOException {
         Help help = new Help();
@@ -41,16 +45,20 @@ public class EndgameController implements Initializable {
         }
     }
 
+    /**
+     * starts the SettingsView in an extra window
+     * @throws Exception
+     */
     @FXML
     public void settings() throws Exception {
 
         Settings settings = new Settings();
-        Stage settingsStage = new Stage();
+        Stage settingsStage;
+        settingsStage = new Stage();
         try {
             settings.start();
-        }
-        catch (IOException e) {
-            e.printStackTrace();//TODO
+        } catch (Exception e) {
+            e.printStackTrace();
         }
         settingsStage.setOnCloseRequest(t -> {
             Platform.exit();
@@ -58,6 +66,10 @@ public class EndgameController implements Initializable {
         });
     }
 
+    /**
+     * shows the ranking in an extra window
+     * @throws Exception
+     */
     @FXML
     public void ranking() throws Exception {
 
@@ -73,6 +85,10 @@ public class EndgameController implements Initializable {
         });
     }
 
+    /**
+     * starts the lobbyView and closes this endgameView
+     * @throws Exception
+     */
     @FXML
     public void lobby() throws Exception{
         Lobby lobby = new Lobby();
@@ -89,6 +105,9 @@ public class EndgameController implements Initializable {
         });
     }
 
+    /**
+     * closes the endgameView
+     */
     public void closeStage(){
         Stage stage = (Stage) btn_lobby.getScene().getWindow();
         stage.close();

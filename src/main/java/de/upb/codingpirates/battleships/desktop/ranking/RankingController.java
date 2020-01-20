@@ -21,15 +21,31 @@ import java.util.ResourceBundle;
  */
 public class RankingController implements Initializable {
 
+    //view
+    /**
+     * list for ranking with all players
+     */
     @FXML
     TableView<Player> tableRangList;
+    /**
+     * column player in table
+     */
     @FXML
     TableColumn<Player, String> name;
+    /**
+     * column rang in table according to the each player
+     */
     @FXML
     TableColumn<Player, Integer> rang;
+    /**
+     * column points in table according to each player
+     */
     @FXML
     TableColumn<Player, Integer> points;
 
+    /**
+     * ranking class
+     */
     private Ranking ranking;
 
     /**

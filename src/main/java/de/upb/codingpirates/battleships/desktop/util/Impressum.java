@@ -1,27 +1,32 @@
 package de.upb.codingpirates.battleships.desktop.util;
 
-import javafx.embed.swing.JFXPanel;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.text.Text;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 
+/**
+ * class to show the impressum and piratenkodex
+ */
 public class Impressum {
+    //views
+    /**
+     * button to close the window
+     */
     @FXML
     private Button closeButton;
-    @FXML
-    private Text txt_title;
-    @FXML
-    private Label lb_message;
 
+    /**
+     * starts the new window depending on the title
+     * @param title impressum or piratenkodex
+     * @throws IOException
+     */
     public void display(String title) throws IOException {
         Stage window = new Stage();
 
@@ -46,6 +51,9 @@ public class Impressum {
         window.showAndWait();
     }
 
+    /**
+     * closes the window
+     */
     @FXML
     public void closeStage(){
         Stage stage = (Stage) closeButton.getScene().getWindow();

@@ -18,11 +18,24 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
+/**
+ * class for the WaitingView
+ */
 public class Waiting implements LobbyResponseListener {
+    /**
+     * button to close this window
+     */
     @FXML
     private Button closeButton;
+    /**
+     * Gamelogic
+     */
     Game game;
 
+    /**
+     * starts the WaitingView
+     * @throws IOException
+     */
     public void start() throws IOException {
         Stage window = new Stage();
 
@@ -40,13 +53,18 @@ public class Waiting implements LobbyResponseListener {
         window.showAndWait();
     }
 
-
+    /**
+     * closes the waitingView
+     */
     @FXML
     public void closeStage(){
         Stage stage = (Stage) closeButton.getScene().getWindow();
         stage.close();
     }
 
+    /**
+     * starts the InGameView
+     */
     @FXML
     public void handlerButton(){
         InGameModel inGameModel = new InGameModel(game);
@@ -65,6 +83,10 @@ public class Waiting implements LobbyResponseListener {
 
     }
 
+    /**
+     * starts the HelpView with accessibility tools in an extra window
+     * @throws IOException
+     */
     @FXML
     public void help() throws IOException {
         Help help = new Help();
@@ -75,7 +97,10 @@ public class Waiting implements LobbyResponseListener {
             e.printStackTrace();
         }
     }
-
+    /**
+     * starts the SettingsView in an extra window
+     * @throws Exception
+     */
     @FXML
     public void settings() throws Exception {
 

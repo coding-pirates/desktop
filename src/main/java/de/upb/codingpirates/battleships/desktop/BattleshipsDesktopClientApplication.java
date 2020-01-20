@@ -22,35 +22,70 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
+/**
+ * class to start the Battleship Desktop-Client-Application
+ */
 public final class BattleshipsDesktopClientApplication extends Application {
 
+    /**
+     * first Stage in this Application
+     */
     private Stage startStage;
 
+    /**
+     * Client Connector
+     */
     public static ClientConnector tcpConnector = ClientApplication.create(new ClientModule<>(ClientConnector.class));
 
+    /**
+     * Title of the starting window
+     */
     private static final String TITLE = "Coding Pirates Battleships Desktop Client";
 
+    /**
+     * application itself
+     */
     private static BattleshipsDesktopClientApplication instance;
 
+    /**
+     * MediaView for starting the media-player
+     */
     public static MediaView mediaView;
 
+    /**
+     * sounds are on or off
+     */
     public static boolean sounds = true;
 
+    /**
+     * Main method
+     * @param args
+     */
     public static void main(@Nonnull final String... args) {
         launch(args);
     }
 
+    /**
+     * constructor of the class BattleshipDesktopClientApplication
+     * @return
+     */
     public static BattleshipsDesktopClientApplication getInstance() {
         return instance;
     }
 
+    /**
+     * overrides the method from the class Application
+     */
     @Override
     public void init() {
         instance = this;
     }
 
     /**
-     * Loads the StartView.fxml, creates a Start Window and related Controller.
+     * Loads the StartView.fxml, creates a Start Window and related Controller
+     *
+     * @param startStage first stage, which is displayed
+     * @throws IOException if stage could not be loaded
      */
     public void start(@Nonnull final Stage startStage) throws Exception {
         this.startStage = startStage;
@@ -63,6 +98,7 @@ public final class BattleshipsDesktopClientApplication extends Application {
         Image icon = new Image(String.valueOf(getClass().getResource("/images/app_icon.png")));
         startStage.getIcons().add(icon);
 
+        //Media-Player
         final URL resource1 = getClass().getResource("/raw/sea_of_thieves_theme_song.mp3");
         final MediaPlayer mediaplayer1 = new MediaPlayer(new Media(resource1.toString()));
 
@@ -83,7 +119,6 @@ public final class BattleshipsDesktopClientApplication extends Application {
 
         final List<MediaPlayer> players = new ArrayList<MediaPlayer>(Arrays.asList(mediaplayer1, mediaplayer2, mediaplayer3, mediaplayer4, mediaplayer5, mediaplayer6));
 
-
         mediaView = new MediaView(players.get( new Random().nextInt(5)));
             for (int i = 0; i < players.size(); i++) {
                 final MediaPlayer player     = players.get(i);
@@ -100,7 +135,7 @@ public final class BattleshipsDesktopClientApplication extends Application {
 
             }
 
-
+        //Scene starting
         Scene scene = new Scene(pane);
         startStage.setMaximized(true);
         startStage.setResizable(false);
@@ -114,18 +149,37 @@ public final class BattleshipsDesktopClientApplication extends Application {
 
     }
 
-    public Stage getLoginStage() {
+    /**
+     * Returns the first stage
+     * @return startStage
+     */
+    public Stage getStartStage() {
         return startStage;
     }
+
+    /**
+     * Returns the TcpConnector to server
+     * @return tcpConnector
+     */
 
     public ClientConnector getTcpConnector() {
         return tcpConnector;
     }
 
+    /**
+     * Returns the boolean value of sounds
+     * @return true, if the sound is on
+     *         false, is the sound is off
+     */
     public static boolean getSoundsOff(){
         return sounds;
     }
 
+    /**
+     * Sets the sound in the value, which  is given in parameter
+     * @param value true, if the sound is turned on,
+     *              false, if the sound is turned off
+     */
     public static void setSoundsOff(boolean value){
         sounds = value;
     }

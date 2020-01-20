@@ -1,14 +1,11 @@
 package de.upb.codingpirates.battleships.desktop.serverlogin;
 
-import de.upb.codingpirates.battleships.client.ListenerHandler;
-import de.upb.codingpirates.battleships.client.listener.MessageHandlerListener;
 import de.upb.codingpirates.battleships.client.listener.ServerJoinResponseListener;
 import de.upb.codingpirates.battleships.desktop.BattleshipsDesktopClientApplication;
 import de.upb.codingpirates.battleships.desktop.lobby.Lobby;
 import de.upb.codingpirates.battleships.desktop.settings.Settings;
 import de.upb.codingpirates.battleships.desktop.util.Help;
 import de.upb.codingpirates.battleships.logic.ClientType;
-import de.upb.codingpirates.battleships.network.message.response.LobbyResponse;
 import de.upb.codingpirates.battleships.network.message.response.ServerJoinResponse;
 import javafx.application.Platform;
 import javafx.beans.property.SimpleStringProperty;
@@ -29,19 +26,41 @@ import java.util.ResourceBundle;
  */
 public class ServerLoginController implements Initializable, ServerJoinResponseListener {
 
+    /**
+     * Main Class BattleshipDesktopApplication
+     */
     public BattleshipsDesktopClientApplication main;
 
+    //views
+    /**
+     * field to write in the IP_Adress of the server
+     */
     @FXML
     private TextField ipField;
+    /**
+     * field to write in the port
+     */
     @FXML
     private TextField portField;
+    /**
+     * field to write in the players' username
+     */
     @FXML
     private TextField nameField;
+    /**
+     * field to show warnings
+     */
     @FXML
     private Label lblStatus;
 
+    /**
+     * StringProperty
+     */
     private StringPropertyBase text = new SimpleStringProperty();
 
+    /**
+     * Constructor of this class to register the Listener
+     */
     public ServerLoginController() {
         //ListenerHandler.registerListener((MessageHandlerListener) this);
     }
@@ -86,14 +105,23 @@ public class ServerLoginController implements Initializable, ServerJoinResponseL
         }
     }
 
+    /**
+     * warning if connection to the server failed
+     * @param lblStatus warning text
+     */
     public void setLblStatus(String lblStatus) {
+
         text.set(lblStatus);
     }
 
+    /**
+     * closes the ServerLoginView
+     */
     public void closeStage(){
         Stage stage = (Stage) lblStatus.getScene().getWindow();
         stage.close();
     }
+
 
     @Override
     public void onServerJoinResponse(ServerJoinResponse response, int clientId){
@@ -113,8 +141,10 @@ public class ServerLoginController implements Initializable, ServerJoinResponseL
         });
     }
 
-
-
+    /**
+     * starts the SettingsView in an extra window
+     * @throws Exception
+     */
     @FXML
     public void settings() throws Exception {
 
@@ -132,6 +162,9 @@ public class ServerLoginController implements Initializable, ServerJoinResponseL
         });
     }
 
+    /**
+     * next Button to create the UI
+     */
     @FXML
     public void handlerButton(){
         Lobby lobby = new Lobby();
@@ -148,6 +181,10 @@ public class ServerLoginController implements Initializable, ServerJoinResponseL
         });
     }
 
+    /**
+     * starts the HelpView with accessibility tools in an extra window
+     * @throws IOException
+     */
     @FXML
     public void help() throws IOException {
         Help help = new Help();

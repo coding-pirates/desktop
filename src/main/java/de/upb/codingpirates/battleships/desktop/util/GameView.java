@@ -7,6 +7,9 @@ import de.upb.codingpirates.battleships.logic.Game;
  */
 public class GameView {
 
+    /**
+     * content of this game
+     */
     private Game content = null;
 
     /**

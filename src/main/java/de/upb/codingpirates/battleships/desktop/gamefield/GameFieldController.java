@@ -1,7 +1,6 @@
 package de.upb.codingpirates.battleships.desktop.gamefield;
 
 import de.upb.codingpirates.battleships.desktop.ingame.InGameController;
-import de.upb.codingpirates.battleships.desktop.placeship.PlaceShipsController;
 import de.upb.codingpirates.battleships.logic.Game;
 import de.upb.codingpirates.battleships.logic.PlacementInfo;
 import de.upb.codingpirates.battleships.logic.Point2D;
@@ -10,7 +9,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.scene.Node;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
@@ -26,15 +24,40 @@ import java.util.Set;
  */
 public class GameFieldController implements Initializable {
 
+    /**
+     * parent Controller from the whole GameView
+     */
     private InGameController parent;
+    /**
+     * height of the gamefield
+     */
     private int height;
+    /**
+     * width of the gamefield
+     */
     private int width;
+    /**
+     * describe the type of the field (water, ship, hit)
+     */
     private String[][] type;
+    /**
+     * gameField class
+     */
     private GameField gameField;
+    /**
+     * node inGame
+     */
     private Node inGame;
+    /**
+     * Game logic
+     */
     private Game game;
+    /**
+     * Layout GridPane for the single gamefield
+     */
     private GridPane grid;
 
+    //view
     @FXML
     private BorderPane borderPane;
     @FXML
@@ -51,7 +74,12 @@ public class GameFieldController implements Initializable {
         parent = temp;
     }
 
-    public Node getInGame() {
+    /**
+     * Returns the Node inGame
+     * @return Node inGame
+     */
+    public Node getInGame()
+    {
         return inGame;
     }
 
@@ -135,6 +163,7 @@ public class GameFieldController implements Initializable {
      * @param hit Point2D Shot that hit a Ship
      */
     public void shipHit(Point2D hit) {
+
         gameField.shipHit(hit);
     }
 
@@ -144,6 +173,7 @@ public class GameFieldController implements Initializable {
      * @param miss Point2D Shot that hit a WaterField
      */
     public void missHit(Point2D miss) {
+
         gameField.waterHit(miss);
     }
 
@@ -153,9 +183,15 @@ public class GameFieldController implements Initializable {
      * @param points Points of the Player
      */
     public void setPoints(Integer points) {
+
         this.points.setText("Punkte: " + points);
     }
 
+    /**
+     * Initialization
+     * @param arg0 URL
+     * @param arg1 ResourceBundle
+     */
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
 

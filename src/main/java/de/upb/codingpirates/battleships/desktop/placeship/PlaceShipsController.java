@@ -15,49 +15,93 @@ import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.ResourceBundle;
 
 /**
  * Controller Class for the PlaceShips Window.
  */
 public class PlaceShipsController extends InGameController implements Initializable {
-
+    //views
+    /**
+     * button to rotate the ships
+     */
     @FXML
     private Button btn_rotate;
+    /**
+     * layout to place the gamefield
+     */
     @FXML
     private BorderPane borderPane;
+    /**
+     * Layout for gamefield
+     */
     @FXML
     private GridPane grid;
+    /**
+     * layout for the ship preview
+     */
     @FXML
     private BorderPane smallBorderPane;
 
+    /**
+     * height of the gamefield
+     */
     private int height;
+    /**
+     * width of the gamefield
+     */
     private int width;
+    /**
+     * gameField class
+     */
     private GameField gameField;
+    /**
+     * Array with x, y-coordinates and the type of this field (e.g. water)
+     */
     private String[][] type;
+    /**
+     * Map with gamefield ID/Player ID and GamefieldController
+     */
     private HashMap<Integer, GameFieldController> controllerMap = new HashMap<Integer, GameFieldController>();
-    private HashMap<Integer, Node> fieldMap = new HashMap<Integer, Node>();
+    /**
+     * Game logic
+     */
     private Game game;
+    /**
+     * class for the form of the ship
+     */
     private ShipForm shipForm;
 
 
-
+    /**
+     * Constructor of this class
+     */
     public PlaceShipsController() {
     }
 
 
+    /**
+     * Initialization
+     * @param location
+     * @param resources
+     */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
     }
 
+    /**
+     * closes the PlaceShipView
+     */
     public void closeStage() {
         Stage stage = (Stage) btn_rotate.getScene().getWindow();
         stage.close();
@@ -83,6 +127,10 @@ public class PlaceShipsController extends InGameController implements Initializa
         });
     }
 
+    /**
+     * starts the HelpView with accessibility tools in an extra window
+     * @throws IOException
+     */
     @FXML
     public void help() throws IOException {
         Help help = new Help();
@@ -94,6 +142,10 @@ public class PlaceShipsController extends InGameController implements Initializa
         }
     }
 
+    /**
+     * starts the SettingsView in an extra window
+     * @throws Exception
+     */
     @FXML
     public void settings() throws Exception {
 
@@ -112,6 +164,9 @@ public class PlaceShipsController extends InGameController implements Initializa
 
     }
 
+    /**
+     * starts the LobbyView and closes the placeShipsView
+     */
     @FXML
     public void back(){
         Lobby lobby = new Lobby();
@@ -128,12 +183,17 @@ public class PlaceShipsController extends InGameController implements Initializa
         });
     }
 
+    /**
+     * rotates the ship in shipForm
+     */
     @FXML
     public void rotate(){
-        //TODO
         shipForm.rotate();
     }
 
+    /**
+     * starts the inGameView and closes the placeshipView
+     */
     @FXML
     public void gamestart(){
         //TODO
@@ -202,6 +262,9 @@ public class PlaceShipsController extends InGameController implements Initializa
         }
     }
 
+    /**
+     * sets the shipForm and visualize it
+     */
     public void setShipForm(){
         //get ShipForm from server
         this.height = height;

@@ -6,7 +6,6 @@ import de.upb.codingpirates.battleships.client.listener.ServerJoinResponseListen
 import de.upb.codingpirates.battleships.desktop.BattleshipsDesktopClientApplication;
 import de.upb.codingpirates.battleships.logic.ClientType;
 import de.upb.codingpirates.battleships.network.message.request.ServerJoinRequest;
-import de.upb.codingpirates.battleships.network.message.response.LobbyResponse;
 import de.upb.codingpirates.battleships.network.message.response.ServerJoinResponse;
 
 import java.io.IOException;
@@ -16,9 +15,17 @@ import java.io.IOException;
  */
 public class ServerLoginModel implements ServerJoinResponseListener {
 
-
+    /**
+     * name of the player
+     */
     private String spielerName;
+    /**
+     * type of the client
+     */
     private ClientType clientKind;
+    /**
+     * Id of the client
+     */
     private int clientId;
 
     /**

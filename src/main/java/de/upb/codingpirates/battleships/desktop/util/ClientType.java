@@ -1,7 +1,6 @@
 package de.upb.codingpirates.battleships.desktop.util;
 
 import de.upb.codingpirates.battleships.desktop.lobby.Lobby;
-import de.upb.codingpirates.battleships.desktop.lobby.LobbyController;
 import de.upb.codingpirates.battleships.desktop.placeship.Placeships;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
@@ -17,19 +16,41 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
+/**
+ * class for the clientType in a game
+ */
 public class ClientType {
 
+    //views
+    /**
+     * Button for choosing to be a spectator
+     */
     @FXML
     private RadioButton rb_spectator;
+    /**
+     * Button for choosing to be a player
+     */
     @FXML
     private RadioButton rb_player;
+    /**
+     * display the choice
+     */
     @FXML
     private Label lb_choice;
+    /**
+     * Button to close this window
+     */
     @FXML
     private Button closeButton;
-
+    /**
+     * string which shows the choice
+     */
     private String chosenClient;
 
+    /**
+     * starts the view in a new window
+     * @throws IOException
+     */
     public void display() throws IOException {
         Stage window = new Stage();
 
@@ -48,19 +69,28 @@ public class ClientType {
         window.showAndWait();
     }
 
+    /**
+     * displays the choice
+     */
     @FXML
     public void player(){
         chosenClient="Player";
         //lb_choice.setText("Player is chosen");
         }
 
+    /**
+     * displays the choice
+     */
     @FXML
     public void spectator(){
         chosenClient="Spectator";
         //lb_choice.setText("Spectator is chosen");
     }
 
-
+    /**
+     * starts the placehipsView if "player" is chosen, otherwise the WaitingView starts, closes this window
+     * @throws Exception
+     */
     @FXML
     public void next() throws Exception {
         if(chosenClient=="Player"){
@@ -77,11 +107,17 @@ public class ClientType {
         }
     }
 
+    /**
+     * closes the ClienttypeView
+     */
     public void closeStage(){
         Stage stage = (Stage) closeButton.getScene().getWindow();
         stage.close();
     }
 
+    /**
+     * loads the lobbyView new and closes the ClientTypeView
+     */
     @FXML
     public void back(){
         Lobby lobby = new Lobby();
@@ -98,6 +134,10 @@ public class ClientType {
         });
     }
 
+    /**
+     * starts the placeShipsView for a player
+     * @throws Exception
+     */
     public void placeShips() throws Exception {
         Placeships placeships = new Placeships();
         Stage placeStage = new Stage();
@@ -112,6 +152,10 @@ public class ClientType {
         }
     }
 
+    /**
+     * starts the WaitingView for a spectator
+     * @throws Exception
+     */
     public void waiting() throws Exception {
         Waiting waitingView = new Waiting();
         try {

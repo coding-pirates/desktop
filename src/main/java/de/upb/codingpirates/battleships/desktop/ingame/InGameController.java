@@ -18,7 +18,6 @@ import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.control.*;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.GridPane;
@@ -35,46 +34,130 @@ import java.util.*;
  */
 public class InGameController implements Initializable {
 
+    /**
+     * model class of this view
+     */
     private InGameModel model;
+    /**
+     * ranking class for the players
+     */
     private Ranking ranking;
+    /**
+     * time to place the shots
+     */
     private Long millis;
+    /**
+     * height of the gamefield
+     */
     private int height;
+    /**
+     * width of the gamefield
+     */
     private int width;
+    /**
+     * Map with id of gamefield/player and gamefieldcontroller class
+     */
     private HashMap<Integer, GameFieldController> controllerMap = new HashMap<Integer, GameFieldController>();
+    /**
+     * Map with id of gamefield and the node
+     */
     private HashMap<Integer, Node> fieldMap = new HashMap<Integer, Node>();
+    /**
+     * Node inGame
+     */
     private Node inGame;
+    /**
+     * configuration for this game
+     */
     private Configuration config;
+    /**
+     * timelien for counting the time
+     */
     private Timeline time = new Timeline();
+    /**
+     * collection of all players
+     */
     private Collection<Client> players = null;
+    /**
+     * gamefield is enlarged
+     */
     private boolean enlarged = false;
+    /**
+     * map with playerId and points
+     */
     private Map<Integer, Integer> points = null;
+    /**
+     * Game logic Class
+     */
     private Game game;
 
+    //view
+    /**
+     * Layout for the gamefields
+     */
     @FXML
     private GridPane grid;
+    /**
+     * field for amount of player
+     */
     @FXML
     private Label maxPlayerCount;
+    /**
+     * field for amount of shots
+     */
     @FXML
     private Label shotCount;
+    /**
+     * field for showing points for hitting a ship
+     */
     @FXML
     private Label hitPoints;
+    /**
+     * field for showing points for a sunken ship
+     */
     @FXML
     private Label sunkPoints;
+    /**
+     * field for showing the time for one round
+     */
     @FXML
     private Label roundTime;
+    /**
+     * field for showing the status
+     */
     @FXML
     private Label status;
+    /**
+     * layout to fill in the gamefields
+     */
     @FXML
     private FlowPane spielfelder;
+    /**
+     * layout to seperate one large gamefield to the others
+     */
     @FXML
     private SplitPane splitPane;
+    /**
+     * field for showing the restTime for this one round
+     */
     @FXML
     private Label restTime;
+    /**
+     * Indicator for the waiting time
+     */
     @FXML
     private ProgressIndicator progressindicator;
+    /**
+     * layout for progressIndicator
+     */
     @FXML
     private BorderPane borderpane;
 
+    /**
+     * Initialization
+     * @param arg0 URL
+     * @param arg1 ResourceBundle
+     */
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
         // TODO Auto-generated method stub
@@ -401,6 +484,9 @@ public class InGameController implements Initializable {
         time.play();
     }
 
+    /**
+     * sends a GameStartNotification when the Game starts
+     */
     public void gameStartNotification() {
         Platform.runLater(new Runnable() {
 
@@ -507,6 +593,10 @@ public class InGameController implements Initializable {
     }
 
 
+    /**
+     * starts the HelpView with accessibility tools in an extra window
+     * @throws IOException
+     */
     @FXML
     public void help() throws IOException {
         Help help = new Help();
@@ -517,11 +607,18 @@ public class InGameController implements Initializable {
         }
     }
 
+    /**
+     * closes the endgameView
+     */
     public void closeStage() {
         Stage stage = (Stage) shotCount.getScene().getWindow();
         stage.close();
     }
 
+    /**
+     * starts the SettingsView in an extra window
+     * @throws Exception
+     */
     @FXML
     public void settings() throws Exception {
 
@@ -538,6 +635,10 @@ public class InGameController implements Initializable {
         });
     }
 
+    /**
+     * starts the LobbyView and closes this window
+     * @throws Exception
+     */
     @FXML
     public void leave() throws Exception {
         Lobby lobby = new Lobby();
@@ -554,6 +655,7 @@ public class InGameController implements Initializable {
         });
     }
 
+    //just for creating the UI
     @FXML
     public void next() {
         Endgame endgame = new Endgame();
@@ -587,9 +689,12 @@ public class InGameController implements Initializable {
         }
 
 
-
-     @FXML
-     public void shot(){
+    /**
+     * when a shot was placed and teh round is ending
+     * perfom the shot
+     */
+    @FXML
+    public void shot(){
         
      }
 }

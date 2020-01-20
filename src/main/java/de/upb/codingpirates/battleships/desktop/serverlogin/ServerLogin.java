@@ -6,29 +6,39 @@ import de.upb.codingpirates.battleships.client.network.ClientModule;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 import javax.annotation.Nonnull;
-import java.io.InputStream;
 
 /**
  * Class that implements a Window to login to the game
  */
 public class ServerLogin extends Application {
 
+    /**
+     * stage for this view
+     */
     private Stage loginStage;
-
+    /**
+     * ControllerClass to this view
+     */
     private ServerLoginController serverLoginController;
-
+    /**
+     * connector to server
+     */
     private final ClientConnector tcpConnector = ClientApplication.create(new ClientModule<>(ClientConnector.class));
 
+    /**
+     * instance itself
+     */
     private static ServerLogin instance;
 
-
+    /**
+     * Get the instance itself
+     * @return instance
+     */
     public static ServerLogin getInstance() {
         return instance;
     }
@@ -58,11 +68,21 @@ public class ServerLogin extends Application {
         loginStage.show();
     }
 
+    /**
+     * Gets the LoginStage
+     * @return loginStage
+     */
     public Stage getLoginStage() {
+
         return loginStage;
     }
 
+    /**
+     * Gets the ClientConnector to connect with the server
+     * @return tcpVonnector
+     */
     public ClientConnector getTcpConnector() {
+
         return tcpConnector;
     }
 }

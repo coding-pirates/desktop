@@ -2,12 +2,8 @@ package de.upb.codingpirates.battleships.desktop.settings;
 
 
 
-import de.upb.codingpirates.battleships.desktop.BattleshipsDesktopClientApplication;
-import javafx.application.Application;
-import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.control.Slider;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
@@ -18,8 +14,13 @@ import javafx.stage.Stage;
  */
 public class Settings {
 
-
+    /**
+     * stage for this view
+     */
     Stage settingsStage;
+    /**
+     * controller class for this view
+     */
     private SettingsController settingsController;
 
 

@@ -11,12 +11,23 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
+/**
+ * class to show accessibility tools in every view
+ */
 public class Help {
 
+    //views
+    /**
+     * button to close the window
+     */
     @FXML
     private Button closeButton;
 
-
+    /**
+     * starts the help window
+     * @param title
+     * @throws IOException
+     */
     public void display(String title) throws IOException {
         Stage window = new Stage();
 
@@ -39,6 +50,9 @@ public class Help {
     }
 
 
+    /**
+     * closes the helpView
+     */
     @FXML
     public void closeStage(){
         Stage stage = (Stage) closeButton.getScene().getWindow();

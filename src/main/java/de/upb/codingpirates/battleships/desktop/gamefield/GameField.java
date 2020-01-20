@@ -21,9 +21,21 @@ import java.util.Random;
  */
 public class GameField {
 
+    /**
+     * Layout for the gameField as Table
+     */
     private GridPane gameField;
+    /**
+     * amount of rows in the gamefield
+     */
     private int nbRow;
+    /**
+     * amount of columns in teh gamefield
+     */
     private int nbColumn;
+    /**
+     * Table with string Value for position of the field, and the single fields
+     */
     private HashMap<String, Rectangle> map = new HashMap<>();
     private int imageShip;
 
@@ -121,6 +133,10 @@ public class GameField {
         Tooltip.install(map.get(point), toolTip);
     }
 
+    /**
+     * Changes the Image where a Shot is placed
+     * @param shot
+     */
     public void shotPlaced(Point2D shot){
         if (!BattleshipsDesktopClientApplication.getSoundsOff()){
         final URL resource = getClass().getResource("/raw/click.mp3");
@@ -133,6 +149,10 @@ public class GameField {
         Tooltip.install(map.get(point), toolTip);
     }
 
+    /**
+     * Changes the Image where a ship is placed
+     * @param ship
+     */
     public void shipPlaced(Point2D ship){
         if (!BattleshipsDesktopClientApplication.getSoundsOff()){
         final URL resource = getClass().getResource("/raw/shipPlaced.mp3");
@@ -168,6 +188,19 @@ public class GameField {
         return map;
     }
 
-    public int getRow(){return nbRow;};
-    public int getCol(){return nbColumn;}
+    /**
+     * Get amount of rows in gamefield
+     * @return int nbRow
+     */
+    public int getRow(){
+        return nbRow;
+    }
+
+    /**
+     * Get amount of columns in a gamefield
+     * @return int nbColumn
+     */
+    public int getCol(){
+        return nbColumn;
+    }
 }
