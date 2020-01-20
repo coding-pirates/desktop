@@ -275,7 +275,6 @@ public class InGameModel extends Application implements InGameModelMessageListen
         } catch (Exception e) {
             System.out.println("Konnte Points Request nicht schicken: " + e);
         }
-        this.placedShots.clear();
     }
     @Override
     public void onContinueNotification(ContinueNotification message, int clientId) {
@@ -349,6 +348,7 @@ public class InGameModel extends Application implements InGameModelMessageListen
 
     @Override
     public void onRoundStartNotification(RoundStartNotification message, int clientId) {
+        this.placedShots.clear();
         Platform.runLater(()-> {
             inGameController.roundStartNotification();
         });
