@@ -169,7 +169,7 @@ public class GameFieldController implements Initializable {
      * @param event
      */
     public void clickGrid(javafx.scene.input.MouseEvent event) {
-        if (parent.getPlacedShots().size() <= game.getConfig().getShotCount()) {
+        if (parent.getPlacedShots().size() < game.getConfig().getShotCount()) {
             if (event.getClickCount() == 2) {
                 Node clickedNode = event.getPickResult().getIntersectedNode();
                 if (clickedNode != grid) {
