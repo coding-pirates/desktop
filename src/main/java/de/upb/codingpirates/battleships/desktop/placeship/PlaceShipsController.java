@@ -64,12 +64,12 @@ public class PlaceShipsController extends InGameController implements Initializa
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        model.setSelectedShip(0);
     }
 
     public void setCurrentGame(Game currentGame){
        model.setCurrentGame(currentGame);
         model.addShipTypes(currentGame.getConfig().getShips()); //TODO maybe direct in Model
+        model.setSelectedShip(currentGame.getConfig().getShips().keySet().iterator().next());
     }
 
     public void closeStage() {
@@ -177,7 +177,6 @@ public class PlaceShipsController extends InGameController implements Initializa
      * @param event
      */
     public void clickGrid(javafx.scene.input.MouseEvent event) {
-        model.setSelectedShip(new Random().nextInt(3)); //for testing only
             Node clickedNode = event.getPickResult().getIntersectedNode();
             if (clickedNode != grid) {
                 // click on descendant node
@@ -194,6 +193,7 @@ public class PlaceShipsController extends InGameController implements Initializa
                     }
                     gameField.placeShip(shipPoints);
                     model.addShipPlacement(model.getSelectedShip(), new PlacementInfo(clickedPoint, model.getCurrentRotation()));
+                    setShipForm();
                 }
             }
     }
@@ -201,13 +201,14 @@ public class PlaceShipsController extends InGameController implements Initializa
     public void setShipForm(){
         //get ShipForm from server
         //gameField = new GameField(height, width);
-        ArrayList<Point2D> positions= new ArrayList<>();
+       /* ArrayList<Point2D> positions= new ArrayList<>();
         positions.add(new Point2D(0,0));
         positions.add(new Point2D(0,1));
         positions.add(new Point2D(0,2));
         positions.add(new Point2D(1,2));
-        Ship s = new Ship(new ShipType(positions));
-        shipForm= new ShipForm(positions);
+        Ship s = new Ship(new ShipType(positions));*/
+        model.setSelectedShip(new Random().nextInt(3)); //for testing only
+        shipForm= new ShipForm(model.getShipTypes().get(model.getSelectedShip()).getPositions());
         smallBorderPane.setPadding(new Insets(1, 1, 1, 1));
         grid = shipForm.getDisplay();
         smallBorderPane.setCenter(grid);
