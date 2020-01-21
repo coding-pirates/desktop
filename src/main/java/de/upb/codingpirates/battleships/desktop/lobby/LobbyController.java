@@ -83,11 +83,10 @@ public class LobbyController implements Initializable , LobbyResponseListener {
         lstvwEnd.setItems(endList);
 
         ChangeListener<GameView> changeListener = (arg0, arg1, arg2) -> {
+            ClientType cType = new ClientType();
+            Stage window = new Stage();
             try {
-                ClientType cType = new ClientType();
-                Stage window = new Stage();
                 cType.display(window, arg2.getContent(), clientID);
-                closeStage();
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -98,6 +97,9 @@ public class LobbyController implements Initializable , LobbyResponseListener {
             } catch (Exception e) {
                 e.printStackTrace();
             }*/
+
+            window.setOnCloseRequest(t ->{Platform.exit();
+                System.exit(0);});
         };
 
         SelectionModel<GameView> smStart = lstvwStart.getSelectionModel();

@@ -1,15 +1,12 @@
 package de.upb.codingpirates.battleships.desktop.ClientType;
 
 import de.upb.codingpirates.battleships.client.ListenerHandler;
-import de.upb.codingpirates.battleships.client.handler.GameInitNotificationHandler;
-import de.upb.codingpirates.battleships.client.listener.GameInitNotificationListener;
 import de.upb.codingpirates.battleships.client.listener.GameJoinPlayerResponseListener;
 import de.upb.codingpirates.battleships.client.listener.GameJoinSpectatorResponseListener;
 import de.upb.codingpirates.battleships.desktop.lobby.Lobby;
 import de.upb.codingpirates.battleships.desktop.placeship.Placeships;
 import de.upb.codingpirates.battleships.desktop.waiting.Waiting;
 import de.upb.codingpirates.battleships.logic.Game;
-import de.upb.codingpirates.battleships.network.message.notification.GameInitNotification;
 import de.upb.codingpirates.battleships.network.message.response.GameJoinPlayerResponse;
 import de.upb.codingpirates.battleships.network.message.response.GameJoinSpectatorResponse;
 import javafx.application.Platform;
@@ -99,7 +96,7 @@ public class ClientTypeController implements Initializable, GameJoinSpectatorRes
         Stage lobbyStage = new Stage();
         try {
             lobby.display(lobbyStage, clientTypeModel.getClientID());
-            closeStage();
+            this.closeStage();
         } catch (IOException e) {
             e.printStackTrace();//TODO
         }

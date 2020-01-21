@@ -18,7 +18,6 @@ import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.control.*;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.GridPane;
@@ -167,7 +166,6 @@ public class InGameController implements Initializable {
     public void showRanking() {
         this.ranking = new Ranking();
         Stage rankingStage = new Stage();
-
         try {
             ranking.display(rankingStage);
 
@@ -178,6 +176,7 @@ public class InGameController implements Initializable {
             ranking.setPlayer(players);
             ranking.sortPoints(points);
         }
+
     }
 
     /**
