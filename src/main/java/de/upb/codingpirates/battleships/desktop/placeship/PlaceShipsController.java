@@ -70,7 +70,7 @@ public class PlaceShipsController extends InGameController implements Initializa
      */
     @FXML
     public void handlerButton() throws Exception {
-        Endgame endgame = new Endgame();
+    /*    Endgame endgame = new Endgame();
         Stage endstage = new Stage();
         /*try {
             //endgame.display(endstage,points);

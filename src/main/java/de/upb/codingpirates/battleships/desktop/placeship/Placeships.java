@@ -1,17 +1,12 @@
 package de.upb.codingpirates.battleships.desktop.placeship;
 
 
-import de.upb.codingpirates.battleships.logic.Client;
 import de.upb.codingpirates.battleships.logic.Game;
-import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.control.Control;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-
-import java.util.*;
 
 /**
  * Class that implements a Window to place the ships
