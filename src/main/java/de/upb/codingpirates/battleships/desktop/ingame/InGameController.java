@@ -472,19 +472,18 @@ public class InGameController implements Initializable {
      * @param points Map of Players and Points
      * @param winner Id of the Winner
      */
-    public void FinishNotification(Map<Integer, Integer> points, List <Integer> winner) {
+    public void FinishNotification(Map<Integer, Integer> points, int winner) {
         time.stop();
         Platform.runLater(() -> {
             Alert alertFinish = new Alert(Alert.AlertType.INFORMATION,
-                    "Das Spiel ist vorbei. Der Gewinner ist " + winner.get(0), ButtonType.OK);
-            alertFinish.showAndWait();
+                    "Das Spiel ist vorbei. Der Gewinner ist " + winner, ButtonType.OK);
+            alertFinish.showAndWait();});
             try {
                 startEndView();
             } catch (Exception e) {
                 e.printStackTrace();
             }
-        });
-    }
+        }
     /**
      * starts the EndView with the Winners of the game
      *
@@ -494,7 +493,7 @@ public class InGameController implements Initializable {
         Endgame endgame = new Endgame();
         Stage endStage = new Stage();
         try {
-            endgame.display(endStage);
+            endgame.display(endStage,points);
             closeStage();
         } catch (IOException e) {
             e.printStackTrace();//TODO

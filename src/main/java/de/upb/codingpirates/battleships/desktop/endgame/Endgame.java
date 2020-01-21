@@ -7,6 +7,8 @@ import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
+import java.util.Map;
+
 /**
  * Class that implements a Window to place the ships
  */
@@ -15,12 +17,14 @@ public class Endgame {
 
     private Stage endStage;
     private EndgameController EndgameController;
+    private Map<Integer, Integer> points;
 
     /**
      * Start Method that creates a new Window and a related Controller.
      */
-    public void display(Stage endStage) throws Exception {
+    public void display(Stage endStage,Map<Integer, Integer> points) throws Exception {
         this.endStage = endStage;
+        this.points = points;
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/EndgameView.fxml"));
         AnchorPane pane = loader.load();
         this.EndgameController = loader.getController();

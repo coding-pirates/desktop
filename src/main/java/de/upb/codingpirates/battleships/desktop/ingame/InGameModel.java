@@ -1,6 +1,5 @@
 package de.upb.codingpirates.battleships.desktop.ingame;
 
-import com.google.common.collect.Lists;
 import de.upb.codingpirates.battleships.client.ListenerHandler;
 import de.upb.codingpirates.battleships.desktop.BattleshipsDesktopClientApplication;
 import de.upb.codingpirates.battleships.logic.*;
@@ -250,8 +249,8 @@ public class InGameModel extends Application implements InGameModelMessageListen
     public void onFinishNotification(FinishNotification message, int clientId) {
         Platform.runLater(()-> {
             Map<Integer, Integer> points = message.getPoints();
-            List<Integer> winner = Lists.newArrayList(message.getWinner());
-            inGameController.FinishNotification(points, winner);
+            List<Integer> winner = new ArrayList(message.getWinner());
+            inGameController.FinishNotification(points,winner.get(0) );
         });
     }
 
