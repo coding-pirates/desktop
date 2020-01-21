@@ -238,7 +238,7 @@
         </AnchorPane>
         <AnchorPane fx:id="pane" minHeight="0.0" minWidth="0.0" prefHeight="0.0" prefWidth="0.0" style="-fx-background-color: #CFBE8E;" SplitPane.resizableWithParent="false">
           <children>
-            <BorderPane fx:id="borderpane" cacheShape="false" centerShape="false" onMouseClicked="#clickGrid" scaleShape="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <BorderPane fx:id="borderpane" cacheShape="false" centerShape="false" onMouseClicked="#clickGrid" onScroll="#scroll" scaleShape="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
               <padding>
                 <Insets top="30.0" />
               </padding>

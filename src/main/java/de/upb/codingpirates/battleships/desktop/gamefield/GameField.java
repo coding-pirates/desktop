@@ -75,6 +75,7 @@ public class GameField {
         }
         gameField.setVgap(gameField.getWidth() / nbColumn);
         gameField.setHgap(gameField.getHeight() / nbRow);
+
     }
 
     /**
@@ -185,6 +186,7 @@ public class GameField {
      * @return HashMap map
      */
     public HashMap<String, Rectangle> getHashmap() {
+
         return map;
     }
 
@@ -193,6 +195,7 @@ public class GameField {
      * @return int nbRow
      */
     public int getRow(){
+
         return nbRow;
     }
 
@@ -201,6 +204,8 @@ public class GameField {
      * @return int nbColumn
      */
     public int getCol(){
+
         return nbColumn;
     }
+
 }

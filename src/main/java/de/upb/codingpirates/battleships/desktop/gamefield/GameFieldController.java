@@ -218,5 +218,6 @@ public class GameFieldController implements Initializable {
             //System.out.println("Mouse clicked cell: " + colIndex + " And: " + rowIndex);
             gameField.shotPlaced(new Point2D(colIndex, row - rowIndex-1));
         }}
+
+        }
     }
-}

@@ -697,5 +697,22 @@ public class InGameController implements Initializable {
     public void shot(){
         
      }
+
+     /** Scroll event with mouse for the gamefield
+     * @param event
+     */
+    @FXML
+    public void scroll(javafx.scene.input.ScrollEvent event) {
+        Node clickedNode = event.getPickResult().getIntersectedNode();
+        if (clickedNode != grid) {
+            double zoomFactor = 1.05;
+            double deltaY = event.getDeltaY();
+            if (deltaY < 0){
+                zoomFactor = 2.0 - zoomFactor;
+            }
+            borderpane.setScaleX(borderpane.getScaleX() * zoomFactor);
+            borderpane.setScaleY(borderpane.getScaleY() * zoomFactor);
+        }
+    }
 }
 
