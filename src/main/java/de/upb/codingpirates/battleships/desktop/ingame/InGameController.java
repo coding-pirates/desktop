@@ -15,8 +15,11 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.control.*;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
@@ -69,6 +72,8 @@ public class InGameController implements Initializable {
     private Label restTime;
     @FXML
     private ProgressIndicator progressindicator;
+    @FXML
+    private BorderPane borderpane;
 
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
@@ -96,6 +101,13 @@ public class InGameController implements Initializable {
         this.game = game;
     }
 
+    public void setClientType(ClientType clientType){
+        model.setClientType(clientType);
+    }
+
+    public void setOwnShipPlacements(Map<Integer, PlacementInfo> ownShipPlacements){
+        model.setOwnShipPlacements(ownShipPlacements);
+    }
     /**
      * Shows the klicked GameField of one Player on a bigger Screen in detail.
      */
@@ -105,7 +117,8 @@ public class InGameController implements Initializable {
         }
         grid.getChildren().clear();
         grid.add(controller.getInGame(), 0, 0);
-        splitPane.setDividerPositions(0.27);
+        borderpane.setPadding(new Insets(1, 1, 1, 1));
+        splitPane.setDividerPositions(0.18);
         this.inGame = controller.getInGame();
         enlarged = true;
     }
@@ -149,6 +162,7 @@ public class InGameController implements Initializable {
     /**
      * Initializes a Ranking with the Rank, Name and Points of every Player.
      */
+
     @FXML
     public void showRanking() {
         this.ranking = new Ranking();
@@ -199,22 +213,6 @@ public class InGameController implements Initializable {
      * Takes Configuration of the Game and displays the Information in the TextFields.
      */
     public void sendGameStateRequest() {
-       /* config = tempConfig;
-        height = config.getHeight();
-        width = config.getWidth();
-        millis = config.getRoundTime();
-
-        Platform.runLater(() -> {
-            maxPlayerCount.setText(Integer.toString(config.getMaxPlayerCount()));
-            shotCount.setText(Integer.toString(config.getShotCount()));
-            hitPoints.setText(Integer.toString(config.getHitPoints()));
-            sunkPoints.setText(Integer.toString(config.getSunkPoints()));
-            roundTime.setText(Long.toString(config.getRoundTime()));
-            controllerMap.forEach((client, controller) -> {
-                controller.buildBoard(tempConfig.getHeight(), tempConfig.getWidth());
-            });
-
-        }); */
         try {
             model.sendGameStateRequest();
         } catch (Exception e) {
@@ -234,7 +232,7 @@ public class InGameController implements Initializable {
      * @param state   GameState
      * @throws Exception
      */
-    public void spectatorGameStateResponse(Collection<Client> players, Collection<Shot> shots, Map<Integer, Map<Integer, PlacementInfo>> ships, GameState state) throws Exception {
+    public void gameStateResponse(ClientType clientType, Collection<Client> players, Collection<Shot> shots, Map<Integer, Map<Integer, PlacementInfo>> ships, GameState state) throws Exception {
 
         if (this.players != null) {
             players.removeIf(client -> this.players.contains(client));
@@ -274,7 +272,13 @@ public class InGameController implements Initializable {
                 model.pointsRequest();
                 break;
         }
-            placeShips(ships);
+            if(clientType == ClientType.SPECTATOR) {
+                placeShips(ships);
+            }
+            else{
+                GameFieldController controller = controllerMap.get(model.getClientID());
+                controller.placePlayerShips(model.getOwnShipPlacements(), game.getConfig().getShips());
+            }
             redoShots(shots);
 
         });
@@ -309,6 +313,7 @@ public class InGameController implements Initializable {
         }
     }
 
+
     /**
      * Adds a new GameField and related Controller for every Player.
      *
@@ -325,6 +330,7 @@ public class InGameController implements Initializable {
             GameFieldController gameFieldController = loader.getController();
             gameFieldController.setParent(this);
             gameFieldController.setConfig(client.getName(), game, inGame);
+            gameFieldController.setPlayerID(client.getId());
             controllerMap.put(client.getId(), gameFieldController);                //Create a Map of PlayerId and Controller Object
             fieldMap.put(client.getId(), inGame);
         }
@@ -343,12 +349,18 @@ public class InGameController implements Initializable {
                                             Collection<Shot> sunk, Collection<Shot> missed) {
         InGameController thisOb = this;
 
-        Platform.runLater(() -> {
             thisOb.missedShots(missed);
             thisOb.hitShots(hits);
             thisOb.setPoints(points);
             thisOb.points = points;
-        });
+    }
+
+    public void playerUpdateNotification(Collection<Shot> hits, Map<Integer, Integer> points) {
+        InGameController thisOb = this;
+
+            thisOb.hitShots(hits);
+            thisOb.setPoints(points);
+            thisOb.points = points;
     }
 
     /**
@@ -364,6 +376,13 @@ public class InGameController implements Initializable {
         }
     }
 
+    public ArrayList<Shot> getPlacedShots(){
+        return model.getPlacedShots();
+    }
+
+    public void addShot(int playerId, Point2D shot){
+        model.addShot(playerId, shot);
+    }
     /**
      * Starts missHit for every missed Shot on the Controller its related to.
      *
@@ -477,13 +496,14 @@ public class InGameController implements Initializable {
         Platform.runLater(() -> {
             Alert alertFinish = new Alert(Alert.AlertType.INFORMATION,
                     "Das Spiel ist vorbei. Der Gewinner ist " + winner, ButtonType.OK);
-            alertFinish.showAndWait();});
+            alertFinish.showAndWait();
             try {
                 startEndView();
             } catch (Exception e) {
                 e.printStackTrace();
             }
-        }
+        });
+    }
     /**
      * starts the EndView with the Winners of the game
      *
@@ -493,7 +513,7 @@ public class InGameController implements Initializable {
         Endgame endgame = new Endgame();
         Stage endStage = new Stage();
         try {
-            endgame.display(endStage,points,players);
+            endgame.display(endStage,points,players,model.getClientID());
             closeStage();
         } catch (IOException e) {
             e.printStackTrace();//TODO
@@ -508,7 +528,7 @@ public class InGameController implements Initializable {
     public void help() throws IOException {
         Help help = new Help();
         try{
-            help.display("InGame-Help", "InGame-Help");
+            help.display("InGame-Help");
         }
         catch (IOException e){
             e.printStackTrace();
@@ -536,10 +556,11 @@ public class InGameController implements Initializable {
 
     @FXML
     public void leave(){
+        //TODO send leaveRequest
         Lobby lobby = new Lobby();
         Stage lobbyStage = new Stage();
         try {
-            lobby.display(lobbyStage);
+            lobby.display(lobbyStage, model.getClientID());
             closeStage();
         } catch (IOException e) {
             e.printStackTrace();//TODO
@@ -552,4 +573,28 @@ public class InGameController implements Initializable {
 
     @FXML
     public void next(){}
+    @FXML
+    public void shot(){
+        model.sendShotRequest();
+    }
+
+    /**
+     * Clickevent for GridPane (print grid-cell, which is clicked)
+     * @param event
+     */
+  public void clickGrid(javafx.scene.input.MouseEvent event) {
+        if(event.getClickCount() == 2){
+            Node clickedNode = event.getPickResult().getIntersectedNode();
+            if (clickedNode != grid) {
+                // click on descendant node
+                Integer colIndex = GridPane.getColumnIndex(clickedNode);
+                Integer rowIndex = GridPane.getRowIndex(clickedNode);
+                System.out.println("Mouse clicked cell: " + colIndex + " And: " + rowIndex);
+
+            }}
+    }
+
+    public void setClientID(int clientID){
+      model.setClientID(clientID);
+    }
 }

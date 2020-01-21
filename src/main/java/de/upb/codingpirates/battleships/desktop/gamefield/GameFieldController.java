@@ -12,13 +12,11 @@ import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
 
 import java.net.URL;
-import java.util.Map;
-import java.util.Objects;
-import java.util.ResourceBundle;
-import java.util.Set;
+import java.util.*;
 
 /**
  * Controller Class for the GameField of every Player.
@@ -32,6 +30,8 @@ public class GameFieldController implements Initializable {
     private GameField gameField;
     private Node inGame;
     private Game game;
+    private GridPane grid;
+    private int playerID;
 
     @FXML
     private BorderPane borderPane;
@@ -39,8 +39,6 @@ public class GameFieldController implements Initializable {
     private Text name;
     @FXML
     private Text points;
-    @FXML
-    private ImageView background;
 
     /**
      * Set Method for Parent.
@@ -51,6 +49,10 @@ public class GameFieldController implements Initializable {
         parent = temp;
     }
     public void setParent(PlaceShipsController temp){parent = temp;}
+
+    public void setPlayerID(int playerID){
+        this.playerID = playerID;
+    }
 
     public Node getInGame() {
         return inGame;
@@ -74,7 +76,6 @@ public class GameFieldController implements Initializable {
      */
     public void enlargeBoard() {
         parent.enlargeBoard(this);
-
     }
 
     /**
@@ -85,8 +86,9 @@ public class GameFieldController implements Initializable {
         this.width = width;
         //gameField = new GameField(height, width);
         gameField = new GameField(height, width);
+        grid = gameField.getDisplay();
         borderPane.setPadding(new Insets(1, 1, 1, 1));
-        borderPane.setCenter(gameField.getDisplay());
+        borderPane.setCenter(grid);
         type = new String[height][width];
         for (int i = 0; i < height; i++) {
             for (int j = 0; j < width; j++) {
@@ -129,6 +131,16 @@ public class GameFieldController implements Initializable {
         }
     }
 
+    public void placePlayerShips(Map<Integer, PlacementInfo> shipPlacements, Map<Integer, ShipType> shipTypes){
+        ArrayList<Point2D> movedShipPoints = new ArrayList<>();
+        for(int ship : shipPlacements.keySet()) {
+            for (Point2D point : shipTypes.get(ship).getPositions()) {
+                movedShipPoints.add(new Point2D(shipPlacements.get(ship).getPosition().getX() + point.getX(), shipPlacements.get(ship).getPosition().getY() + point.getY()));
+            }
+            gameField.placeShip(movedShipPoints);
+            movedShipPoints.clear();
+        }
+    }
     /**
      * Starts gameFields shipHit().
      *
@@ -161,4 +173,30 @@ public class GameFieldController implements Initializable {
 
     }
 
+    /**
+     * Clickevent for GridPane (print grid-cell, which is clicked)
+     *
+     * @param event
+     */
+    public void clickGrid(javafx.scene.input.MouseEvent event) {
+        if (parent.getPlacedShots().size() < game.getConfig().getShotCount()) {
+            if (event.getClickCount() == 2) {
+                Node clickedNode = event.getPickResult().getIntersectedNode();
+                if (clickedNode != grid) {
+                    // click on descendant node
+                    Node parent = clickedNode.getParent();
+                    while (parent != grid && parent != null) {
+                        clickedNode = parent;
+                        parent = clickedNode.getParent();
+                    }
+                    Integer colIndex = GridPane.getColumnIndex(clickedNode);
+                    Integer rowIndex = GridPane.getRowIndex(clickedNode);
+                    int row = gameField.getRow();
+                    //System.out.println("Mouse clicked cell: " + colIndex + " And: " + rowIndex);
+                    gameField.shotPlaced(new Point2D(colIndex, row - rowIndex - 1));
+                    this.parent.addShot(playerID,new Point2D(colIndex, row - rowIndex - 1));
+                }
+            }
+        }
+    }
 }

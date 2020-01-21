@@ -8,6 +8,9 @@ import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
+import java.io.IOException;
+import java.util.*;
+
 /**
  * Class that implements a Window to place the ships
  */
@@ -20,19 +23,21 @@ public class Placeships  {
     /**
      * Start Method that creates a new Window and a related Controller.
      */
-    public void display(Stage placeshipsStage, Game currentGame) throws Exception {
+    public void display(Stage placeshipsStage, Game currentGame, int clientID) throws IOException {
         this.placeshipsStage = placeshipsStage;
         FXMLLoader loader = new FXMLLoader(this.getClass().getResource("/fxml/PlaceshipsView.fxml"));
         AnchorPane pane = loader.load();
         this.placeshipsController = loader.getController();
+        placeshipsController.setShipForm();
         placeshipsController.setCurrentGame(currentGame);
+        placeshipsController.setClientId(clientID);
         placeshipsController.fieldInit();
         Image icon = new Image(String.valueOf(getClass().getResource("/images/app_icon.png")));
         placeshipsStage.getIcons().add(icon);
         placeshipsStage.setResizable(false);
         placeshipsStage.setMaximized(true);
         placeshipsStage.setTitle("PlaceShips");
-        placeshipsStage.setScene(new Scene(pane, 1920, 1080));
+        placeshipsStage.setScene(new Scene(pane));
         placeshipsStage.show();
     }
 

@@ -7,6 +7,7 @@ import de.upb.codingpirates.battleships.desktop.ingame.InGame;
 import de.upb.codingpirates.battleships.desktop.settings.Settings;
 import de.upb.codingpirates.battleships.desktop.util.Help;
 import de.upb.codingpirates.battleships.logic.Client;
+import de.upb.codingpirates.battleships.logic.ClientType;
 import de.upb.codingpirates.battleships.logic.Game;
 import de.upb.codingpirates.battleships.network.message.notification.GameInitNotification;
 import de.upb.codingpirates.battleships.network.message.notification.GameStartNotification;
@@ -46,7 +47,7 @@ public class WaitingController implements Initializable, GameStartNotificationLi
             InGame inGame = new InGame();
         Stage inGameStage = new Stage();
         try {
-            inGame.start(inGameStage,currentGame, clientList);
+            inGame.start(inGameStage,currentGame, ClientType.SPECTATOR);
             closeStage();
         } catch (Exception e) {
             e.printStackTrace();
@@ -76,7 +77,7 @@ public class WaitingController implements Initializable, GameStartNotificationLi
     public void help() throws IOException {
         Help help = new Help();
         try{
-            help.display("Settings-Help", "Settings");
+            help.display("Settings-Help");
         }
         catch (IOException e){
             e.printStackTrace();

@@ -5,17 +5,12 @@ import de.upb.codingpirates.battleships.desktop.BattleshipsDesktopClientApplicat
 import de.upb.codingpirates.battleships.logic.*;
 import de.upb.codingpirates.battleships.network.message.notification.*;
 import de.upb.codingpirates.battleships.network.message.request.RequestBuilder;
-import de.upb.codingpirates.battleships.network.message.response.PointsResponse;
-import de.upb.codingpirates.battleships.network.message.response.RemainingTimeResponse;
-import de.upb.codingpirates.battleships.network.message.response.SpectatorGameStateResponse;
+import de.upb.codingpirates.battleships.network.message.response.*;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.stage.Stage;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * Model class for the InGame Window.
@@ -33,6 +28,10 @@ public class InGameModel extends Application implements InGameModelMessageListen
     private Map<Integer, Map<Integer, PlacementInfo>> ships = null;
     private GameState gameState = null;
     private Collection<Shot> shots = new ArrayList<Shot>();
+    private ClientType clientType;
+    private Map<Integer, PlacementInfo> ownShipPlacements;
+    private int clientID;
+    private ArrayList<Shot> placedShots = new ArrayList<>();
 
     /**
      * Constructor. Sets a tcpConnector and the chosen Game.
@@ -121,6 +120,39 @@ public class InGameModel extends Application implements InGameModelMessageListen
         this.shots = shots;
     }
 
+    public int getClientID() {
+        return clientID;
+    }
+
+    public void setClientID(int clientID) {
+        this.clientID = clientID;
+    }
+    public ArrayList<Shot> getPlacedShots() {
+        return placedShots;
+    }
+
+    public void setPlacedShots(ArrayList<Shot> placedShots) {
+        this.placedShots = placedShots;
+    }
+
+    public void addShot(int playerId, Point2D shot){
+        this.placedShots.add(new Shot(playerId,shot));
+        if(this.placedShots.size() == ausgewaehltesSpiel.getConfig().getShips().size()){
+            sendShotRequest();
+        }
+    }
+
+    public void setClientType(ClientType clientType){
+        this.clientType = clientType;
+    }
+    public void setOwnShipPlacements(Map<Integer, PlacementInfo> shipPlacements){
+        this.ownShipPlacements = shipPlacements;
+    }
+
+    public Map<Integer, PlacementInfo> getOwnShipPlacements() {
+        return ownShipPlacements;
+    }
+
     /**
      * Sends a GameJoinRequest and a GameStateRequest.
      * Initializes an InGame Window and a related Controller.
@@ -129,7 +161,7 @@ public class InGameModel extends Application implements InGameModelMessageListen
      */
     public void start(Stage inGameStage) {
         // sendGameJoinSpectatorRequest
-        sendGameJoinSpectatorRequest();
+        sendGameJoinSpectatorRequest(); //TODO why?
     }
 
     public void start() {
@@ -139,7 +171,7 @@ public class InGameModel extends Application implements InGameModelMessageListen
     public void start2() throws Exception {
         inGameController.setModel(this);
         inGameController.setGame(ausgewaehltesSpiel);
-        inGameController.spectatorGameStateResponse(player, shots, ships, gameState);
+        inGameController.gameStateResponse(clientType, player, shots, ships, gameState);
 
         /*
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/InGameView.fxml"));
@@ -151,6 +183,7 @@ public class InGameModel extends Application implements InGameModelMessageListen
         inGameStage.setTitle("InGame");
         inGameStage.setScene(new Scene(pane));
         inGameStage.setMaximized(true);
+        inGameStage.setResizable(false);
         inGameStage.show();
          */
     }
@@ -161,15 +194,14 @@ public class InGameModel extends Application implements InGameModelMessageListen
      * @return gameId: Id of the joined Game
      */
     public void sendGameJoinSpectatorRequest() {
-        try {
-            BattleshipsDesktopClientApplication
-                .getInstance()
-                .getTcpConnector()
-                .sendMessageToServer(RequestBuilder.gameJoinSpectatorRequest(ausgewaehltesSpiel.getId()));
-
-        } catch (Exception e) {
-            System.out.println("Konnte GameJoin Request nicht schicken: " + e);
-        }
+            try {
+                BattleshipsDesktopClientApplication
+                        .getInstance()
+                        .getTcpConnector()
+                        .sendMessageToServer(RequestBuilder.gameJoinSpectatorRequest(ausgewaehltesSpiel.getId()));
+            } catch (Exception e) {
+                System.out.println("Konnte GameJoin Request nicht schicken: " + e);
+            }
 
     }
 
@@ -182,21 +214,23 @@ public class InGameModel extends Application implements InGameModelMessageListen
     public void sendGameStateRequest() {
         // send to server
         try {
-            BattleshipsDesktopClientApplication
-                .getInstance()
-                .getTcpConnector()
-                .sendMessageToServer(RequestBuilder.spectatorGameStateRequest());
+            if(clientType == ClientType.SPECTATOR) {
+                BattleshipsDesktopClientApplication
+                        .getInstance()
+                        .getTcpConnector()
+                        .sendMessageToServer(RequestBuilder.spectatorGameStateRequest());
+            }
+            else{
+                BattleshipsDesktopClientApplication
+                        .getInstance()
+                        .getTcpConnector()
+                        .sendMessageToServer(RequestBuilder.playerGameStateRequest());
+            }
         } catch (Exception e) {
             System.out.println("Konnte GameState Request nicht schicken: " + e);
         }
     }
 
-    public void setGameStateResult(SpectatorGameStateResponse response){
-        player = response.getPlayers();
-        ships = response.getShips();
-        gameState = response.getState();
-        shots = response.getShots();
-    }
     /**
      * Closes the InGame Window.
      */
@@ -238,6 +272,16 @@ public class InGameModel extends Application implements InGameModelMessageListen
         }
     }
 
+    public void sendShotRequest(){
+        try {
+            BattleshipsDesktopClientApplication
+                    .getInstance()
+                    .getTcpConnector()
+                    .sendMessageToServer(RequestBuilder.shotsRequest(placedShots));
+        } catch (Exception e) {
+            System.out.println("Konnte Points Request nicht schicken: " + e);
+        }
+    }
     @Override
     public void onContinueNotification(ContinueNotification message, int clientId) {
         Platform.runLater(()-> {
@@ -310,6 +354,7 @@ public class InGameModel extends Application implements InGameModelMessageListen
 
     @Override
     public void onRoundStartNotification(RoundStartNotification message, int clientId) {
+        this.placedShots.clear();
         Platform.runLater(()-> {
             inGameController.roundStartNotification();
         });
@@ -318,7 +363,10 @@ public class InGameModel extends Application implements InGameModelMessageListen
     @Override
     public void onSpectatorGameStateResponse(SpectatorGameStateResponse message, int clientId) {
         Platform.runLater(()-> {
-            setGameStateResult(message);
+            player = message.getPlayers();
+            ships = message.getShips();
+            gameState = message.getState();
+            shots = message.getShots();
             try {
                 start2();
 
@@ -329,6 +377,22 @@ public class InGameModel extends Application implements InGameModelMessageListen
     }
 
     @Override
+    public void onPlayerGameStateResponse(PlayerGameStateResponse message, int clientId) {
+        Platform.runLater(()-> {
+            player = message.getPlayer();
+            gameState = message.getState();
+            shots = message.getHits();
+            try {
+                start2();
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        });
+    }
+
+
+    @Override
     public void onSpectatorUpdateNotification(SpectatorUpdateNotification message, int clientId) {
         Platform.runLater(()-> {
             Collection<Shot> hits = message.getHits();
@@ -336,6 +400,16 @@ public class InGameModel extends Application implements InGameModelMessageListen
             Collection<Shot> sunk = message.getSunk();
             Collection<Shot> missed = message.getMissed();
             inGameController.spectatorUpdateNotification(hits, points, sunk, missed);
+        });
+    }
+
+    @Override
+    public void onPlayerUpdateNotification(PlayerUpdateNotification message, int clientId) {
+        Platform.runLater(()-> {
+            Collection<Shot> hits = message.getHits();
+            Map<Integer, Integer> points = message.getPoints();
+            Collection<Shot> sunk = message.getSunk();
+            inGameController.playerUpdateNotification(hits, points);
         });
     }
 }

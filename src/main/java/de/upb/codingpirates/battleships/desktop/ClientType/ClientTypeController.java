@@ -1,11 +1,16 @@
 package de.upb.codingpirates.battleships.desktop.ClientType;
 
 import de.upb.codingpirates.battleships.client.ListenerHandler;
+import de.upb.codingpirates.battleships.client.handler.GameInitNotificationHandler;
+import de.upb.codingpirates.battleships.client.listener.GameInitNotificationListener;
+import de.upb.codingpirates.battleships.client.listener.GameJoinPlayerResponseListener;
 import de.upb.codingpirates.battleships.client.listener.GameJoinSpectatorResponseListener;
 import de.upb.codingpirates.battleships.desktop.lobby.Lobby;
 import de.upb.codingpirates.battleships.desktop.placeship.Placeships;
 import de.upb.codingpirates.battleships.desktop.waiting.Waiting;
 import de.upb.codingpirates.battleships.logic.Game;
+import de.upb.codingpirates.battleships.network.message.notification.GameInitNotification;
+import de.upb.codingpirates.battleships.network.message.response.GameJoinPlayerResponse;
 import de.upb.codingpirates.battleships.network.message.response.GameJoinSpectatorResponse;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
@@ -19,7 +24,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class ClientTypeController implements Initializable, GameJoinSpectatorResponseListener {
+public class ClientTypeController implements Initializable, GameJoinSpectatorResponseListener, GameJoinPlayerResponseListener {
 
     @FXML
     private RadioButton rb_spectator;
@@ -48,26 +53,31 @@ public class ClientTypeController implements Initializable, GameJoinSpectatorRes
         });
     }
 
+    @Override
+    public void onGameJoinPlayerResponse(GameJoinPlayerResponse message, int messageId) {
+        Platform.runLater(()->{
+            this.placeShips();
+        });
+    }
+
     @FXML
     public void player(){
         System.out.println("Player");
         chosenClient="Player";
-        //lb_choice.setText("Player is chosen");
     }
 
     @FXML
     public void spectator(){
         System.out.println("Spectator");
         chosenClient="Spectator";
-        //lb_choice.setText("Spectator is chosen");
     }
 
 
     @FXML
-    public void next() throws Exception {
+    public void next(){
         if(chosenClient=="Player"){
             closeStage();
-            placeShips();
+            clientTypeModel.sendGameJoinPlayerRequest();
         }
         if(chosenClient=="Spectator"){
             closeStage();
@@ -88,7 +98,7 @@ public class ClientTypeController implements Initializable, GameJoinSpectatorRes
         Lobby lobby = new Lobby();
         Stage lobbyStage = new Stage();
         try {
-            lobby.display(lobbyStage);
+            lobby.display(lobbyStage, clientTypeModel.getClientID());
             closeStage();
         } catch (IOException e) {
             e.printStackTrace();//TODO
@@ -99,11 +109,11 @@ public class ClientTypeController implements Initializable, GameJoinSpectatorRes
         });
     }
 
-    public void placeShips() throws Exception {
+    public void placeShips(){
         Placeships placeships = new Placeships();
         Stage placeStage = new Stage();
         try {
-            placeships.display(placeStage,clientTypeModel.getSelectedGame());
+            placeships.display(placeStage,clientTypeModel.getSelectedGame(), clientTypeModel.getClientID());
             closeStage();
         } catch (IOException e) {
             e.printStackTrace();//TODO
@@ -120,7 +130,7 @@ public class ClientTypeController implements Initializable, GameJoinSpectatorRes
         try {
             waitingView.display(waitingStage, clientTypeModel.getSelectedGame());
            // waitingView.setCurrentGame(clientTypeModel.getSelectedGame());
-            closeStage();
+            this.closeStage();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -128,6 +138,10 @@ public class ClientTypeController implements Initializable, GameJoinSpectatorRes
 
     public void setSelectedGame(Game selectedGame){
         clientTypeModel.setSelectedGame(selectedGame);
+    }
+
+    public void setClientID(int clientID){
+        clientTypeModel.setClientID(clientID);
     }
 
 }

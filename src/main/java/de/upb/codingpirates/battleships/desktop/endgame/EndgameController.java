@@ -35,6 +35,8 @@ public class EndgameController implements Initializable {
     private Collection<Client> players = null;
 
 
+    private int clientID;
+
     /**
      * Initial Method.
      */
@@ -54,9 +56,10 @@ public class EndgameController implements Initializable {
     @FXML
     public void help() throws IOException {
         Help help = new Help();
-        try {
-            help.display("Endgame-Help", "Endgame-Help");
-        } catch (IOException e) {
+        try{
+            help.display("Endgame-Help");
+        }
+        catch (IOException e){
             e.printStackTrace();
         }
     }
@@ -102,7 +105,7 @@ public class EndgameController implements Initializable {
         Lobby lobby = new Lobby();
         Stage lobbyStage = new Stage();
         try {
-            lobby.display(lobbyStage);
+            lobby.display(lobbyStage, clientID);
             closeStage();
         } catch (IOException e) {
             e.printStackTrace();//TODO
@@ -117,6 +120,11 @@ public class EndgameController implements Initializable {
         Stage stage = (Stage) btn_lobby.getScene().getWindow();
         stage.close();
     }
+
+    public void setClientID(int clientID){
+        this.clientID = clientID;
+    }
+
 
     public void placement() {
         first.setText("Hallo");

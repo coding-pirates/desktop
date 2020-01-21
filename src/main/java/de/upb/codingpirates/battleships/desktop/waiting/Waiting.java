@@ -35,7 +35,6 @@ public class Waiting  {
 
         waitingController = loader.getController();
         waitingController.setCurrentGame(currentGame);
-
         Image icon = new Image(String.valueOf(getClass().getResource("/images/app_icon.png")));
         waitingStage.getIcons().add(icon);
         Scene scene = new Scene(pane);

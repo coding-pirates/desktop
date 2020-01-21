@@ -81,7 +81,7 @@ public class ServerLoginController implements Initializable, ServerJoinResponseL
                     .connect(serverIP, Integer.parseInt(port));
 
             //Send request to server
-            ServerLoginModel slm = new ServerLoginModel(nameField.getText(), ClientType.SPECTATOR);
+            ServerLoginModel slm = new ServerLoginModel(nameField.getText(), ClientType.PLAYER);
             slm.sendRequest(serverIP);
         } catch (Exception e) {
             lblStatus.setText("Anmeldung fehlgeschlagen: Server nicht erreichbar!");
@@ -102,12 +102,12 @@ public class ServerLoginController implements Initializable, ServerJoinResponseL
         Platform.runLater(() -> {
             setLblStatus("");
 
-            
+
 
             Lobby lobby = new Lobby();
             Stage lobbyStage = new Stage();
             try {
-                lobby.display(lobbyStage);
+                lobby.display(lobbyStage,response.getClientId());
                 closeStage();
             } catch (IOException e) {
                 e.printStackTrace();//TODO
@@ -137,24 +137,12 @@ public class ServerLoginController implements Initializable, ServerJoinResponseL
 
         @FXML
         public void handlerButton(){
-            Lobby lobby = new Lobby();
-            Stage lobbyStage = new Stage();
-            try {
-                lobby.display(lobbyStage);
-                closeStage();
-            } catch (IOException e) {
-                e.printStackTrace();//TODO
-            }
-            lobbyStage.setOnCloseRequest(t -> {
-                Platform.exit();
-                System.exit(0);
-            });
         }
     @FXML
     public void help() throws IOException {
         Help help = new Help();
         try{
-            help.display("Server-Login-Help", "Fill in your Username, Server-ID and Server-Port");
+            help.display("Server-Login-Help");
         }
         catch (IOException e){
             e.printStackTrace();

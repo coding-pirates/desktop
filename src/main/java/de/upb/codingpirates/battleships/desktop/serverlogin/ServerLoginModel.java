@@ -9,6 +9,8 @@ import de.upb.codingpirates.battleships.network.message.request.RequestBuilder;
 import de.upb.codingpirates.battleships.network.message.response.ServerJoinResponse;
 import de.upb.codingpirates.battleships.network.message.request.ServerJoinRequest;
 import de.upb.codingpirates.battleships.network.message.response.LobbyResponse;
+import de.upb.codingpirates.battleships.network.message.response.ServerJoinResponse;
+
 import java.io.IOException;
 
 /**
