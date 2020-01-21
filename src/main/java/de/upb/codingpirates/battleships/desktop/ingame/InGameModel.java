@@ -141,6 +141,9 @@ public class InGameModel extends Application implements InGameModelMessageListen
 
     public void addShot(int playerId, Point2D shot){
         this.placedShots.add(new Shot(playerId,shot));
+        if(this.placedShots.size() == ausgewaehltesSpiel.getConfig().getShips().size()){
+            sendShotRequest();
+        }
     }
 
     public void setClientType(ClientType clientType){
