@@ -26,6 +26,7 @@ public class PlaceshipsModel{
     private Map<Integer,ShipType> shipTypes;
     private Collection<Client> clientList;
     private Game currentGame;
+    private int clientID;
     private int selectedShip;
     private Rotation currentRotation = Rotation.NONE;
 
@@ -47,6 +48,15 @@ public class PlaceshipsModel{
 
     public void setCurrentGame(Game currentGame) {
         this.currentGame = currentGame;
+    }
+
+
+    public int getClientID() {
+        return clientID;
+    }
+
+    public void setClientID(int clientID) {
+        this.clientID = clientID;
     }
 
 

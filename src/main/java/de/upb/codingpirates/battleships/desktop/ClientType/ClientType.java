@@ -19,7 +19,7 @@ public class ClientType {
     private ClientTypeController clientTypeController;
     private Stage window;
 
-    public void display(Stage window, Game selectedGame) throws IOException {
+    public void display(Stage window, Game selectedGame, int clientID) throws IOException {
         this.window=window;
 
         window.initModality(Modality.APPLICATION_MODAL);
@@ -30,7 +30,7 @@ public class ClientType {
 
         clientTypeController = loader.getController();
         clientTypeController.setSelectedGame(selectedGame);
-
+        clientTypeController.setClientID(clientID);
         Image icon = new Image(String.valueOf(ClientType.class.getResource("/images/app_icon.png")));
         window.getIcons().add(icon);
 

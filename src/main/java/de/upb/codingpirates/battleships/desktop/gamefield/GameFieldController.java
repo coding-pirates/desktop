@@ -131,6 +131,16 @@ public class GameFieldController implements Initializable {
         }
     }
 
+    public void placePlayerShips(Map<Integer, PlacementInfo> shipPlacements, Map<Integer, ShipType> shipTypes){
+        ArrayList<Point2D> movedShipPoints = new ArrayList<>();
+        for(int ship : shipPlacements.keySet()) {
+            for (Point2D point : shipTypes.get(ship).getPositions()) {
+                movedShipPoints.add(new Point2D(shipPlacements.get(ship).getPosition().getX() + point.getX(), shipPlacements.get(ship).getPosition().getY() + point.getY()));
+            }
+            gameField.placeShip(movedShipPoints);
+            movedShipPoints.clear();
+        }
+    }
     /**
      * Starts gameFields shipHit().
      *

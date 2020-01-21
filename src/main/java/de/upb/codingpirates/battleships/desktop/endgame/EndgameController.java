@@ -22,6 +22,8 @@ public class EndgameController implements Initializable {
     @FXML
     Button btn_lobby;
 
+    private int clientID;
+
     /**
      * Initial Method.
      */
@@ -79,7 +81,7 @@ public class EndgameController implements Initializable {
         Lobby lobby = new Lobby();
         Stage lobbyStage = new Stage();
         try {
-            lobby.display(lobbyStage);
+            lobby.display(lobbyStage, clientID);
             closeStage();
         } catch (IOException e) {
             e.printStackTrace();//TODO
@@ -94,4 +96,9 @@ public class EndgameController implements Initializable {
         Stage stage = (Stage) btn_lobby.getScene().getWindow();
         stage.close();
     }
+
+    public void setClientID(int clientID){
+        this.clientID = clientID;
+    }
+
 }

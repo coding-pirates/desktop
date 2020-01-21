@@ -19,11 +19,12 @@ public class Endgame {
     /**
      * Start Method that creates a new Window and a related Controller.
      */
-    public void display(Stage endStage) throws Exception {
+    public void display(Stage endStage, int clientID) throws Exception {
         this.endStage = endStage;
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/EndgameView.fxml"));
         AnchorPane pane = loader.load();
         this.EndgameController = loader.getController();
+        EndgameController.setClientID(clientID);
         Image icon = new Image(String.valueOf(getClass().getResource("/images/app_icon.png")));
         endStage.getIcons().add(icon);
         endStage.setTitle("Endgame");

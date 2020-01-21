@@ -26,12 +26,13 @@ public class Placeships  {
     /**
      * Start Method that creates a new Window and a related Controller.
      */
-    public void display(Stage placeshipsStage, Game currentGame) throws IOException {
+    public void display(Stage placeshipsStage, Game currentGame, int clientID) throws IOException {
         this.placeshipsStage = placeshipsStage;
         FXMLLoader loader = new FXMLLoader(this.getClass().getResource("/fxml/PlaceshipsView.fxml"));
         AnchorPane pane = loader.load();
         this.placeshipsController = loader.getController();
         placeshipsController.setCurrentGame(currentGame);
+        placeshipsController.setClientId(clientID);
         placeshipsController.fieldInit();
         placeshipsController.setShipForm();
         Image icon = new Image(String.valueOf(getClass().getResource("/images/app_icon.png")));

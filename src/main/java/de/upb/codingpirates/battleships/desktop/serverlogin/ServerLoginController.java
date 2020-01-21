@@ -111,7 +111,7 @@ public class ServerLoginController implements Initializable, ServerJoinResponseL
             Lobby lobby = new Lobby();
             Stage lobbyStage = new Stage();
             try {
-                lobby.display(lobbyStage);
+                lobby.display(lobbyStage,response.getClientId());
             } catch (IOException e) {
                 e.printStackTrace();//TODO
             }
@@ -140,18 +140,6 @@ public class ServerLoginController implements Initializable, ServerJoinResponseL
 
         @FXML
         public void handlerButton(){
-            Lobby lobby = new Lobby();
-            Stage lobbyStage = new Stage();
-            try {
-                lobby.display(lobbyStage);
-                closeStage();
-            } catch (IOException e) {
-                e.printStackTrace();//TODO
-            }
-            lobbyStage.setOnCloseRequest(t -> {
-                Platform.exit();
-                System.exit(0);
-            });
         }
     @FXML
     public void help() throws IOException {

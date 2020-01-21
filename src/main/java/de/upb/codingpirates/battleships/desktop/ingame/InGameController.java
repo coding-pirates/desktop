@@ -104,6 +104,10 @@ public class InGameController implements Initializable {
     public void setClientType(ClientType clientType){
         model.setClientType(clientType);
     }
+
+    public void setOwnShipPlacements(Map<Integer, PlacementInfo> ownShipPlacements){
+        model.setOwnShipPlacements(ownShipPlacements);
+    }
     /**
      * Shows the klicked GameField of one Player on a bigger Screen in detail.
      */
@@ -228,7 +232,7 @@ public class InGameController implements Initializable {
      * @param state   GameState
      * @throws Exception
      */
-    public void spectatorGameStateResponse(ClientType clientType, Collection<Client> players, Collection<Shot> shots, Map<Integer, Map<Integer, PlacementInfo>> ships, GameState state) throws Exception {
+    public void gameStateResponse(ClientType clientType, Collection<Client> players, Collection<Shot> shots, Map<Integer, Map<Integer, PlacementInfo>> ships, GameState state) throws Exception {
 
         if (this.players != null) {
             players.removeIf(client -> this.players.contains(client));
@@ -271,6 +275,10 @@ public class InGameController implements Initializable {
             if(clientType == ClientType.SPECTATOR) {
                 placeShips(ships);
             }
+            else{
+                GameFieldController controller = controllerMap.get(model.getClientID());
+                controller.placePlayerShips(model.getOwnShipPlacements(), game.getConfig().getShips());
+            }
             redoShots(shots);
 
         });
@@ -304,6 +312,7 @@ public class InGameController implements Initializable {
             controller.placeShips(ships.get(o), game.getConfig().getShips());
         }
     }
+
 
     /**
      * Adds a new GameField and related Controller for every Player.
@@ -504,7 +513,7 @@ public class InGameController implements Initializable {
         Endgame endgame = new Endgame();
         Stage endStage = new Stage();
         try {
-            endgame.display(endStage);
+            endgame.display(endStage, model.getClientID());
             closeStage();
         } catch (IOException e) {
             e.printStackTrace();//TODO
@@ -547,10 +556,11 @@ public class InGameController implements Initializable {
 
     @FXML
     public void leave(){
+        //TODO send leaveRequest
         Lobby lobby = new Lobby();
         Stage lobbyStage = new Stage();
         try {
-            lobby.display(lobbyStage);
+            lobby.display(lobbyStage, model.getClientID());
             closeStage();
         } catch (IOException e) {
             e.printStackTrace();//TODO
@@ -582,5 +592,9 @@ public class InGameController implements Initializable {
                 System.out.println("Mouse clicked cell: " + colIndex + " And: " + rowIndex);
 
             }}
+    }
+
+    public void setClientID(int clientID){
+      model.setClientID(clientID);
     }
 }
