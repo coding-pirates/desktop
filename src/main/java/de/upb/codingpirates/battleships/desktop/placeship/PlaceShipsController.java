@@ -47,6 +47,11 @@ public class PlaceShipsController extends InGameController implements Initializa
     @FXML
     private GridPane grid;
     /**
+     * Layout for shipForm
+     */
+    @FXML
+    private GridPane gridShip;
+    /**
      * layout for the ship preview
      */
     @FXML
@@ -278,9 +283,26 @@ public class PlaceShipsController extends InGameController implements Initializa
         Ship s = new Ship(new ShipType(positions));
         shipForm= new ShipForm(positions);
         smallBorderPane.setPadding(new Insets(1, 1, 1, 1));
-        grid = shipForm.getDisplay();
-        smallBorderPane.setCenter(grid);
+        gridShip = shipForm.getDisplay();
+        smallBorderPane.setCenter(gridShip);
         System.out.println(smallBorderPane.getCenter());
     }
-    }
+
+    @FXML
+    public void scroll(javafx.scene.input.ScrollEvent event) {
+        Node clickedNode = event.getPickResult().getIntersectedNode();
+        if (clickedNode != grid) {
+        System.out.println("in scroll");
+        double zoomFactor = 1.05;
+        double deltaY = event.getDeltaY();
+        if (deltaY < 0){
+            zoomFactor = 2.0 - zoomFactor;
+        }
+                borderPane.setScaleX(borderPane.getScaleX() * zoomFactor);
+                borderPane.setScaleY(borderPane.getScaleY() * zoomFactor);
+            //});
+        }}
+
+}
+
 
