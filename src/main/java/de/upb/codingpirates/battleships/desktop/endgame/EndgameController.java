@@ -4,6 +4,7 @@ import de.upb.codingpirates.battleships.desktop.lobby.Lobby;
 import de.upb.codingpirates.battleships.desktop.ranking.Ranking;
 import de.upb.codingpirates.battleships.desktop.settings.Settings;
 import de.upb.codingpirates.battleships.desktop.util.Help;
+import de.upb.codingpirates.battleships.logic.Client;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -12,6 +13,8 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.Collection;
+import java.util.Map;
 import java.util.ResourceBundle;
 
 /**
@@ -21,6 +24,9 @@ public class EndgameController implements Initializable {
 
     @FXML
     Button btn_lobby;
+    private Map<Integer, Integer> points;
+    private Collection<Client> players;
+
 
     /**
      * Initial Method.
@@ -28,6 +34,14 @@ public class EndgameController implements Initializable {
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
 
+    }
+
+    public  void setPoints(Map<Integer, Integer> points){
+        this.points = points;
+    }
+
+    public void setPlayers (Collection<Client>players){
+        this.players = players;
     }
 
     @FXML
@@ -40,6 +54,7 @@ public class EndgameController implements Initializable {
             e.printStackTrace();
         }
     }
+
 
     @FXML
     public void settings() throws Exception {
@@ -65,9 +80,12 @@ public class EndgameController implements Initializable {
         Stage rankingstage = new Stage();
         try {
             ranking.display(rankingstage);
+
         } catch (IOException e) {
             e.printStackTrace();//TODO
         }
+        ranking.setPlayer(players);
+        ranking.sortPoints(points);
         rankingstage.setOnCloseRequest(t -> {
             Platform.exit();
             System.exit(0);

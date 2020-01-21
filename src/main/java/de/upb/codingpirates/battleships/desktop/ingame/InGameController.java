@@ -493,7 +493,7 @@ public class InGameController implements Initializable {
         Endgame endgame = new Endgame();
         Stage endStage = new Stage();
         try {
-            endgame.display(endStage,points);
+            endgame.display(endStage,points,players);
             closeStage();
         } catch (IOException e) {
             e.printStackTrace();//TODO
