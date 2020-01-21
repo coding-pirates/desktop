@@ -288,11 +288,14 @@ public class PlaceShipsController extends InGameController implements Initializa
         System.out.println(smallBorderPane.getCenter());
     }
 
+    /**
+     * Scroll event with mouse for the gamefield
+     * @param event
+     */
     @FXML
     public void scroll(javafx.scene.input.ScrollEvent event) {
         Node clickedNode = event.getPickResult().getIntersectedNode();
         if (clickedNode != grid) {
-        System.out.println("in scroll");
         double zoomFactor = 1.05;
         double deltaY = event.getDeltaY();
         if (deltaY < 0){
@@ -300,8 +303,8 @@ public class PlaceShipsController extends InGameController implements Initializa
         }
                 borderPane.setScaleX(borderPane.getScaleX() * zoomFactor);
                 borderPane.setScaleY(borderPane.getScaleY() * zoomFactor);
-            //});
-        }}
+        }
+    }
 
 }
 
