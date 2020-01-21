@@ -9,10 +9,6 @@ import de.upb.codingpirates.battleships.network.message.request.RequestBuilder;
 import de.upb.codingpirates.battleships.network.message.response.*;
 import javafx.application.Application;
 import javafx.application.Platform;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
-import javafx.scene.image.Image;
-import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 import java.util.*;
@@ -34,7 +30,8 @@ public class InGameModel extends Application implements InGameModelMessageListen
     private GameState gameState = null;
     private Collection<Shot> shots = new ArrayList<Shot>();
     private ClientType clientType;
-    private int currentPlayerId;
+    private Map<Integer, PlacementInfo> ownShipPlacements;
+    private int clientID;
     private ArrayList<Shot> placedShots = new ArrayList<>();
 
     /**
@@ -124,12 +121,12 @@ public class InGameModel extends Application implements InGameModelMessageListen
         this.shots = shots;
     }
 
-    public int getCurrentPlayerId() {
-        return currentPlayerId;
+    public int getClientID() {
+        return clientID;
     }
 
-    public void setCurrentPlayerId(int currentPlayerId) {
-        this.currentPlayerId = currentPlayerId;
+    public void setClientID(int clientID) {
+        this.clientID = clientID;
     }
     public ArrayList<Shot> getPlacedShots() {
         return placedShots;
@@ -149,6 +146,14 @@ public class InGameModel extends Application implements InGameModelMessageListen
     public void setClientType(ClientType clientType){
         this.clientType = clientType;
     }
+    public void setOwnShipPlacements(Map<Integer, PlacementInfo> shipPlacements){
+        this.ownShipPlacements = shipPlacements;
+    }
+
+    public Map<Integer, PlacementInfo> getOwnShipPlacements() {
+        return ownShipPlacements;
+    }
+
     /**
      * Sends a GameJoinRequest and a GameStateRequest.
      * Initializes an InGame Window and a related Controller.
@@ -167,7 +172,7 @@ public class InGameModel extends Application implements InGameModelMessageListen
     public void start2() throws Exception {
         inGameController.setModel(this);
         inGameController.setGame(ausgewaehltesSpiel);
-        inGameController.spectatorGameStateResponse(clientType, player, shots, ships, gameState);
+        inGameController.gameStateResponse(clientType, player, shots, ships, gameState);
 
         /*
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/InGameView.fxml"));
@@ -190,7 +195,6 @@ public class InGameModel extends Application implements InGameModelMessageListen
      * @return gameId: Id of the joined Game
      */
     public void sendGameJoinSpectatorRequest() {
-
             try {
                 BattleshipsDesktopClientApplication
                         .getInstance()

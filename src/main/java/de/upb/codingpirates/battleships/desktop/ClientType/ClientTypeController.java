@@ -97,11 +97,11 @@ public class ClientTypeController implements Initializable, GameJoinSpectatorRes
     }
 
     @FXML
-    public void back(){
+    public void back() {
         Lobby lobby = new Lobby();
         Stage lobbyStage = new Stage();
         try {
-            lobby.display(lobbyStage);
+            lobby.display(lobbyStage, clientTypeModel.getClientID());
             closeStage();
         } catch (IOException e) {
             e.printStackTrace();//TODO
@@ -116,7 +116,7 @@ public class ClientTypeController implements Initializable, GameJoinSpectatorRes
         Placeships placeships = new Placeships();
         Stage placeStage = new Stage();
         try {
-            placeships.display(placeStage,clientTypeModel.getSelectedGame());
+            placeships.display(placeStage,clientTypeModel.getSelectedGame(), clientTypeModel.getClientID());
         } catch (IOException e) {
             e.printStackTrace();//TODO
             placeStage.setOnCloseRequest(t -> {
@@ -142,5 +142,8 @@ public class ClientTypeController implements Initializable, GameJoinSpectatorRes
         clientTypeModel.setSelectedGame(selectedGame);
     }
 
+    public void setClientID(int clientID){
+        clientTypeModel.setClientID(clientID);
+    }
 
 }

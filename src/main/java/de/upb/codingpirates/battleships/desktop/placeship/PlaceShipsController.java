@@ -81,7 +81,7 @@ public class PlaceShipsController extends InGameController implements Initializa
      */
     @FXML
     public void handlerButton() throws Exception {
-        Endgame endgame = new Endgame();
+     /*   Endgame endgame = new Endgame();
         Stage endstage = new Stage();
         try {
             endgame.display(endstage);
@@ -92,7 +92,7 @@ public class PlaceShipsController extends InGameController implements Initializa
         endstage.setOnCloseRequest(t -> {
             Platform.exit();
             System.exit(0);
-        });
+        }); */
     }
 
     @FXML
@@ -126,7 +126,8 @@ public class PlaceShipsController extends InGameController implements Initializa
 
     @FXML
     public void back(){
-        Lobby lobby = new Lobby();
+        //TODO leave Message
+       /* Lobby lobby = new Lobby();
         Stage lobbyStage = new Stage();
         try {
             lobby.display(lobbyStage);
@@ -137,7 +138,7 @@ public class PlaceShipsController extends InGameController implements Initializa
         lobbyStage.setOnCloseRequest(t -> {
             Platform.exit();
             System.exit(0);
-        });
+        }); */
     }
 
     @FXML
@@ -211,6 +212,9 @@ public class PlaceShipsController extends InGameController implements Initializa
         System.out.println(smallBorderPane.getCenter());
     }
 
+    public void setClientId(int clientId){
+        model.setClientID(clientId);
+    }
 
     public void showWaitForGameInit(){
         //TODO Show "Please wait for GameInit"
@@ -244,7 +248,7 @@ public class PlaceShipsController extends InGameController implements Initializa
             InGame inGame = new InGame();
             Stage inGameStage = new Stage();
             try {
-                inGame.start(inGameStage,model.getCurrentGame(), ClientType.PLAYER);
+                inGame.start(inGameStage,model.getCurrentGame(), ClientType.PLAYER, model.getPlacedShips(),clientId);
             } catch (Exception e) {
                 e.printStackTrace();
             }

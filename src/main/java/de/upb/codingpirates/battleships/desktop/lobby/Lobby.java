@@ -18,12 +18,13 @@ public class Lobby  {
     /**
      * Creates a Lobby Window and the related Controller.
      */
-    public void display(Stage lobbyStage) throws IOException {
+    public void display(Stage lobbyStage, int clientID) throws IOException {
         this.lobbyStage = lobbyStage;
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/Lobby.fxml"));
         AnchorPane pane = loader.load();
         LobbyController lobbyController = loader.getController();
         lobbyController.setLobby(this);
+        lobbyController.setClientID(clientID);
         Image icon = new Image(String.valueOf(getClass().getResource("/images/app_icon.png")));
         lobbyStage.getIcons().add(icon);
         lobbyStage.setMaximized(true);

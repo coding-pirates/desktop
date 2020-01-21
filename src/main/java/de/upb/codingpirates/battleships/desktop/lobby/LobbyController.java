@@ -34,6 +34,7 @@ public class LobbyController implements Initializable , LobbyResponseListener {
 
 
     public Lobby lobby;
+    private LobbyModel model;
     @FXML
     private ListView<GameView> lstvwStart;
     @FXML
@@ -45,6 +46,8 @@ public class LobbyController implements Initializable , LobbyResponseListener {
     private ObservableList<GameView> startList = FXCollections.synchronizedObservableList(FXCollections.observableArrayList());
     private ObservableList<GameView> runningList = FXCollections.synchronizedObservableList(FXCollections.observableArrayList());
     private ObservableList<GameView> endList = FXCollections.synchronizedObservableList(FXCollections.observableArrayList());
+
+    private int clientID;
 
     public LobbyController() {
         ListenerHandler.registerListener(this);
@@ -65,8 +68,8 @@ public class LobbyController implements Initializable , LobbyResponseListener {
     public void showgames() {
         // Request GameList from Server
         try {
-            LobbyModel lm = new LobbyModel();
-            lm.sendRequest();
+            model = new LobbyModel();
+            model.sendRequest();
         } catch (Exception e) {
             System.out.println("Fehler: " + e);
         }
@@ -86,7 +89,7 @@ public class LobbyController implements Initializable , LobbyResponseListener {
             try {
                 ClientType cType = new ClientType();
                 Stage window = new Stage();
-                cType.display(window, arg2.getContent());
+                cType.display(window, arg2.getContent(), clientID);
                 closeStage();
             } catch (IOException e) {
                 e.printStackTrace();
@@ -108,6 +111,10 @@ public class LobbyController implements Initializable , LobbyResponseListener {
 
         SelectionModel<GameView> smEnd = lstvwEnd.getSelectionModel();
         smEnd.selectedItemProperty().addListener(changeListener);
+    }
+
+    public void setClientID(int clientID){
+        this.clientID = clientID;
     }
 
     /**
