@@ -108,8 +108,8 @@ public class PlaceshipsModel{
                         || placedShipPoints.contains(new Point2D(point.getX() - 1, point.getY() + 1))
                         || placedShipPoints.contains(new Point2D(point.getX() - 1, point.getY() - 1))
                         || placedShipPoints.contains(new Point2D(point.getX() + 1, point.getY() - 1))
-                        || point.getY()> currentGame.getConfig().getHeight()-1
-                        || point.getX()> currentGame.getConfig().getWidth()-1
+                        || point.getY()>= currentGame.getConfig().getHeight()-1
+                        || point.getX()>= currentGame.getConfig().getWidth()-1
                         || point.getY()<0
                         || point.getX()<0) {
                     return false;
