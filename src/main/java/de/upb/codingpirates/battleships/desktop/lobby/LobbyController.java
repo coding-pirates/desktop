@@ -84,7 +84,6 @@ public class LobbyController implements Initializable , LobbyResponseListener {
                 ClientType cType = new ClientType();
                 Stage window = new Stage();
                 cType.display(window, arg2.getContent());
-                closeStage();
             } catch (IOException e) {
                 e.printStackTrace();
             }

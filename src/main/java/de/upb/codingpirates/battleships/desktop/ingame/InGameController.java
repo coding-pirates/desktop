@@ -472,11 +472,11 @@ public class InGameController implements Initializable {
      * @param points Map of Players and Points
      * @param winner Id of the Winner
      */
-    public void FinishNotification(Map<Integer, Integer> points, int winner) {
+    public void FinishNotification(Map<Integer, Integer> points, List <Integer> winner) {
         time.stop();
         Platform.runLater(() -> {
             Alert alertFinish = new Alert(Alert.AlertType.INFORMATION,
-                    "Das Spiel ist vorbei. Der Gewinner ist " + winner, ButtonType.OK);
+                    "Das Spiel ist vorbei. Der Gewinner ist " + winner.get(0), ButtonType.OK);
             alertFinish.showAndWait();
             try {
                 startEndView();

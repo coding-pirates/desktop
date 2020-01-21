@@ -60,7 +60,7 @@ public final class BattleshipsDesktopClientApplication extends Application  {
         final MediaPlayer mediaplayer = new MediaPlayer(media);
 
 
-        startStage.setMaximized(true);
+        startStage.setMaximized(false);
         startStage.setResizable(false);
         startStage.setTitle(TITLE);
         startStage.setScene(new Scene(pane));

@@ -251,7 +251,7 @@ public class InGameModel extends Application implements InGameModelMessageListen
         Platform.runLater(()-> {
             Map<Integer, Integer> points = message.getPoints();
             List<Integer> winner = Lists.newArrayList(message.getWinner());
-            inGameController.FinishNotification(points, winner.get(0));
+            inGameController.FinishNotification(points, winner);
         });
     }
 
