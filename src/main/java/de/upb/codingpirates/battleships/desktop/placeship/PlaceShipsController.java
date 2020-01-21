@@ -1,6 +1,5 @@
 package de.upb.codingpirates.battleships.desktop.placeship;
 
-import de.upb.codingpirates.battleships.desktop.endgame.Endgame;
 import de.upb.codingpirates.battleships.desktop.gamefield.GameField;
 import de.upb.codingpirates.battleships.desktop.gamefield.GameFieldController;
 import de.upb.codingpirates.battleships.desktop.ingame.InGameController;
@@ -24,6 +23,7 @@ import java.net.URL;
 import java.util.HashMap;
 import java.util.ResourceBundle;
 
+
 /**
  * Controller Class for the PlaceShips Window.
  */
@@ -43,6 +43,7 @@ public class PlaceShipsController extends InGameController implements Initializa
     private HashMap<Integer, GameFieldController> controllerMap = new HashMap<Integer, GameFieldController>();
     private HashMap<Integer, Node> fieldMap = new HashMap<Integer, Node>();
     private Game currentGame;
+
 
 
 
