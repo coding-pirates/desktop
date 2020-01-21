@@ -1,17 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Separator?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane style="-fx-background-color: #1A2529;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.upb.codingpirates.battleships.desktop.endgame.EndgameController">
+<AnchorPane style="-fx-background-color: #1A2529;" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.upb.codingpirates.battleships.desktop.endgame.EndgameController">
    <children>
       <ImageView pickOnBounds="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <image>
@@ -62,9 +57,9 @@
                               <Image url="@../images/winner3.png" />
                            </image>
                         </ImageView>
-                        <Label layoutX="518.0" layoutY="216.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="63.0" prefWidth="206.0" text="1. Sieger" textAlignment="CENTER" textFill="#f8f8f8" AnchorPane.bottomAnchor="142.0" AnchorPane.leftAnchor="518.0" AnchorPane.rightAnchor="542.0" AnchorPane.topAnchor="216.0" />
-                        <Label layoutX="754.0" layoutY="284.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="42.0" prefWidth="164.0" text="3. Sieger" textAlignment="CENTER" textFill="#fffefe" AnchorPane.bottomAnchor="74.0" AnchorPane.leftAnchor="754.0" AnchorPane.rightAnchor="282.0" AnchorPane.topAnchor="284.0" />
-                        <Label layoutX="312.0" layoutY="284.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="42.0" prefWidth="164.0" text="2. Sieger" textAlignment="CENTER" textFill="WHITE" AnchorPane.bottomAnchor="74.0" AnchorPane.leftAnchor="312.0" AnchorPane.rightAnchor="724.0" AnchorPane.topAnchor="284.0" />
+                        <Label fx:id="first" layoutX="518.0" layoutY="216.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="63.0" prefWidth="206.0" text="1. Sieger" textAlignment="CENTER" textFill="#f8f8f8" AnchorPane.bottomAnchor="142.0" AnchorPane.leftAnchor="518.0" AnchorPane.rightAnchor="542.0" AnchorPane.topAnchor="216.0" />
+                        <Label fx:id="third" layoutX="754.0" layoutY="284.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="42.0" prefWidth="164.0" text="3. Sieger" textAlignment="CENTER" textFill="#fffefe" AnchorPane.bottomAnchor="74.0" AnchorPane.leftAnchor="754.0" AnchorPane.rightAnchor="282.0" AnchorPane.topAnchor="284.0" />
+                        <Label fx:id="second" layoutX="312.0" layoutY="284.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="42.0" prefWidth="164.0" text="2. Sieger" textAlignment="CENTER" textFill="WHITE" AnchorPane.bottomAnchor="74.0" AnchorPane.leftAnchor="312.0" AnchorPane.rightAnchor="724.0" AnchorPane.topAnchor="284.0" />
                      </children>
                   </AnchorPane>
                   <HBox fillHeight="false" prefHeight="157.0" prefWidth="1200.0">

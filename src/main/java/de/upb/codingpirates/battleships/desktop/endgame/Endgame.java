@@ -25,7 +25,7 @@ public class Endgame {
     /**
      * Start Method that creates a new Window and a related Controller.
      */
-    public void display(Stage endStage,Map<Integer, Integer> points,Collection <Client>players) throws Exception {
+    public void display(Stage endStage,Map<Integer, Integer> points,Collection <Client> players) throws Exception {
         this.endStage = endStage;
         this.points = points;
         this.players = players;
@@ -34,6 +34,7 @@ public class Endgame {
         this.EndgameController = loader.getController();
         EndgameController.setPoints(points);
         EndgameController.setPlayers(players);
+        EndgameController.placement();
         Image icon = new Image(String.valueOf(getClass().getResource("/images/app_icon.png")));
         endStage.getIcons().add(icon);
         endStage.setTitle("Endgame");
