@@ -93,6 +93,9 @@
                   </opaqueInsets>
                </ProgressIndicator>
             </children>
+            <VBox.margin>
+               <Insets top="40.0" />
+            </VBox.margin>
          </StackPane>
          <Button fx:id="btn_login" alignment="CENTER" contentDisplay="GRAPHIC_ONLY" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#login" onMouseEntered="#changeCursor" prefHeight="60.0" prefWidth="300.0" style="-fx-background-color: #CFBE8E;" textAlignment="CENTER">
             <font>
@@ -106,7 +109,7 @@
                </ImageView>
             </graphic>
             <VBox.margin>
-               <Insets left="800.0" top="200.0" />
+               <Insets left="800.0" top="100.0" />
             </VBox.margin>
          </Button>
       </children>

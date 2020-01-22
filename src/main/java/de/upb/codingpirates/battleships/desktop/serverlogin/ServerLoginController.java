@@ -100,7 +100,7 @@ public class ServerLoginController implements Initializable, ServerJoinResponseL
         if(ipField.getText().isEmpty()|| portField.getText().isEmpty() || nameField.getText().isEmpty())
         {
             lblStatus.setAlignment(Pos.CENTER);
-            lblStatus.setText("Bitte alle Felder mit Werten füllen");
+            lblStatus.setText("Trage in alle Felder etwas ein");
             login_progress.setVisible(false);
             return;
         }
