@@ -2,7 +2,6 @@ package de.upb.codingpirates.battleships.desktop.serverlogin;
 
 import de.upb.codingpirates.battleships.client.network.ClientApplication;
 import de.upb.codingpirates.battleships.client.network.ClientConnector;
-import de.upb.codingpirates.battleships.client.network.ClientModule;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
@@ -20,7 +19,7 @@ public class ServerLogin {
 
     private ServerLoginController serverLoginController;
 
-    private final ClientConnector tcpConnector = ClientApplication.create(new ClientModule<>(ClientConnector.class));
+    private final ClientConnector tcpConnector = ClientApplication.create();
 
     private static ServerLogin instance;
 

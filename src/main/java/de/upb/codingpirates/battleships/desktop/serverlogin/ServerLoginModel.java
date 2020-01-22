@@ -7,11 +7,6 @@ import de.upb.codingpirates.battleships.desktop.BattleshipsDesktopClientApplicat
 import de.upb.codingpirates.battleships.logic.ClientType;
 import de.upb.codingpirates.battleships.network.message.request.RequestBuilder;
 import de.upb.codingpirates.battleships.network.message.response.ServerJoinResponse;
-import de.upb.codingpirates.battleships.network.message.request.ServerJoinRequest;
-import de.upb.codingpirates.battleships.network.message.response.LobbyResponse;
-import de.upb.codingpirates.battleships.network.message.response.ServerJoinResponse;
-
-import java.io.IOException;
 
 /**
  * Model class for the ServerLogin Window.
@@ -95,14 +90,10 @@ public class ServerLoginModel implements ServerJoinResponseListener {
      * @param ip Ip of the Server
 ´     */
     public void sendRequest(String ip) {
-        try {
-            BattleshipsDesktopClientApplication
+        BattleshipsDesktopClientApplication
                 .getInstance()
                 .getTcpConnector()
                 .sendMessageToServer(RequestBuilder.serverJoinRequest(spielerName, clientKind));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
     }
 
     @Override
