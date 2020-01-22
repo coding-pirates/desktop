@@ -112,8 +112,6 @@ public class LobbyController implements Initializable , LobbyResponseListener {
         this.endList.clear();
 
         //Show GameList
-
-
         lstvwStart.setItems(startList);
         lstvwRunning.setItems(runningList);
         lstvwEnd.setItems(endList);

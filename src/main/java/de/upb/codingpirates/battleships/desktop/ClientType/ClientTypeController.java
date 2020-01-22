@@ -28,7 +28,7 @@ public class ClientTypeController implements Initializable, GameJoinSpectatorRes
     @FXML
     private RadioButton rb_player;
     @FXML
-    private Label lb_choice;
+    private Label hinweis;
     @FXML
     private Button goButton;
 
@@ -80,8 +80,9 @@ public class ClientTypeController implements Initializable, GameJoinSpectatorRes
             closeStage();
            clientTypeModel.sendGameJoinSpectatorRequest();
         }
-        else{
-            back();
+        else
+        {
+            hinweis.setText("Bitte ein ClientTyp auswählen!");
         }
     }
 
