@@ -17,6 +17,7 @@ import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.geometry.Pos;
 import javafx.scene.Cursor;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -103,7 +104,9 @@ public class ServerLoginController implements Initializable, ServerJoinResponseL
             ServerLoginModel slm = new ServerLoginModel(nameField.getText(), ClientType.PLAYER);
             slm.sendRequest(serverIP);
         } catch (Exception e) {
-            lblStatus.setText("Anmeldung fehlgeschlagen: Server nicht erreichbar!");
+                //Set textalignment and position of the error message
+                lblStatus.setAlignment(Pos.CENTER);
+                lblStatus.setText("Anmeldung fehlgeschlagen: Server nicht erreichbar!");
         }
     }
 

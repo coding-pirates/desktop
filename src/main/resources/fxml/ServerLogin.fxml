@@ -19,7 +19,7 @@
   </ImageView>
    <VBox prefHeight="800.0" prefWidth="1836.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
       <children>
-        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Server Login" textAlignment="CENTER" textOrigin="CENTER" wrappingWidth="1736.0">
+        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Server Login" textAlignment="CENTER" textOrigin="CENTER" wrappingWidth="1739.0">
           <font>
             <Font size="30.0" />
           </font>
@@ -27,7 +27,7 @@
                <Insets left="100.0" top="120.0" />
             </VBox.margin>
         </Text>
-         <Label fx:id="lblStatus" contentDisplay="CENTER" prefHeight="54.0" prefWidth="1568.0" textAlignment="CENTER" textFill="RED">
+         <Label fx:id="lblStatus" contentDisplay="CENTER" prefHeight="54.0" prefWidth="1736.0" textAlignment="CENTER" textFill="RED">
             <VBox.margin>
                <Insets left="100.0" />
             </VBox.margin>
