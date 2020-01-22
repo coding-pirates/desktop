@@ -1,8 +1,8 @@
 package de.upb.codingpirates.battleships.desktop;
 
 import de.upb.codingpirates.battleships.client.network.ClientApplication;
+import de.upb.codingpirates.battleships.client.network.ClientConnectorDesktop;
 import de.upb.codingpirates.battleships.client.network.ClientModule;
-import de.upb.codingpirates.battleships.desktop.network.ClientConnectorDesktop;
 import de.upb.codingpirates.battleships.desktop.start.StartController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -90,10 +90,15 @@ public final class BattleshipsDesktopClientApplication extends Application  {
             for (int i = 0; i < players.size(); i++) {
                 final MediaPlayer player     = players.get(i);
                 final MediaPlayer nextPlayer = players.get((i + 1) % players.size());
-                player.setOnEndOfMedia(() -> {
-                    nextPlayer.setVolume(0.1);
-                    mediaView.setMediaPlayer(nextPlayer);
-                    nextPlayer.play();
+                player.setOnEndOfMedia(new Runnable() {
+
+                    @Override public void run() {
+                        nextPlayer.setVolume(0.1);
+                        mediaView.setMediaPlayer(nextPlayer);
+                        nextPlayer.play();
+
+                    }
+
                 });
 
             }

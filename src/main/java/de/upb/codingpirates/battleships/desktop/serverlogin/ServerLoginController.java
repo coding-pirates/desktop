@@ -26,7 +26,10 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.net.ConnectException;
+import java.net.SocketException;
 import java.net.URL;
+import java.net.UnknownHostException;
 import java.util.ResourceBundle;
 
 /**
@@ -107,11 +110,7 @@ public class ServerLoginController implements Initializable, ServerJoinResponseL
         BattleshipsDesktopClientApplication
                 .getInstance()
                 .getTcpConnector()
-                .connect(serverIP, Integer.parseInt(port),() -> Platform.runLater(()->{
-                    lblStatus.setAlignment(Pos.CENTER);
-                    lblStatus.setText("Anmeldung fehlgeschlagen: Server nicht erreichbar!");
-                    login_progress.setVisible(false);
-                }),()->{
+                .connect(serverIP, Integer.parseInt(port),() -> Platform.runLater(()->lblStatus.setText("Anmeldung fehlgeschlagen: Server nicht erreichbar!")),()->{
                     //Send request to server
                     ServerLoginModel slm = new ServerLoginModel(nameField.getText(), ClientType.PLAYER);
                     slm.sendRequest(serverIP);
