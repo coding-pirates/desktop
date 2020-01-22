@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
-
-<AnchorPane minHeight="300.0" minWidth="150.0" prefHeight="600.0" prefWidth="600.0" style="-fx-background-color: #CFBE8E; -fx-border-color: #CFBE8E;" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.upb.codingpirates.battleships.desktop.ClientType.ClientTypeController">
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+<AnchorPane minHeight="300.0" minWidth="150.0" prefHeight="600.0" prefWidth="600.0" style="-fx-background-color: #CFBE8E; -fx-border-color: #CFBE8E;" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.upb.codingpirates.battleships.desktop.clienttype.ClientTypeController">
    <children>
       <VBox alignment="TOP_CENTER" fillWidth="false" layoutX="2.0" layoutY="2.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="300.0" style="-fx-background-color: #CFBE8E; -fx-border-color: #472218; -fx-border-width: 5;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -62,7 +62,10 @@
                   <Insets top="75.0" />
                </VBox.margin>
             </VBox>
-            <Label prefHeight="37.0" prefWidth="590.0" />
+            <Label fx:id="hinweis" alignment="CENTER" prefHeight="54.0" prefWidth="590.0" textAlignment="CENTER" textFill="#f51d00">
+               <font>
+                  <Font size="21.0" />
+               </font></Label>
             <Button fx:id="goButton" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#start" prefHeight="44.0" prefWidth="100.0" style="-fx-background-color: #CFBE8E; -fx-border-color: #472218;" text="Go!">
                <graphic>
                   <ImageView fitHeight="49.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">

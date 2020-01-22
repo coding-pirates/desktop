@@ -17,14 +17,14 @@ import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.geometry.Pos;
 import javafx.scene.Cursor;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ProgressIndicator;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
-import javax.swing.text.View;
-import javax.swing.text.html.ImageView;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -45,7 +45,7 @@ public class ServerLoginController implements Initializable, ServerJoinResponseL
     @FXML
     private Label lblStatus;
     @FXML
-    private Button btn_login;
+    private ProgressIndicator login_progress;
 
     private StringPropertyBase text = new SimpleStringProperty();
 
@@ -68,6 +68,8 @@ public class ServerLoginController implements Initializable, ServerJoinResponseL
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
         text.addListener(listener ->lblStatus.setText(text.get()));
+
+        login_progress.setVisible(false);
 
         // forces the portField to be numeric only
         portField.textProperty().addListener(new ChangeListener<String>() {
@@ -92,25 +94,28 @@ public class ServerLoginController implements Initializable, ServerJoinResponseL
     public void login(ActionEvent event) throws Exception {
         String serverIP = ipField.getText();
         String port = portField.getText();
+        login_progress.setVisible(true);
+        lblStatus.setText("");
 
-            try {
-                if(ipField.getText().equals("")|| portField.getText().equals("") || nameField.getText().equals(""))
-                {
-                    lblStatus.setText("Bitte alle Felder mit Werten füllen");
-                }
-                else {
-                    BattleshipsDesktopClientApplication
-                            .getInstance()
-                            .getTcpConnector()
-                            .connect(serverIP, Integer.parseInt(port));
-
+        if(ipField.getText().isEmpty()|| portField.getText().isEmpty() || nameField.getText().isEmpty())
+        {
+            lblStatus.setAlignment(Pos.CENTER);
+            lblStatus.setText("Bitte alle Felder mit Werten füllen");
+            login_progress.setVisible(false);
+            return;
+        }
+        BattleshipsDesktopClientApplication
+                .getInstance()
+                .getTcpConnector()
+                .connect(serverIP, Integer.parseInt(port),() -> Platform.runLater(()->{
+                    lblStatus.setAlignment(Pos.CENTER);
+                    lblStatus.setText("Anmeldung fehlgeschlagen: Server nicht erreichbar!");
+                    login_progress.setVisible(false);
+                }),()->{
                     //Send request to server
                     ServerLoginModel slm = new ServerLoginModel(nameField.getText(), ClientType.PLAYER);
                     slm.sendRequest(serverIP);
-                }
-        } catch (Exception e) {
-            lblStatus.setText("Anmeldung fehlgeschlagen: Server nicht erreichbar!");
-        }
+                });
     }
 
     private void setLblStatus(String lblStatus) {

@@ -2,7 +2,7 @@ package de.upb.codingpirates.battleships.desktop.lobby;
 
 import de.upb.codingpirates.battleships.client.ListenerHandler;
 import de.upb.codingpirates.battleships.client.listener.LobbyResponseListener;
-import de.upb.codingpirates.battleships.desktop.ClientType.ClientType;
+import de.upb.codingpirates.battleships.desktop.clienttype.ClientType;
 import de.upb.codingpirates.battleships.desktop.settings.Settings;
 import de.upb.codingpirates.battleships.desktop.util.GameView;
 import de.upb.codingpirates.battleships.desktop.util.Help;
@@ -112,8 +112,6 @@ public class LobbyController implements Initializable , LobbyResponseListener {
         this.endList.clear();
 
         //Show GameList
-
-
         lstvwStart.setItems(startList);
         lstvwRunning.setItems(runningList);
         lstvwEnd.setItems(endList);
