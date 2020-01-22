@@ -62,7 +62,10 @@
                   <Insets top="75.0" />
                </VBox.margin>
             </VBox>
-            <Label prefHeight="37.0" prefWidth="590.0" />
+            <Label fx:id="hinweis" alignment="CENTER" prefHeight="54.0" prefWidth="590.0" textAlignment="CENTER" textFill="#f51d00">
+               <font>
+                  <Font size="21.0" />
+               </font></Label>
             <Button fx:id="goButton" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#start" prefHeight="44.0" prefWidth="100.0" style="-fx-background-color: #CFBE8E; -fx-border-color: #472218;" text="Go!">
                <graphic>
                   <ImageView fitHeight="49.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">

@@ -17,14 +17,19 @@ import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.geometry.Pos;
 import javafx.scene.Cursor;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ProgressIndicator;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.net.ConnectException;
+import java.net.SocketException;
 import java.net.URL;
+import java.net.UnknownHostException;
 import java.util.ResourceBundle;
 
 /**
@@ -43,7 +48,7 @@ public class ServerLoginController implements Initializable, ServerJoinResponseL
     @FXML
     private Label lblStatus;
     @FXML
-    private Button btn_login;
+    private ProgressIndicator login_progress;
 
     private StringPropertyBase text = new SimpleStringProperty();
 
@@ -66,6 +71,8 @@ public class ServerLoginController implements Initializable, ServerJoinResponseL
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
         text.addListener(listener ->lblStatus.setText(text.get()));
+
+        login_progress.setVisible(false);
 
         // forces the portField to be numeric only
         portField.textProperty().addListener(new ChangeListener<String>() {
@@ -90,10 +97,14 @@ public class ServerLoginController implements Initializable, ServerJoinResponseL
     public void login(ActionEvent event) throws Exception {
         String serverIP = ipField.getText();
         String port = portField.getText();
+        login_progress.setVisible(true);
+        lblStatus.setText("");
 
         if(ipField.getText().isEmpty()|| portField.getText().isEmpty() || nameField.getText().isEmpty())
         {
+            lblStatus.setAlignment(Pos.CENTER);
             lblStatus.setText("Bitte alle Felder mit Werten füllen");
+            login_progress.setVisible(false);
             return;
         }
         BattleshipsDesktopClientApplication
