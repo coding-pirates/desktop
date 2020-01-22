@@ -43,4 +43,7 @@ public class Lobby  {
     protected void close() {
         lobbyStage.close();
     }
+    public Stage getStage(){
+        return this.lobbyStage;
+    }
 }
