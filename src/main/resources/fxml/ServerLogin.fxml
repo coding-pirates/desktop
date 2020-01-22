@@ -82,6 +82,18 @@
                <Insets left="100.0" right="100.0" />
             </VBox.margin>
         </TextField>
+         <StackPane prefHeight="150.0" prefWidth="200.0">
+            <children>
+                  <ProgressIndicator id="login_progress" fx:id="login_progress" prefHeight="56.0" prefWidth="43.0">
+                  <effect>
+                     <SepiaTone />
+                  </effect>
+                  <opaqueInsets>
+                     <Insets />
+                  </opaqueInsets>
+               </ProgressIndicator>
+            </children>
+         </StackPane>
          <Button fx:id="btn_login" alignment="CENTER" contentDisplay="GRAPHIC_ONLY" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#login" onMouseEntered="#changeCursor" prefHeight="60.0" prefWidth="300.0" style="-fx-background-color: #CFBE8E;" textAlignment="CENTER">
             <font>
                <Font size="18.0" />
