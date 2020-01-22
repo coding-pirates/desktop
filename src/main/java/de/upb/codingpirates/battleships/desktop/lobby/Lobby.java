@@ -40,7 +40,6 @@ public class Lobby  {
      * Closes the Lobby Window.
      */
     protected void close() {
-
         lobbyStage.close();
     }
 }
