@@ -105,7 +105,9 @@ public class ServerLoginController implements Initializable, ServerJoinResponseL
             try {
                 if(ipField.getText().equals("")|| portField.getText().equals("") || nameField.getText().equals(""))
                 {
-                    lblStatus.setText("Bitte alle Felder mit Werten füllen");
+                    lblStatus.setAlignment(Pos.CENTER);
+                    lblStatus.setText("Bitte trage in jedes Feld etwas ein");
+                    login_progress.setVisible(false);
                 }
                 else {
                     BattleshipsDesktopClientApplication
