@@ -97,21 +97,33 @@
                <Insets top="40.0" />
             </VBox.margin>
          </StackPane>
-         <Button fx:id="btn_login" alignment="CENTER" contentDisplay="GRAPHIC_ONLY" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#login" onMouseEntered="#changeCursor" prefHeight="60.0" prefWidth="300.0" style="-fx-background-color: #CFBE8E;" textAlignment="CENTER">
-            <font>
-               <Font size="18.0" />
-            </font>
-            <graphic>
-               <ImageView id="btn_login_image_view" fitHeight="208.0" fitWidth="337.0" pickOnBounds="true" preserveRatio="true">
-                  <image>
-                     <Image url="@../images/button_login.png" />
-                  </image>
-               </ImageView>
-            </graphic>
+         <VBox prefHeight="200.0" prefWidth="100.0" style="-fx-alignment: center;" VBox.vgrow="NEVER">
+            <children>
+               <Button fx:id="btn_login" alignment="CENTER" contentDisplay="GRAPHIC_ONLY" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#login" onMouseEntered="#changeCursor" prefHeight="60.0" prefWidth="300.0" style="-fx-background-color: #CFBE8E; -fx-alignment: center;" textAlignment="CENTER">
+                  <font>
+                     <Font size="18.0" />
+                  </font>
+                  <graphic>
+                     <ImageView id="btn_login_image_view" fx:id="btn_login_imageview" fitHeight="208.0" fitWidth="337.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true">
+                        <image>
+                           <Image url="@../images/button_login.png" />
+                        </image>
+                        <viewport>
+                           <Rectangle2D />
+                        </viewport>
+                     </ImageView>
+                  </graphic>
+                  <VBox.margin>
+                     <Insets />
+                  </VBox.margin>
+               </Button>
+            </children>
+            <opaqueInsets>
+               <Insets />
+            </opaqueInsets>
             <VBox.margin>
-               <Insets left="800.0" top="15.0" />
-            </VBox.margin>
-         </Button>
+               <Insets />
+            </VBox.margin></VBox>
       </children>
    </VBox>
    <Button fx:id="btn_settings" cache="true" cacheHint="ROTATE" cacheShape="false" contentDisplay="GRAPHIC_ONLY" focusTraversable="false" layoutX="1093.0" layoutY="71.0" minHeight="-Infinity" minWidth="-Infinity" onAction="#settings" onMouseEntered="#changeCursor" prefHeight="40.0" prefWidth="53.0" style="-fx-background-color: #CFBE8E;" text="Settings" AnchorPane.rightAnchor="54.0" AnchorPane.topAnchor="71.0">
@@ -124,7 +136,7 @@
       </graphic></Button>
    <Button cache="true" cacheHint="ROTATE" cacheShape="false" contentDisplay="TEXT_ONLY" focusTraversable="false" layoutX="1030.0" layoutY="69.0" minHeight="-Infinity" minWidth="-Infinity" onAction="#help" onMouseEntered="#changeCursor" prefHeight="44.0" prefWidth="55.0" style="-fx-background-color: #CFBE8E;" text="?" textFill="#472218" AnchorPane.rightAnchor="115.0" AnchorPane.topAnchor="69.0">
       <font>
-         <Font name="System Bold" size="22.0" />
+         <Font name="System Bold" size="24.0" />
       </font>
    </Button>
 </AnchorPane>

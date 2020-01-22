@@ -54,6 +54,10 @@ public class ServerLoginController implements Initializable, ServerJoinResponseL
     private ProgressIndicator login_progress;
     @FXML
     private ImageView login_background_imageView;
+    @FXML
+    private ImageView btn_login_imageview;
+    @FXML
+    private Button btn_login;
 
     private StringPropertyBase text = new SimpleStringProperty();
 
