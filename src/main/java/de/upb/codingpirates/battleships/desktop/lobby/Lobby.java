@@ -25,6 +25,7 @@ public class Lobby  {
         LobbyController lobbyController = loader.getController();
         lobbyController.setLobby(this);
         lobbyController.setClientID(clientID);
+        lobbyController.setChangeListener();
         Image icon = new Image(String.valueOf(getClass().getResource("/images/app_icon.png")));
         lobbyStage.getIcons().add(icon);
         lobbyStage.setMaximized(true);

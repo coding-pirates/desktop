@@ -27,10 +27,13 @@
                <Insets left="100.0" top="120.0" />
             </VBox.margin>
         </Text>
-         <Label fx:id="lblStatus" prefHeight="54.0" prefWidth="1568.0" textAlignment="CENTER" textFill="RED">
+         <Label fx:id="lblStatus" contentDisplay="CENTER" prefHeight="54.0" prefWidth="1568.0" textAlignment="CENTER" textFill="RED">
             <VBox.margin>
                <Insets left="100.0" />
-            </VBox.margin></Label>
+            </VBox.margin>
+            <font>
+               <Font name="System Italic" size="24.0" />
+            </font></Label>
         <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Username:" wrappingWidth="90.13671875">
             <font>
                <Font size="18.0" />

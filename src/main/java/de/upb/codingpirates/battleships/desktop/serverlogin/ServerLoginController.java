@@ -12,6 +12,8 @@ import de.upb.codingpirates.battleships.network.message.response.ServerJoinRespo
 import javafx.application.Platform;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringPropertyBase;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -28,7 +30,7 @@ import java.util.ResourceBundle;
  */
 public class ServerLoginController implements Initializable, ServerJoinResponseListener {
 
-    public BattleshipsDesktopClientApplication main;
+    private BattleshipsDesktopClientApplication main;
 
     @FXML
     private TextField ipField;
@@ -60,6 +62,17 @@ public class ServerLoginController implements Initializable, ServerJoinResponseL
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
         text.addListener(listener ->lblStatus.setText(text.get()));
+
+        // forces the portField to be numeric only
+        portField.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue,
+                                String newValue) {
+                if (!newValue.matches("\\d*")) {
+                    portField.setText(newValue.replaceAll("[^\\d]", ""));
+                }
+            }
+        });
     }
 
     /**
@@ -67,7 +80,7 @@ public class ServerLoginController implements Initializable, ServerJoinResponseL
      * Creates a Lobby if the Request was successful.
      *
      * @param event Button Pressed Event
-     * @throws Exception
+     * @throws Exception when the server is not available this exception will be thrown
      */
     @FXML
     public void login(ActionEvent event) throws Exception {
@@ -84,11 +97,12 @@ public class ServerLoginController implements Initializable, ServerJoinResponseL
             ServerLoginModel slm = new ServerLoginModel(nameField.getText(), ClientType.PLAYER);
             slm.sendRequest(serverIP);
         } catch (Exception e) {
+                e.printStackTrace();
             lblStatus.setText("Anmeldung fehlgeschlagen: Server nicht erreichbar!");
         }
     }
 
-    public void setLblStatus(String lblStatus) {
+    private void setLblStatus(String lblStatus) {
         text.set(lblStatus);
     }
 

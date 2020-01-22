@@ -64,6 +64,7 @@ public final class BattleshipsDesktopClientApplication extends Application  {
         Image icon = new Image(String.valueOf(getClass().getResource("/images/app_icon.png")));
         startStage.getIcons().add(icon);
 
+        //init a mediaplayer for every song
         final URL resource1 = getClass().getResource("/raw/sea_of_thieves_theme_song.mp3");
         final MediaPlayer mediaplayer1 = new MediaPlayer(new Media(resource1.toString()));
 
@@ -84,7 +85,7 @@ public final class BattleshipsDesktopClientApplication extends Application  {
 
         final List<MediaPlayer> players = new ArrayList<MediaPlayer>(Arrays.asList(mediaplayer1, mediaplayer2, mediaplayer3, mediaplayer4, mediaplayer5, mediaplayer6));
 
-
+        //set the next mediaplayer, when one player has finished
         mediaView = new MediaView(players.get( new Random().nextInt(5)));
             for (int i = 0; i < players.size(); i++) {
                 final MediaPlayer player     = players.get(i);
@@ -92,6 +93,7 @@ public final class BattleshipsDesktopClientApplication extends Application  {
                 player.setOnEndOfMedia(new Runnable() {
 
                     @Override public void run() {
+                        nextPlayer.setVolume(0.1);
                         mediaView.setMediaPlayer(nextPlayer);
                         nextPlayer.play();
 
@@ -107,6 +109,7 @@ public final class BattleshipsDesktopClientApplication extends Application  {
         startStage.setTitle(TITLE);
         startStage.setScene(new Scene(pane));
         startStage.show();
+        mediaView.getMediaPlayer().setVolume(0.1);
         mediaView.getMediaPlayer().play();
         startStage.show();}
         catch (IOException e){

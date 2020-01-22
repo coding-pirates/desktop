@@ -51,6 +51,41 @@ public class LobbyController implements Initializable , LobbyResponseListener {
         ListenerHandler.registerListener(this);
     }
 
+    public void setChangeListener(){
+        ChangeListener<GameView> changeListener = (arg0, arg1, arg2) -> {
+            if(arg2 !=null) {
+                ClientType cType = new ClientType();
+                Stage window = new Stage();
+                try {
+                    cType.display(window, arg2.getContent(), clientID);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
+            /*InGameModel inGameModel = new InGameModel(arg2.getContent());
+            Stage inGameStage = new Stage();
+            try {
+                inGameModel.start(inGameStage);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }*/
+                window.setOnCloseRequest(t -> {
+                    Platform.exit();
+                    System.exit(0);
+                });
+            }
+        };
+
+        SelectionModel<GameView> smStart = lstvwStart.getSelectionModel();
+        smStart.selectedItemProperty().addListener(changeListener);
+
+        SelectionModel<GameView> smRunning = lstvwRunning.getSelectionModel();
+        smRunning.selectedItemProperty().addListener(changeListener);
+
+        SelectionModel<GameView> smEnd = lstvwEnd.getSelectionModel();
+        smEnd.selectedItemProperty().addListener(changeListener);
+    }
+
     /**
      * Set Method for the related Lobby.
      *
@@ -83,34 +118,6 @@ public class LobbyController implements Initializable , LobbyResponseListener {
         lstvwRunning.setItems(runningList);
         lstvwEnd.setItems(endList);
 
-        ChangeListener<GameView> changeListener = (arg0, arg1, arg2) -> {
-            ClientType cType = new ClientType();
-            Stage window = new Stage();
-            try {
-                cType.display(window, arg2.getContent(), clientID);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            /*InGameModel inGameModel = new InGameModel(arg2.getContent());
-            Stage inGameStage = new Stage();
-            try {
-                inGameModel.start(inGameStage);
-            } catch (Exception e) {
-                e.printStackTrace();
-            }*/
-            window.setOnCloseRequest(t ->{
-                Platform.exit();
-                System.exit(0);});
-        };
-
-        SelectionModel<GameView> smStart = lstvwStart.getSelectionModel();
-        smStart.selectedItemProperty().addListener(changeListener);
-
-        SelectionModel<GameView> smRunning = lstvwRunning.getSelectionModel();
-        smRunning.selectedItemProperty().addListener(changeListener);
-
-        SelectionModel<GameView> smEnd = lstvwEnd.getSelectionModel();
-        smEnd.selectedItemProperty().addListener(changeListener);
     }
 
     public void setClientID(int clientID){
