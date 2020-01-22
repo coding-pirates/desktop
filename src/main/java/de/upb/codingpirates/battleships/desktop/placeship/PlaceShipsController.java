@@ -37,6 +37,13 @@ public class PlaceShipsController extends InGameController implements Initializa
 
     @FXML
     private Button btn_rotate;
+
+    @FXML
+    private Button btnShipNext;
+
+    @FXML
+    private Button btnShipBack;
+
     @FXML
     private BorderPane borderPane;
     @FXML
@@ -187,6 +194,7 @@ public class PlaceShipsController extends InGameController implements Initializa
                     }
                     gameField.placeShip(shipPoints);
                     model.addShipPlacement(model.getSelectedShip(), new PlacementInfo(clickedPoint, model.getCurrentRotation()));
+                    model.setSelectedShip((model.getSelectedShip()+1)%(model.getCurrentGame().getConfig().getShips().size()));
                     setShipForm();
                 }
             }
@@ -201,7 +209,6 @@ public class PlaceShipsController extends InGameController implements Initializa
         positions.add(new Point2D(0,2));
         positions.add(new Point2D(1,2));
         Ship s = new Ship(new ShipType(positions));*/
-        model.setSelectedShip(new Random().nextInt(3)); //for testing only
         shipForm= new ShipForm(model.getShipTypes().get(model.getSelectedShip()).getPositions());
         smallBorderPane.setPadding(new Insets(1, 1, 1, 1));
         grid = shipForm.getDisplay();
@@ -256,4 +263,17 @@ public class PlaceShipsController extends InGameController implements Initializa
     public void onGameInitNotification(GameInitNotification message, int clientId) {
         model.setClientList(message.getClientList());
     }
+
+    @FXML
+    public void onNextShipClicked(){
+        model.setSelectedShip((model.getSelectedShip()+1)%(model.getCurrentGame().getConfig().getShips().size()));
+        model.setCurrentRotation(Rotation.NONE);
+        setShipForm();
+    }
+
+    @FXML
+    public void onBackShipClicked(){
+
+    }
+
 }

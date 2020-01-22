@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.*?>
+<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
@@ -17,14 +18,33 @@
          <children>
             <HBox prefHeight="150.0" prefWidth="200.0">
                <children>
-                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Place your ships!" textAlignment="CENTER" wrappingWidth="200.4072265625">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
+                  <VBox prefHeight="200.0" prefWidth="100.0">
+                     <children>
+                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Place your ships!" textAlignment="CENTER" wrappingWidth="200.4072265625">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets top="30.0" />
+                           </VBox.margin>
+                        </Text>
+                        <ButtonBar prefHeight="98.0" prefWidth="180.0">
+                          <buttons>
+                            <Button fx:id="btnShipBack" mnemonicParsing="false" onMouseClicked="#onBackShipClicked" text="&lt;&lt;">
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor></Button>
+                              <Button fx:id="btnShipNext" mnemonicParsing="false" onMouseClicked="#onNextShipClicked" text="&gt;&gt;">
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor></Button>
+                          </buttons>
+                        </ButtonBar>
+                     </children>
                      <HBox.margin>
-                        <Insets left="100.0" top="30.0" />
+                        <Insets left="100.0" />
                      </HBox.margin>
-                  </Text>
+                  </VBox>
                   <BorderPane fx:id="smallBorderPane" prefHeight="200.0" prefWidth="130.0">
                      <HBox.margin>
                         <Insets top="20.0" />
