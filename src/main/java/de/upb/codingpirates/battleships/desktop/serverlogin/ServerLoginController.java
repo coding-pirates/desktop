@@ -79,7 +79,8 @@ public class ServerLoginController implements Initializable, ServerJoinResponseL
         double displayHeight = Screen.getPrimary().getBounds().getHeight();
 
         //used for scaling the background image
-        login_background_imageView.setImage(new Image("images/Background.png", displayWidth, displayHeight, true, false));
+        login_background_imageView.setFitHeight(displayHeight);
+        login_background_imageView.setFitWidth(displayWidth);
 
         // forces the portField to be numeric only
         portField.textProperty().addListener(new ChangeListener<String>() {

@@ -37,8 +37,9 @@ public class StartController implements Initializable {
         double displayWidth = Screen.getPrimary().getBounds().getWidth();
         double displayHeight = Screen.getPrimary().getBounds().getHeight();
 
-        //used for scaling the background image
-        startscreen_imageview.setImage(new Image("images/startscreen_full_hd.png", displayWidth, displayHeight, true, false));
+        //used for scaling the background image to screensize
+        startscreen_imageview.setFitHeight(displayHeight);
+        startscreen_imageview.setFitWidth(displayWidth);
         btn_start.setLayoutX(displayWidth/2);
         btn_start.setLayoutY(displayHeight*0.8);
     }
