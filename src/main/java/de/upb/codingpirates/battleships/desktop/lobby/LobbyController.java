@@ -98,7 +98,8 @@ public class LobbyController implements Initializable , LobbyResponseListener {
             } catch (Exception e) {
                 e.printStackTrace();
             }*/
-            window.setOnCloseRequest(t ->{Platform.exit();
+            window.setOnCloseRequest(t ->{
+                Platform.exit();
                 System.exit(0);});
         };
 
