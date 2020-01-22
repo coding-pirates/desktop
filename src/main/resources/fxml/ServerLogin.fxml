@@ -9,7 +9,7 @@
 <?import javafx.scene.text.*?>
 
 <AnchorPane style="-fx-background-color: #1A2529; -fx-text-fill: white;" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.upb.codingpirates.battleships.desktop.serverlogin.ServerLoginController">
-  <ImageView fx:id="background" layoutX="-769.0" layoutY="-249.0" pickOnBounds="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+  <ImageView fx:id="login_background_imageView" layoutX="-769.0" layoutY="-249.0" pickOnBounds="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
       <image>
          <Image url="@../images/Background.png" />
       </image>

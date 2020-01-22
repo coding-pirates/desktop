@@ -23,6 +23,9 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressIndicator;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.stage.Screen;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -46,6 +49,8 @@ public class ServerLoginController implements Initializable, ServerJoinResponseL
     private Label lblStatus;
     @FXML
     private ProgressIndicator login_progress;
+    @FXML
+    private ImageView login_background_imageView;
 
     private StringPropertyBase text = new SimpleStringProperty();
 
@@ -70,6 +75,11 @@ public class ServerLoginController implements Initializable, ServerJoinResponseL
         text.addListener(listener ->lblStatus.setText(text.get()));
 
         login_progress.setVisible(false);
+        double displayWidth = Screen.getPrimary().getBounds().getWidth();
+        double displayHeight = Screen.getPrimary().getBounds().getHeight();
+
+        //used for scaling the background image
+        login_background_imageView.setImage(new Image("images/Background.png", displayWidth, displayHeight, true, false));
 
         // forces the portField to be numeric only
         portField.textProperty().addListener(new ChangeListener<String>() {
