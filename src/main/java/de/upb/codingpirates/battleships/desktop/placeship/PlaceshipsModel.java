@@ -159,9 +159,6 @@ public class PlaceshipsModel{
                     e.printStackTrace();
                 }
             }
-            else{
-                sender.showWaitForGameInit();
-            }
         }
         else{
             sender.showPlaceAllShips();

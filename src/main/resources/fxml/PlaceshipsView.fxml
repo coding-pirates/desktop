@@ -99,7 +99,10 @@
                   </AnchorPane>
                </children>
             </HBox>
-            <Button contentDisplay="CENTER" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#gamestart" prefHeight="36.0" prefWidth="170.0" style="-fx-background-color: #CFBE8E; -fx-border-color: #472218;" text="Let's start the Game!" textFill="#f8f7f7" />
+            <Button fx:id="btn_gameStart" contentDisplay="CENTER" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#gamestart" prefHeight="36.0" prefWidth="170.0" style="-fx-background-color: #CFBE8E; -fx-border-color: #472218;" text="Let's start the Game!" textFill="#f8f7f7" visible="false">
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin></Button>
             <SplitPane fx:id="splitPane" prefHeight="160.0" prefWidth="200.0" style="-fx-background-color: #CFBE8E;" VBox.vgrow="ALWAYS">
                <items>
                   <AnchorPane style="-fx-background-color: #CFBE8E;" SplitPane.resizableWithParent="false">
