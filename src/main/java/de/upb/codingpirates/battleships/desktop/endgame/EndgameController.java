@@ -94,7 +94,7 @@ public class EndgameController implements Initializable {
         }
         ranking.setPlayer(players);
         ranking.sortPoints(points);
-        
+
     }
 
     @FXML
@@ -124,7 +124,7 @@ public class EndgameController implements Initializable {
 
 
     public void placement() {
-        first.setText("Hallo");
+
         int firstPoints = -3000;
         int secondPoints = -3000;
         int thirdPoints = -3000;
@@ -163,7 +163,7 @@ public class EndgameController implements Initializable {
             Client csecond = null;
             Client cthird = null;
 
-            System.out.println("Jetzt clients finden!");
+
 
             for(Client client : players){
                 if(client.getId()==firstID){

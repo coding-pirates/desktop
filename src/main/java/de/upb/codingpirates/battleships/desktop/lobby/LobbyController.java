@@ -40,6 +40,7 @@ public class LobbyController implements Initializable , LobbyResponseListener {
     private ListView<GameView> lstvwEnd;
     @FXML
     private Button refreshButton;
+
     private ObservableList<GameView> startList = FXCollections.synchronizedObservableList(FXCollections.observableArrayList());
     private ObservableList<GameView> runningList = FXCollections.synchronizedObservableList(FXCollections.observableArrayList());
     private ObservableList<GameView> endList = FXCollections.synchronizedObservableList(FXCollections.observableArrayList());
