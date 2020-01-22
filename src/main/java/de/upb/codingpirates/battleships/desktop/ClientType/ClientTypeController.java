@@ -1,15 +1,12 @@
 package de.upb.codingpirates.battleships.desktop.ClientType;
 
 import de.upb.codingpirates.battleships.client.ListenerHandler;
-import de.upb.codingpirates.battleships.client.handler.GameInitNotificationHandler;
-import de.upb.codingpirates.battleships.client.listener.GameInitNotificationListener;
 import de.upb.codingpirates.battleships.client.listener.GameJoinPlayerResponseListener;
 import de.upb.codingpirates.battleships.client.listener.GameJoinSpectatorResponseListener;
 import de.upb.codingpirates.battleships.desktop.lobby.Lobby;
 import de.upb.codingpirates.battleships.desktop.placeship.Placeships;
 import de.upb.codingpirates.battleships.desktop.waiting.Waiting;
 import de.upb.codingpirates.battleships.logic.Game;
-import de.upb.codingpirates.battleships.network.message.notification.GameInitNotification;
 import de.upb.codingpirates.battleships.network.message.response.GameJoinPlayerResponse;
 import de.upb.codingpirates.battleships.network.message.response.GameJoinSpectatorResponse;
 import javafx.application.Platform;
@@ -33,7 +30,7 @@ public class ClientTypeController implements Initializable, GameJoinSpectatorRes
     @FXML
     private Label lb_choice;
     @FXML
-    private Button closeButton;
+    private Button goButton;
 
     private String chosenClient;
     private ClientTypeModel clientTypeModel;
@@ -74,7 +71,7 @@ public class ClientTypeController implements Initializable, GameJoinSpectatorRes
 
 
     @FXML
-    public void next(){
+    public void start(){
         if(chosenClient=="Player"){
             closeStage();
             clientTypeModel.sendGameJoinPlayerRequest();
@@ -89,7 +86,7 @@ public class ClientTypeController implements Initializable, GameJoinSpectatorRes
     }
 
     public void closeStage(){
-        Stage stage = (Stage) closeButton.getScene().getWindow();
+        Stage stage = (Stage) goButton.getScene().getWindow();
         stage.close();
     }
 
@@ -99,7 +96,7 @@ public class ClientTypeController implements Initializable, GameJoinSpectatorRes
         Stage lobbyStage = new Stage();
         try {
             lobby.display(lobbyStage, clientTypeModel.getClientID());
-            closeStage();
+            this.closeStage();
         } catch (IOException e) {
             e.printStackTrace();//TODO
         }

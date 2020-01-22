@@ -245,5 +245,4 @@
       </items>
     </SplitPane>
   </VBox>
-   <Button mnemonicParsing="false" onAction="#next" text="next" />
 </AnchorPane>

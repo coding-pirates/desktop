@@ -85,19 +85,16 @@ public class EndgameController implements Initializable {
     public void ranking() throws Exception {
 
         Ranking ranking = new Ranking();
-        Stage rankingstage = new Stage();
+        Stage rankingStage = new Stage();
         try {
-            ranking.display(rankingstage);
+            ranking.display(rankingStage);
 
         } catch (IOException e) {
             e.printStackTrace();//TODO
         }
         ranking.setPlayer(players);
         ranking.sortPoints(points);
-        rankingstage.setOnCloseRequest(t -> {
-            Platform.exit();
-            System.exit(0);
-        });
+        
     }
 
     @FXML
@@ -128,9 +125,9 @@ public class EndgameController implements Initializable {
 
     public void placement() {
         first.setText("Hallo");
-        int firstPoints = 0;
-        int secondPoints = 0;
-        int thirdPoints = 0;
+        int firstPoints = -3000;
+        int secondPoints = -3000;
+        int thirdPoints = -3000;
 
         int firstID = -1;
         int secondId = -1;
@@ -165,8 +162,6 @@ public class EndgameController implements Initializable {
             Client cfirst = null;
             Client csecond = null;
             Client cthird = null;
-
-            System.out.println("Jetzt clients finden!");
 
             for(Client client : players){
                 if(client.getId()==firstID){
