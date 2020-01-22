@@ -11,7 +11,7 @@
    <children>
       <ImageView blendMode="SRC_ATOP" pickOnBounds="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <image>
-            <Image url="@../images/Startscreen_BG.jpg" />
+            <Image url="@../images/startscreen_full_hd.png" />
          </image>
          <cursor>
             <Cursor fx:constant="DEFAULT" />
