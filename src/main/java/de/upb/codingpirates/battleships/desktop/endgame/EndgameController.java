@@ -167,8 +167,6 @@ public class EndgameController implements Initializable {
             Client csecond = null;
             Client cthird = null;
 
-            System.out.println("Jetzt clients finden!");
-
             for(Client client : players){
                 if(client.getId()==firstID){
                     cfirst = client;
