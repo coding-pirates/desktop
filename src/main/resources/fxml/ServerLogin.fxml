@@ -1,19 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.Cursor?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.effect.Glow?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane style="-fx-background-color: #1A2529; -fx-text-fill: white;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.upb.codingpirates.battleships.desktop.serverlogin.ServerLoginController">
+<AnchorPane style="-fx-background-color: #1A2529; -fx-text-fill: white;" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.upb.codingpirates.battleships.desktop.serverlogin.ServerLoginController">
   <ImageView fx:id="background" layoutX="-769.0" layoutY="-249.0" pickOnBounds="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
       <image>
          <Image url="@../images/Background.png" />
@@ -99,7 +94,6 @@
                <Insets left="800.0" top="200.0" />
             </VBox.margin>
          </Button>
-         <Button mnemonicParsing="false" onAction="#handlerButton" text="next" />
       </children>
    </VBox>
    <Button fx:id="btn_settings" cache="true" cacheHint="ROTATE" cacheShape="false" contentDisplay="GRAPHIC_ONLY" focusTraversable="false" layoutX="1093.0" layoutY="71.0" minHeight="-Infinity" minWidth="-Infinity" onAction="#settings" prefHeight="40.0" prefWidth="53.0" style="-fx-background-color: #CFBE8E;" text="Settings" AnchorPane.rightAnchor="54.0" AnchorPane.topAnchor="71.0">

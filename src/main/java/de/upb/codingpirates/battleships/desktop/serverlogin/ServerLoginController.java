@@ -134,10 +134,7 @@ public class ServerLoginController implements Initializable, ServerJoinResponseL
                 System.exit(0);
             });
         }
-
-        @FXML
-        public void handlerButton(){
-        }
+        
     @FXML
     public void help() throws IOException {
         Help help = new Help();
