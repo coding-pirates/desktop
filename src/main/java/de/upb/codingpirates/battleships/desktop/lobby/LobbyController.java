@@ -177,17 +177,7 @@ public class LobbyController implements Initializable , LobbyResponseListener {
      * nextButton
      * @throws IOException
      */
-    @FXML
-    public void handlerButton() throws Exception {
-       /* try {
-            ClientType cType = new ClientType();
-            Stage window = new Stage();
-            //cType.display(window);
-            closeStage();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } */
-    }
+
 
     @FXML
     public void help() throws IOException {
