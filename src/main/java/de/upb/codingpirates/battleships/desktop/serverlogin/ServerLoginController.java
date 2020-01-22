@@ -91,14 +91,19 @@ public class ServerLoginController implements Initializable, ServerJoinResponseL
         String serverIP = ipField.getText();
         String port = portField.getText();
 
-                BattleshipsDesktopClientApplication
-                    .getInstance()
-                    .getTcpConnector()
-                    .connect(serverIP, Integer.parseInt(port),() -> Platform.runLater(()->lblStatus.setText("Anmeldung fehlgeschlagen: Server nicht erreichbar!")),()->{
-                        //Send request to server
-                        ServerLoginModel slm = new ServerLoginModel(nameField.getText(), ClientType.PLAYER);
-                        slm.sendRequest(serverIP);
-                    });
+        if(ipField.getText().isEmpty()|| portField.getText().isEmpty() || nameField.getText().isEmpty())
+        {
+            lblStatus.setText("Bitte alle Felder mit Werten füllen");
+            return;
+        }
+        BattleshipsDesktopClientApplication
+                .getInstance()
+                .getTcpConnector()
+                .connect(serverIP, Integer.parseInt(port),() -> Platform.runLater(()->lblStatus.setText("Anmeldung fehlgeschlagen: Server nicht erreichbar!")),()->{
+                    //Send request to server
+                    ServerLoginModel slm = new ServerLoginModel(nameField.getText(), ClientType.PLAYER);
+                    slm.sendRequest(serverIP);
+                });
     }
 
     private void setLblStatus(String lblStatus) {
