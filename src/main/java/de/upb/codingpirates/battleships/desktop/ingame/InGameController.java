@@ -570,8 +570,7 @@ public class InGameController implements Initializable {
         });
     }
 
-    @FXML
-    public void next(){}
+
     @FXML
     public void shot(){
         model.sendShotRequest();
