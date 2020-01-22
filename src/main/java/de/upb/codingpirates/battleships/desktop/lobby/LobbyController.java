@@ -40,6 +40,7 @@ public class LobbyController implements Initializable , LobbyResponseListener {
     private ListView<GameView> lstvwEnd;
     @FXML
     private Button refreshButton;
+
     private ObservableList<GameView> startList = FXCollections.synchronizedObservableList(FXCollections.observableArrayList());
     private ObservableList<GameView> runningList = FXCollections.synchronizedObservableList(FXCollections.observableArrayList());
     private ObservableList<GameView> endList = FXCollections.synchronizedObservableList(FXCollections.observableArrayList());
@@ -60,6 +61,7 @@ public class LobbyController implements Initializable , LobbyResponseListener {
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
+
             /*InGameModel inGameModel = new InGameModel(arg2.getContent());
             Stage inGameStage = new Stage();
             try {

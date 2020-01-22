@@ -17,10 +17,14 @@ import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Cursor;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
+import javax.swing.text.View;
+import javax.swing.text.html.ImageView;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -40,6 +44,8 @@ public class ServerLoginController implements Initializable, ServerJoinResponseL
     private TextField nameField;
     @FXML
     private Label lblStatus;
+    @FXML
+    private Button btn_login;
 
     private StringPropertyBase text = new SimpleStringProperty();
 
@@ -88,16 +94,21 @@ public class ServerLoginController implements Initializable, ServerJoinResponseL
         String port = portField.getText();
 
             try {
-                BattleshipsDesktopClientApplication
-                    .getInstance()
-                    .getTcpConnector()
-                    .connect(serverIP, Integer.parseInt(port));
+                if(ipField.getText().equals("")|| portField.getText().equals("") || nameField.getText().equals(""))
+                {
+                    lblStatus.setText("Bitte alle Felder mit Werten füllen");
+                }
+                else {
+                    BattleshipsDesktopClientApplication
+                            .getInstance()
+                            .getTcpConnector()
+                            .connect(serverIP, Integer.parseInt(port));
 
-            //Send request to server
-            ServerLoginModel slm = new ServerLoginModel(nameField.getText(), ClientType.PLAYER);
-            slm.sendRequest(serverIP);
+                    //Send request to server
+                    ServerLoginModel slm = new ServerLoginModel(nameField.getText(), ClientType.PLAYER);
+                    slm.sendRequest(serverIP);
+                }
         } catch (Exception e) {
-                e.printStackTrace();
             lblStatus.setText("Anmeldung fehlgeschlagen: Server nicht erreichbar!");
         }
     }
@@ -158,5 +169,14 @@ public class ServerLoginController implements Initializable, ServerJoinResponseL
         catch (IOException e){
             e.printStackTrace();
         }
+    }
+
+    /**
+     * changes the cursor for a button hover to Cursor.HAND
+     * @param event event which calls the method
+     */
+    public void changeCursor(javafx.scene.input.MouseEvent event) {
+        Button currentButton = (Button) event.getSource();
+        currentButton.setCursor(Cursor.HAND);
     }
 }
