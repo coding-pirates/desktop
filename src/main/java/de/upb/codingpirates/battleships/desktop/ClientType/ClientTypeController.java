@@ -30,7 +30,7 @@ public class ClientTypeController implements Initializable, GameJoinSpectatorRes
     @FXML
     private Label lb_choice;
     @FXML
-    private Button closeButton;
+    private Button goButton;
 
     private String chosenClient;
     private ClientTypeModel clientTypeModel;
@@ -71,7 +71,7 @@ public class ClientTypeController implements Initializable, GameJoinSpectatorRes
 
 
     @FXML
-    public void next(){
+    public void start(){
         if(chosenClient=="Player"){
             closeStage();
             clientTypeModel.sendGameJoinPlayerRequest();
@@ -86,7 +86,7 @@ public class ClientTypeController implements Initializable, GameJoinSpectatorRes
     }
 
     public void closeStage(){
-        Stage stage = (Stage) closeButton.getScene().getWindow();
+        Stage stage = (Stage) goButton.getScene().getWindow();
         stage.close();
     }
 
