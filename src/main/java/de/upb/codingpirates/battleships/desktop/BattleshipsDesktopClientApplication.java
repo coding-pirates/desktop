@@ -132,10 +132,6 @@ public final class BattleshipsDesktopClientApplication extends Application {
 
         double screenWidht = Screen.getPrimary().getBounds().getWidth();
         double screenHeight = Screen.getPrimary().getBounds().getHeight();
-        startStage.setMaximized(false);
-        startStage.setResizable(true);
-        /*loginStage.setWidth(screenWidht);
-        loginStage.setHeight(screenHeight);*/
         startStage.setMinWidth(screenWidht*0.83);
         startStage.setMinHeight(screenHeight*0.83);
         startStage.setMaxWidth(screenWidht);

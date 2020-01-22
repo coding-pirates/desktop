@@ -67,10 +67,6 @@ public class ServerLogin {
 
         double screenWidht = Screen.getPrimary().getBounds().getWidth();
         double screenHeight = Screen.getPrimary().getBounds().getHeight();
-        loginStage.setMaximized(false);
-        loginStage.setResizable(true);
-        /*loginStage.setWidth(screenWidht);
-        loginStage.setHeight(screenHeight);*/
         loginStage.setMinWidth(screenWidht*0.83);
         loginStage.setMinHeight(screenHeight*0.83);
         loginStage.setMaxWidth(screenWidht);

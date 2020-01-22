@@ -6,8 +6,10 @@ import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.stage.Screen;
 import javafx.stage.Stage;
 
+import javax.swing.*;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -29,7 +31,8 @@ public class StartController implements Initializable {
      */
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
-
+        btn_start.setLayoutX(Screen.getPrimary().getBounds().getWidth()/2);
+        btn_start.setLayoutY(Screen.getPrimary().getBounds().getHeight()*0.8);
     }
 
     public void setMain(BattleshipsDesktopClientApplication main) {
@@ -57,5 +60,4 @@ public class StartController implements Initializable {
             System.exit(0);
         });
     }
-
 }
