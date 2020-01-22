@@ -135,11 +135,20 @@ public class GameFieldController implements Initializable {
         ArrayList<Point2D> movedShipPoints = new ArrayList<>();
         for(int ship : shipPlacements.keySet()) {
             for (Point2D point : shipTypes.get(ship).getPositions()) {
-                movedShipPoints.add(new Point2D(shipPlacements.get(ship).getPosition().getX() + point.getX(), shipPlacements.get(ship).getPosition().getY() + point.getY()));
+                Point2D rotatedPoint = rotatePoint(point, shipPlacements.get(ship).getRotation().ordinal());
+                movedShipPoints.add(new Point2D(shipPlacements.get(ship).getPosition().getX()+rotatedPoint.getX(), shipPlacements.get(ship).getPosition().getY() + rotatedPoint.getY()));
             }
             gameField.placeShip(movedShipPoints);
             movedShipPoints.clear();
         }
+    }
+
+    public Point2D rotatePoint(Point2D point, int rotationEnum) {
+        //rotation Matix
+        double rotation = (4 - rotationEnum) * Math.PI / 2;
+        int x = (int) Math.round(point.getX() * Math.cos(rotation) - point.getY() * Math.sin(rotation));
+        int y = (int) Math.round(point.getX() * Math.sin(rotation) + point.getY() * Math.cos(rotation));
+        return new Point2D(x, y);
     }
     /**
      * Starts gameFields shipHit().

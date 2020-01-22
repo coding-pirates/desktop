@@ -45,12 +45,16 @@ public class PlaceShipsController extends InGameController implements Initializa
     private Button btnShipBack;
 
     @FXML
+    private Button btn_gameStart;
+
+    @FXML
     private BorderPane borderPane;
     @FXML
     private GridPane grid;
     @FXML
     private BorderPane smallBorderPane;
 
+    @FXML
     private PlaceshipsModel model;
     private GameField gameField;
 
@@ -261,6 +265,7 @@ public class PlaceShipsController extends InGameController implements Initializa
 
     @Override
     public void onGameInitNotification(GameInitNotification message, int clientId) {
+        btn_gameStart.setVisible(true);
         model.setClientList(message.getClientList());
     }
 
