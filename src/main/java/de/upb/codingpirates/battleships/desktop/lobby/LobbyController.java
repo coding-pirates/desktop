@@ -56,12 +56,13 @@ public class LobbyController implements Initializable , LobbyResponseListener {
             if(arg2 !=null) {
                 ClientType cType = new ClientType();
                 Stage window = new Stage();
+
+
                 try {
-                    cType.display(window, arg2.getContent(), clientID);
+                    cType.display(window, arg2.getContent(), clientID,lobby.getStage());
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
-
             /*InGameModel inGameModel = new InGameModel(arg2.getContent());
             Stage inGameStage = new Stage();
             try {
@@ -70,6 +71,7 @@ public class LobbyController implements Initializable , LobbyResponseListener {
                 e.printStackTrace();
             }*/
                 window.setOnCloseRequest(t -> {
+                    showgames();
                     Platform.exit();
                     System.exit(0);
                 });

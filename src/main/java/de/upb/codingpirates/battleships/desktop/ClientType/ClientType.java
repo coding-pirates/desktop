@@ -13,9 +13,11 @@ import java.io.IOException;
 public class ClientType {
     private ClientTypeController clientTypeController;
     private Stage window;
+    private Stage LobbyStage;
 
-    public void display(Stage window, Game selectedGame, int clientID) throws IOException {
+    public void display(Stage window, Game selectedGame, int clientID,Stage Lobbystage) throws IOException {
         this.window=window;
+        this.LobbyStage=Lobbystage;
 
         window.initModality(Modality.APPLICATION_MODAL);
         window.setTitle("ClientType");
@@ -26,10 +28,15 @@ public class ClientType {
         clientTypeController = loader.getController();
         clientTypeController.setSelectedGame(selectedGame);
         clientTypeController.setClientID(clientID);
+        clientTypeController.setLobbyStage(Lobbystage);
         Image icon = new Image(String.valueOf(ClientType.class.getResource("/images/app_icon.png")));
         window.getIcons().add(icon);
         Scene scene = new Scene(pane);
         window.setScene(scene);
         window.showAndWait();
+    }
+
+    public Stage getLobbyStage(){
+        return this.LobbyStage;
     }
 }
