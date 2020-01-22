@@ -19,7 +19,9 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.scene.Node;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
@@ -228,26 +230,18 @@ public class PlaceShipsController extends InGameController implements Initializa
         //TODO Show "Please wait for GameInit"
     }
     public void showPlaceAllShips(){
-        //TODO Show "Please place all Ships first"
+        Alert alertFinish = new Alert(Alert.AlertType.INFORMATION,
+                "Platziere bitte zuerst alle Schiffe.", ButtonType.OK);
+        alertFinish.showAndWait();
     }
 
     @Override
     public void onPlaceShipsResponse(PlaceShipsResponse message, int clientId) {
-        //TODO Message Ships placed successfully
-        /*Platform.runLater(()->{
-            // InGameModel inGameModel = new InGameModel(game);
-            Stage inGameStage = new Stage();
-            try {
-                inGameStage.display();
-              //  closeStage();
-            } catch (Exception e) {
-                e.printStackTrace();
-                inGameStage.setOnCloseRequest((t -> {
-                    Platform.exit();
-                    System.exit(0);
-                }));
-            };
-        });*/
+        Platform.runLater(()->{
+        Alert alertFinish = new Alert(Alert.AlertType.INFORMATION,
+                "Die Schiffe wurden erfolgreich platziert. Warte auf andere Spieler..", ButtonType.OK);
+        alertFinish.showAndWait();
+        });
     }
 
     @Override
