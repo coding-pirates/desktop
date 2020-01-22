@@ -97,7 +97,6 @@
                <Insets left="800.0" top="200.0" />
             </VBox.margin>
          </Button>
-         <Button mnemonicParsing="false" onAction="#handlerButton" text="next" />
       </children>
    </VBox>
    <Button fx:id="btn_settings" cache="true" cacheHint="ROTATE" cacheShape="false" contentDisplay="GRAPHIC_ONLY" focusTraversable="false" layoutX="1093.0" layoutY="71.0" minHeight="-Infinity" minWidth="-Infinity" onAction="#settings" prefHeight="40.0" prefWidth="53.0" style="-fx-background-color: #CFBE8E;" text="Settings" AnchorPane.rightAnchor="54.0" AnchorPane.topAnchor="71.0">
