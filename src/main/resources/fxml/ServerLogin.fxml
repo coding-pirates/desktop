@@ -19,7 +19,7 @@
   </ImageView>
    <VBox prefHeight="800.0" prefWidth="1836.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
       <children>
-        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Server Login" textAlignment="CENTER" textOrigin="CENTER" wrappingWidth="1739.0">
+        <Text boundsType="LOGICAL_VERTICAL_CENTER" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-text-alignment: center;" text="Finde eine Seeschlacht" textAlignment="CENTER" textOrigin="CENTER" VBox.vgrow="NEVER">
           <font>
             <Font size="30.0" />
           </font>
