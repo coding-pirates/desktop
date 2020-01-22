@@ -196,7 +196,7 @@ public class InGameController implements Initializable {
         height = config.getHeight();
         width = config.getWidth();
         millis = config.getRoundTime();
-            maxPlayerCount.setText(Integer.toString(game.getConfig().getMaxPlayerCount()));
+            maxPlayerCount.setText(Integer.toString(game.getCurrentPlayerCount()));
             shotCount.setText(Integer.toString(game.getConfig().getShotCount()));
             hitPoints.setText(Integer.toString(game.getConfig().getHitPoints()));
             sunkPoints.setText(Integer.toString(game.getConfig().getSunkPoints()));
