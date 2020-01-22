@@ -23,8 +23,6 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
-import javax.swing.text.View;
-import javax.swing.text.html.ImageView;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -93,18 +91,14 @@ public class ServerLoginController implements Initializable, ServerJoinResponseL
         String serverIP = ipField.getText();
         String port = portField.getText();
 
-            try {
                 BattleshipsDesktopClientApplication
                     .getInstance()
                     .getTcpConnector()
-                    .connect(serverIP, Integer.parseInt(port));
-
-            //Send request to server
-            ServerLoginModel slm = new ServerLoginModel(nameField.getText(), ClientType.PLAYER);
-            slm.sendRequest(serverIP);
-        } catch (Exception e) {
-            lblStatus.setText("Anmeldung fehlgeschlagen: Server nicht erreichbar!");
-        }
+                    .connect(serverIP, Integer.parseInt(port),() -> Platform.runLater(()->lblStatus.setText("Anmeldung fehlgeschlagen: Server nicht erreichbar!")),()->{
+                        //Send request to server
+                        ServerLoginModel slm = new ServerLoginModel(nameField.getText(), ClientType.PLAYER);
+                        slm.sendRequest(serverIP);
+                    });
     }
 
     private void setLblStatus(String lblStatus) {

@@ -1,7 +1,7 @@
 package de.upb.codingpirates.battleships.desktop;
 
 import de.upb.codingpirates.battleships.client.network.ClientApplication;
-import de.upb.codingpirates.battleships.client.network.ClientConnector;
+import de.upb.codingpirates.battleships.client.network.ClientConnectorDesktop;
 import de.upb.codingpirates.battleships.client.network.ClientModule;
 import de.upb.codingpirates.battleships.desktop.start.StartController;
 import javafx.application.Application;
@@ -26,7 +26,7 @@ public final class BattleshipsDesktopClientApplication extends Application  {
 
     private Stage startStage;
 
-    public static ClientConnector tcpConnector = ClientApplication.create(new ClientModule<>(ClientConnector.class));
+    public static ClientConnectorDesktop tcpConnector = ClientApplication.create(new ClientModule<>(ClientConnectorDesktop.class));
 
     private static final String TITLE = "Coding Pirates Battleships Desktop Client";
 
@@ -122,7 +122,7 @@ public final class BattleshipsDesktopClientApplication extends Application  {
         return startStage;
     }
 
-    public ClientConnector getTcpConnector() {
+    public ClientConnectorDesktop getTcpConnector() {
         return tcpConnector;
     }
 
