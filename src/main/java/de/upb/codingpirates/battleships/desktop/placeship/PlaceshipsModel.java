@@ -1,19 +1,8 @@
 package de.upb.codingpirates.battleships.desktop.placeship;
 
-import de.upb.codingpirates.battleships.client.ListenerHandler;
-import de.upb.codingpirates.battleships.client.listener.GameInitNotificationListener;
-import de.upb.codingpirates.battleships.client.listener.GameStartNotificationListener;
-import de.upb.codingpirates.battleships.client.listener.MessageHandlerListener;
-import de.upb.codingpirates.battleships.client.listener.PlaceShipsResponseListener;
 import de.upb.codingpirates.battleships.desktop.BattleshipsDesktopClientApplication;
-import de.upb.codingpirates.battleships.desktop.ingame.InGame;
 import de.upb.codingpirates.battleships.logic.*;
-import de.upb.codingpirates.battleships.network.message.notification.GameInitNotification;
-import de.upb.codingpirates.battleships.network.message.notification.GameStartNotification;
 import de.upb.codingpirates.battleships.network.message.request.RequestBuilder;
-import de.upb.codingpirates.battleships.network.message.response.PlaceShipsResponse;
-import javafx.application.Platform;
-import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -159,4 +148,14 @@ public class PlaceshipsModel{
         }
     }
 
-}
+    public void sendLeaveRequest(PlaceShipsController sender){
+        /*try{
+            BattleshipsDesktopClientApplication.getInstance().getTcpConnector().sendMessageToServer(RequestBuilder.gameLeaveRequest());
+        }catch (IOException e) {
+
+            e.printStackTrace();
+        }*/
+        }
+    }
+
+

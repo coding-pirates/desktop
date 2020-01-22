@@ -93,24 +93,31 @@ public class ClientTypeController implements Initializable, GameJoinSpectatorRes
     public void placeShips(){
         Placeships placeships = new Placeships();
         Stage placeStage = new Stage();
+
+        placeStage.setOnCloseRequest(t -> {
+            Platform.exit();
+            System.exit(0);
+        });
         try {
             placeships.display(placeStage,clientTypeModel.getSelectedGame(), clientTypeModel.getClientID());
-            closeStage();
+            this.closeStage();
             this.LobbyStage.close();
         } catch (IOException e) {
             e.printStackTrace();//TODO
-            placeStage.setOnCloseRequest(t -> {
-                Platform.exit();
-                System.exit(0);
-            });
         }
     }
 
     public void waiting(){
         Waiting waitingView = new Waiting();
         Stage waitingStage = new Stage();
+
+        waitingStage.setOnCloseRequest(t -> {
+            Platform.exit();
+            System.exit(0);
+        });
+
         try {
-            waitingView.display(waitingStage, clientTypeModel.getSelectedGame());
+            waitingView.display(waitingStage, clientTypeModel.getSelectedGame(),clientTypeModel.getClientID());
            // waitingView.setCurrentGame(clientTypeModel.getSelectedGame());
             this.closeStage();
             this.LobbyStage.close();

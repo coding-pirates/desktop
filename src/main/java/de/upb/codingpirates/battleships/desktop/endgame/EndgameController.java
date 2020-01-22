@@ -101,16 +101,18 @@ public class EndgameController implements Initializable {
     public void lobby() throws Exception {
         Lobby lobby = new Lobby();
         Stage lobbyStage = new Stage();
+
+        lobbyStage.setOnCloseRequest(t -> {
+            Platform.exit();
+            System.exit(0);
+        });
         try {
             lobby.display(lobbyStage, clientID);
             closeStage();
         } catch (IOException e) {
             e.printStackTrace();//TODO
         }
-        lobbyStage.setOnCloseRequest(t -> {
-            Platform.exit();
-            System.exit(0);
-        });
+
     }
 
     public void closeStage() {

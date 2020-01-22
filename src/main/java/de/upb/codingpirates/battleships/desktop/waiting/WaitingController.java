@@ -1,9 +1,9 @@
 package de.upb.codingpirates.battleships.desktop.waiting;
 
-import de.upb.codingpirates.battleships.client.ListenerHandler;
 import de.upb.codingpirates.battleships.client.listener.GameInitNotificationListener;
 import de.upb.codingpirates.battleships.client.listener.GameStartNotificationListener;
 import de.upb.codingpirates.battleships.desktop.ingame.InGame;
+import de.upb.codingpirates.battleships.desktop.lobby.Lobby;
 import de.upb.codingpirates.battleships.desktop.settings.Settings;
 import de.upb.codingpirates.battleships.desktop.util.Help;
 import de.upb.codingpirates.battleships.logic.Client;
@@ -29,10 +29,8 @@ public class WaitingController implements Initializable, GameStartNotificationLi
 
     private Game currentGame;
     private Collection<Client> clientList;
+    private int clientID;
 
-    public WaitingController(){
-        ListenerHandler.registerListener(this);
-    }
 
     /**
      * Initial Method.
@@ -45,7 +43,13 @@ public class WaitingController implements Initializable, GameStartNotificationLi
     public void onGameStartNotification(GameStartNotification message, int messageId){
         Platform.runLater(()->{
             InGame inGame = new InGame();
-        Stage inGameStage = new Stage();
+            Stage inGameStage = new Stage();
+
+            inGameStage.setOnCloseRequest(t -> {
+                Platform.exit();
+                System.exit(0);
+            });
+
         try {
             inGame.start(inGameStage,currentGame, ClientType.SPECTATOR);
             closeStage();
@@ -65,13 +69,24 @@ public class WaitingController implements Initializable, GameStartNotificationLi
     public void closeStage(){
         Stage stage = (Stage) closeButton.getScene().getWindow();
         stage.close();
+
+        Lobby lobby = new Lobby();
+        Stage lobbyStage = new Stage();
+
+        lobbyStage.setOnCloseRequest(t -> {
+            Platform.exit();
+            System.exit(0);
+        });
+
+        try{
+            lobby.display(lobbyStage,clientID);
+        }
+        catch (IOException e){
+            e.printStackTrace();
+        }
+
     }
 
-    @FXML
-    public void handlerButton(){
-        closeStage();
-        //this.onLobbyResponse();
-    }
 
     @FXML
     public void help() throws IOException {
@@ -94,13 +109,16 @@ public class WaitingController implements Initializable, GameStartNotificationLi
         } catch (IOException e) {
             e.printStackTrace();//TODO
         }
-        settingsStage.setOnCloseRequest(t -> {
+
+        /*settingsStage.setOnCloseRequest(t -> {
             Platform.exit();
             System.exit(0);
-        });
+        });*/
     }
 
     public void setCurrentGame(Game currentGame){
         this.currentGame = currentGame;
     }
+
+    public void setClientId(int clientId) {this.clientID = clientId;}
 }
