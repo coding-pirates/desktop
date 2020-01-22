@@ -103,11 +103,16 @@ public class ServerLoginController implements Initializable, ServerJoinResponseL
         lblStatus.setText("");
 
             try {
-                BattleshipsDesktopClientApplication
-                    .getInstance()
-                    .getTcpConnector()
-                    .connect(serverIP, Integer.parseInt(port));
-
+                if(ipField.getText().equals("")|| portField.getText().equals("") || nameField.getText().equals(""))
+                {
+                    lblStatus.setText("Bitte alle Felder mit Werten füllen");
+                }
+                else {
+                    BattleshipsDesktopClientApplication
+                            .getInstance()
+                            .getTcpConnector()
+                            .connect(serverIP, Integer.parseInt(port));
+                }
             //Send request to server
             ServerLoginModel slm = new ServerLoginModel(nameField.getText(), ClientType.PLAYER);
             slm.sendRequest(serverIP);

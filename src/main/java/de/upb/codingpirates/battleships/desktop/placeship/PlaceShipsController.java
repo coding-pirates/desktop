@@ -126,7 +126,20 @@ public class PlaceShipsController extends InGameController implements Initializa
 
     @FXML
     public void rotate(){
-        //TODO
+        switch (model.getCurrentRotation()){
+            case NONE:
+                model.setCurrentRotation(Rotation.CLOCKWISE_90);
+                break;
+            case CLOCKWISE_90:
+                model.setCurrentRotation(Rotation.CLOCKWISE_180);
+                break;
+            case CLOCKWISE_180:
+                model.setCurrentRotation(Rotation.COUNTERCLOCKWISE_90);
+                break;
+            case COUNTERCLOCKWISE_90:
+                model.setCurrentRotation(Rotation.NONE);
+                break;
+        }
         shipForm.rotate();
     }
 
@@ -170,7 +183,7 @@ public class PlaceShipsController extends InGameController implements Initializa
                 ArrayList<Point2D> shipPoints = model.getShipPoints(new PlacementInfo(clickedPoint, model.getCurrentRotation()), model.getShipTypes().get(model.getSelectedShip()));
                 if(model.proofShip(shipPoints)) {//TODO ships which doesnt contain (0,0) ???
                     if (model.getPlacedShips().containsKey(model.getSelectedShip())) {
-                        gameField.removePlacedShip(model.getShipPoints(new PlacementInfo(model.getPlacedShips().get(model.getSelectedShip()).getPosition(),model.getCurrentRotation()), model.getShipTypes().get(model.getSelectedShip())));
+                        gameField.removePlacedShip(model.getShipPoints(model.getPlacedShips().get(model.getSelectedShip()), model.getShipTypes().get(model.getSelectedShip())));
                     }
                     gameField.placeShip(shipPoints);
                     model.addShipPlacement(model.getSelectedShip(), new PlacementInfo(clickedPoint, model.getCurrentRotation()));

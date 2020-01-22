@@ -121,16 +121,25 @@ public class PlaceshipsModel{
 
     public void addShipPlacement(int shipID, PlacementInfo shipPlacement){
         placedShips.put(shipID, shipPlacement);
+        currentRotation = Rotation.NONE;
     }
 
     public ArrayList<Point2D> getShipPoints(PlacementInfo placementInfo, ShipType shipType){
         ArrayList<Point2D> movedShipPoints = new ArrayList<>();
         for (Point2D point : shipType.getPositions()) {
-            movedShipPoints.add(new Point2D(placementInfo.getPosition().getX()+point.getX(), placementInfo.getPosition().getY() + point.getY()));
+            Point2D rotatedPoint = rotatePoint(point, placementInfo.getRotation().ordinal());
+            movedShipPoints.add(new Point2D(placementInfo.getPosition().getX()+rotatedPoint.getX(), placementInfo.getPosition().getY() + rotatedPoint.getY()));
         }
         return movedShipPoints;
     }
 
+    public Point2D rotatePoint(Point2D point, int rotationEnum) {
+        //rotation Matix
+        double rotation = (4 - rotationEnum) * Math.PI / 2;
+        int x = (int) Math.round(point.getX() * Math.cos(rotation) - point.getY() * Math.sin(rotation));
+        int y = (int) Math.round(point.getX() * Math.sin(rotation) + point.getY() * Math.cos(rotation));
+        return new Point2D(x, y);
+    }
     public void rotateLeft(){
 
     }
