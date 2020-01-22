@@ -23,7 +23,7 @@ public class Endgame {
     private Collection<Client> players = null;
 
     /**
-     * Start Method that creates a new Window and a related Controller.
+     * Start.java Method that creates a new Window and a related Controller.
      */
     public void display(Stage endStage,Map<Integer, Integer> points,Collection <Client> players,int clientID) throws Exception {
         this.endStage = endStage;

@@ -13,7 +13,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 /**
- * Controller Class for the Start Window.
+ * Controller Class for the Start.java Window.
  */
 public class StartController implements Initializable {
 

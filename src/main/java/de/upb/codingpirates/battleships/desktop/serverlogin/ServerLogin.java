@@ -6,7 +6,9 @@ import de.upb.codingpirates.battleships.client.network.ClientModule;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
+import javafx.scene.input.KeyCombination;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Screen;
 import javafx.stage.Stage;
 
 import javax.annotation.Nonnull;
@@ -48,9 +50,8 @@ public class ServerLogin {
 
         this.serverLoginController = loader.getController();
         loginStage.setTitle("Login");
-        loginStage.setMaximized(true);
-        loginStage.setResizable(false);
         loginStage.setScene(new Scene(pane));
+        initDimensions();
         loginStage.show();
     }
 
@@ -60,5 +61,21 @@ public class ServerLogin {
 
     public ClientConnector getTcpConnector() {
         return tcpConnector;
+    }
+
+    private void initDimensions() {
+
+        double screenWidht = Screen.getPrimary().getBounds().getWidth();
+        double screenHeight = Screen.getPrimary().getBounds().getHeight();
+        loginStage.setMaximized(false);
+        loginStage.setResizable(true);
+        /*loginStage.setWidth(screenWidht);
+        loginStage.setHeight(screenHeight);*/
+        loginStage.setMinWidth(screenWidht*0.83);
+        loginStage.setMinHeight(screenHeight*0.83);
+        loginStage.setMaxWidth(screenWidht);
+        loginStage.setMaxHeight(screenHeight);
+        loginStage.setFullScreen(true);
+        loginStage.setFullScreenExitKeyCombination(KeyCombination.NO_MATCH);
     }
 }

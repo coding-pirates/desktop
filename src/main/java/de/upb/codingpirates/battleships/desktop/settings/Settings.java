@@ -24,7 +24,7 @@ public class Settings {
 
 
     /**
-     * Start Method that creates a new Window and a related Controller.
+     * Start.java Method that creates a new Window and a related Controller.
      */
     public void display(Stage settingsStage) throws Exception {
         this.settingsStage = settingsStage;

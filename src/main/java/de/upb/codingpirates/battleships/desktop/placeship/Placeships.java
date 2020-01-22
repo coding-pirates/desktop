@@ -21,7 +21,7 @@ public class Placeships  {
     private PlaceShipsController placeshipsController;
 
     /**
-     * Start Method that creates a new Window and a related Controller.
+     * Start.java Method that creates a new Window and a related Controller.
      */
     public void display(Stage placeshipsStage, Game currentGame, int clientID) throws IOException {
         this.placeshipsStage = placeshipsStage;

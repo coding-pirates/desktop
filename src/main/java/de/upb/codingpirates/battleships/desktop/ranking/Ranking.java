@@ -20,7 +20,7 @@ public class Ranking {
     private Collection<Client> players;
 
     /**
-     * Start Method that creates a new Window and a related Controller.
+     * Start.java Method that creates a new Window and a related Controller.
      */
     public void display(Stage rankingStage) throws Exception {
         this.rankingStage = rankingStage;

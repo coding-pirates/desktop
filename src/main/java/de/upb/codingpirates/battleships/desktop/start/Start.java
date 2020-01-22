@@ -9,7 +9,9 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Control;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyCombination;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Screen;
 import javafx.stage.Stage;
 
 /**
@@ -23,7 +25,6 @@ public class Start extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-
     }
 
     /**
