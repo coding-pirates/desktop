@@ -94,11 +94,7 @@ public class EndgameController implements Initializable {
         }
         ranking.setPlayer(players);
         ranking.sortPoints(points);
-
-        rankingStage.setOnCloseRequest(t -> {
-            Platform.exit();
-            System.exit(0);
-        });
+        
     }
 
     @FXML
