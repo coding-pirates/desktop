@@ -19,21 +19,26 @@
   </ImageView>
    <VBox prefHeight="800.0" prefWidth="1836.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
       <children>
-        <Text boundsType="LOGICAL_VERTICAL_CENTER" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-text-alignment: center;" text="Finde eine Seeschlacht" textAlignment="CENTER" textOrigin="CENTER" VBox.vgrow="NEVER">
-          <font>
-            <Font size="30.0" />
-          </font>
-            <VBox.margin>
-               <Insets left="100.0" top="120.0" />
-            </VBox.margin>
-        </Text>
-         <Label fx:id="lblStatus" contentDisplay="CENTER" prefHeight="54.0" prefWidth="1736.0" textAlignment="CENTER" textFill="RED">
-            <VBox.margin>
-               <Insets left="100.0" />
-            </VBox.margin>
-            <font>
-               <Font name="System Italic" size="24.0" />
-            </font></Label>
+         <VBox prefHeight="200.0" prefWidth="100.0" style="-fx-alignment: center;">
+            <children>
+              <Text boundsType="LOGICAL_VERTICAL_CENTER" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-text-alignment: center;" text="Finde eine Seeschlacht" textAlignment="CENTER" textOrigin="CENTER" VBox.vgrow="NEVER">
+                <font>
+                  <Font size="30.0" />
+                </font>
+                  <VBox.margin>
+                     <Insets left="100.0" top="120.0" />
+                  </VBox.margin>
+              </Text>
+               <Label fx:id="lblStatus" contentDisplay="CENTER" textAlignment="CENTER" textFill="RED">
+                  <VBox.margin>
+                     <Insets left="100.0" />
+                  </VBox.margin>
+                  <font>
+                     <Font name="System Italic" size="24.0" />
+                  </font>
+               </Label>
+            </children>
+         </VBox>
         <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Username:" wrappingWidth="90.13671875">
             <font>
                <Font size="18.0" />
