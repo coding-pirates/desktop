@@ -1,4 +1,4 @@
-package de.upb.codingpirates.battleships.desktop.ClientType;
+package de.upb.codingpirates.battleships.desktop.clienttype;
 
 import de.upb.codingpirates.battleships.client.ListenerHandler;
 import de.upb.codingpirates.battleships.client.listener.GameJoinPlayerResponseListener;
