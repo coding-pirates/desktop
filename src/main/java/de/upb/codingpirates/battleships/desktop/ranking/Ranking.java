@@ -60,10 +60,10 @@ public class Ranking {
      * @param points Map of PlayerIds and Points
      */
     public void sortPoints(Map<Integer, Integer> points) {
-        Map<Integer, Integer> tempPoints = new HashMap<Integer, Integer>(points);
+        Map<Integer, Integer> tempPoints = points;
         Queue<Integer> playerIDS = new LinkedList<>();
         while (!tempPoints.isEmpty()) {
-            Integer aktMaxPunkt = 0;
+            Integer aktMaxPunkt = -3000;
             Integer aktMaxClientId =0;
             Set<Integer> clientIds = tempPoints.keySet();
             for (Integer clientId : clientIds) {
