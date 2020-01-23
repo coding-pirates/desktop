@@ -1,5 +1,6 @@
 package de.upb.codingpirates.battleships.desktop.util;
 
+import de.upb.codingpirates.battleships.desktop.serverlogin.ServerLogin;
 import javafx.embed.swing.JFXPanel;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -13,7 +14,9 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
+import javax.swing.text.html.HTML;
 import java.io.IOException;
+import java.util.ResourceBundle;
 
 public class Impressum {
     @FXML
@@ -35,12 +38,12 @@ public class Impressum {
         window.setTitle(title);
 
         AnchorPane pane;
-        if (title == "Impressum"){
-            FXMLLoader loader = new FXMLLoader(this.getClass().getResource("/fxml/ImpressumView.fxml"));
+        if (title.equals("Impressum")){
+            FXMLLoader loader =  new FXMLLoader(ServerLogin.class.getResource("/fxml/ImpressumView.fxml"), ResourceBundle.getBundle("lang/desktop", Settings.getLocale()));
             pane = loader.load();
         }
         else{
-            FXMLLoader loader = new FXMLLoader(this.getClass().getResource("/fxml/KodexView.fxml"));
+            FXMLLoader loader =  new FXMLLoader(ServerLogin.class.getResource("/fxml/KodexView.fxml"), ResourceBundle.getBundle("lang/desktop", Settings.getLocale()));
             pane = loader.load();
         }
 
