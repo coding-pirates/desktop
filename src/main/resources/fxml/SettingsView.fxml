@@ -74,7 +74,7 @@
                         <children>
                           <ChoiceBox fx:id="language" prefWidth="150.0">
                           </ChoiceBox>
-                           <Label text="please restart the game after changing this setting" AnchorPane.leftAnchor="200.0" />
+                           <Label text="%settings.language.help" AnchorPane.leftAnchor="200.0" />
                         </children>
                      </AnchorPane>
                   </children>
