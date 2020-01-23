@@ -288,7 +288,9 @@ public class PlaceShipsController extends InGameController implements Initializa
 
     @FXML
     public void onBackShipClicked(){
-//TODO
+        model.setSelectedShip((model.getSelectedShip()-1)%(model.getCurrentGame().getConfig().getShips().size()));
+        model.setCurrentRotation(Rotation.NONE);
+        setShipForm();
     }
 
 }
