@@ -3,11 +3,9 @@ package de.upb.codingpirates.battleships.desktop.serverlogin;
 import de.upb.codingpirates.battleships.client.network.ClientApplication;
 import de.upb.codingpirates.battleships.client.network.ClientConnector;
 import de.upb.codingpirates.battleships.client.network.ClientModule;
-import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCombination;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Screen;
@@ -52,7 +50,9 @@ public class ServerLogin {
 
         this.serverLoginController = loader.getController();
         loginStage.setTitle("Login");
-        loginStage.setScene(new Scene(pane));
+        Scene scene = new Scene(pane);
+        scene.getStylesheets().add("https://fonts.googleapis.com/css?family=Pirata+One");
+        loginStage.setScene(scene);
         initDimensions();
         loginStage.show();
     }

@@ -1,17 +1,14 @@
 package de.upb.codingpirates.battleships.desktop.settings;
 
 
-
-import de.upb.codingpirates.battleships.desktop.BattleshipsDesktopClientApplication;
-import javafx.application.Application;
-import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.control.Slider;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+
+import java.io.IOException;
 
 /**
  * Class that implements a Window to set the settings
@@ -26,7 +23,7 @@ public class Settings {
     /**
      * Start.java Method that creates a new Window and a related Controller.
      */
-    public void display(Stage settingsStage) throws Exception {
+    public void display(Stage settingsStage) throws IOException {
         this.settingsStage = settingsStage;
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/SettingsView.fxml"));
         AnchorPane pane = loader.load();
