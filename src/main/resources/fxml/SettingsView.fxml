@@ -1,89 +1,46 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Font?>
-<AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="600.0" style="-fx-background-color: #CFBE8E; -fx-border-color: #CFBE8E;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.upb.codingpirates.battleships.desktop.settings.SettingsController">
-  <VBox alignment="CENTER" fillWidth="false" layoutX="11.0" layoutY="11.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="590.0" prefWidth="591.0" style="-fx-border-width: 5; -fx-border-color: #472218;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-      <children>
-       <Label alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="100.0" prefWidth="154.0" text="Settings" textFill="#f5f5f5">
-         <font>
-           <Font size="38.0" />
-         </font>
-            <VBox.margin>
-               <Insets />
-            </VBox.margin>
-            <graphic>
-               <ImageView fitHeight="77.0" fitWidth="433.0">
-                  <image>
-                     <Image url="@../images/button.png" />
-                  </image>
-               </ImageView>
-            </graphic>
-       </Label>
-         <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="600.0">
-            <children>
-               <Slider fx:id="volume" layoutX="107.0" layoutY="51.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="98.0" prefWidth="434.0" AnchorPane.leftAnchor="107.0" AnchorPane.topAnchor="0.0" />
-               <Button alignment="CENTER" contentDisplay="CENTER" layoutX="107.0" layoutY="226.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#impressum" prefHeight="50.0" prefWidth="150.0" style="-fx-background-color: #CFBE8E;" text="Impressum" textAlignment="CENTER" textFill="WHITE" AnchorPane.leftAnchor="107.0" AnchorPane.rightAnchor="343.0">
-                  <font>
-                     <Font name="System Bold" size="20.0" />
-                  </font>
-                  <graphic>
-                     <ImageView fitHeight="50.0" fitWidth="150.0">
-                        <image>
-                           <Image url="@../images/button.png" />
-                        </image>
-                     </ImageView>
-                  </graphic>
-               </Button>
-               <Button alignment="CENTER" contentDisplay="CENTER" layoutX="300.0" layoutY="226.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#piratenkodex" prefHeight="50.0" prefWidth="176.0" style="-fx-background-color: #CFBE8E;" text="Piratencodex" textAlignment="CENTER" textFill="WHITE">
-                  <font>
-                     <Font name="System Bold" size="20.0" />
-                  </font>
-                  <graphic>
-                     <ImageView fitHeight="50.0" fitWidth="192.0">
-                        <image>
-                           <Image url="@../images/button.png" />
-                        </image>
-                     </ImageView>
-                  </graphic>
-               </Button>
-               <Button contentDisplay="GRAPHIC_ONLY" layoutX="59.0" layoutY="112.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#soundsOff" prefHeight="40.0" prefWidth="48.0" style="-fx-background-color: #CFBE8E;" text="Button" AnchorPane.leftAnchor="59.0" AnchorPane.topAnchor="80.0">
-                  <graphic>
-                     <ImageView fx:id="soundImg" fitHeight="31.0" fitWidth="32.0">
-                        <image>
-                           <Image url="@../images/icon_music.png" />
-                        </image>
-                     </ImageView>
-                  </graphic>
-               </Button>
-               <Button contentDisplay="GRAPHIC_ONLY" layoutX="59.0" layoutY="61.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#volumeOff" prefHeight="40.0" prefWidth="48.0" style="-fx-background-color: #CFBE8E;" text="Button" AnchorPane.bottomAnchor="230.0" AnchorPane.leftAnchor="59.0" AnchorPane.rightAnchor="493.0" AnchorPane.topAnchor="30.0">
-                  <graphic>
-                     <ImageView fx:id="volumeImg" fitHeight="31.0" fitWidth="40.0">
-                        <image>
-                           <Image url="@../images/icon_sound.png" />
-                        </image>
-                     </ImageView>
-                  </graphic>
-               </Button>
-               <HBox prefHeight="100.0" prefWidth="200.0" AnchorPane.bottomAnchor="40.0" AnchorPane.leftAnchor="107.0" AnchorPane.rightAnchor="293.0" AnchorPane.topAnchor="160.0">
-                  <children>
-                     <AnchorPane prefHeight="200.0" prefWidth="200.0">
-                        <children>
-                          <ChoiceBox fx:id="language" prefWidth="150.0">
+<AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="600.0" style="-fx-background-color: #CFBE8E; -fx-border-color: #CFBE8E;-fx-border-width: 5; -fx-border-color: #472218;" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.upb.codingpirates.battleships.desktop.settings.SettingsController">
+   <Slider fx:id="volume" layoutX="130.0" layoutY="225.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="98.0" prefWidth="434.0" />
+   <Button alignment="CENTER" contentDisplay="CENTER" layoutX="323.0" layoutY="465.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#impressum" prefHeight="50.0" prefWidth="150.0" style="-fx-background-color: #CFBE8E;" text="Impressum" textAlignment="CENTER" textFill="WHITE">
+      <font>
+         <Font name="System Bold" size="20.0" />
+      </font>
+      <graphic>
+         <ImageView fitHeight="50.0" fitWidth="192.0">
+            <image>
+               <Image url="@../images/button.png" />
+            </image>
+         </ImageView>
+      </graphic>
+   </Button>
+   <Button alignment="CENTER" contentDisplay="CENTER" layoutX="89.0" layoutY="465.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#piratenkodex" prefHeight="50.0" prefWidth="176.0" style="-fx-background-color: #CFBE8E;" text="Piratencodex" textAlignment="CENTER" textFill="WHITE">
+      <font>
+         <Font name="System Bold" size="20.0" />
+      </font>
+      <graphic>
+         <ImageView fitHeight="50.0" fitWidth="150.0" pickOnBounds="true">
+            <image>
+               <Image url="@../images/button.png" />
+            </image>
+         </ImageView>
+      </graphic>
+   </Button>
+   <Button contentDisplay="GRAPHIC_ONLY" layoutX="82.0" layoutY="254.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#soundsOff" prefHeight="40.0" prefWidth="48.0" style="-fx-background-color: #CFBE8E;" text="Button" AnchorPane.leftAnchor="82.0" AnchorPane.topAnchor="254.0" />
+   <Button contentDisplay="GRAPHIC_ONLY" layoutX="176.0" layoutY="293.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#volumeOff" prefHeight="44.0" prefWidth="38.0" style="-fx-background-color: #CFBE8E;" text="Button" AnchorPane.bottomAnchor="265.0" AnchorPane.leftAnchor="176.0" AnchorPane.rightAnchor="388.0" AnchorPane.topAnchor="293.0" />
+  <ChoiceBox fx:id="language" layoutX="136.0" layoutY="363.0" prefWidth="150.0" style="-fx-background-color: #472218; -fx-border-color: #472218;">
                           </ChoiceBox>
-                           <Label text="%settings.language.help" AnchorPane.leftAnchor="200.0" />
-                        </children>
-                     </AnchorPane>
-                  </children>
-               </HBox>
-            </children>
-         </AnchorPane>
-      </children>
-  </VBox>
-   <Button fx:id="btn_back" layoutX="394.0" layoutY="21.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#closeStage" prefHeight="44.0" prefWidth="100.0" style="-fx-background-color: #CFBE8E; -fx-border-color: #472218;" text="back" AnchorPane.rightAnchor="106.0" AnchorPane.topAnchor="21.0">
+   <Label layoutX="329.0" layoutY="367.0" text="%settings.language.help" AnchorPane.leftAnchor="329.0" />
+   <Button cache="true" cacheHint="ROTATE" cacheShape="false" contentDisplay="TEXT_ONLY" focusTraversable="false" layoutX="531.0" layoutY="19.0" minHeight="-Infinity" minWidth="-Infinity" onAction="#help" prefHeight="44.0" prefWidth="55.0" style="-fx-background-color: #CFBE8E; -fx-border-color: #472218;" text="?" textFill="#472218">
+      <font>
+         <Font name="System Bold" size="22.0" />
+      </font>
+   </Button>
+   <Button fx:id="btn_back" layoutX="423.0" layoutY="14.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#closeStage" prefHeight="44.0" prefWidth="100.0" style="-fx-background-color: #CFBE8E; -fx-border-color: #472218;" text="back" AnchorPane.rightAnchor="77.0" AnchorPane.topAnchor="14.0">
       <graphic>
          <ImageView fitHeight="49.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
             <image>
@@ -92,9 +49,26 @@
          </ImageView>
       </graphic>
    </Button>
-   <Button cache="true" cacheHint="ROTATE" cacheShape="false" contentDisplay="TEXT_ONLY" focusTraversable="false" layoutX="501.0" layoutY="22.0" minHeight="-Infinity" minWidth="-Infinity" onAction="#help" prefHeight="44.0" prefWidth="55.0" style="-fx-background-color: #CFBE8E; -fx-border-color: #472218;" text="?" textFill="#472218">
-      <font>
-         <Font name="System Bold" size="22.0" />
-      </font>
-   </Button>
+   <ImageView fx:id="soundImg" fitHeight="31.0" fitWidth="32.0" layoutX="81.0" layoutY="308.0">
+      <image>
+         <Image url="@../images/icon_music.png" />
+      </image>
+   </ImageView>
+   <ImageView fx:id="volumeImg" fitHeight="31.0" fitWidth="40.0" layoutX="77.0" layoutY="259.0">
+         <image>
+         <Image url="@../images/icon_sound.png" />
+      </image>
+   </ImageView>
+  <Label alignment="CENTER" contentDisplay="CENTER" layoutX="223.0" layoutY="95.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="100.0" prefWidth="154.0" text="Settings" textFill="#f5f5f5">
+    <font>
+      <Font size="38.0" />
+    </font>
+    <graphic>
+      <ImageView fitHeight="77.0" fitWidth="433.0">
+        <image>
+          <Image url="@../images/button.png" />
+        </image>
+      </ImageView>
+    </graphic>
+  </Label>
 </AnchorPane>

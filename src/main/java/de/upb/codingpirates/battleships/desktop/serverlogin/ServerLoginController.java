@@ -18,13 +18,15 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
 import javafx.scene.Cursor;
-import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.ProgressIndicator;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
-import javafx.stage.Window;
 
 import java.io.IOException;
 import java.net.URL;
@@ -186,7 +188,7 @@ public class ServerLoginController implements Initializable, ServerJoinResponseL
                 .getTcpConnector()
                 .connect(serverIP, Integer.parseInt(port),() -> Platform.runLater(()->{
                     lblStatus.setAlignment(Pos.CENTER);
-                    lblStatus.setText(resources.getString("serverLogin.lblStatus.NoBattle"));
+                    lblStatus.setText(resources.getString("serverLogin.lblStatus.noBattle"));
                     login_progress.setVisible(false);
                 }),()->{
                     //Send request to server
