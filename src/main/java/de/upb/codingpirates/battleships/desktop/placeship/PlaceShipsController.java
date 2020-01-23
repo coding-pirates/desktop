@@ -5,6 +5,7 @@ import de.upb.codingpirates.battleships.client.listener.*;
 import de.upb.codingpirates.battleships.desktop.gamefield.GameField;
 import de.upb.codingpirates.battleships.desktop.ingame.InGame;
 import de.upb.codingpirates.battleships.desktop.ingame.InGameController;
+import de.upb.codingpirates.battleships.desktop.lobby.Lobby;
 import de.upb.codingpirates.battleships.desktop.settings.Settings;
 import de.upb.codingpirates.battleships.desktop.util.Help;
 import de.upb.codingpirates.battleships.logic.*;
@@ -119,12 +120,15 @@ public class PlaceShipsController extends InGameController implements Initializa
 
     @FXML
     public void back(){
-        model.sendLeaveRequest(this);
+        System.out.println("Leave Request gesendet!");
+        model.sendLeaveRequest();
+
     }
 
-
-    public void onGameLeaveResponse(GameLeaveResponse response,int ClientID){
-        /*Platform.runLater(() ->{
+    @Override
+    public void onGameLeaveResponse(GameLeaveResponse message, int clientId){
+        System.out.println("GameLeaveResponse bekommen!");
+        Platform.runLater(() ->{
             Lobby lobby = new Lobby();
             Stage lobbyStage = new Stage();
 
@@ -134,12 +138,12 @@ public class PlaceShipsController extends InGameController implements Initializa
             });
 
             try {
-                lobby.display(lobbyStage,model.getClientID());
+                lobby.display(lobbyStage,clientId);
                 closeStage();
             } catch (IOException e) {
                 e.printStackTrace();//TODO
             }
-        });*/
+        });
 
     }
 

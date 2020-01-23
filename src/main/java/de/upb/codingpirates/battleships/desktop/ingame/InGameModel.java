@@ -2,6 +2,7 @@ package de.upb.codingpirates.battleships.desktop.ingame;
 
 import de.upb.codingpirates.battleships.client.ListenerHandler;
 import de.upb.codingpirates.battleships.desktop.BattleshipsDesktopClientApplication;
+import de.upb.codingpirates.battleships.desktop.lobby.Lobby;
 import de.upb.codingpirates.battleships.logic.*;
 import de.upb.codingpirates.battleships.network.message.notification.*;
 import de.upb.codingpirates.battleships.network.message.request.RequestBuilder;
@@ -10,6 +11,7 @@ import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.util.*;
 
 /**
@@ -231,6 +233,11 @@ public class InGameModel extends Application implements InGameModelMessageListen
         }
     }
 
+    public void sendGameLeaveRequest(InGameController controller){
+        BattleshipsDesktopClientApplication.getInstance().getTcpConnector().sendMessageToServer(RequestBuilder.gameLeaveRequest());
+
+    }
+
     /**
      * Closes the InGame Window.
      */
@@ -410,6 +417,28 @@ public class InGameModel extends Application implements InGameModelMessageListen
             Map<Integer, Integer> points = message.getPoints();
             Collection<Shot> sunk = message.getSunk();
             inGameController.playerUpdateNotification(hits, points);
+        });
+    }
+
+
+    public void onGameLeaveResponse (GameLeaveResponse response, int ClientID){
+        Platform.runLater(()->{
+        Lobby lobby = new Lobby();
+        Stage lobbyStage = new Stage();
+
+        lobbyStage.setOnCloseRequest(t -> {
+            Platform.exit();
+            System.exit(0);
+            inGameController.closeStage();
+        });
+
+        try{
+            lobby.display(lobbyStage,this.getClientID());
+
+        }
+        catch (IOException e){
+            e.printStackTrace();
+        }
         });
     }
 }
