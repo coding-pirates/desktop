@@ -30,6 +30,10 @@ public class WaitingController implements Initializable, GameStartNotificationLi
     private Game currentGame;
     private Collection<Client> clientList;
     private int clientID;
+    
+    public WaitingController(){
+        ListenerHandler.registerListener(this);
+    }
 
 
     /**
