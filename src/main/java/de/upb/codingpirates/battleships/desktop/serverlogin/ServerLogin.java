@@ -38,7 +38,7 @@ public class ServerLogin extends Fullscreen {
     public void display(@Nonnull final Stage loginStage) throws Exception {
         this.loginStage = loginStage;
 
-        FXMLLoader loader = new FXMLLoader(ServerLogin.class.getResource("/fxml/ServerLogin.fxml"), ResourceBundle.getBundle("lang/serverLogin", Settings.getLocale()));
+        FXMLLoader loader = new FXMLLoader(ServerLogin.class.getResource("/fxml/ServerLogin.fxml"), ResourceBundle.getBundle("lang/desktop", Settings.getLocale()));
         AnchorPane pane = loader.load();
 
         Image icon = new Image(String.valueOf(getClass().getResource("/images/app_icon.png")));
