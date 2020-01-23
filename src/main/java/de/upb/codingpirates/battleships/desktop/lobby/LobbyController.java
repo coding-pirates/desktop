@@ -3,6 +3,7 @@ package de.upb.codingpirates.battleships.desktop.lobby;
 import de.upb.codingpirates.battleships.client.ListenerHandler;
 import de.upb.codingpirates.battleships.client.listener.LobbyResponseListener;
 import de.upb.codingpirates.battleships.desktop.clienttype.ClientType;
+import de.upb.codingpirates.battleships.desktop.serverlogin.ServerLogin;
 import de.upb.codingpirates.battleships.desktop.settings.Settings;
 import de.upb.codingpirates.battleships.desktop.util.GameView;
 import de.upb.codingpirates.battleships.desktop.util.Help;
@@ -196,6 +197,25 @@ public class LobbyController implements Initializable , LobbyResponseListener {
         }
         catch (IOException e){
             e.printStackTrace();
+        }
+    }
+
+    @FXML
+    public void btnLogoutClicked(){
+        model.serverLogout();
+        ServerLogin login = new ServerLogin();
+        Stage loginStage = new Stage();
+
+        loginStage.setOnCloseRequest(t -> {
+            Platform.exit();
+            System.exit(0);
+        });
+
+        try {
+            login.display(loginStage);
+            closeStage();
+        } catch (Exception e) {
+            e.printStackTrace();//TODO
         }
     }
 

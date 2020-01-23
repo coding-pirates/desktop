@@ -33,5 +33,14 @@ public class LobbyModel {
         }
     }
 
+    public void serverLogout(){
+        try {
+            BattleshipsDesktopClientApplication
+                    .getInstance()
+                    .getTcpConnector().disconnect();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
 }
