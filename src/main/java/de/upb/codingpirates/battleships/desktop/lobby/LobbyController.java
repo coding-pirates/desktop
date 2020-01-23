@@ -59,6 +59,7 @@ public class LobbyController implements Initializable , LobbyResponseListener {
 
                 window.setOnCloseRequest(t -> {
                     showgames();
+
                 });
 
 

@@ -5,6 +5,7 @@ import de.upb.codingpirates.battleships.client.network.ClientConnector;
 import de.upb.codingpirates.battleships.client.network.ClientModule;
 import de.upb.codingpirates.battleships.desktop.start.StartController;
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
@@ -55,6 +56,10 @@ public final class BattleshipsDesktopClientApplication extends Application  {
      */
     public void start(@Nonnull final Stage startStage) throws Exception {
         this.startStage = startStage;
+        startStage.setOnCloseRequest(t-> {
+            Platform.exit();
+            System.exit(0);
+        });
         try{
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/StartView.fxml"));
         AnchorPane pane = loader.load();

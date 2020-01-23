@@ -80,6 +80,7 @@ public class WaitingController implements Initializable, GameStartNotificationLi
 
         try{
             lobby.display(lobbyStage,clientID);
+            closeStage();
         }
         catch (IOException e){
             e.printStackTrace();
