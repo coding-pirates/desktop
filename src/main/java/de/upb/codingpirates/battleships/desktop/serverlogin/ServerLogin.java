@@ -3,6 +3,7 @@ package de.upb.codingpirates.battleships.desktop.serverlogin;
 import de.upb.codingpirates.battleships.client.network.ClientApplication;
 import de.upb.codingpirates.battleships.client.network.ClientConnector;
 import de.upb.codingpirates.battleships.client.network.ClientModule;
+import javafx.beans.binding.BooleanExpression;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -12,6 +13,7 @@ import javafx.scene.input.KeyCombination;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 import javax.annotation.Nonnull;
 
@@ -67,13 +69,15 @@ public class ServerLogin {
 
     private void initDimensions() {
 
-        double screenWidht = Screen.getPrimary().getBounds().getWidth();
+        double screenWidth = Screen.getPrimary().getBounds().getWidth();
         double screenHeight = Screen.getPrimary().getBounds().getHeight();
-        loginStage.setMinWidth(screenWidht*0.83);
+        loginStage.setMinWidth(screenWidth*0.83);
         loginStage.setMinHeight(screenHeight*0.83);
-        loginStage.setMaxWidth(screenWidht);
+        loginStage.setMaxWidth(screenWidth);
         loginStage.setMaxHeight(screenHeight);
-        loginStage.setFullScreen(true);
+        loginStage.setHeight(screenHeight);
+        loginStage.setWidth(screenWidth);
         loginStage.setFullScreenExitKeyCombination(KeyCombination.NO_MATCH);
+        loginStage.initStyle(StageStyle.UNDECORATED);
     }
 }

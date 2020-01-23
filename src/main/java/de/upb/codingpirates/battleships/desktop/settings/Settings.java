@@ -9,9 +9,11 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Slider;
 import javafx.scene.image.Image;
+import javafx.scene.input.KeyCombination;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 /**
  * Class that implements a Window to set the settings
@@ -39,6 +41,7 @@ public class Settings {
         settingsStage.initModality(Modality.APPLICATION_MODAL);
         settingsStage.setResizable(false);
         settingsStage.setScene(new Scene(pane));
+        settingsStage.initStyle(StageStyle.UNDECORATED);
         settingsStage.showAndWait();
     }
 
