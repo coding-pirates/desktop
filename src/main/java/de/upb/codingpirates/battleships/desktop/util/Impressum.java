@@ -23,6 +23,11 @@ public class Impressum {
     @FXML
     private Label lb_message;
 
+    /**
+     * used for displaying the {@link Impressum}
+     * @param title String to which the title is set
+     * @throws IOException
+     */
     public void display(String title) throws IOException {
         Stage window = new Stage();
 
