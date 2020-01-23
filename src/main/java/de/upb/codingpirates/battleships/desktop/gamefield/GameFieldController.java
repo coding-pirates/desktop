@@ -189,8 +189,6 @@ public class GameFieldController implements Initializable {
     public void clickGrid(javafx.scene.input.MouseEvent event) {
         if (event.getClickCount() == 2) {
         if(parent.getTime()>100) {
-            if (parent.getPlacedShots().size() <= game.getConfig().getShotCount()) {
-
                     Node clickedNode = event.getPickResult().getIntersectedNode();
                     if (clickedNode != grid) {
                         // click on descendant node
@@ -206,10 +204,16 @@ public class GameFieldController implements Initializable {
                         if (this.parent.getPlacedShots().contains(new Shot(playerID, point))) {
                             gameField.removeShot(point);
                             this.parent.removeShot(playerID, point);
-                        } else {
+                        } else{
+                            if (this.parent.getPlacedShots().size() < game.getConfig().getShotCount()) {
                             gameField.shotPlaced(point);
                             this.parent.addShot(playerID, point);
                         }
+                            else{
+                                Alert alertToMuchShots = new Alert(Alert.AlertType.INFORMATION,
+                                        "Dieser Schuss kann nichtmehr gesetzt werden", ButtonType.OK);
+                                alertToMuchShots.showAndWait();
+                            }
                     }
                 }
             }
