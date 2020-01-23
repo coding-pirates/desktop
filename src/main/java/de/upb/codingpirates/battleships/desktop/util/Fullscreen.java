@@ -27,6 +27,7 @@ public class Fullscreen {
         //remove the windows taskbar
         stage.initStyle(StageStyle.UNDECORATED);
         stage.setResizable(false);
+        stage.setMaximized(true);
         stage.show();
     }
 }
