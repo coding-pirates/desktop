@@ -2,6 +2,7 @@ package de.upb.codingpirates.battleships.desktop.ingame;
 
 import de.upb.codingpirates.battleships.desktop.endgame.Endgame;
 import de.upb.codingpirates.battleships.desktop.gamefield.GameFieldController;
+import de.upb.codingpirates.battleships.desktop.lobby.Lobby;
 import de.upb.codingpirates.battleships.desktop.ranking.Ranking;
 import de.upb.codingpirates.battleships.desktop.settings.Settings;
 import de.upb.codingpirates.battleships.desktop.util.Help;
@@ -524,7 +525,8 @@ public class InGameController implements Initializable {
         Stage endStage = new Stage();
 
         endStage.setOnCloseRequest(t -> {
-            leave();
+            Platform.exit();
+            System.exit(0);
         });
 
         try {
@@ -568,8 +570,24 @@ public class InGameController implements Initializable {
 
     @FXML
     public void leave(){
-        model.sendGameLeaveRequest(this);
+        model.sendGameLeaveRequest();
+    }
 
+    public void gameLeaveNotification(int clientId){
+        Lobby lobby = new Lobby();
+        Stage lobbyStage = new Stage();
+
+        lobbyStage.setOnCloseRequest(t->{
+            Platform.exit();
+            System.exit(0);
+        });
+
+        try {
+            lobby.display(lobbyStage,clientId);
+            closeStage();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
     }
 
 

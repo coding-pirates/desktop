@@ -15,7 +15,7 @@ public class WaitingModel {
 
     }
 
-    public void sendLeaveRequest(WaitingController sender){
+    public void sendLeaveRequest(){
             BattleshipsDesktopClientApplication.getInstance().getTcpConnector().sendMessageToServer(RequestBuilder.gameLeaveRequest());
 
 

@@ -2,7 +2,6 @@ package de.upb.codingpirates.battleships.desktop.ingame;
 
 import de.upb.codingpirates.battleships.client.ListenerHandler;
 import de.upb.codingpirates.battleships.desktop.BattleshipsDesktopClientApplication;
-import de.upb.codingpirates.battleships.desktop.lobby.Lobby;
 import de.upb.codingpirates.battleships.logic.*;
 import de.upb.codingpirates.battleships.network.message.notification.*;
 import de.upb.codingpirates.battleships.network.message.request.RequestBuilder;
@@ -11,8 +10,10 @@ import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.stage.Stage;
 
-import java.io.IOException;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+import java.util.Map;
 
 /**
  * Model class for the InGame Window.
@@ -235,8 +236,13 @@ public class InGameModel extends Application implements InGameModelMessageListen
         }
     }
 
-    public void sendGameLeaveRequest(InGameController controller){
+    public void sendGameLeaveRequest(){
+        try {
         BattleshipsDesktopClientApplication.getInstance().getTcpConnector().sendMessageToServer(RequestBuilder.gameLeaveRequest());
+        }catch (Exception e){
+            System.out.println("Konnte Game nicht leaven " + e);
+        }
+
 
     }
 
@@ -423,24 +429,9 @@ public class InGameModel extends Application implements InGameModelMessageListen
     }
 
 
-    public void onGameLeaveResponse (GameLeaveResponse response, int ClientID){
+    public void onGameLeaveResponse (GameLeaveResponse response, int clientId){
         Platform.runLater(()->{
-        Lobby lobby = new Lobby();
-        Stage lobbyStage = new Stage();
-
-        lobbyStage.setOnCloseRequest(t -> {
-            Platform.exit();
-            System.exit(0);
-            inGameController.closeStage();
-        });
-
-        try{
-            lobby.display(lobbyStage,this.getClientID());
-
-        }
-        catch (IOException e){
-            e.printStackTrace();
-        }
+            inGameController.gameLeaveNotification(clientId);
         });
     }
 }

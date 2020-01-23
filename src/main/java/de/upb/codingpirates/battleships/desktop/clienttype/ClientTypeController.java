@@ -5,6 +5,7 @@ import de.upb.codingpirates.battleships.client.listener.GameJoinPlayerResponseLi
 import de.upb.codingpirates.battleships.client.listener.GameJoinSpectatorResponseListener;
 import de.upb.codingpirates.battleships.client.listener.SpectatorGameStateResponseListener;
 import de.upb.codingpirates.battleships.desktop.ingame.InGame;
+import de.upb.codingpirates.battleships.desktop.lobby.Lobby;
 import de.upb.codingpirates.battleships.desktop.placeship.Placeships;
 import de.upb.codingpirates.battleships.desktop.waiting.Waiting;
 import de.upb.codingpirates.battleships.logic.ClientType;
@@ -76,7 +77,6 @@ public class ClientTypeController implements Initializable, GameJoinSpectatorRes
     @FXML
     public void start(){
         if(chosenClient=="Player"){
-            closeStage();
             clientTypeModel.sendGameJoinPlayerRequest();
         }
         if(chosenClient=="Spectator"){
@@ -91,6 +91,19 @@ public class ClientTypeController implements Initializable, GameJoinSpectatorRes
     public void closeStage(){
         Stage stage = (Stage) goButton.getScene().getWindow();
         stage.close();
+    }
+
+    public void back(){
+        Lobby newLobby = new Lobby();
+
+        try {
+            newLobby.display(this.LobbyStage,clientTypeModel.getClientID());
+            closeStage();
+        }catch (IOException e){
+            e.printStackTrace();
+        }
+
+
     }
 
     public void placeShips(){
@@ -115,7 +128,8 @@ public class ClientTypeController implements Initializable, GameJoinSpectatorRes
         Stage waitingStage = new Stage();
 
         waitingStage.setOnCloseRequest(t -> {
-            LobbyStage.show();
+           System.exit(0);
+           Platform.exit();
         });
 
         try {
