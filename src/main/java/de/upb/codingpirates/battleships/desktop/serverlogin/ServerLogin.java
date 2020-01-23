@@ -3,12 +3,9 @@ package de.upb.codingpirates.battleships.desktop.serverlogin;
 import de.upb.codingpirates.battleships.client.network.ClientApplication;
 import de.upb.codingpirates.battleships.client.network.ClientConnector;
 import de.upb.codingpirates.battleships.client.network.ClientModule;
-import javafx.beans.binding.BooleanExpression;
-import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCombination;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Screen;
@@ -22,7 +19,7 @@ import javax.annotation.Nonnull;
  */
 public class ServerLogin {
 
-    private Stage loginStage;
+    private Stage stage;
 
     private ServerLoginController serverLoginController;
 
@@ -44,7 +41,7 @@ public class ServerLogin {
      * Loads the ServerLogin.fxml, creates a ServerLogin Window and related Controller.
      */
     public void display(@Nonnull final Stage loginStage) throws Exception {
-        this.loginStage = loginStage;
+        this.stage = loginStage;
 
         FXMLLoader loader = new FXMLLoader(ServerLogin.class.getResource("/fxml/ServerLogin.fxml"));
         AnchorPane pane = loader.load();
@@ -55,29 +52,32 @@ public class ServerLogin {
         this.serverLoginController = loader.getController();
         loginStage.setTitle("Login");
         loginStage.setScene(new Scene(pane));
-        initDimensions();
-        loginStage.show();
+        initDimensions(loginStage);
     }
 
     public Stage getLoginStage() {
-        return loginStage;
+        return stage;
     }
 
     public ClientConnector getTcpConnector() {
         return tcpConnector;
     }
 
-    private void initDimensions() {
+    /**
+     * this method sets the dimensions for {@param stage}. Currently sets width and height to display size. Also removes the windows task bar.
+     * @param stage instance of the stage the dimensions shall be set
+     */
+    private void initDimensions(Stage stage) {
 
         double screenWidth = Screen.getPrimary().getBounds().getWidth();
         double screenHeight = Screen.getPrimary().getBounds().getHeight();
-        loginStage.setMinWidth(screenWidth*0.83);
-        loginStage.setMinHeight(screenHeight*0.83);
-        loginStage.setMaxWidth(screenWidth);
-        loginStage.setMaxHeight(screenHeight);
-        loginStage.setHeight(screenHeight);
-        loginStage.setWidth(screenWidth);
-        loginStage.setFullScreenExitKeyCombination(KeyCombination.NO_MATCH);
-        loginStage.initStyle(StageStyle.UNDECORATED);
+        stage.setMaxWidth(screenWidth);
+        stage.setMaxHeight(screenHeight);
+        stage.setHeight(screenHeight);
+        stage.setWidth(screenWidth);
+        //remove the windows taskbar
+        stage.initStyle(StageStyle.UNDECORATED);
+        stage.setResizable(false);
+        stage.show();
     }
 }

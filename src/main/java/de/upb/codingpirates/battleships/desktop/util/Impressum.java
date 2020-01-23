@@ -11,6 +11,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 import java.io.IOException;
 
@@ -43,6 +44,7 @@ public class Impressum {
         Scene scene = new Scene(pane);
         window.setResizable(false);
         window.setScene(scene);
+        window.initStyle(StageStyle.UNDECORATED);
         window.showAndWait();
     }
 

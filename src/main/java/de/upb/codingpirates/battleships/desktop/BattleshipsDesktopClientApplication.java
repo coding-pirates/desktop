@@ -1,10 +1,13 @@
 package de.upb.codingpirates.battleships.desktop;
 
+import com.google.errorprone.annotations.FormatMethod;
 import de.upb.codingpirates.battleships.client.network.ClientApplication;
 import de.upb.codingpirates.battleships.client.network.ClientModule;
 import de.upb.codingpirates.battleships.desktop.network.ClientConnectorDesktop;
+import de.upb.codingpirates.battleships.desktop.start.Start;
 import de.upb.codingpirates.battleships.desktop.start.StartController;
 import javafx.application.Application;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
@@ -15,6 +18,7 @@ import javafx.scene.media.MediaPlayer;
 import javafx.scene.media.MediaView;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 import javax.annotation.Nonnull;
 import java.io.IOException;
@@ -100,10 +104,9 @@ public final class BattleshipsDesktopClientApplication extends Application {
 
             }
 
-
-
             startStage.setScene(new Scene(pane));
-            initDimensions();
+            Start();
+
             mediaView.getMediaPlayer().setVolume(0.1);
             mediaView.getMediaPlayer().play();
         } catch (IOException e) {
@@ -128,16 +131,13 @@ public final class BattleshipsDesktopClientApplication extends Application {
         sounds = value;
     }
 
-    private void initDimensions() {
-
-        double screenWidht = Screen.getPrimary().getBounds().getWidth();
-        double screenHeight = Screen.getPrimary().getBounds().getHeight();
-        startStage.setMinWidth(screenWidht*0.83);
-        startStage.setMinHeight(screenHeight*0.83);
-        startStage.setMaxWidth(screenWidht);
-        startStage.setMaxHeight(screenHeight);
-        startStage.setFullScreen(true);
-        startStage.setFullScreenExitKeyCombination(KeyCombination.NO_MATCH);
-        startStage.show();
+    /**
+     * used for setting up the start stage in {@link Start}
+     * @throws IOException
+     */
+    @FXML
+    private void Start() throws IOException {
+        Start start = new Start();
+        start.display(startStage);
     }
 }
