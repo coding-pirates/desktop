@@ -39,7 +39,7 @@ public class StartController implements Initializable {
         double displayWidth = Screen.getPrimary().getBounds().getWidth();
         double displayHeight = Screen.getPrimary().getBounds().getHeight();
 
-        //used for scaling the background image
+        //used for scaling the background image to screensize
         startscreen_imageview.setFitHeight(displayHeight);
         startscreen_imageview.setFitWidth(displayWidth);
 
@@ -50,8 +50,8 @@ public class StartController implements Initializable {
         btn_start.setBackground(new Background(new BackgroundImage(new Image(getClass().getResource("/images/button_start_red.png").toExternalForm()), BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, new BackgroundSize(btn_startXSize,btn_startYSize,true,true,true,true))));
         btn_start.setPrefSize(btn_startXSize, btn_startYSize);
 
-        btn_start.setLayoutX(displayWidth * 0.5 - btn_startXSize /2);
-        btn_start.setLayoutY(displayHeight * 0.8 - btn_startYSize/2);
+        btn_start.setLayoutX(displayWidth * 0.5 - btn_startXSize / 2);
+        btn_start.setLayoutY(displayHeight * 0.8 - btn_startYSize / 2);
 
         //logo configuration
         double logoViewXSize = displayWidth * 900/1920;
@@ -59,8 +59,8 @@ public class StartController implements Initializable {
 
         startscreen_logoview.setFitWidth(logoViewXSize);
         startscreen_logoview.setFitHeight(logoViewYSize);
-        startscreen_logoview.setLayoutX(displayWidth /2 - logoViewXSize/2);
-        startscreen_logoview.setLayoutY(displayHeight *0.7 - logoViewYSize/2);
+        startscreen_logoview.setLayoutX(displayWidth / 2 - logoViewXSize / 2);
+        startscreen_logoview.setLayoutY(displayHeight * 0.7 - logoViewYSize / 2);
 
     }
 

@@ -25,6 +25,8 @@ import javafx.scene.control.ProgressIndicator;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.text.Text;
+import javafx.scene.text.TextAlignment;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 
@@ -36,6 +38,7 @@ import java.util.ResourceBundle;
  * Controller Class for the ServerLogin Window.
  */
 public class ServerLoginController implements Initializable, ServerJoinResponseListener {
+
 
     private BattleshipsDesktopClientApplication main;
 
@@ -51,6 +54,10 @@ public class ServerLoginController implements Initializable, ServerJoinResponseL
     private ProgressIndicator login_progress;
     @FXML
     private ImageView login_background_imageView;
+    @FXML
+    private ImageView btn_login_imageview;
+    @FXML
+    private Button btn_login;
 
     private StringPropertyBase text = new SimpleStringProperty();
 
@@ -74,12 +81,15 @@ public class ServerLoginController implements Initializable, ServerJoinResponseL
     public void initialize(URL arg0, ResourceBundle arg1) {
         text.addListener(listener ->lblStatus.setText(text.get()));
 
+        //hide the progressbar
         login_progress.setVisible(false);
+
         double displayWidth = Screen.getPrimary().getBounds().getWidth();
         double displayHeight = Screen.getPrimary().getBounds().getHeight();
 
         //used for scaling the background image
-        login_background_imageView.setImage(new Image("images/Background.png", displayWidth, displayHeight, true, false));
+        login_background_imageView.setFitHeight(displayHeight);
+        login_background_imageView.setFitWidth(displayWidth);
 
         // forces the portField to be numeric only
         portField.textProperty().addListener(new ChangeListener<String>() {
@@ -107,10 +117,10 @@ public class ServerLoginController implements Initializable, ServerJoinResponseL
         login_progress.setVisible(true);
         lblStatus.setText("");
 
-        if(ipField.getText().isEmpty()|| portField.getText().isEmpty() || nameField.getText().isEmpty())
+        if(ipField.getText().isEmpty() || portField.getText().isEmpty() || nameField.getText().isEmpty())
         {
-            lblStatus.setAlignment(Pos.CENTER);
-            lblStatus.setText("Trage in alle Felder etwas ein");
+            lblStatus.setAlignment(Pos.CENTER_LEFT);
+            lblStatus.setText("Ohne genaue Koordinaten und einen Namen kann nichts gefunden werden!");
             login_progress.setVisible(false);
             return;
         }
@@ -119,7 +129,7 @@ public class ServerLoginController implements Initializable, ServerJoinResponseL
                 .getTcpConnector()
                 .connect(serverIP, Integer.parseInt(port),() -> Platform.runLater(()->{
                     lblStatus.setAlignment(Pos.CENTER);
-                    lblStatus.setText("Anmeldung fehlgeschlagen: Server nicht erreichbar!");
+                    lblStatus.setText("Seeschlacht konnte nicht gefunden werden!");
                     login_progress.setVisible(false);
                 }),()->{
                     //Send request to server
