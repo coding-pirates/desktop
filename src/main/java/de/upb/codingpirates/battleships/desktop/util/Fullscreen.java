@@ -5,10 +5,11 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
 import javax.annotation.Nonnull;
+import java.io.IOException;
 
 public class Fullscreen {
 
-    public void display(@Nonnull final Stage loginStage) throws Exception {
+    public void display(@Nonnull final Stage loginStage) throws IOException {
         this.initDimensions(loginStage);
     }
 

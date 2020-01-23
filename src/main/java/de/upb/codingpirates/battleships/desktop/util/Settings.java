@@ -1,5 +1,6 @@
 package de.upb.codingpirates.battleships.desktop.util;
 
+import com.google.common.collect.Lists;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import org.apache.logging.log4j.LogManager;
@@ -9,11 +10,12 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
+import java.util.List;
 import java.util.Locale;
 
 public class Settings {
     private static final Logger LOGGER = LogManager.getLogger();
-
+    private static final List<Locale> languages = Lists.newArrayList(Locale.GERMAN, Locale.ENGLISH);
     private static Settings settings = new Settings();
 
     private Locale locale;
@@ -47,6 +49,10 @@ public class Settings {
 
     public static Boolean getSoundMute() {
         return settings.soundMute;
+    }
+
+    public static List<Locale> getAllLanguages() {
+        return languages;
     }
 
     public static void setLocale(Locale locale) {

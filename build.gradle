@@ -44,3 +44,11 @@ test {
         events "passed", "skipped", "failed"
     }
 }
+jar{
+    manifest {
+        attributes 'Implementation-Title': 'Battleships Desktop',
+                'Implementation-Version': "${project.server_version}",
+                'Main-Class': 'de.upb.codingpirates.battleships.desktop.BattleshipsDesktopClientApplication'
+    }
+    from { configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) } }
+}

@@ -13,6 +13,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 import javax.annotation.Nonnull;
+import java.io.IOException;
 import java.util.ResourceBundle;
 
 /**
@@ -35,7 +36,7 @@ public class ServerLogin extends Fullscreen {
     /**
      * Loads the ServerLogin.fxml, creates a ServerLogin Window and related Controller.
      */
-    public void display(@Nonnull final Stage loginStage) throws Exception {
+    public void display(@Nonnull final Stage loginStage) throws IOException {
         this.loginStage = loginStage;
 
         FXMLLoader loader = new FXMLLoader(ServerLogin.class.getResource("/fxml/ServerLogin.fxml"), ResourceBundle.getBundle("lang/desktop", Settings.getLocale()));
