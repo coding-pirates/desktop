@@ -4,6 +4,7 @@ import de.upb.codingpirates.battleships.client.network.ClientApplication;
 import de.upb.codingpirates.battleships.client.network.ClientModule;
 import de.upb.codingpirates.battleships.desktop.network.ClientConnectorDesktop;
 import de.upb.codingpirates.battleships.desktop.start.StartController;
+import de.upb.codingpirates.battleships.desktop.util.Settings;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -55,7 +56,8 @@ public final class BattleshipsDesktopClientApplication extends Application {
     /**
      * Loads the StartView.fxml, creates a Start.java Window and related Controller.
      */
-    public void start(@Nonnull final Stage startStage) throws Exception {
+    public void start(@Nonnull final Stage startStage) {
+        Settings.init();
         this.startStage = startStage;
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/StartView.fxml"));
@@ -93,7 +95,8 @@ public final class BattleshipsDesktopClientApplication extends Application {
                 final MediaPlayer player = players.get(i);
                 final MediaPlayer nextPlayer = players.get((i + 1) % players.size());
                 player.setOnEndOfMedia(() -> {
-                    nextPlayer.setVolume(0.1);
+                    nextPlayer.setVolume((double)Settings.getMusicVolume()/100);
+                    nextPlayer.setMute(Settings.getMusicMute());
                     mediaView.setMediaPlayer(nextPlayer);
                     nextPlayer.play();
                 });
@@ -104,8 +107,9 @@ public final class BattleshipsDesktopClientApplication extends Application {
 
             startStage.setScene(new Scene(pane));
             initDimensions();
-            mediaView.getMediaPlayer().setVolume(0.1);
+            mediaView.getMediaPlayer().setVolume((double)Settings.getMusicVolume()/100);
             mediaView.getMediaPlayer().play();
+            mediaView.getMediaPlayer().setMute(Settings.getMusicMute());
         } catch (IOException e) {
             e.printStackTrace();
         }

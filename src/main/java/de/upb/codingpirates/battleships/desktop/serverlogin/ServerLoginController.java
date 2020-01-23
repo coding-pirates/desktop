@@ -1,7 +1,6 @@
 package de.upb.codingpirates.battleships.desktop.serverlogin;
 
 import de.upb.codingpirates.battleships.client.ListenerHandler;
-import de.upb.codingpirates.battleships.client.listener.MessageHandlerListener;
 import de.upb.codingpirates.battleships.client.listener.ServerJoinResponseListener;
 import de.upb.codingpirates.battleships.desktop.BattleshipsDesktopClientApplication;
 import de.upb.codingpirates.battleships.desktop.lobby.Lobby;
@@ -38,8 +37,9 @@ import java.util.ResourceBundle;
  */
 public class ServerLoginController implements Initializable, ServerJoinResponseListener {
 
-
     private BattleshipsDesktopClientApplication main;
+
+    private ResourceBundle resources;
 
     @FXML
     private TextField ipField;
@@ -65,7 +65,7 @@ public class ServerLoginController implements Initializable, ServerJoinResponseL
     private StringPropertyBase text = new SimpleStringProperty();
 
     public ServerLoginController() {
-        ListenerHandler.registerListener((MessageHandlerListener) this);
+        ListenerHandler.registerListener(this);
     }
 
     /**
@@ -81,7 +81,8 @@ public class ServerLoginController implements Initializable, ServerJoinResponseL
      * Initial Method.
      */
     @Override
-    public void initialize(URL arg0, ResourceBundle arg1) {
+    public void initialize(URL arg0, ResourceBundle resourceBundle) {
+        this.resources = resourceBundle;
         text.addListener(listener ->lblStatus.setText(text.get()));
 
         //hide the progressbar
@@ -144,35 +145,40 @@ public class ServerLoginController implements Initializable, ServerJoinResponseL
         lblStatus.setText("");
 
         int flag = 0;
-        if(ipField.getText().isEmpty())
-            flag +=1;
-        if(portField.getText().isEmpty())
-            flag +=2;
         if(nameField.getText().isEmpty())
+            flag +=1;
+        if(ipField.getText().isEmpty())
+            flag +=2;
+        if(portField.getText().isEmpty())
             flag += 4;
 
         if(flag != 0) {
-            StringBuilder builder = new StringBuilder("Ohne").append(" ");
-            if((flag & 1) != 0){
-                builder.append("Koordinaten");
-                if((flag & 2) != 0 && (flag & 4) != 0){
-                    builder.append(", ");
-                }else if((flag & 2) != 0 || (flag & 4) != 0){
-                    builder.append(" ").append("und");
-                }
+            String string = "";
+            switch (flag){
+                case 1:
+                    string = resources.getString("serverLogin.lblStatus.noName");
+                    break;
+                case 2:
+                    string = resources.getString("serverLogin.lblStatus.noIp");
+                    break;
+                case 3:
+                    string = resources.getString("serverLogin.lblStatus.noNameIp");
+                    break;
+                case 4:
+                    string = resources.getString("serverLogin.lblStatus.noPort");
+                    break;
+                case 5:
+                    string = resources.getString("serverLogin.lblStatus.noNamePort");
+                    break;
+                case 6:
+                    string = resources.getString("serverLogin.lblStatus.noIpPort");
+                    break;
+                case 7:
+                    string = resources.getString("serverLogin.lblStatus.noNameIpPort");
+                    break;
             }
-            if((flag & 2) != 0){
-                builder.append(" ").append("Richtung");
-                if((flag & 4) != 0){
-                    builder.append(" ").append("und");
-                }
-            }
-            if((flag & 4) != 0){
-                builder.append(" ").append("Kapinänsnamen");
-            }
-            builder.append(" ").append("kann keine Seeschlacht gefunden werden!");
             lblStatus.setAlignment(Pos.CENTER_LEFT);
-            lblStatus.setText(builder.toString());
+            lblStatus.setText(string);
             login_progress.setVisible(false);
             return;
         }
@@ -182,7 +188,7 @@ public class ServerLoginController implements Initializable, ServerJoinResponseL
                 .getTcpConnector()
                 .connect(serverIP, Integer.parseInt(port),() -> Platform.runLater(()->{
                     lblStatus.setAlignment(Pos.CENTER);
-                    lblStatus.setText("Seeschlacht konnte nicht gefunden werden!");
+                    lblStatus.setText(resources.getString("serverLogin.lblStatus.NoBattle"));
                     login_progress.setVisible(false);
                 }),()->{
                     //Send request to server
@@ -242,7 +248,7 @@ public class ServerLoginController implements Initializable, ServerJoinResponseL
     public void help() {
         Help help = new Help();
         try{
-            help.display("Server-Login-Help");
+            help.display(resources.getString("serverLogin.help.title"));
         }
         catch (IOException e){
             e.printStackTrace();

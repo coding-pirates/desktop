@@ -22,7 +22,7 @@
       <children>
          <VBox prefHeight="200.0" prefWidth="100.0" style="-fx-alignment: center;">
             <children>
-              <Text boundsType="LOGICAL_VERTICAL_CENTER" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-text-alignment: center; -fx-font-family: 'Pirata One';" text="Finde eine Seeschlacht" textAlignment="CENTER" textOrigin="CENTER" VBox.vgrow="NEVER">
+              <Text boundsType="LOGICAL_VERTICAL_CENTER" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-text-alignment: center; -fx-font-family: 'Pirata One';" text="%serverLogin.title" textAlignment="CENTER" textOrigin="CENTER" VBox.vgrow="NEVER">
                 <font>
                   <Font size="50.0" />
                 </font>
@@ -40,12 +40,12 @@
                </Label>
             </children>
          </VBox>
-        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Username:" wrappingWidth="100.0" style="-fx-font-family: 'Pirata One'; -fx-font-size: 25">
+        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="%serverLogin.name.title" wrappingWidth="140.0" style="-fx-font-family: 'Pirata One'; -fx-font-size: 25">
             <VBox.margin>
                <Insets left="170.0" top="50.0" />
             </VBox.margin>
          </Text>
-        <TextField fx:id="nameField" minHeight="-Infinity" minWidth="-Infinity" prefHeight="60.0" prefWidth="1060.0" promptText="Name hier eingeben...." style="-fx-background-color: #472218; -fx-border-radius: 25; -fx-text-inner-color: white; -fx-font-family: 'Pirata One'; -fx-font-size: 20">
+        <TextField fx:id="nameField" minHeight="-Infinity" minWidth="-Infinity" prefHeight="60.0" prefWidth="1060.0" promptText="%serverLogin.name.field.text" style="-fx-background-color: #472218; -fx-border-radius: 25; -fx-text-inner-color: white; -fx-font-family: 'Pirata One'; -fx-font-size: 20">
           <effect>
             <Glow level="0.29" />
           </effect>
@@ -53,12 +53,12 @@
                <Insets left="170.0" right="170.0" />
             </VBox.margin>
         </TextField>
-        <Text fill="#fcf9f9" strokeType="OUTSIDE" strokeWidth="0.0" text="IP-Adresse:" wrappingWidth="120.0" style="-fx-font-family: 'Pirata One'; -fx-font-size: 25">
+        <Text fill="#fcf9f9" strokeType="OUTSIDE" strokeWidth="0.0" text="%serverLogin.ip.title" wrappingWidth="120.0" style="-fx-font-family: 'Pirata One'; -fx-font-size: 25">
             <VBox.margin>
                <Insets left="170.0" top="20.0" />
             </VBox.margin>
          </Text>
-        <TextField fx:id="ipField" minHeight="-Infinity" minWidth="-Infinity" prefHeight="60.0" prefWidth="1060.0" promptText="Server-IP hier eingeben...." style="-fx-background-color: #472218; -fx-border-radius: 25; -fx-text-inner-color: white; -fx-font-family: 'Pirata One';-fx-font-size: 20">
+        <TextField fx:id="ipField" minHeight="-Infinity" minWidth="-Infinity" prefHeight="60.0" prefWidth="1060.0" promptText="%serverLogin.ip.field.text" style="-fx-background-color: #472218; -fx-border-radius: 25; -fx-text-inner-color: white; -fx-font-family: 'Pirata One';-fx-font-size: 20">
           <effect>
             <Glow />
           </effect>
@@ -66,12 +66,12 @@
                <Insets left="170.0" right="170.0" />
             </VBox.margin>
         </TextField>
-        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Port:" wrappingWidth="50.0" style="-fx-font-family: 'Pirata One'; -fx-font-size: 25">
+        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="%serverLogin.port.title" wrappingWidth="50.0" style="-fx-font-family: 'Pirata One'; -fx-font-size: 25">
             <VBox.margin>
                <Insets left="170.0" top="20.0" />
             </VBox.margin>
          </Text>
-        <TextField fx:id="portField" minHeight="-Infinity" minWidth="-Infinity" prefHeight="60.0" prefWidth="1060.0" promptText="Server-Port hier eingeben...." style="-fx-background-color: #472218; -fx-border-radius: 25; -fx-text-inner-color: white; -fx-font-family: 'Pirata One'; -fx-font-size: 20">
+        <TextField fx:id="portField" minHeight="-Infinity" minWidth="-Infinity" prefHeight="60.0" prefWidth="1060.0" promptText="%serverLogin.port.field.text" style="-fx-background-color: #472218; -fx-border-radius: 25; -fx-text-inner-color: white; -fx-font-family: 'Pirata One'; -fx-font-size: 20">
           <effect>
             <Glow />
           </effect>

@@ -65,7 +65,6 @@ public class StartController implements Initializable {
     }
 
     public void setMain(BattleshipsDesktopClientApplication main) {
-
         this.main = main;
     }
 
@@ -76,7 +75,7 @@ public class StartController implements Initializable {
 
     @FXML
     public void handleButton() throws Exception {
-        ServerLogin login = new ServerLogin();
+        ServerLogin login = new ServerLogin(main);
         Stage loginStage = new Stage();
         try {
             login.display(loginStage);
