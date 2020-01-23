@@ -39,4 +39,6 @@ public class ClientType {
     public Stage getLobbyStage(){
         return this.LobbyStage;
     }
+    public ClientTypeController getClientTypeController(){return this.clientTypeController;}
+    public void setClientTypeController(ClientTypeController clientTypeController){this.clientTypeController = clientTypeController;}
 }

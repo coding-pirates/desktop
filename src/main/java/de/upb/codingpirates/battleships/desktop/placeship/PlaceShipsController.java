@@ -5,13 +5,9 @@ import de.upb.codingpirates.battleships.client.listener.*;
 import de.upb.codingpirates.battleships.desktop.gamefield.GameField;
 import de.upb.codingpirates.battleships.desktop.ingame.InGame;
 import de.upb.codingpirates.battleships.desktop.ingame.InGameController;
-import de.upb.codingpirates.battleships.desktop.lobby.Lobby;
 import de.upb.codingpirates.battleships.desktop.settings.Settings;
 import de.upb.codingpirates.battleships.desktop.util.Help;
-import de.upb.codingpirates.battleships.logic.ClientType;
-import de.upb.codingpirates.battleships.logic.Game;
-import de.upb.codingpirates.battleships.logic.PlacementInfo;
-import de.upb.codingpirates.battleships.logic.Point2D;
+import de.upb.codingpirates.battleships.logic.*;
 import de.upb.codingpirates.battleships.network.message.notification.GameInitNotification;
 import de.upb.codingpirates.battleships.network.message.notification.GameStartNotification;
 import de.upb.codingpirates.battleships.network.message.response.GameLeaveResponse;
@@ -31,7 +27,6 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.Random;
 import java.util.ResourceBundle;
 
 /**
