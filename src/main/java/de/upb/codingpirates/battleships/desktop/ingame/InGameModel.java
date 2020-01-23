@@ -137,11 +137,13 @@ public class InGameModel extends Application implements InGameModelMessageListen
 
     public void addShot(int playerId, Point2D shot){
         this.placedShots.add(new Shot(playerId,shot));
-        if(this.placedShots.size() == ausgewaehltesSpiel.getConfig().getShips().size()){
-            sendShotRequest();
-        }
+        sendShotRequest();
     }
 
+    public void removeShot(int playerId, Point2D shot){
+        this.placedShots.remove(new Shot(playerId,shot));
+        sendShotRequest();
+    }
     public void setClientType(ClientType clientType){
         this.clientType = clientType;
     }
@@ -348,7 +350,7 @@ public class InGameModel extends Application implements InGameModelMessageListen
     public void onRemainingTimeResponse(RemainingTimeResponse message, int clientId) {
         Platform.runLater(()-> {
             Long rtime = message.getTime();
-            inGameController.remainingTimeResponse(rtime);
+            inGameController.remainingTimeResponse(rtime*-1);
         });
     }
 

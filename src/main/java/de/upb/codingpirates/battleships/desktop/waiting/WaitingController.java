@@ -1,5 +1,6 @@
 package de.upb.codingpirates.battleships.desktop.waiting;
 
+import de.upb.codingpirates.battleships.client.ListenerHandler;
 import de.upb.codingpirates.battleships.client.listener.GameInitNotificationListener;
 import de.upb.codingpirates.battleships.client.listener.GameStartNotificationListener;
 import de.upb.codingpirates.battleships.desktop.ingame.InGame;

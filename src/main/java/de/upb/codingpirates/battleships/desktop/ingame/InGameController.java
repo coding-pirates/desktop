@@ -100,6 +100,10 @@ public class InGameController implements Initializable {
         this.game = game;
     }
 
+    public long getTime(){
+        return millis;
+    }
+
     public void setClientType(ClientType clientType){
         model.setClientType(clientType);
     }
@@ -135,7 +139,6 @@ public class InGameController implements Initializable {
 
             @Override
             public void handle(ActionEvent event) {
-
                 millis = millis-1000;
                 Long seconds = millis/1000;
                 restTime.setText((seconds.toString()));
@@ -382,6 +385,10 @@ public class InGameController implements Initializable {
     public void addShot(int playerId, Point2D shot){
         model.addShot(playerId, shot);
     }
+
+    public void removeShot(int playerId, Point2D shot){
+        model.removeShot(playerId, shot);
+    }
     /**
      * Starts missHit for every missed Shot on the Controller its related to.
      *
@@ -419,7 +426,7 @@ public class InGameController implements Initializable {
         time.play();
     }
 
-    public void gameStartNotification() {
+   /* public void gameStartNotification() {
         Platform.runLater(new Runnable() {
 
             @Override
@@ -429,7 +436,7 @@ public class InGameController implements Initializable {
         });
         this.millis = game.getConfig().getRoundTime();
         this.startTimer();
-    }
+    } */
 
     /**
      * Starts setPoints().

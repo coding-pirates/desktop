@@ -2,14 +2,13 @@ package de.upb.codingpirates.battleships.desktop.gamefield;
 
 import de.upb.codingpirates.battleships.desktop.ingame.InGameController;
 import de.upb.codingpirates.battleships.desktop.placeship.PlaceShipsController;
-import de.upb.codingpirates.battleships.logic.Game;
-import de.upb.codingpirates.battleships.logic.PlacementInfo;
-import de.upb.codingpirates.battleships.logic.Point2D;
-import de.upb.codingpirates.battleships.logic.ShipType;
+import de.upb.codingpirates.battleships.logic.*;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.scene.Node;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
@@ -188,24 +187,38 @@ public class GameFieldController implements Initializable {
      * @param event
      */
     public void clickGrid(javafx.scene.input.MouseEvent event) {
-        if (parent.getPlacedShots().size() < game.getConfig().getShotCount()) {
-            if (event.getClickCount() == 2) {
-                Node clickedNode = event.getPickResult().getIntersectedNode();
-                if (clickedNode != grid) {
-                    // click on descendant node
-                    Node parent = clickedNode.getParent();
-                    while (parent != grid && parent != null) {
-                        clickedNode = parent;
-                        parent = clickedNode.getParent();
+        if (event.getClickCount() == 2) {
+        if(parent.getTime()>100) {
+            if (parent.getPlacedShots().size() <= game.getConfig().getShotCount()) {
+
+                    Node clickedNode = event.getPickResult().getIntersectedNode();
+                    if (clickedNode != grid) {
+                        // click on descendant node
+                        Node parent = clickedNode.getParent();
+                        while (parent != grid && parent != null) {
+                            clickedNode = parent;
+                            parent = clickedNode.getParent();
+                        }
+                        Integer colIndex = GridPane.getColumnIndex(clickedNode);
+                        Integer rowIndex = GridPane.getRowIndex(clickedNode);
+                        int row = gameField.getRow();
+                        Point2D point = new Point2D(colIndex, row - rowIndex - 1);
+                        if (this.parent.getPlacedShots().contains(new Shot(playerID, point))) {
+                            gameField.removeShot(point);
+                            this.parent.removeShot(playerID, point);
+                        } else {
+                            gameField.shotPlaced(point);
+                            this.parent.addShot(playerID, point);
+                        }
                     }
-                    Integer colIndex = GridPane.getColumnIndex(clickedNode);
-                    Integer rowIndex = GridPane.getRowIndex(clickedNode);
-                    int row = gameField.getRow();
-                    //System.out.println("Mouse clicked cell: " + colIndex + " And: " + rowIndex);
-                    gameField.shotPlaced(new Point2D(colIndex, row - rowIndex - 1));
-                    this.parent.addShot(playerID,new Point2D(colIndex, row - rowIndex - 1));
                 }
             }
+        else{
+            Alert alertToLate = new Alert(Alert.AlertType.INFORMATION,
+                    "Der Schuss wurde leider zu spät gesetzt", ButtonType.OK);
+            alertToLate.showAndWait();
         }
+        }
+
     }
 }
