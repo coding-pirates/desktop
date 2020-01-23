@@ -16,8 +16,8 @@ public class Waiting  {
     private WaitingController waitingController;
     private int clientID;
 
-    public void display(Stage waitingStage, Game currentGame,int clientID) throws IOException {
-        this.waitingStage = waitingStage;
+    public void display(Stage stage, Game currentGame,int clientID) throws IOException {
+        this.waitingStage = stage;
         this.clientID = clientID;
 
         waitingStage.initModality(Modality.APPLICATION_MODAL);
@@ -28,15 +28,13 @@ public class Waiting  {
 
         waitingController = loader.getController();
         waitingController.setCurrentGame(currentGame);
-        waitingController.setClientId(this.clientID);
+        waitingController.setClientId(clientID);
         waitingController.setModel();
         Image icon = new Image(String.valueOf(getClass().getResource("/images/app_icon.png")));
         waitingStage.getIcons().add(icon);
         Scene scene = new Scene(pane);
         waitingStage.setScene(scene);
-        waitingStage.showAndWait();
+        waitingStage.show();
     }
-    public void setCurrentGame(Game currentGame){
-        waitingController.setCurrentGame(currentGame);
-    }
+
 }
