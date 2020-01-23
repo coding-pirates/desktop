@@ -511,16 +511,18 @@ public class InGameController implements Initializable {
     private void startEndView() throws Exception {
         Endgame endgame = new Endgame();
         Stage endStage = new Stage();
+
+        endStage.setOnCloseRequest(t -> {
+            leave();
+        });
+
         try {
             endgame.display(endStage,points,players,model.getClientID());
             closeStage();
         } catch (IOException e) {
             e.printStackTrace();//TODO
         }
-        endStage.setOnCloseRequest(t -> {
-            Platform.exit();
-            System.exit(0);
-        });
+
     }
 
     @FXML
@@ -543,10 +545,10 @@ public class InGameController implements Initializable {
         } catch (IOException e) {
             e.printStackTrace();//TODO
         }
-        settingsStage.setOnCloseRequest(t -> {
+        /*settingsStage.setOnCloseRequest(t -> {
             Platform.exit();
             System.exit(0);
-        });
+        });*/
     }
     public void closeStage(){
         Stage stage = (Stage) shotCount.getScene().getWindow();
@@ -558,16 +560,19 @@ public class InGameController implements Initializable {
         //TODO send leaveRequest
         Lobby lobby = new Lobby();
         Stage lobbyStage = new Stage();
+
+        lobbyStage.setOnCloseRequest(t -> {
+            Platform.exit();
+            System.exit(0);
+        });
+
         try {
             lobby.display(lobbyStage, model.getClientID());
             closeStage();
         } catch (IOException e) {
             e.printStackTrace();//TODO
         }
-        lobbyStage.setOnCloseRequest(t -> {
-            Platform.exit();
-            System.exit(0);
-        });
+
     }
 
 

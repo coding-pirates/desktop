@@ -1,18 +1,20 @@
 package de.upb.codingpirates.battleships.desktop.placeship;
 
 import de.upb.codingpirates.battleships.client.ListenerHandler;
-import de.upb.codingpirates.battleships.client.listener.GameInitNotificationListener;
-import de.upb.codingpirates.battleships.client.listener.GameStartNotificationListener;
-import de.upb.codingpirates.battleships.client.listener.MessageHandlerListener;
-import de.upb.codingpirates.battleships.client.listener.PlaceShipsResponseListener;
+import de.upb.codingpirates.battleships.client.listener.*;
 import de.upb.codingpirates.battleships.desktop.gamefield.GameField;
 import de.upb.codingpirates.battleships.desktop.ingame.InGame;
 import de.upb.codingpirates.battleships.desktop.ingame.InGameController;
+import de.upb.codingpirates.battleships.desktop.lobby.Lobby;
 import de.upb.codingpirates.battleships.desktop.settings.Settings;
 import de.upb.codingpirates.battleships.desktop.util.Help;
-import de.upb.codingpirates.battleships.logic.*;
+import de.upb.codingpirates.battleships.logic.ClientType;
+import de.upb.codingpirates.battleships.logic.Game;
+import de.upb.codingpirates.battleships.logic.PlacementInfo;
+import de.upb.codingpirates.battleships.logic.Point2D;
 import de.upb.codingpirates.battleships.network.message.notification.GameInitNotification;
 import de.upb.codingpirates.battleships.network.message.notification.GameStartNotification;
+import de.upb.codingpirates.battleships.network.message.response.GameLeaveResponse;
 import de.upb.codingpirates.battleships.network.message.response.PlaceShipsResponse;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
@@ -35,7 +37,7 @@ import java.util.ResourceBundle;
 /**
  * Controller Class for the PlaceShips Window.
  */
-public class PlaceShipsController extends InGameController implements Initializable, PlaceShipsResponseListener, GameStartNotificationListener, GameInitNotificationListener {
+public class PlaceShipsController extends InGameController implements Initializable, PlaceShipsResponseListener, GameStartNotificationListener, GameInitNotificationListener, GameLeaveResponseListener {
 
     @FXML
     private Button btn_rotate;
@@ -113,28 +115,37 @@ public class PlaceShipsController extends InGameController implements Initializa
         catch (IOException e) {
             e.printStackTrace();//TODO
         }
-        settingsStage.setOnCloseRequest(t -> {
+        /*settingsStage.setOnCloseRequest(t -> {
             Platform.exit();
             System.exit(0);
-        });
+        });*/
 
     }
 
     @FXML
     public void back(){
-        //TODO leave Message
-       /* Lobby lobby = new Lobby();
-        Stage lobbyStage = new Stage();
-        try {
-            lobby.display(lobbyStage);
-            closeStage();
-        } catch (IOException e) {
-            e.printStackTrace();//TODO
-        }
-        lobbyStage.setOnCloseRequest(t -> {
-            Platform.exit();
-            System.exit(0);
-        }); */
+        model.sendLeaveRequest(this);
+    }
+
+
+    public void onGameLeaveResponse(GameLeaveResponse response,int ClientID){
+        /*Platform.runLater(() ->{
+            Lobby lobby = new Lobby();
+            Stage lobbyStage = new Stage();
+
+            lobbyStage.setOnCloseRequest(y -> {
+                Platform.exit();
+                System.exit(0);
+            });
+
+            try {
+                lobby.display(lobbyStage,model.getClientID());
+                closeStage();
+            } catch (IOException e) {
+                e.printStackTrace();//TODO
+            }
+        });*/
+
     }
 
     @FXML
@@ -249,6 +260,12 @@ public class PlaceShipsController extends InGameController implements Initializa
         Platform.runLater(()->{
             InGame inGame = new InGame();
             Stage inGameStage = new Stage();
+
+            inGameStage.setOnCloseRequest(t->{
+                Platform.exit();
+                System.exit(0);
+            });
+
             try {
                 inGame.start(inGameStage,model.getCurrentGame(), ClientType.PLAYER, model.getPlacedShips(),clientId);
                 closeStage();

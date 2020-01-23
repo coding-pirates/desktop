@@ -46,16 +46,19 @@ public class StartController implements Initializable {
     public void handleButton() throws Exception {
         ServerLogin login = new ServerLogin();
         Stage loginStage = new Stage();
+
+        loginStage.setOnCloseRequest(t -> {
+            Platform.exit();
+            System.exit(0);
+        });
+
         try {
             login.display(loginStage);
             closeStage();
         } catch (IOException e) {
             e.printStackTrace();//TODO
         }
-        loginStage.setOnCloseRequest(t -> {
-            Platform.exit();
-            System.exit(0);
-        });
+
     }
 
 }

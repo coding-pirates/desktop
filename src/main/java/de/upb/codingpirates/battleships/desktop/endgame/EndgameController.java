@@ -75,10 +75,10 @@ public class EndgameController implements Initializable {
         } catch (IOException e) {
             e.printStackTrace();//TODO
         }
-        settingsStage.setOnCloseRequest(t -> {
+        /*settingsStage.setOnCloseRequest(t -> {
             Platform.exit();
             System.exit(0);
-        });
+        });*/
     }
 
     @FXML
@@ -92,8 +92,10 @@ public class EndgameController implements Initializable {
         } catch (IOException e) {
             e.printStackTrace();//TODO
         }
-        ranking.setPlayer(players);
-        ranking.sortPoints(points);
+        if(points!= null) {
+            ranking.setPlayer(players);
+            ranking.sortPoints(points);
+        }
 
     }
 
@@ -101,16 +103,18 @@ public class EndgameController implements Initializable {
     public void lobby() throws Exception {
         Lobby lobby = new Lobby();
         Stage lobbyStage = new Stage();
+
+        lobbyStage.setOnCloseRequest(t -> {
+            Platform.exit();
+            System.exit(0);
+        });
         try {
             lobby.display(lobbyStage, clientID);
             closeStage();
         } catch (IOException e) {
             e.printStackTrace();//TODO
         }
-        lobbyStage.setOnCloseRequest(t -> {
-            Platform.exit();
-            System.exit(0);
-        });
+
     }
 
     public void closeStage() {

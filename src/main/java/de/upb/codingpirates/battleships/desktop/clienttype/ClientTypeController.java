@@ -3,7 +3,6 @@ package de.upb.codingpirates.battleships.desktop.clienttype;
 import de.upb.codingpirates.battleships.client.ListenerHandler;
 import de.upb.codingpirates.battleships.client.listener.GameJoinPlayerResponseListener;
 import de.upb.codingpirates.battleships.client.listener.GameJoinSpectatorResponseListener;
-import de.upb.codingpirates.battleships.desktop.lobby.Lobby;
 import de.upb.codingpirates.battleships.desktop.placeship.Placeships;
 import de.upb.codingpirates.battleships.desktop.waiting.Waiting;
 import de.upb.codingpirates.battleships.logic.Game;
@@ -34,6 +33,7 @@ public class ClientTypeController implements Initializable, GameJoinSpectatorRes
 
     private String chosenClient;
     private ClientTypeModel clientTypeModel;
+    private Stage LobbyStage;
 
     public ClientTypeController() {
         ListenerHandler.registerListener(this);
@@ -46,7 +46,6 @@ public class ClientTypeController implements Initializable, GameJoinSpectatorRes
     public void onGameJoinSpectatorResponse(GameJoinSpectatorResponse message, int messageId){
         Platform.runLater(()->{
         this.waiting();
-        this.closeStage();
         });
     }
 
@@ -91,44 +90,37 @@ public class ClientTypeController implements Initializable, GameJoinSpectatorRes
         stage.close();
     }
 
-    @FXML
-    public void back(){
-        Lobby lobby = new Lobby();
-        Stage lobbyStage = new Stage();
-        try {
-            lobby.display(lobbyStage, clientTypeModel.getClientID());
-            this.closeStage();
-        } catch (IOException e) {
-            e.printStackTrace();//TODO
-        }
-        lobbyStage.setOnCloseRequest(t -> {
-            Platform.exit();
-            System.exit(0);
-        });
-    }
-
     public void placeShips(){
         Placeships placeships = new Placeships();
         Stage placeStage = new Stage();
+
+        placeStage.setOnCloseRequest(t -> {
+            Platform.exit();
+            System.exit(0);
+        });
         try {
             placeships.display(placeStage,clientTypeModel.getSelectedGame(), clientTypeModel.getClientID());
-            closeStage();
+            this.closeStage();
+            this.LobbyStage.close();
         } catch (IOException e) {
             e.printStackTrace();//TODO
-            placeStage.setOnCloseRequest(t -> {
-                Platform.exit();
-                System.exit(0);
-            });
         }
     }
 
     public void waiting(){
         Waiting waitingView = new Waiting();
         Stage waitingStage = new Stage();
+
+        waitingStage.setOnCloseRequest(t -> {
+            Platform.exit();
+            System.exit(0);
+        });
+
         try {
-            waitingView.display(waitingStage, clientTypeModel.getSelectedGame());
+            waitingView.display(waitingStage, clientTypeModel.getSelectedGame(),clientTypeModel.getClientID());
            // waitingView.setCurrentGame(clientTypeModel.getSelectedGame());
             this.closeStage();
+            this.LobbyStage.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -141,5 +133,8 @@ public class ClientTypeController implements Initializable, GameJoinSpectatorRes
     public void setClientID(int clientID){
         clientTypeModel.setClientID(clientID);
     }
+
+    public void setLobbyStage(Stage LobbyStage){this.LobbyStage=LobbyStage;}
+
 
 }

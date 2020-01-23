@@ -128,20 +128,20 @@ public class ServerLoginController implements Initializable, ServerJoinResponseL
         Platform.runLater(() -> {
             setLblStatus("");
 
-
-
             Lobby lobby = new Lobby();
             Stage lobbyStage = new Stage();
+
+            lobbyStage.setOnCloseRequest(t -> {
+                Platform.exit();
+                System.exit(0);
+            });
+
             try {
                 lobby.display(lobbyStage,response.getClientId());
                 closeStage();
             } catch (IOException e) {
                 e.printStackTrace();//TODO
             }
-            lobbyStage.setOnCloseRequest(t -> {
-                Platform.exit();
-                System.exit(0);
-            });
         });
     }
         @FXML
@@ -155,10 +155,11 @@ public class ServerLoginController implements Initializable, ServerJoinResponseL
             catch (IOException e) {
                 e.printStackTrace();//TODO
             }
-            settingsStage.setOnCloseRequest(t -> {
+
+            /*settingsStage.setOnCloseRequest(t -> {
                 Platform.exit();
                 System.exit(0);
-            });
+            });*/
         }
 
     @FXML
