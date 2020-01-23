@@ -37,6 +37,17 @@ public class ClientTypeModel {
             e.printStackTrace();
         }
     }
+
+    public void sendSpectatorGameStateRequest(){
+        try {
+            BattleshipsDesktopClientApplication
+                    .getInstance()
+                    .getTcpConnector()
+                    .sendMessageToServer(RequestBuilder.spectatorGameStateRequest());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
     public void setSelectedGame(Game selectedGame){
         this.selectedGame = selectedGame;
     }

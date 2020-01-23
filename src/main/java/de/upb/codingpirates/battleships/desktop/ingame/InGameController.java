@@ -249,7 +249,6 @@ public class InGameController implements Initializable {
 
         this.players = players;
 
-        Platform.runLater(() -> {
             try {
                 fieldInit(players);
             } catch (Exception e) {
@@ -289,8 +288,6 @@ public class InGameController implements Initializable {
                 controller.placePlayerShips(model.getOwnShipPlacements(), game.getConfig().getShips());
             }
             redoShots(shots);
-
-        });
     }
 
     /**

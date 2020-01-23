@@ -3,11 +3,16 @@ package de.upb.codingpirates.battleships.desktop.clienttype;
 import de.upb.codingpirates.battleships.client.ListenerHandler;
 import de.upb.codingpirates.battleships.client.listener.GameJoinPlayerResponseListener;
 import de.upb.codingpirates.battleships.client.listener.GameJoinSpectatorResponseListener;
+import de.upb.codingpirates.battleships.client.listener.SpectatorGameStateResponseListener;
+import de.upb.codingpirates.battleships.desktop.ingame.InGame;
 import de.upb.codingpirates.battleships.desktop.placeship.Placeships;
 import de.upb.codingpirates.battleships.desktop.waiting.Waiting;
+import de.upb.codingpirates.battleships.logic.ClientType;
 import de.upb.codingpirates.battleships.logic.Game;
+import de.upb.codingpirates.battleships.logic.Spectator;
 import de.upb.codingpirates.battleships.network.message.response.GameJoinPlayerResponse;
 import de.upb.codingpirates.battleships.network.message.response.GameJoinSpectatorResponse;
+import de.upb.codingpirates.battleships.network.message.response.SpectatorGameStateResponse;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -20,7 +25,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class ClientTypeController implements Initializable, GameJoinSpectatorResponseListener, GameJoinPlayerResponseListener {
+public class ClientTypeController implements Initializable, GameJoinSpectatorResponseListener, GameJoinPlayerResponseListener, SpectatorGameStateResponseListener {
 
     @FXML
     private RadioButton rb_spectator;
@@ -44,9 +49,8 @@ public class ClientTypeController implements Initializable, GameJoinSpectatorRes
     }
     @Override
     public void onGameJoinSpectatorResponse(GameJoinSpectatorResponse message, int messageId){
-        Platform.runLater(()->{
-        this.waiting();
-        });
+        clientTypeModel.sendSpectatorGameStateRequest();
+
     }
 
     @Override
@@ -135,4 +139,28 @@ public class ClientTypeController implements Initializable, GameJoinSpectatorRes
     public void setLobbyStage(Stage LobbyStage){this.LobbyStage=LobbyStage;}
 
 
+    @Override
+    public void onSpectatorGameStateResponse(SpectatorGameStateResponse message, int clientId) {
+        Platform.runLater(()->{
+        if(message.getShips().isEmpty()) {
+            this.waiting();
+        }
+        else{
+                InGame inGame = new InGame();
+                Stage inGameStage = new Stage();
+
+                inGameStage.setOnCloseRequest(t -> {
+                    Platform.exit();
+                    System.exit(0);
+                });
+
+                try {
+                    inGame.start(inGameStage,clientTypeModel.getSelectedGame(), ClientType.SPECTATOR);
+                    this.closeStage();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+        }
+        });
+    }
 }
