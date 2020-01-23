@@ -28,7 +28,7 @@ import java.util.ResourceBundle;
 public class WaitingController implements Initializable, GameStartNotificationListener, GameInitNotificationListener, GameLeaveResponseListener {
 
     @FXML
-    private Button closeButton;
+    private Button backButton;
     private WaitingModel model;
     private Game currentGame;
     private Collection<Client> clientList;
@@ -77,8 +77,13 @@ public class WaitingController implements Initializable, GameStartNotificationLi
         this.clientList = message.getClientList();
     }
     @FXML
+    public void backLobby(){
+        model.sendLeaveRequest();
+    }
+
     public void closeStage(){
-        model.sendLeaveRequest(this);
+        Stage stage = (Stage) backButton.getScene().getWindow();
+        stage.close();
     }
 
 
@@ -117,7 +122,7 @@ public class WaitingController implements Initializable, GameStartNotificationLi
     public void setClientId(int clientId) {this.clientID = clientId;}
 
     @Override
-    public void onGameLeaveResponse (GameLeaveResponse response,int ClientID){
+    public void onGameLeaveResponse (GameLeaveResponse message,int clientId){
         Platform.runLater(()->{
 
         Lobby lobby = new Lobby();
@@ -129,9 +134,8 @@ public class WaitingController implements Initializable, GameStartNotificationLi
         });
 
         try{
-            lobby.display(lobbyStage,clientID);
-            Stage stage = (Stage) closeButton.getScene().getWindow();
-            stage.close();
+            lobby.display(lobbyStage,clientId);
+            closeStage();
         }
         catch (IOException e){
             e.printStackTrace();
