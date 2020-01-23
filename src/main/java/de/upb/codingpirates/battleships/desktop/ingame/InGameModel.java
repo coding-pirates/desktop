@@ -235,8 +235,13 @@ public class InGameModel extends Application implements InGameModelMessageListen
         }
     }
 
-    public void sendGameLeaveRequest(InGameController controller){
+    public void sendGameLeaveRequest(){
+        try {
         BattleshipsDesktopClientApplication.getInstance().getTcpConnector().sendMessageToServer(RequestBuilder.gameLeaveRequest());
+        }catch (Exception e){
+            System.out.println("Konnte Game nicht leaven " + e);
+        }
+
 
     }
 
@@ -431,12 +436,11 @@ public class InGameModel extends Application implements InGameModelMessageListen
         lobbyStage.setOnCloseRequest(t -> {
             Platform.exit();
             System.exit(0);
-            inGameController.closeStage();
         });
 
         try{
             lobby.display(lobbyStage,this.getClientID());
-
+            inGameController.closeStage();
         }
         catch (IOException e){
             e.printStackTrace();

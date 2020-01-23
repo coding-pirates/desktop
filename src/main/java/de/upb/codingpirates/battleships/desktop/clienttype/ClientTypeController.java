@@ -91,7 +91,7 @@ public class ClientTypeController implements Initializable, GameJoinSpectatorRes
 
     public void back(){
         Lobby newLobby = new Lobby();
-        
+
         try {
             newLobby.display(this.LobbyStage,clientTypeModel.getClientID());
             closeStage();

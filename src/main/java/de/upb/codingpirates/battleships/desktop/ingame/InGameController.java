@@ -571,8 +571,7 @@ public class InGameController implements Initializable {
 
     @FXML
     public void leave(){
-        model.sendGameLeaveRequest(this);
-
+        model.sendGameLeaveRequest();
     }
 
 

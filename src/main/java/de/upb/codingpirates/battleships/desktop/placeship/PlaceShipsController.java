@@ -122,7 +122,6 @@ public class PlaceShipsController extends InGameController implements Initializa
     public void back(){
         System.out.println("Leave Request gesendet!");
         model.sendLeaveRequest();
-
     }
 
     @Override
