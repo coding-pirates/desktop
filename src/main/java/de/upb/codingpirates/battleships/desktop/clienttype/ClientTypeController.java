@@ -76,7 +76,6 @@ public class ClientTypeController implements Initializable, GameJoinSpectatorRes
             clientTypeModel.sendGameJoinPlayerRequest();
         }
         if(chosenClient=="Spectator"){
-            closeStage();
            clientTypeModel.sendGameJoinSpectatorRequest();
         }
         else
@@ -108,7 +107,7 @@ public class ClientTypeController implements Initializable, GameJoinSpectatorRes
     }
 
     public void waiting(){
-        Waiting waitingView = new Waiting();
+        Waiting waiting = new Waiting();
         Stage waitingStage = new Stage();
 
         waitingStage.setOnCloseRequest(t -> {
@@ -117,7 +116,7 @@ public class ClientTypeController implements Initializable, GameJoinSpectatorRes
         });
 
         try {
-            waitingView.display(waitingStage, clientTypeModel.getSelectedGame(),clientTypeModel.getClientID());
+            waiting.display(waitingStage, clientTypeModel.getSelectedGame(),clientTypeModel.getClientID());
            // waitingView.setCurrentGame(clientTypeModel.getSelectedGame());
             this.closeStage();
             this.LobbyStage.close();

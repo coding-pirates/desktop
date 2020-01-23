@@ -2,6 +2,7 @@ package de.upb.codingpirates.battleships.desktop.waiting;
 
 import de.upb.codingpirates.battleships.client.ListenerHandler;
 import de.upb.codingpirates.battleships.client.listener.GameInitNotificationListener;
+import de.upb.codingpirates.battleships.client.listener.GameLeaveResponseListener;
 import de.upb.codingpirates.battleships.client.listener.GameStartNotificationListener;
 import de.upb.codingpirates.battleships.desktop.ingame.InGame;
 import de.upb.codingpirates.battleships.desktop.lobby.Lobby;
@@ -12,6 +13,7 @@ import de.upb.codingpirates.battleships.logic.ClientType;
 import de.upb.codingpirates.battleships.logic.Game;
 import de.upb.codingpirates.battleships.network.message.notification.GameInitNotification;
 import de.upb.codingpirates.battleships.network.message.notification.GameStartNotification;
+import de.upb.codingpirates.battleships.network.message.response.GameLeaveResponse;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -23,17 +25,21 @@ import java.net.URL;
 import java.util.Collection;
 import java.util.ResourceBundle;
 
-public class WaitingController implements Initializable, GameStartNotificationListener, GameInitNotificationListener {
+public class WaitingController implements Initializable, GameStartNotificationListener, GameInitNotificationListener, GameLeaveResponseListener {
 
     @FXML
     private Button closeButton;
-
+    private WaitingModel model;
     private Game currentGame;
     private Collection<Client> clientList;
     private int clientID;
     
     public WaitingController(){
         ListenerHandler.registerListener(this);
+    }
+
+    public void setModel(){
+        this.model = new WaitingModel(currentGame,clientID);
     }
 
 
@@ -72,25 +78,7 @@ public class WaitingController implements Initializable, GameStartNotificationLi
     }
     @FXML
     public void closeStage(){
-        Stage stage = (Stage) closeButton.getScene().getWindow();
-        stage.close();
-
-        Lobby lobby = new Lobby();
-        Stage lobbyStage = new Stage();
-
-        lobbyStage.setOnCloseRequest(t -> {
-            Platform.exit();
-            System.exit(0);
-        });
-
-        try{
-            lobby.display(lobbyStage,clientID);
-            closeStage();
-        }
-        catch (IOException e){
-            e.printStackTrace();
-        }
-
+        model.sendLeaveRequest(this);
     }
 
 
@@ -127,4 +115,27 @@ public class WaitingController implements Initializable, GameStartNotificationLi
     }
 
     public void setClientId(int clientId) {this.clientID = clientId;}
+
+    @Override
+    public void onGameLeaveResponse (GameLeaveResponse response,int ClientID){
+        Platform.runLater(()->{
+
+        Lobby lobby = new Lobby();
+        Stage lobbyStage = new Stage();
+
+        lobbyStage.setOnCloseRequest(t -> {
+            Platform.exit();
+            System.exit(0);
+        });
+
+        try{
+            lobby.display(lobbyStage,clientID);
+            Stage stage = (Stage) closeButton.getScene().getWindow();
+            stage.close();
+        }
+        catch (IOException e){
+            e.printStackTrace();
+        }
+        });
+    }
 }

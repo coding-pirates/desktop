@@ -126,7 +126,7 @@
             </SplitPane>
          </children>
       </VBox>
-      <Button minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#back" prefHeight="44.0" prefWidth="92.0" style="-fx-background-color: #CFBE8E; -fx-border-color: #472218;" text="back" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="5.0">
+      <Button fx:id="backButton" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#back" prefHeight="44.0" prefWidth="92.0" style="-fx-background-color: #CFBE8E; -fx-border-color: #472218;" text="back" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="5.0">
          <graphic>
             <ImageView fitHeight="49.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
                <image>

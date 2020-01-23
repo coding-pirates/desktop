@@ -41,6 +41,7 @@ public class LobbyController implements Initializable , LobbyResponseListener {
     private ListView<GameView> lstvwEnd;
     @FXML
     private Button refreshButton;
+    private ChangeListener <GameView> changeListener;
 
     private ObservableList<GameView> startList = FXCollections.synchronizedObservableList(FXCollections.observableArrayList());
     private ObservableList<GameView> runningList = FXCollections.synchronizedObservableList(FXCollections.observableArrayList());
@@ -48,23 +49,32 @@ public class LobbyController implements Initializable , LobbyResponseListener {
 
     private int clientID;
 
+
+
+
     public LobbyController() {
         ListenerHandler.registerListener(this);
+
     }
 
     public void setChangeListener(){
-        ChangeListener<GameView> changeListener = (arg0, arg1, arg2) -> {
-            if(arg2 !=null) {
-                ClientType cType = new ClientType();
-                Stage window = new Stage();
+        SelectionModel<GameView> smStart = lstvwStart.getSelectionModel();
+        SelectionModel<GameView> smRunning = lstvwRunning.getSelectionModel();
+        SelectionModel<GameView> smEnd = lstvwEnd.getSelectionModel();
 
-                window.setOnCloseRequest(t -> {
+        this.changeListener = (arg0, arg1, arg2) -> {
+            if(arg2 !=null) {
+                Stage window = new Stage();
+                ClientType cType = new ClientType();
+
+                window.setOnCloseRequest( t -> {
                     showgames();
 
-                });
-
+                        }
+                );
 
                 try {
+                    System.out.println("Hallo nochmal ctype Display von "+ arg2.getContent());
                     cType.display(window, arg2.getContent(), clientID,lobby.getStage());
                 } catch (IOException e) {
                     e.printStackTrace();
@@ -79,14 +89,11 @@ public class LobbyController implements Initializable , LobbyResponseListener {
             }
         };
 
-        SelectionModel<GameView> smStart = lstvwStart.getSelectionModel();
+
         smStart.selectedItemProperty().addListener(changeListener);
-
-        SelectionModel<GameView> smRunning = lstvwRunning.getSelectionModel();
         smRunning.selectedItemProperty().addListener(changeListener);
-
-        SelectionModel<GameView> smEnd = lstvwEnd.getSelectionModel();
         smEnd.selectedItemProperty().addListener(changeListener);
+
     }
 
     /**

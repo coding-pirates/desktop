@@ -28,7 +28,6 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.Random;
 import java.util.ResourceBundle;
 
 /**
@@ -121,12 +120,15 @@ public class PlaceShipsController extends InGameController implements Initializa
 
     @FXML
     public void back(){
-        model.sendLeaveRequest(this);
+        System.out.println("Leave Request gesendet!");
+        model.sendLeaveRequest();
+
     }
 
-
-    public void onGameLeaveResponse(GameLeaveResponse response,int ClientID){
-        /*Platform.runLater(() ->{
+    @Override
+    public void onGameLeaveResponse(GameLeaveResponse message, int clientId){
+        System.out.println("GameLeaveResponse bekommen!");
+        Platform.runLater(() ->{
             Lobby lobby = new Lobby();
             Stage lobbyStage = new Stage();
 
@@ -136,12 +138,12 @@ public class PlaceShipsController extends InGameController implements Initializa
             });
 
             try {
-                lobby.display(lobbyStage,model.getClientID());
+                lobby.display(lobbyStage,clientId);
                 closeStage();
             } catch (IOException e) {
                 e.printStackTrace();//TODO
             }
-        });*/
+        });
 
     }
 

@@ -149,13 +149,15 @@ public class PlaceshipsModel{
         }
     }
 
-    public void sendLeaveRequest(PlaceShipsController sender){
-        /*try{
-            BattleshipsDesktopClientApplication.getInstance().getTcpConnector().sendMessageToServer(RequestBuilder.gameLeaveRequest());
-        }catch (IOException e) {
+    public void sendLeaveRequest(){
+            System.out.println("Gameleaverequest an server gesendet!");
+            try {
+                BattleshipsDesktopClientApplication.getInstance().getTcpConnector().sendMessageToServer(RequestBuilder.gameLeaveRequest());
+            }catch (Exception e){
+                System.out.println("Leaverequest konnte nicht gesendet werden"+ e);
+            }
 
-            e.printStackTrace();
-        }*/
+
         }
     }
 
