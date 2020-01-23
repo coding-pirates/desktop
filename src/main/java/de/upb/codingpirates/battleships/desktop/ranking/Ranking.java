@@ -60,7 +60,7 @@ public class Ranking {
      * @param points Map of PlayerIds and Points
      */
     public void sortPoints(Map<Integer, Integer> points) {
-        Map<Integer, Integer> tempPoints = points;
+        Map<Integer, Integer> tempPoints = new HashMap<>(points);
         Queue<Integer> playerIDS = new LinkedList<>();
         while (!tempPoints.isEmpty()) {
             Integer aktMaxPunkt = -3000;

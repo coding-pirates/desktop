@@ -166,17 +166,25 @@ public class InGameController implements Initializable {
 
     @FXML
     public void showRanking() {
-        this.ranking = new Ranking();
-        Stage rankingStage = new Stage();
-        try {
-            ranking.display(rankingStage);
-
-        } catch (Exception e) {
-            System.out.println("Fehler: " + e);
-        }
         if (points != null) {
+
+            this.ranking = new Ranking();
+            Stage rankingStage = new Stage();
+            try {
+                ranking.display(rankingStage);
+
+            } catch (Exception e) {
+                System.out.println("Fehler: " + e);
+            }
+
             ranking.setPlayer(players);
             ranking.sortPoints(points);
+        }
+        else
+        {
+            Alert alertContinue = new Alert(Alert.AlertType.INFORMATION, "Noch keine Punkte verfuegbar!! ",
+                    ButtonType.OK);
+            alertContinue.showAndWait();
         }
 
     }

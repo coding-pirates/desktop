@@ -69,8 +69,7 @@ public class RankingController implements Initializable {
                     break;
                 }
             }
-            //TODO
-            //String Player is just a number
+
             int points = pointsMap.get(playerInt);
             int rang = i;
             i++;
