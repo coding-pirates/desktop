@@ -1,18 +1,8 @@
 package de.upb.codingpirates.battleships.desktop.waiting;
 
-import de.upb.codingpirates.battleships.client.listener.GameInitNotificationListener;
-import de.upb.codingpirates.battleships.client.listener.LobbyResponseListener;
-import de.upb.codingpirates.battleships.desktop.lobby.LobbyController;
-import de.upb.codingpirates.battleships.desktop.settings.Settings;
-import de.upb.codingpirates.battleships.desktop.util.Help;
 import de.upb.codingpirates.battleships.logic.Game;
-import de.upb.codingpirates.battleships.network.message.response.LobbyResponse;
-import javafx.application.Application;
-import javafx.application.Platform;
-import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;

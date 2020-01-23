@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.*?>
-<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
-<?import javafx.scene.effect.*?>
-<?import javafx.scene.image.*?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.effect.Glow?>
+<?import javafx.scene.effect.SepiaTone?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
-
 <AnchorPane style="-fx-background-color: #1A2529; -fx-text-fill: white;" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.upb.codingpirates.battleships.desktop.serverlogin.ServerLoginController">
   <ImageView fx:id="login_background_imageView" layoutX="-769.0" layoutY="-249.0" pickOnBounds="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
       <image>
@@ -21,70 +22,61 @@
       <children>
          <VBox prefHeight="200.0" prefWidth="100.0" style="-fx-alignment: center;">
             <children>
-              <Text boundsType="LOGICAL_VERTICAL_CENTER" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-text-alignment: center;" text="Finde eine Seeschlacht" textAlignment="CENTER" textOrigin="CENTER" VBox.vgrow="NEVER">
+              <Text boundsType="LOGICAL_VERTICAL_CENTER" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-text-alignment: center; -fx-font-family: 'Pirata One';" text="%serverLogin.title" textAlignment="CENTER" textOrigin="CENTER" VBox.vgrow="NEVER">
                 <font>
-                  <Font size="30.0" />
+                  <Font size="50.0" />
                 </font>
                   <VBox.margin>
                      <Insets left="100.0" top="120.0" />
                   </VBox.margin>
               </Text>
-               <Label fx:id="lblStatus" contentDisplay="CENTER" textAlignment="CENTER" textFill="RED">
+               <Label fx:id="lblStatus" contentDisplay="CENTER" textAlignment="CENTER" textFill="RED" style="-fx-font-family: 'Pirata One';">
                   <VBox.margin>
                      <Insets left="100.0" />
                   </VBox.margin>
                   <font>
-                     <Font name="System Italic" size="24.0" />
+                     <Font size="30.0" />
                   </font>
                </Label>
             </children>
          </VBox>
-        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Username:" wrappingWidth="90.13671875">
-            <font>
-               <Font size="18.0" />
-            </font>
+        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="%serverLogin.name.title" wrappingWidth="140.0" style="-fx-font-family: 'Pirata One'; -fx-font-size: 25">
             <VBox.margin>
-               <Insets left="100.0" top="50.0" />
+               <Insets left="170.0" top="50.0" />
             </VBox.margin>
          </Text>
-        <TextField fx:id="nameField" minHeight="-Infinity" minWidth="-Infinity" prefHeight="60.0" prefWidth="1060.0" promptText="Name hier eingeben" style="-fx-background-color: #472218; -fx-border-radius: 25; -fx-text-inner-color: white;">
+        <TextField fx:id="nameField" minHeight="-Infinity" minWidth="-Infinity" prefHeight="60.0" prefWidth="1060.0" promptText="%serverLogin.name.field.text" style="-fx-background-color: #472218; -fx-border-radius: 25; -fx-text-inner-color: white; -fx-font-family: 'Pirata One'; -fx-font-size: 20">
           <effect>
             <Glow level="0.29" />
           </effect>
             <VBox.margin>
-               <Insets left="100.0" right="100.0" />
+               <Insets left="170.0" right="170.0" />
             </VBox.margin>
         </TextField>
-        <Text fill="#fcf9f9" strokeType="OUTSIDE" strokeWidth="0.0" text="IP-Adresse:" wrappingWidth="101.99998188018799">
-            <font>
-               <Font size="18.0" />
-            </font>
+        <Text fill="#fcf9f9" strokeType="OUTSIDE" strokeWidth="0.0" text="%serverLogin.ip.title" wrappingWidth="120.0" style="-fx-font-family: 'Pirata One'; -fx-font-size: 25">
             <VBox.margin>
-               <Insets left="100.0" top="20.0" />
+               <Insets left="170.0" top="20.0" />
             </VBox.margin>
          </Text>
-        <TextField fx:id="ipField" minHeight="-Infinity" minWidth="-Infinity" prefHeight="60.0" prefWidth="1060.0" promptText="Server-IP hier eingeben" style="-fx-background-color: #472218; -fx-border-radius: 25; -fx-text-inner-color: white;">
+        <TextField fx:id="ipField" minHeight="-Infinity" minWidth="-Infinity" prefHeight="60.0" prefWidth="1060.0" promptText="%serverLogin.ip.field.text" style="-fx-background-color: #472218; -fx-border-radius: 25; -fx-text-inner-color: white; -fx-font-family: 'Pirata One';-fx-font-size: 20">
           <effect>
             <Glow />
           </effect>
             <VBox.margin>
-               <Insets left="100.0" right="100.0" />
+               <Insets left="170.0" right="170.0" />
             </VBox.margin>
         </TextField>
-        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Port:" wrappingWidth="49.00002479553223">
-            <font>
-               <Font size="18.0" />
-            </font>
+        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="%serverLogin.port.title" wrappingWidth="50.0" style="-fx-font-family: 'Pirata One'; -fx-font-size: 25">
             <VBox.margin>
-               <Insets left="100.0" top="20.0" />
+               <Insets left="170.0" top="20.0" />
             </VBox.margin>
          </Text>
-        <TextField fx:id="portField" minHeight="-Infinity" minWidth="-Infinity" prefHeight="60.0" prefWidth="1060.0" promptText="Server-Port hier eingeben" style="-fx-background-color: #472218; -fx-border-radius: 25; -fx-text-inner-color: white;">
+        <TextField fx:id="portField" minHeight="-Infinity" minWidth="-Infinity" prefHeight="60.0" prefWidth="1060.0" promptText="%serverLogin.port.field.text" style="-fx-background-color: #472218; -fx-border-radius: 25; -fx-text-inner-color: white; -fx-font-family: 'Pirata One'; -fx-font-size: 20">
           <effect>
             <Glow />
           </effect>
             <VBox.margin>
-               <Insets left="100.0" right="100.0" />
+               <Insets left="170.0" right="170.0" />
             </VBox.margin>
         </TextField>
          <StackPane prefHeight="150.0" prefWidth="200.0">
@@ -131,17 +123,6 @@
             </VBox.margin></VBox>
       </children>
    </VBox>
-   <Button fx:id="btn_settings" cache="true" cacheHint="ROTATE" cacheShape="false" contentDisplay="GRAPHIC_ONLY" focusTraversable="false" layoutX="1093.0" layoutY="71.0" minHeight="-Infinity" minWidth="-Infinity" onAction="#settings" onMouseEntered="#changeCursor" prefHeight="40.0" prefWidth="53.0" style="-fx-background-color: #CFBE8E;" text="Settings" AnchorPane.rightAnchor="54.0" AnchorPane.topAnchor="71.0">
-      <graphic>
-         <ImageView fitHeight="38.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-            <image>
-               <Image url="@../images/icon_settings.png" />
-            </image>
-         </ImageView>
-      </graphic></Button>
-   <Button cache="true" cacheHint="ROTATE" cacheShape="false" contentDisplay="TEXT_ONLY" focusTraversable="false" layoutX="1030.0" layoutY="69.0" minHeight="-Infinity" minWidth="-Infinity" onAction="#help" onMouseEntered="#changeCursor" prefHeight="44.0" prefWidth="55.0" style="-fx-background-color: #CFBE8E;" text="?" textFill="#472218" AnchorPane.rightAnchor="115.0" AnchorPane.topAnchor="69.0">
-      <font>
-         <Font name="System Bold" size="24.0" />
-      </font>
-   </Button>
+  <Button fx:id="btn_settings" />
+  <Button fx:id="btn_help" />
 </AnchorPane>
