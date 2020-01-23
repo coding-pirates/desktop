@@ -88,7 +88,7 @@ public class ClientTypeController implements Initializable, GameJoinSpectatorRes
         if(chosenClient=="Player"){
             clientTypeModel.sendGameJoinPlayerRequest();
         }
-        if(chosenClient=="Spectator"){
+        else if(chosenClient=="Spectator"){
            clientTypeModel.sendGameJoinSpectatorRequest();
         }
         else
