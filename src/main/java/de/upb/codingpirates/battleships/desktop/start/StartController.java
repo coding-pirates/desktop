@@ -89,8 +89,8 @@ public class StartController implements Initializable {
      * @throws Exception
      */
     @FXML
-    public void handleButton() throws Exception {
-        ServerLogin login = new ServerLogin(main);
+    public void handleButton() {
+        ServerLogin login = new ServerLogin();
         Stage loginStage = new Stage();
 
         loginStage.setOnCloseRequest(t -> {

@@ -29,7 +29,6 @@ public class Fullscreen {
         stage.initStyle(StageStyle.UNDECORATED);
         stage.setResizable(false);
         stage.setMaximized(true);
-        stage.setAlwaysOnTop(true);
         stage.getScene().getStylesheets().add("https://fonts.googleapis.com/css?family=Pirata+One");
         stage.show();
     }

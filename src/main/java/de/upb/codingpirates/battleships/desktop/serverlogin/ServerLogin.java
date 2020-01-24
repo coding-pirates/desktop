@@ -2,23 +2,17 @@ package de.upb.codingpirates.battleships.desktop.serverlogin;
 
 import de.upb.codingpirates.battleships.client.network.ClientApplication;
 import de.upb.codingpirates.battleships.client.network.ClientConnector;
-import de.upb.codingpirates.battleships.client.network.ClientModule;
-import javafx.application.Application;
-import de.upb.codingpirates.battleships.desktop.BattleshipsDesktopClientApplication;
 import de.upb.codingpirates.battleships.desktop.util.Fullscreen;
 import de.upb.codingpirates.battleships.desktop.util.Settings;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 import javax.annotation.Nonnull;
 import java.io.IOException;
 import java.util.ResourceBundle;
-import java.io.InputStream;
 
 /**
  * Class that implements a Window to login to the game
@@ -51,8 +45,6 @@ public class ServerLogin extends Fullscreen {
         Image icon = new Image(String.valueOf(getClass().getResource("/images/app_icon.png")));
         loginStage.getIcons().add(icon);
 
-        ServerLoginController serverLoginController = loader.getController();
-        serverLoginController.setMain(main);
         loginStage.setTitle("Login");
         Scene scene = new Scene(pane);
         loginStage.setScene(scene);

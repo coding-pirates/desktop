@@ -1,10 +1,7 @@
 package de.upb.codingpirates.battleships.desktop;
 
-import com.google.errorprone.annotations.FormatMethod;
 import de.upb.codingpirates.battleships.client.network.ClientApplication;
 import de.upb.codingpirates.battleships.client.network.ClientConnector;
-import de.upb.codingpirates.battleships.client.network.ClientModule;
-import de.upb.codingpirates.battleships.desktop.network.ClientConnectorDesktop;
 import de.upb.codingpirates.battleships.desktop.start.Start;
 import de.upb.codingpirates.battleships.desktop.start.StartController;
 import de.upb.codingpirates.battleships.desktop.util.Settings;
@@ -14,14 +11,11 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
-import javafx.scene.input.KeyCombination;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.media.MediaView;
-import javafx.stage.Screen;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 
 import javax.annotation.Nonnull;
 import java.io.IOException;
