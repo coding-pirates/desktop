@@ -7,6 +7,7 @@ import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 import java.util.*;
 
@@ -24,7 +25,7 @@ public class Ranking {
     public void display(Stage rankingStage) throws Exception {
         this.rankingStage = rankingStage;
         rankingStage.initModality(Modality.APPLICATION_MODAL);
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/RankingView.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/RankingView.fxml"), ResourceBundle.getBundle("lang/desktop", de.upb.codingpirates.battleships.desktop.util.Settings.getLocale()));
         AnchorPane pane = loader.load();
         this.rankingController = loader.getController();
         rankingController.setRanking(this);
@@ -33,6 +34,7 @@ public class Ranking {
         rankingStage.setResizable(false);
         rankingStage.setTitle("Rangliste");
         rankingStage.setScene(new Scene(pane));
+        rankingStage.initStyle(StageStyle.UNDECORATED);
         rankingStage.show();
     }
 

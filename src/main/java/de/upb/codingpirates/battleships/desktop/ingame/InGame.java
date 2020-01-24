@@ -12,6 +12,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 import java.util.Map;
+import java.util.ResourceBundle;
 
 public class InGame extends Fullscreen implements FxmlLoader {
     private InGameController inGameController;
@@ -50,7 +51,7 @@ public class InGame extends Fullscreen implements FxmlLoader {
      * @throws Exception
      */
     public void start(Stage inGameStage, Game currentGame, ClientType clientType) throws Exception {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/InGameView.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/InGameView.fxml"), ResourceBundle.getBundle("lang/desktop", de.upb.codingpirates.battleships.desktop.util.Settings.getLocale()));
         AnchorPane pane = loader.load();
         inGameController = loader.getController();
         inGameController.setGame(currentGame);
