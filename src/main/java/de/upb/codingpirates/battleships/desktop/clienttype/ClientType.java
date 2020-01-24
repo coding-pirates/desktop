@@ -10,6 +10,7 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.ResourceBundle;
 
 public class ClientType {
     private ClientTypeController clientTypeController;
@@ -20,7 +21,7 @@ public class ClientType {
     private Scene scene;
 
     public ClientType() throws IOException {
-        this.loader = new FXMLLoader(this.getClass().getResource("/fxml/ClientTypeView.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/ClientTypeView.fxml"), ResourceBundle.getBundle("lang/desktop", de.upb.codingpirates.battleships.desktop.util.Settings.getLocale()));
         this.pane = loader.load();
         this.clientTypeController = loader.getController();
         this.scene = new Scene(this.pane);
