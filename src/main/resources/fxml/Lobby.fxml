@@ -67,29 +67,29 @@
          <Insets bottom="20.0" left="20.0" right="20.0" />
        </padding>
        <panes>
-         <TitledPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="150.0" prefWidth="1000.0" style="-fx-body-color: #472218; -fx-inner-border: #92BFBF; -fx-box-border: #92BFBF; -fx-mark-color: white; -fx-focus-color: #E4FFFF; -fx-font-family: 'Pirata One'; -fx-font-size: 25;" text="%lobby.starting_games" textFill="#fcfcfc">
+         <TitledPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="150.0" prefWidth="1000.0" style="-fx-body-color: #472218; -fx-inner-border: #92BFBF; -fx-box-border: #92BFBF; -fx-mark-color: white; -fx-focus-color: #E4FFFF; -fx-font-family: 'Pirata One'; -fx-font-size: 25;" stylesheets="@../css/lobby_listview.css" text="%lobby.starting_games" textFill="#fcfcfc">
            <font>
              <Font name="System Bold" size="25.0" />
            </font>
-           <ListView fx:id="lstvwStart" minWidth="100.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #CFBE8E;" />
+           <ListView fx:id="lstvwStart" minWidth="100.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #CFBE8E;" styleClass="list-view, list-cell" />
                   <cursor>
                      <Cursor fx:constant="HAND" />
                   </cursor>
          </TitledPane>
-         <TitledPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="150.0" prefWidth="1000.0" style="-fx-body-color: #472218; -fx-inner-border: #92BFBF; -fx-box-border: #92BFBF; -fx-mark-color: white; -fx-focus-color: #E4FFFF; -fx-font-family: 'Pirata One'; -fx-font-size: 25;" text="%lobby.running_games" textFill="#fcfcfc">
+         <TitledPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="150.0" prefWidth="1000.0" style="-fx-body-color: #472218; -fx-inner-border: #92BFBF; -fx-box-border: #92BFBF; -fx-mark-color: white; -fx-focus-color: #E4FFFF; -fx-font-family: 'Pirata One'; -fx-font-size: 25;" stylesheets="@../css/lobby_listview.css" text="%lobby.running_games" textFill="#fcfcfc">
            <font>
              <Font name="System Bold" size="25.0" />
            </font>
-           <ListView fx:id="lstvwRunning" minWidth="100.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #CFBE8E;" />
+           <ListView fx:id="lstvwRunning" minWidth="100.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #CFBE8E;" styleClass="list-view, list-cell" />
                   <cursor>
                      <Cursor fx:constant="HAND" />
                   </cursor>
          </TitledPane>
-         <TitledPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="150.0" prefWidth="1000.0" style="-fx-body-color: #472218; -fx-inner-border: #92BFBF; -fx-box-border: #92BFBF; -fx-mark-color: white; -fx-focus-color: #E4FFFF; -fx-font-family: 'Pirata One'; -fx-font-size: 25;" text="%lobby.finished_games" textFill="#f8f7f7">
+         <TitledPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="150.0" prefWidth="1000.0" style="-fx-body-color: #472218; -fx-inner-border: #92BFBF; -fx-box-border: #92BFBF; -fx-mark-color: white; -fx-focus-color: #E4FFFF; -fx-font-family: 'Pirata One'; -fx-font-size: 25;" stylesheets="@../css/lobby_listview.css" text="%lobby.finished_games" textFill="#f8f7f7">
            <font>
              <Font name="System Bold" size="25.0" />
            </font>
-           <ListView fx:id="lstvwEnd" minWidth="100.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #CFBE8E;" />
+           <ListView fx:id="lstvwEnd" minWidth="100.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #CFBE8E;" styleClass="list-view"/>
                   <cursor>
                      <Cursor fx:constant="HAND" />
                   </cursor>
