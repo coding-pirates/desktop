@@ -85,6 +85,7 @@ public class PlaceShipsController extends InGameController implements Initializa
 
     /**
      * Initialization
+     *
      * @param location
      * @param resources
      */
@@ -92,8 +93,8 @@ public class PlaceShipsController extends InGameController implements Initializa
     public void initialize(URL location, ResourceBundle resources) {
     }
 
-    public void setCurrentGame(Game currentGame){
-       model.setCurrentGame(currentGame);
+    public void setCurrentGame(Game currentGame) {
+        model.setCurrentGame(currentGame);
         model.addShipTypes(currentGame.getConfig().getShips());
         model.setSelectedShip(currentGame.getConfig().getShips().keySet().iterator().next());
         model.setMillis(currentGame.getConfig().getRoundTime());
@@ -108,8 +109,8 @@ public class PlaceShipsController extends InGameController implements Initializa
 
             @Override
             public void handle(ActionEvent event) {
-                model.setMillis(model.getMillis()-1000);
-                Long seconds = model.getMillis()/1000;
+                model.setMillis(model.getMillis() - 1000);
+                Long seconds = model.getMillis() / 1000;
                 System.out.println(seconds);
                 //restTime.setText((seconds.toString())); //TODO create label to fill in View
                 if (model.getMillis() <= 0) {
@@ -133,18 +134,18 @@ public class PlaceShipsController extends InGameController implements Initializa
 
 
     @FXML
-    public void help(){
+    public void help() {
         Help help = new Help();
-        try{
+        try {
             help.display("PlaceShip-Help");
-        }
-        catch (IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
     /**
      * starts the SettingsView in an extra window
+     *
      * @throws Exception
      */
     @FXML
@@ -154,8 +155,7 @@ public class PlaceShipsController extends InGameController implements Initializa
         Stage settingsStage = new Stage();
         try {
             settings.display(settingsStage);
-        }
-        catch (IOException e) {
+        } catch (IOException e) {
             e.printStackTrace();//TODO
         }
         /*settingsStage.setOnCloseRequest(t -> {
@@ -169,7 +169,7 @@ public class PlaceShipsController extends InGameController implements Initializa
      * starts the LobbyView and closes the placeShipsView
      */
     @FXML
-    public void back(){
+    public void back() {
         System.out.println("Leave Request gesendet!");
         model.sendLeaveRequest();
     }
@@ -178,8 +178,8 @@ public class PlaceShipsController extends InGameController implements Initializa
      * rotates the ship in shipForm
      */
     @FXML
-    public void rotate(){
-        switch (model.getCurrentRotation()){
+    public void rotate() {
+        switch (model.getCurrentRotation()) {
             case NONE:
                 model.setCurrentRotation(Rotation.CLOCKWISE_90);
                 break;
@@ -200,7 +200,7 @@ public class PlaceShipsController extends InGameController implements Initializa
      * starts the inGameView and closes the placeshipView
      */
     @FXML
-    public void gamestart(){
+    public void gamestart() {
         model.sendPlaceShipsRequest(this);
     }
 
@@ -210,7 +210,7 @@ public class PlaceShipsController extends InGameController implements Initializa
      * @throws Exception
      */
     public void fieldInit() {
-        buildBoard(model.getCurrentGame().getConfig().getHeight(),model.getCurrentGame().getConfig().getWidth());
+        buildBoard(model.getCurrentGame().getConfig().getHeight(), model.getCurrentGame().getConfig().getWidth());
     }
 
     /**
@@ -224,34 +224,35 @@ public class PlaceShipsController extends InGameController implements Initializa
 
     /**
      * Clickevent for GridPane (print grid-cell, which is clicked)
+     *
      * @param event
      */
     public void clickGrid(javafx.scene.input.MouseEvent event) {
-            Node clickedNode = event.getPickResult().getIntersectedNode();
+        Node clickedNode = event.getPickResult().getIntersectedNode();
         Integer colIndex = GridPane.getColumnIndex(clickedNode);
         Integer rowIndex = GridPane.getRowIndex(clickedNode);
-            if (clickedNode != selectedShipGrid && colIndex != null && rowIndex != null) {
-                int row = gameField.getRow();
-                int col = gameField.getCol();
-                System.out.println("Mouse clicked cell: " + colIndex + " And: " + rowIndex);
-                Point2D clickedPoint = new Point2D(colIndex, row - rowIndex-1);
-                ArrayList<Point2D> shipPoints = model.getShipPoints(new PlacementInfo(clickedPoint, model.getCurrentRotation()), model.getShipTypes().get(model.getSelectedShip()));
-                if(model.proofShip(shipPoints)) {//TODO ships which doesnt contain (0,0) ???
-                    if (model.getPlacedShips().containsKey(model.getSelectedShip())) {
-                        gameField.removePlacedShip(model.getShipPoints(model.getPlacedShips().get(model.getSelectedShip()), model.getShipTypes().get(model.getSelectedShip())));
-                    }
-                    gameField.placeShip(shipPoints);
-                    model.addShipPlacement(model.getSelectedShip(), new PlacementInfo(clickedPoint, model.getCurrentRotation()));
-                    model.setSelectedShip((model.getSelectedShip()+1)%(model.getCurrentGame().getConfig().getShips().size()));
-                    setShipForm();
+        if (clickedNode != selectedShipGrid && colIndex != null && rowIndex != null) {
+            int row = gameField.getRow();
+            int col = gameField.getCol();
+            System.out.println("Mouse clicked cell: " + colIndex + " And: " + rowIndex);
+            Point2D clickedPoint = new Point2D(colIndex, row - rowIndex - 1);
+            ArrayList<Point2D> shipPoints = model.getShipPoints(new PlacementInfo(clickedPoint, model.getCurrentRotation()), model.getShipTypes().get(model.getSelectedShip()));
+            if (model.proofShip(shipPoints)) {//TODO ships which doesnt contain (0,0) ???
+                if (model.getPlacedShips().containsKey(model.getSelectedShip())) {
+                    gameField.removePlacedShip(model.getShipPoints(model.getPlacedShips().get(model.getSelectedShip()), model.getShipTypes().get(model.getSelectedShip())));
                 }
+                gameField.placeShip(shipPoints);
+                model.addShipPlacement(model.getSelectedShip(), new PlacementInfo(clickedPoint, model.getCurrentRotation()));
+                model.setSelectedShip((model.getSelectedShip() + 1) % (model.getCurrentGame().getConfig().getShips().size()));
+                setShipForm();
             }
+        }
     }
 
     /**
      * sets the shipForm and visualize it
      */
-    public void setShipForm(){
+    public void setShipForm() {
         shipForm = new ShipForm(model.getShipTypes().get(model.getSelectedShip()).getPositions());
         smallBorderPane.setPadding(new Insets(1, 1, 1, 1));
         selectedShipGrid = shipForm.getDisplay();
@@ -259,23 +260,24 @@ public class PlaceShipsController extends InGameController implements Initializa
         System.out.println(smallBorderPane.getCenter());
     }
 
-    public void setClientId(int clientId){
+    public void setClientId(int clientId) {
         model.setClientID(clientId);
     }
 
-    public void showWaitForGameInit(){
+    public void showWaitForGameInit() {
         //TODO Show "Please wait for GameInit"
     }
-    public void showPlaceAllShips(){
+
+    public void showPlaceAllShips() {
         Alert alertFinish = new Alert(Alert.AlertType.INFORMATION,
                 "Platziere bitte zuerst alle Schiffe.", ButtonType.OK);
         alertFinish.showAndWait();
     }
 
     @Override
-    public void onGameLeaveResponse(GameLeaveResponse message, int clientId){
+    public void onGameLeaveResponse(GameLeaveResponse message, int clientId) {
         System.out.println("GameLeaveResponse bekommen!");
-        Platform.runLater(() ->{
+        Platform.runLater(() -> {
             Lobby lobby = new Lobby();
             Stage lobbyStage = new Stage();
 
@@ -285,7 +287,7 @@ public class PlaceShipsController extends InGameController implements Initializa
             });
 
             try {
-                lobby.display(lobbyStage,clientId);
+                lobby.display(lobbyStage, clientId);
                 closeStage();
             } catch (IOException e) {
                 e.printStackTrace();//TODO
@@ -297,26 +299,26 @@ public class PlaceShipsController extends InGameController implements Initializa
 
     @Override
     public void onPlaceShipsResponse(PlaceShipsResponse message, int clientId) {
-        Platform.runLater(()->{
-        Alert alertFinish = new Alert(Alert.AlertType.INFORMATION,
-                "Die Schiffe wurden erfolgreich platziert. Warte auf andere Spieler..", ButtonType.OK);
-        alertFinish.showAndWait();
+        Platform.runLater(() -> {
+            Alert alertFinish = new Alert(Alert.AlertType.INFORMATION,
+                    "Die Schiffe wurden erfolgreich platziert. Warte auf andere Spieler..", ButtonType.OK);
+            alertFinish.showAndWait();
         });
     }
 
     @Override
     public void onGameStartNotification(GameStartNotification message, int clientId) {
-        Platform.runLater(()->{
+        Platform.runLater(() -> {
             InGame inGame = new InGame();
             Stage inGameStage = new Stage();
 
-            inGameStage.setOnCloseRequest(t->{
+            inGameStage.setOnCloseRequest(t -> {
                 Platform.exit();
                 System.exit(0);
             });
 
             try {
-                inGame.start(inGameStage,model.getCurrentGame(), ClientType.PLAYER, model.getPlacedShips(),clientId);
+                inGame.start(inGameStage, model.getCurrentGame(), ClientType.PLAYER, model.getPlacedShips(), clientId);
                 closeStage();
             } catch (Exception e) {
                 e.printStackTrace();
@@ -332,15 +334,33 @@ public class PlaceShipsController extends InGameController implements Initializa
     }
 
     @FXML
-    public void onNextShipClicked(){
-        model.setSelectedShip((model.getSelectedShip()+1)%(model.getCurrentGame().getConfig().getShips().size()));
+    public void onNextShipClicked() {
+        model.setSelectedShip((model.getSelectedShip() + 1) % (model.getCurrentGame().getConfig().getShips().size()));
         model.setCurrentRotation(Rotation.NONE);
         setShipForm();
     }
 
     @FXML
-    public void onBackShipClicked(){
-        model.setSelectedShip((model.getSelectedShip()-1)%(model.getCurrentGame().getConfig().getShips().size()));
+    public void onBackShipClicked() {
+        model.setSelectedShip((model.getSelectedShip() - 1) % (model.getCurrentGame().getConfig().getShips().size()));
         model.setCurrentRotation(Rotation.NONE);
         setShipForm();
     }
+    /** Scroll event with mouse for the gamefield
+     * @param event
+     */
+    @FXML
+    public void scroll(javafx.scene.input.ScrollEvent event) {
+        Node clickedNode = event.getPickResult().getIntersectedNode();
+        if (clickedNode != selectedShipGrid) {
+            double zoomFactor = 1.05;
+            double deltaY = event.getDeltaY();
+            if (deltaY < 0){
+                zoomFactor = 2.0 - zoomFactor;
+            }
+            borderPane.setScaleX(borderPane.getScaleX() * zoomFactor);
+            borderPane.setScaleY(borderPane.getScaleY() * zoomFactor);
+        }
+    }
+
+}

@@ -264,4 +264,17 @@ public class GameFieldController implements Initializable {
         }
 
     }
+    @FXML
+    public void scroll(javafx.scene.input.ScrollEvent event) {
+        Node clickedNode = event.getPickResult().getIntersectedNode();
+        if (clickedNode != grid) {
+            double zoomFactor = 1.05;
+            double deltaY = event.getDeltaY();
+            if (deltaY < 0){
+                zoomFactor = 2.0 - zoomFactor;
+            }
+            gameField.getDisplay().setScaleX(borderPane.getScaleX() * zoomFactor);
+            gameField.getDisplay().setScaleY(borderPane.getScaleY() * zoomFactor);
+        }
+    }
 }
