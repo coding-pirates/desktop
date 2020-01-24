@@ -1,5 +1,7 @@
 package de.upb.codingpirates.battleships.desktop.util;
 
+import de.upb.codingpirates.battleships.desktop.serverlogin.ServerLogin;
+import javafx.embed.swing.JFXPanel;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -8,8 +10,11 @@ import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
+import javax.swing.text.html.HTML;
 import java.io.IOException;
+import java.util.ResourceBundle;
 
 /**
  * class to show the impressum and piratenkodex
@@ -23,8 +28,8 @@ public class Impressum {
     private Button closeButton;
 
     /**
-     * starts the new window depending on the title
-     * @param title impressum or piratenkodex
+     * used for displaying the {@link Impressum}
+     * @param title String to which the title is set
      * @throws IOException
      */
     public void display(String title) throws IOException {
@@ -34,12 +39,12 @@ public class Impressum {
         window.setTitle(title);
 
         AnchorPane pane;
-        if (title == "Impressum"){
-            FXMLLoader loader = new FXMLLoader(this.getClass().getResource("/fxml/ImpressumView.fxml"));
+        if (title.equals("Impressum")){
+            FXMLLoader loader =  new FXMLLoader(ServerLogin.class.getResource("/fxml/ImpressumView.fxml"), ResourceBundle.getBundle("lang/desktop", Settings.getLocale()));
             pane = loader.load();
         }
         else{
-            FXMLLoader loader = new FXMLLoader(this.getClass().getResource("/fxml/KodexView.fxml"));
+            FXMLLoader loader =  new FXMLLoader(ServerLogin.class.getResource("/fxml/KodexView.fxml"), ResourceBundle.getBundle("lang/desktop", Settings.getLocale()));
             pane = loader.load();
         }
 
@@ -48,6 +53,8 @@ public class Impressum {
         Scene scene = new Scene(pane);
         window.setResizable(false);
         window.setScene(scene);
+        window.initStyle(StageStyle.UNDECORATED);
+        window.setAlwaysOnTop(true);
         window.showAndWait();
     }
 

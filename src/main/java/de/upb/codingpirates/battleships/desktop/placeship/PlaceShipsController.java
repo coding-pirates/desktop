@@ -73,6 +73,7 @@ public class PlaceShipsController extends InGameController implements Initializa
     private ShipForm shipForm;
     private Timeline time = new Timeline();
 
+    private boolean listen;
 
     /**
      * Constructor of this class
@@ -80,8 +81,13 @@ public class PlaceShipsController extends InGameController implements Initializa
     public PlaceShipsController() {
         ListenerHandler.registerListener(this);
         this.model = new PlaceshipsModel();
+        listen = true;
     }
 
+    @Override
+    public boolean invalidated() {
+        return !listen;
+    }
 
     /**
      * Initialization
@@ -308,6 +314,7 @@ public class PlaceShipsController extends InGameController implements Initializa
 
     @Override
     public void onGameStartNotification(GameStartNotification message, int clientId) {
+        listen= false;
         Platform.runLater(() -> {
             InGame inGame = new InGame();
             Stage inGameStage = new Stage();

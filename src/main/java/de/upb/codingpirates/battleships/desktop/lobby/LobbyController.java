@@ -76,6 +76,8 @@ public class LobbyController implements Initializable , LobbyResponseListener {
     private int clientID;
 
 
+    private boolean listen;
+
     /**
      * Constructor of this class to register the Listener
      */
@@ -83,6 +85,11 @@ public class LobbyController implements Initializable , LobbyResponseListener {
         ListenerHandler.registerListener(this);
         model = new LobbyModel();
         this.cType = new ClientType();
+        listen= true;
+    }
+    @Override
+    public boolean invalidated() {
+        return !listen;
     }
     /**
      * Initial Method.
@@ -98,22 +105,26 @@ public class LobbyController implements Initializable , LobbyResponseListener {
         SelectionModel<GameView> smEnd = lstvwEnd.getSelectionModel();
 
         this.changeListener = (arg0, arg1, arg2) -> {
+            if(arg2 !=null) {
                 Stage window = new Stage();
-                window.setOnCloseRequest(t->{
+
+                window.setOnCloseRequest(t -> {
                     showgames();
                 });
                 try {
-                    System.out.println("Hallo nochmal ctype Display von "+ arg2.getContent());
-                    cType.display(window, arg2.getContent(), model.getClientID(),lobby.getStage());
+                    System.out.println("Hallo nochmal ctype Display von " + arg2.getContent());
+                    cType.display(window, arg2.getContent(), model.getClientID(), lobby.getStage());
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
+            }
             };
 
 
         smStart.selectedItemProperty().addListener(changeListener);
         smRunning.selectedItemProperty().addListener(changeListener);
         smEnd.selectedItemProperty().addListener(changeListener);
+
     }
 
     /**

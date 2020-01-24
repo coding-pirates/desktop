@@ -2,9 +2,12 @@ package de.upb.codingpirates.battleships.desktop;
 
 import de.upb.codingpirates.battleships.client.network.ClientApplication;
 import de.upb.codingpirates.battleships.client.network.ClientConnector;
+import de.upb.codingpirates.battleships.desktop.start.Start;
 import de.upb.codingpirates.battleships.desktop.start.StartController;
+import de.upb.codingpirates.battleships.desktop.util.Settings;
 import javafx.application.Application;
 import javafx.application.Platform;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
@@ -82,75 +85,70 @@ public final class BattleshipsDesktopClientApplication extends Application {
     }
 
     /**
-     * Loads the StartView.fxml, creates a Start Window and related Controller
+     * Loads the StartView.fxml, creates a Start.java Window and related Controller
      *
      * @param startStage first stage, which is displayed
      * @throws IOException if stage could not be loaded
      */
-    public void start(@Nonnull final Stage startStage) throws Exception {
-        this.startStage = startStage;
-        startStage.setOnCloseRequest(t-> {
-            Platform.exit();
-            System.exit(0);
-        });
-        try{
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/StartView.fxml"));
-        AnchorPane pane = loader.load();
-        StartController startcontroller = loader.getController();
-        startcontroller.setMain(this);
+    public void start(@Nonnull final Stage startStage) {
+            Settings.init();
+            this.startStage = startStage;
+            startStage.setOnCloseRequest(t-> {
+                Platform.exit();
+                System.exit(0);
+            });
+            try{
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/StartView.fxml"));
+            AnchorPane pane = loader.load();
+            StartController startcontroller = loader.getController();
+            startcontroller.setMain(this);
 
-        Image icon = new Image(String.valueOf(getClass().getResource("/images/app_icon.png")));
-        startStage.getIcons().add(icon);
+            Image icon = new Image(String.valueOf(getClass().getResource("/images/app_icon.png")));
+            startStage.getIcons().add(icon);
 
-        //init a mediaplayer for every song
-        final URL resource1 = getClass().getResource("/raw/sea_of_thieves_theme_song.mp3");
-        final MediaPlayer mediaplayer1 = new MediaPlayer(new Media(resource1.toString()));
+            //init a mediaplayer for every song
+            final URL resource1 = getClass().getResource("/raw/sea_of_thieves_theme_song.mp3");
+            final MediaPlayer mediaplayer1 = new MediaPlayer(new Media(resource1.toString()));
 
-        final URL resource2 = getClass().getResource("/raw/becalmed_concertina_hurdygurdy.mp3");
-        final MediaPlayer mediaplayer2 = new MediaPlayer(new Media(resource2.toString()));
+            final URL resource2 = getClass().getResource("/raw/becalmed_concertina_hurdygurdy.mp3");
+            final MediaPlayer mediaplayer2 = new MediaPlayer(new Media(resource2.toString()));
 
-        final URL resource3 = getClass().getResource("/raw/buson_bill_concertina_hurdygurdy.mp3");
-        final MediaPlayer mediaplayer3 = new MediaPlayer(new Media(resource3.toString()));
+            final URL resource3 = getClass().getResource("/raw/buson_bill_concertina_hurdygurdy.mp3");
+            final MediaPlayer mediaplayer3 = new MediaPlayer(new Media(resource3.toString()));
 
-        final URL resource4 = getClass().getResource("/raw/maiden_voyage.mp3");
-        final MediaPlayer mediaplayer4 = new MediaPlayer(new Media(resource4.toString()));
+            final URL resource4 = getClass().getResource("/raw/maiden_voyage.mp3");
+            final MediaPlayer mediaplayer4 = new MediaPlayer(new Media(resource4.toString()));
 
-        final URL resource5 = getClass().getResource("/raw/rise_of_the_valkyries_concertina.mp3");
-        final MediaPlayer mediaplayer5 = new MediaPlayer(new Media(resource5.toString()));
+            final URL resource5 = getClass().getResource("/raw/rise_of_the_valkyries_concertina.mp3");
+            final MediaPlayer mediaplayer5 = new MediaPlayer(new Media(resource5.toString()));
 
-        final URL resource6 = getClass().getResource("/raw/sea_of_thieves_theme_song.mp3");
-        final MediaPlayer mediaplayer6 = new MediaPlayer(new Media(resource6.toString()));
+            final URL resource6 = getClass().getResource("/raw/sea_of_thieves_theme_song.mp3");
+            final MediaPlayer mediaplayer6 = new MediaPlayer(new Media(resource6.toString()));
 
-        final List<MediaPlayer> players = new ArrayList<MediaPlayer>(Arrays.asList(mediaplayer1, mediaplayer2, mediaplayer3, mediaplayer4, mediaplayer5, mediaplayer6));
+            final List<MediaPlayer> players = new ArrayList<MediaPlayer>(Arrays.asList(mediaplayer1, mediaplayer2, mediaplayer3, mediaplayer4, mediaplayer5, mediaplayer6));
 
-        //set the next mediaplayer, when one player has finished
-        mediaView = new MediaView(players.get( new Random().nextInt(5)));
+            //set the next mediaplayer, when one player has finished
+            mediaView = new MediaView(players.get(new Random().nextInt(5)));
             for (int i = 0; i < players.size(); i++) {
-                final MediaPlayer player     = players.get(i);
+                final MediaPlayer player = players.get(i);
                 final MediaPlayer nextPlayer = players.get((i + 1) % players.size());
-                player.setOnEndOfMedia(new Runnable() {
-
-                    @Override public void run() {
-                        nextPlayer.setVolume(0.1);
-                        mediaView.setMediaPlayer(nextPlayer);
-                        nextPlayer.play();
-
-                    }
-
+                player.setOnEndOfMedia(() -> {
+                    nextPlayer.setVolume((double)Settings.getMusicVolume()/100);
+                    nextPlayer.setMute(Settings.getMusicMute());
+                    mediaView.setMediaPlayer(nextPlayer);
+                    nextPlayer.play();
                 });
 
             }
 
+            startStage.setScene(new Scene(pane));
+            Start();
 
-        startStage.setMaximized(false);
-        startStage.setMaximized(true);
-        startStage.setTitle(TITLE);
-        startStage.setScene(new Scene(pane));
-        startStage.show();
-        mediaView.getMediaPlayer().setVolume(0.1);
-        mediaView.getMediaPlayer().play();
-        startStage.show();}
-        catch (IOException e){
+            mediaView.getMediaPlayer().setVolume(0.1);
+            mediaView.getMediaPlayer().setVolume((double)Settings.getMusicVolume()/100);
+            mediaView.getMediaPlayer().play();
+            mediaView.getMediaPlayer().setMute(Settings.getMusicMute());
+        } catch (IOException e) {
             e.printStackTrace();
         }
 
@@ -191,4 +189,13 @@ public final class BattleshipsDesktopClientApplication extends Application {
         sounds = value;
     }
 
+    /**
+     * used for setting up the start stage in {@link Start}
+     * @throws IOException
+     */
+    @FXML
+    private void Start() throws IOException {
+        Start start = new Start();
+        start.display(startStage);
+    }
 }

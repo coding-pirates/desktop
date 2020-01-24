@@ -49,14 +49,10 @@ test {
 }
 
 jar{
-    baseName = "server_${project.desktop_version}"
+    baseName = "desktop_${project.desktop_version}"
     manifest {
         attributes 'Implementation-Title': 'Battleships Desktop App',
                 'Implementation-Version': "${project.desktop_version}",
                 'Main-Class': 'de.upb.codingpirates.battleships.server.BattleshipsDesktopClientApplication'
     }
-    from ( configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) } ) {
-        exclude 'META-INF/**'
-        exclude 'log4j2.xml'
-    }
-}
+    from ( configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) } ) }

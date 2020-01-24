@@ -237,6 +237,9 @@ public class InGameController implements Initializable {
         time.playFromStart();
     }
 
+    public GameState getGameState(){
+        return model.getGameState();
+    }
 
     /**
      * Closes the InGame Window.
@@ -306,8 +309,6 @@ public class InGameController implements Initializable {
     /**
      * Takes Configuration of the Game and displays the Information in the TextFields.
      *
-     * @param tempConfig Configuration of the Game.
-     * @param clientList List of all Clients taking part in the Game.
      */
     public void sendGameStateRequest() {
         try {

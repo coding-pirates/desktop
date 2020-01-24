@@ -1,26 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.*?>
+<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
 <AnchorPane style="-fx-background-color: #CFBE8E #CFBE8E #CFBE8E;" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.upb.codingpirates.battleships.desktop.lobby.LobbyController">
-   <ImageView nodeOrientation="INHERIT" pickOnBounds="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+   <ImageView layoutX="-769.0" layoutY="-249.0" pickOnBounds="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
       <image>
          <Image url="@../images/Background.png" />
       </image>
+      <cursor>
+         <Cursor fx:constant="DEFAULT" />
+      </cursor>
    </ImageView>
   <VBox minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
       <AnchorPane prefHeight="219.0" prefWidth="1200.0">
          <children>
-         <Label alignment="CENTER" layoutX="511.0" layoutY="71.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="76.0" prefWidth="179.0" text="LOBBY" textFill="WHITE" AnchorPane.leftAnchor="511.0" AnchorPane.rightAnchor="510.0" AnchorPane.topAnchor="71.0">
+         <Label alignment="CENTER" layoutX="511.0" layoutY="71.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="76.0" prefWidth="179.0" style="-fx-font-family: 'Pirata One';" text="LOBBY" textFill="WHITE" AnchorPane.leftAnchor="511.0" AnchorPane.rightAnchor="510.0" AnchorPane.topAnchor="71.0">
            <font>
              <Font size="35.0" />
            </font>
          </Label>
-         <Separator layoutX="284.0" layoutY="149.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="0.0" prefWidth="1388.0" style="-fx-background-color: black;" AnchorPane.leftAnchor="284.0" AnchorPane.rightAnchor="248.0" />
+         <Separator layoutX="284.0" layoutY="149.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="0.0" prefWidth="1388.0" style="-fx-background-color: #92BFBF;" AnchorPane.leftAnchor="284.0" AnchorPane.rightAnchor="248.0" />
             <Button fx:id="btn_settings" cache="true" cacheHint="ROTATE" cacheShape="false" contentDisplay="GRAPHIC_ONLY" focusTraversable="false" layoutX="1083.0" layoutY="78.0" minHeight="-Infinity" minWidth="-Infinity" onAction="#settings" prefHeight="44.0" prefWidth="55.0" style="-fx-background-color: #CFBE8E;" text="Settings" AnchorPane.rightAnchor="62.0" AnchorPane.topAnchor="78.0">
                <graphic>
                   <ImageView fitHeight="38.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
@@ -28,17 +32,23 @@
                         <Image url="@../images/icon_settings.png" />
                      </image>
                   </ImageView>
-               </graphic></Button>
+               </graphic>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></Button>
             <Button cache="true" cacheHint="ROTATE" cacheShape="false" contentDisplay="TEXT_ONLY" focusTraversable="false" layoutX="1008.0" layoutY="78.0" minHeight="-Infinity" minWidth="-Infinity" onAction="#help" prefHeight="44.0" prefWidth="55.0" style="-fx-background-color: #CFBE8E;" text="?" textFill="#472218" AnchorPane.rightAnchor="137.0" AnchorPane.topAnchor="78.0">
                <font>
                   <Font name="System Bold" size="22.0" />
                </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
             </Button>
             <Button fx:id="btn_logout" layoutX="258.0" layoutY="137.0" mnemonicParsing="false" onAction="#btnLogoutClicked" text="Logout" />
          </children>
       </AnchorPane>
    <VBox alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="771.0" prefWidth="1920.0">
-     <Button fx:id="refreshButton" alignment="CENTER" contentDisplay="CENTER" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#showgames" prefHeight="70.0" prefWidth="242.0" style="-fx-background-color: #CFBE8E;" text="Aktualisieren" textAlignment="CENTER" textFill="WHITE">
+     <Button fx:id="refreshButton" alignment="CENTER" contentDisplay="CENTER" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#showgames" prefHeight="70.0" prefWidth="242.0" style="-fx-background-color: #CFBE8E; -fx-font-family: 'Pirata One'; -fx-font-size: 30;" text="%lobby.refresh" textAlignment="CENTER" textFill="WHITE">
        <VBox.margin>
          <Insets bottom="30.0" top="20.0" />
        </VBox.margin>
@@ -58,23 +68,32 @@
          <Insets bottom="20.0" left="20.0" right="20.0" />
        </padding>
        <panes>
-         <TitledPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="150.0" prefWidth="1000.0" style="-fx-body-color: #472218; -fx-inner-border: #92BFBF; -fx-box-border: #92BFBF; -fx-mark-color: white; -fx-focus-color: #E4FFFF;" text="Startende Spiele" textFill="#fcfcfc">
+         <TitledPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="150.0" prefWidth="1000.0" style="-fx-body-color: #472218; -fx-inner-border: #92BFBF; -fx-box-border: #92BFBF; -fx-mark-color: white; -fx-focus-color: #E4FFFF; -fx-font-family: 'Pirata One'; -fx-font-size: 25;" stylesheets="@../css/lobby_listview.css" text="%lobby.starting_games" textFill="#fcfcfc">
            <font>
              <Font name="System Bold" size="25.0" />
            </font>
-           <ListView fx:id="lstvwStart" minWidth="100.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #CFBE8E;" />
+           <ListView fx:id="lstvwStart" minWidth="100.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #CFBE8E;" styleClass="list-view, list-cell" />
+                  <cursor>
+                     <Cursor fx:constant="HAND" />
+                  </cursor>
          </TitledPane>
-         <TitledPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="150.0" prefWidth="1000.0" style="-fx-body-color: #472218; -fx-inner-border: #92BFBF; -fx-box-border: #92BFBF; -fx-mark-color: white; -fx-focus-color: #E4FFFF;" text="Laufende Spiele" textFill="#fcfcfc">
+         <TitledPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="150.0" prefWidth="1000.0" style="-fx-body-color: #472218; -fx-inner-border: #92BFBF; -fx-box-border: #92BFBF; -fx-mark-color: white; -fx-focus-color: #E4FFFF; -fx-font-family: 'Pirata One'; -fx-font-size: 25;" stylesheets="@../css/lobby_listview.css" text="%lobby.running_games" textFill="#fcfcfc">
            <font>
              <Font name="System Bold" size="25.0" />
            </font>
-           <ListView fx:id="lstvwRunning" minWidth="100.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #CFBE8E;" />
+           <ListView fx:id="lstvwRunning" minWidth="100.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #CFBE8E;" styleClass="list-view, list-cell" />
+                  <cursor>
+                     <Cursor fx:constant="HAND" />
+                  </cursor>
          </TitledPane>
-         <TitledPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="150.0" prefWidth="1000.0" style="-fx-body-color: #472218; -fx-inner-border: #92BFBF; -fx-box-border: #92BFBF; -fx-mark-color: white; -fx-focus-color: #E4FFFF;" text="Beendete Spiele" textFill="#f8f7f7">
+         <TitledPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="150.0" prefWidth="1000.0" style="-fx-body-color: #472218; -fx-inner-border: #92BFBF; -fx-box-border: #92BFBF; -fx-mark-color: white; -fx-focus-color: #E4FFFF; -fx-font-family: 'Pirata One'; -fx-font-size: 25;" stylesheets="@../css/lobby_listview.css" text="%lobby.finished_games" textFill="#f8f7f7">
            <font>
              <Font name="System Bold" size="25.0" />
            </font>
-           <ListView fx:id="lstvwEnd" minWidth="100.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #CFBE8E;" />
+           <ListView fx:id="lstvwEnd" minWidth="100.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #CFBE8E;" styleClass="list-view"/>
+                  <cursor>
+                     <Cursor fx:constant="HAND" />
+                  </cursor>
          </TitledPane>
        </panes>
             <VBox.margin>

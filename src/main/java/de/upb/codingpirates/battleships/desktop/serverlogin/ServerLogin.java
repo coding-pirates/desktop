@@ -2,32 +2,27 @@ package de.upb.codingpirates.battleships.desktop.serverlogin;
 
 import de.upb.codingpirates.battleships.client.network.ClientApplication;
 import de.upb.codingpirates.battleships.client.network.ClientConnector;
-import de.upb.codingpirates.battleships.client.network.ClientModule;
-import javafx.application.Application;
+import de.upb.codingpirates.battleships.desktop.util.Fullscreen;
+import de.upb.codingpirates.battleships.desktop.util.Settings;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 import javax.annotation.Nonnull;
-import java.io.InputStream;
+import java.io.IOException;
+import java.util.ResourceBundle;
 
 /**
  * Class that implements a Window to login to the game
  */
-public class ServerLogin {
+public class ServerLogin extends Fullscreen {
 
     /**
      * stage for this view
      */
     private Stage loginStage;
-    /**
-     * ControllerClass to this view
-     */
-    private ServerLoginController serverLoginController;
 
     private final ClientConnector tcpConnector = ClientApplication.create();
 
@@ -36,37 +31,24 @@ public class ServerLogin {
      */
     private static ServerLogin instance;
 
-    /**
-     * Get the instance itself
-     * @return instance
-     */
-    public static ServerLogin getInstance() {
-        return instance;
-    }
 
-
-    public void init() {
-        instance = this;
-    }
 
     /**
      * Loads the ServerLogin.fxml, creates a ServerLogin Window and related Controller.
      */
-    public void display(@Nonnull final Stage loginStage) throws Exception {
+    public void display(@Nonnull final Stage loginStage) throws IOException {
         this.loginStage = loginStage;
 
-        FXMLLoader loader = new FXMLLoader(ServerLogin.class.getResource("/fxml/ServerLogin.fxml"));
+        FXMLLoader loader = new FXMLLoader(ServerLogin.class.getResource("/fxml/ServerLogin.fxml"), ResourceBundle.getBundle("lang/desktop", Settings.getLocale()));
         AnchorPane pane = loader.load();
 
         Image icon = new Image(String.valueOf(getClass().getResource("/images/app_icon.png")));
         loginStage.getIcons().add(icon);
 
-        this.serverLoginController = loader.getController();
         loginStage.setTitle("Login");
-        loginStage.setMaximized(true);
-        loginStage.setResizable(false);
-        loginStage.setScene(new Scene(pane));
-        loginStage.show();
+        Scene scene = new Scene(pane);
+        loginStage.setScene(scene);
+        super.display(loginStage);
     }
 
     /**
@@ -86,4 +68,5 @@ public class ServerLogin {
 
         return tcpConnector;
     }
+
 }

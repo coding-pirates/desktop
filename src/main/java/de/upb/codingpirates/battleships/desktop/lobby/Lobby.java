@@ -1,5 +1,6 @@
 package de.upb.codingpirates.battleships.desktop.lobby;
 
+import de.upb.codingpirates.battleships.desktop.util.Fullscreen;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
@@ -7,11 +8,12 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.ResourceBundle;
 
 /**
  * Class that initials the Lobby Window.
  */
-public class Lobby  {
+public class Lobby extends Fullscreen {
 
     /**
      * lobbyStage for this window
@@ -23,7 +25,7 @@ public class Lobby  {
      */
     public void display(Stage lobbyStage, int clientID) throws IOException {
         this.lobbyStage = lobbyStage;
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/Lobby.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/Lobby.fxml"), ResourceBundle.getBundle("lang/desktop", de.upb.codingpirates.battleships.desktop.util.Settings.getLocale()));
         AnchorPane pane = loader.load();
         LobbyController lobbyController = loader.getController();
         lobbyController.setLobby(this);
@@ -31,11 +33,9 @@ public class Lobby  {
         lobbyController.setChangeListener();
         Image icon = new Image(String.valueOf(getClass().getResource("/images/app_icon.png")));
         lobbyStage.getIcons().add(icon);
-        lobbyStage.setMaximized(true);
-        lobbyStage.setResizable(false);
         lobbyStage.setTitle("Lobby");
         lobbyStage.setScene(new Scene(pane));
-        lobbyStage.show();
+        super.display(lobbyStage);
         lobbyController.showgames();
 
     }

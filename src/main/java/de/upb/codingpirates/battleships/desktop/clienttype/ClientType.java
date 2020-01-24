@@ -45,6 +45,7 @@ public class ClientType {
         if(selectedGame.getState() == GameState.IN_PROGRESS) {
             clientTypeController.setPlayerVisibility(false);
         }
+        window.getScene().getStylesheets().add("https://fonts.googleapis.com/css?family=Pirata+One");
         window.showAndWait();
     }
 
