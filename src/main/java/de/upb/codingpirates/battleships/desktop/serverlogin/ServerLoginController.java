@@ -107,27 +107,27 @@ public class ServerLoginController implements Initializable, ServerJoinResponseL
         });
 
         //image button stettings
-        double btn_startXSize = displayWidth * 53/1920;
-        double btn_startYSize = displayHeight * 53/1080;
+        double btnXSize = displayWidth * 53/1920;
+        double btnYSize = displayHeight * 53/1080;
 
-        btn_settings.setBackground(new Background(new BackgroundImage(new Image(getClass().getResource("/images/icon_settings.png").toExternalForm()), BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, new BackgroundSize(btn_startXSize,btn_startYSize,true,true,true,true))));
-        btn_settings.setPrefSize(btn_startXSize, btn_startYSize);
+        btn_settings.setBackground(new Background(new BackgroundImage(new Image(getClass().getResource("/images/icon_settings.png").toExternalForm()), BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, new BackgroundSize(btnXSize,btnYSize,true,true,true,true))));
+        btn_settings.setPrefSize(btnXSize, btnYSize);
         btn_settings.setOnAction((event)-> settings());
         btn_settings.setOnMouseEntered(this::changeCursor);
 
 
-        btn_settings.setLayoutX(displayWidth * 0.93 - btn_startXSize / 2);
-        btn_settings.setLayoutY(displayHeight * 0.13 - btn_startYSize / 2);
+        btn_settings.setLayoutX(displayWidth * 0.93 - btnXSize / 2);
+        btn_settings.setLayoutY(displayHeight * 0.13 - btnYSize / 2);
 
         //image button help
-        btn_help.setBackground(new Background(new BackgroundImage(new Image(getClass().getResource("/images/icon_help.png").toExternalForm()), BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, new BackgroundSize(btn_startXSize,btn_startYSize,true,true,true,true))));
-        btn_help.setPrefSize(btn_startXSize, btn_startYSize);
+        btn_help.setBackground(new Background(new BackgroundImage(new Image(getClass().getResource("/images/icon_help.png").toExternalForm()), BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, new BackgroundSize(btnXSize,btnYSize,true,true,true,true))));
+        btn_help.setPrefSize(btnXSize, btnYSize);
         btn_help.setOnAction((event)-> help());
         btn_help.setOnMouseEntered(this::changeCursor);
 
 
-        btn_help.setLayoutX(displayWidth * 0.89 - btn_startXSize / 2);
-        btn_help.setLayoutY(displayHeight * 0.13 - btn_startYSize / 2);
+        btn_help.setLayoutX(displayWidth * 0.89 - btnXSize / 2);
+        btn_help.setLayoutY(displayHeight * 0.13 - btnYSize / 2);
     }
 
     /**
