@@ -150,7 +150,7 @@ public class GameField {
         final MediaPlayer mediaplayer = new MediaPlayer(new Media(resource.toString()));
         mediaplayer.play();}
         String point = (shot.getX() + "," + shot.getY());
-        Image img = new Image(String.valueOf(GameField.class.getResource("/images/app_icon.png")));
+        Image img = new Image(String.valueOf(GameField.class.getResource("/images/Field_Select.png")));
         map.get(point).setFill(new ImagePattern(img));
         Tooltip toolTip = new Tooltip("Beschossen von Spieler");
         Tooltip.install(map.get(point), toolTip);

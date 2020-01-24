@@ -1,5 +1,6 @@
 package de.upb.codingpirates.battleships.desktop.waiting;
 
+import de.upb.codingpirates.battleships.desktop.util.Fullscreen;
 import de.upb.codingpirates.battleships.desktop.util.FxmlLoader;
 import de.upb.codingpirates.battleships.logic.Game;
 import javafx.fxml.FXMLLoader;
@@ -11,7 +12,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class Waiting implements FxmlLoader {
+public class Waiting extends Fullscreen implements FxmlLoader {
 
     private Stage waitingStage;
     private WaitingController waitingController;
@@ -35,6 +36,8 @@ public class Waiting implements FxmlLoader {
         waitingStage.getIcons().add(icon);
         Scene scene = new Scene(pane);
         waitingStage.setScene(scene);
+        super.display(waitingStage);
+
         waitingStage.show();
     }
 

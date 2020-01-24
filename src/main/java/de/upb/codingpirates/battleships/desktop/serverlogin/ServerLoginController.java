@@ -27,10 +27,12 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
+import org.apache.logging.log4j.LogManager;
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.logging.Logger;
 
 /**
  * Controller Class for the ServerLogin Window.
@@ -238,6 +240,7 @@ public class ServerLoginController implements Initializable, ServerJoinResponseL
     @Override
     public void onServerJoinResponse(ServerJoinResponse response, int clientId) {
         listen = false;
+        LogManager.getLogger().info("Client ID: {}", response.getClientId());
         Platform.runLater(() -> {
             setLblStatus("");
 

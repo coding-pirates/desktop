@@ -60,6 +60,7 @@ public class InGame extends Fullscreen implements FxmlLoader {
         inGameStage.getIcons().add(icon);
         inGameStage.setTitle("InGame");
         inGameStage.setScene(new Scene(pane));
+        super.display(inGameStage);
         inGameStage.setMaximized(true);
         inGameStage.show();
         //inGameController.spectatorGameStateResponse(player, shots, ships, gameState);
