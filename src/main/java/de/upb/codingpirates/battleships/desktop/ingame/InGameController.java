@@ -34,46 +34,130 @@ import java.util.*;
  */
 public class InGameController implements Initializable {
 
+    /**
+     * model class of this view
+     */
     private InGameModel model;
+    /**
+     * ranking class for the players
+     */
     private Ranking ranking;
+    /**
+     * time to place the shots
+     */
     private Long millis;
+    /**
+     * height of the gamefield
+     */
     private int height;
+    /**
+     * width of the gamefield
+     */
     private int width;
+    /**
+     * Map with id of gamefield/player and gamefieldcontroller class
+     */
     private HashMap<Integer, GameFieldController> controllerMap = new HashMap<Integer, GameFieldController>();
+    /**
+     * Map with id of gamefield and the node
+     */
     private HashMap<Integer, Node> fieldMap = new HashMap<Integer, Node>();
+    /**
+     * Node inGame
+     */
     private Node inGame;
+    /**
+     * configuration for this game
+     */
     private Configuration config;
+    /**
+     * timelien for counting the time
+     */
     private Timeline time = new Timeline();
+    /**
+     * collection of all players
+     */
     private Collection<Client> players = null;
+    /**
+     * gamefield is enlarged
+     */
     private boolean enlarged = false;
+    /**
+     * map with playerId and points
+     */
     private Map<Integer, Integer> points;
+    /**
+     * Game logic Class
+     */
     private Game game;
 
+    //view
+    /**
+     * Layout for the gamefields
+     */
     @FXML
     private GridPane grid;
+    /**
+     * field for amount of player
+     */
     @FXML
     private Label maxPlayerCount;
+    /**
+     * field for amount of shots
+     */
     @FXML
     private Label shotCount;
+    /**
+     * field for showing points for hitting a ship
+     */
     @FXML
     private Label hitPoints;
+    /**
+     * field for showing points for a sunken ship
+     */
     @FXML
     private Label sunkPoints;
+    /**
+     * field for showing the time for one round
+     */
     @FXML
     private Label roundTime;
+    /**
+     * field for showing the status
+     */
     @FXML
     private Label status;
+    /**
+     * layout to fill in the gamefields
+     */
     @FXML
     private FlowPane spielfelder;
+    /**
+     * layout to seperate one large gamefield to the others
+     */
     @FXML
     private SplitPane splitPane;
+    /**
+     * field for showing the restTime for this one round
+     */
     @FXML
     private Label restTime;
+    /**
+     * Indicator for the waiting time
+     */
     @FXML
     private ProgressIndicator progressindicator;
+    /**
+     * layout for progressIndicator
+     */
     @FXML
     private BorderPane borderpane;
 
+    /**
+     * Initialization
+     * @param arg0 URL
+     * @param arg1 ResourceBundle
+     */
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
         this.model = new InGameModel();
@@ -221,6 +305,9 @@ public class InGameController implements Initializable {
 
     /**
      * Takes Configuration of the Game and displays the Information in the TextFields.
+     *
+     * @param tempConfig Configuration of the Game.
+     * @param clientList List of all Clients taking part in the Game.
      */
     public void sendGameStateRequest() {
         try {
@@ -515,6 +602,7 @@ public class InGameController implements Initializable {
             }
         });
     }
+
     /**
      * starts the EndView with the Winners of the game
      *
@@ -538,6 +626,10 @@ public class InGameController implements Initializable {
 
     }
 
+    /**
+     * starts the HelpView with accessibility tools in an extra window
+     * @throws IOException
+     */
     @FXML
     public void help() throws IOException {
         Help help = new Help();
@@ -568,6 +660,10 @@ public class InGameController implements Initializable {
         stage.close();
     }
 
+    /**
+     * starts the LobbyView and closes this window
+     * @throws Exception
+     */
     @FXML
     public void leave(){
         model.sendGameLeaveRequest();
@@ -616,5 +712,22 @@ public class InGameController implements Initializable {
       model.setClientID(clientID);
     }
 
+    /** Scroll event with mouse for the gamefield
+     * @param event
+     */
+    @FXML
+    public void scroll(javafx.scene.input.ScrollEvent event) {
+        Node clickedNode = event.getPickResult().getIntersectedNode();
+        if (clickedNode != grid) {
+            double zoomFactor = 1.05;
+            double deltaY = event.getDeltaY();
+            if (deltaY < 0){
+                zoomFactor = 2.0 - zoomFactor;
+            }
+            borderpane.setScaleX(borderpane.getScaleX() * zoomFactor);
+            borderpane.setScaleY(borderpane.getScaleY() * zoomFactor);
+        }
+    }
 
 }
+

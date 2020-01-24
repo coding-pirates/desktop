@@ -33,6 +33,10 @@ import javafx.util.Duration;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.ResourceBundle;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 /**
@@ -54,6 +58,9 @@ public class PlaceShipsController extends InGameController implements Initializa
 
     @FXML
     private BorderPane borderPane;
+    /**
+     * Layout for gamefield
+     */
     @FXML
     private GridPane selectedShipGrid;
     @FXML
@@ -67,13 +74,20 @@ public class PlaceShipsController extends InGameController implements Initializa
     private Timeline time = new Timeline();
 
 
-
+    /**
+     * Constructor of this class
+     */
     public PlaceShipsController() {
         ListenerHandler.registerListener(this);
         this.model = new PlaceshipsModel();
     }
 
 
+    /**
+     * Initialization
+     * @param location
+     * @param resources
+     */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
     }
@@ -109,6 +123,9 @@ public class PlaceShipsController extends InGameController implements Initializa
         time.playFromStart();
     }
 
+    /**
+     * closes the PlaceShipView
+     */
     public void closeStage() {
         Stage stage = (Stage) btn_rotate.getScene().getWindow();
         stage.close();
@@ -126,6 +143,10 @@ public class PlaceShipsController extends InGameController implements Initializa
         }
     }
 
+    /**
+     * starts the SettingsView in an extra window
+     * @throws Exception
+     */
     @FXML
     public void settings() throws Exception {
 
@@ -144,13 +165,18 @@ public class PlaceShipsController extends InGameController implements Initializa
 
     }
 
+    /**
+     * starts the LobbyView and closes the placeShipsView
+     */
     @FXML
     public void back(){
         System.out.println("Leave Request gesendet!");
         model.sendLeaveRequest();
     }
 
-
+    /**
+     * rotates the ship in shipForm
+     */
     @FXML
     public void rotate(){
         switch (model.getCurrentRotation()){
@@ -170,6 +196,9 @@ public class PlaceShipsController extends InGameController implements Initializa
         shipForm.rotate();
     }
 
+    /**
+     * starts the inGameView and closes the placeshipView
+     */
     @FXML
     public void gamestart(){
         model.sendPlaceShipsRequest(this);
@@ -219,6 +248,9 @@ public class PlaceShipsController extends InGameController implements Initializa
             }
     }
 
+    /**
+     * sets the shipForm and visualize it
+     */
     public void setShipForm(){
         shipForm = new ShipForm(model.getShipTypes().get(model.getSelectedShip()).getPositions());
         smallBorderPane.setPadding(new Insets(1, 1, 1, 1));
@@ -312,5 +344,3 @@ public class PlaceShipsController extends InGameController implements Initializa
         model.setCurrentRotation(Rotation.NONE);
         setShipForm();
     }
-
-}

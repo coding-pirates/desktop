@@ -2,6 +2,7 @@ package de.upb.codingpirates.battleships.desktop.placeship;
 
 
 import de.upb.codingpirates.battleships.logic.Game;
+import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
@@ -16,8 +17,13 @@ import java.util.*;
  */
 public class Placeships  {
 
-
+    /**
+     * stage of this view
+     */
     private Stage placeshipsStage;
+    /**
+     * controllerclass to this view
+     */
     private PlaceShipsController placeshipsController;
 
     /**
@@ -43,7 +49,7 @@ public class Placeships  {
     }
 
     /**
-     * Closes the Ranking Window
+     * Closes the PlaceShips Window
      */
     protected void close() {
         placeshipsStage.close();

@@ -3,6 +3,10 @@ package de.upb.codingpirates.battleships.desktop.gamefield;
 import de.upb.codingpirates.battleships.desktop.ingame.InGameController;
 import de.upb.codingpirates.battleships.desktop.placeship.PlaceShipsController;
 import de.upb.codingpirates.battleships.logic.*;
+import de.upb.codingpirates.battleships.logic.Game;
+import de.upb.codingpirates.battleships.logic.PlacementInfo;
+import de.upb.codingpirates.battleships.logic.Point2D;
+import de.upb.codingpirates.battleships.logic.ShipType;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
@@ -22,16 +26,41 @@ import java.util.*;
  */
 public class GameFieldController implements Initializable {
 
+    /**
+     * parent Controller from the whole GameView
+     */
     private InGameController parent;
+    /**
+     * height of the gamefield
+     */
     private int height;
+    /**
+     * width of the gamefield
+     */
     private int width;
+    /**
+     * describe the type of the field (water, ship, hit)
+     */
     private String[][] type;
+    /**
+     * gameField class
+     */
     private GameField gameField;
+    /**
+     * node inGame
+     */
     private Node inGame;
+    /**
+     * Game logic
+     */
     private Game game;
+    /**
+     * Layout GridPane for the single gamefield
+     */
     private GridPane grid;
     private int playerID;
 
+    //view
     @FXML
     private BorderPane borderPane;
     @FXML
@@ -53,7 +82,12 @@ public class GameFieldController implements Initializable {
         this.playerID = playerID;
     }
 
-    public Node getInGame() {
+    /**
+     * Returns the Node inGame
+     * @return Node inGame
+     */
+    public Node getInGame()
+    {
         return inGame;
     }
 
@@ -75,6 +109,7 @@ public class GameFieldController implements Initializable {
      */
     public void enlargeBoard() {
         parent.enlargeBoard(this);
+
     }
 
     /**
@@ -96,7 +131,6 @@ public class GameFieldController implements Initializable {
         }
         System.out.println(borderPane.getCenter());
     }
-
 
 
     /**
@@ -176,6 +210,11 @@ public class GameFieldController implements Initializable {
         this.points.setText("Punkte: " + points);
     }
 
+    /**
+     * Initialization
+     * @param arg0 URL
+     * @param arg1 ResourceBundle
+     */
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
 

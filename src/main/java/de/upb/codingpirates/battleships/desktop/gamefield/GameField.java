@@ -27,9 +27,21 @@ import java.util.Random;
  */
 public class GameField {
 
+    /**
+     * Layout for the gameField as Table
+     */
     private GridPane gameField;
+    /**
+     * amount of rows in the gamefield
+     */
     private int nbRow;
+    /**
+     * amount of columns in teh gamefield
+     */
     private int nbColumn;
+    /**
+     * Table with string Value for position of the field, and the single fields
+     */
     private HashMap<String, Rectangle> map = new HashMap<>();
     private int imageShip;
     private GameFieldController controller;
@@ -128,6 +140,10 @@ public class GameField {
         Tooltip.install(map.get(point), toolTip);
     }
 
+    /**
+     * Changes the Image where a Shot is placed
+     * @param shot
+     */
     public void shotPlaced(Point2D shot){
         if (!BattleshipsDesktopClientApplication.getSoundsOff()){
         final URL resource = getClass().getResource("/raw/click.mp3");

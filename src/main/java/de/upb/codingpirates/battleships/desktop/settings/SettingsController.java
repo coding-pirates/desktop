@@ -22,18 +22,30 @@ import java.util.ResourceBundle;
  */
 public class SettingsController implements Initializable {
 
+    /**
+     * main class
+     */
     private BattleshipsDesktopClientApplication main;
 
     //Views
+    /**
+     * button to leave the settings
+     */
     @FXML
     private Button btn_back;
-
+    /**
+     * Slider to changes the volume
+     */
     @FXML
     private Slider volume;
-
+    /**
+     * Image for sounds
+     */
     @FXML
     private ImageView soundImg;
-
+    /**
+     * Image for volume
+     */
     @FXML
     private ImageView volumeImg;
 
@@ -45,18 +57,28 @@ public class SettingsController implements Initializable {
 
     }
 
+    /**
+     * set the main Application-window
+     * @param main
+     */
     public void setMain(BattleshipsDesktopClientApplication main) {
 
         this.main = main;
     }
 
+    /**
+     * closes the settingsWindow
+     */
     @FXML
     public void closeStage(){
         Stage stage = (Stage) btn_back.getScene().getWindow();
         stage.close();
     }
 
-
+    /**
+     * starts the HelpView with accessibility tools in an extra window
+     * @throws IOException
+     */
     @FXML
     public void help() throws IOException {
         Help help = new Help();
@@ -68,6 +90,10 @@ public class SettingsController implements Initializable {
         }
     }
 
+    /**
+     * starts the ImpressumWindow in an extra window
+     * @throws IOException
+     */
     @FXML
     public void impressum() throws IOException{
         Impressum impressum = new Impressum();
@@ -79,6 +105,10 @@ public class SettingsController implements Initializable {
         }
     }
 
+    /**
+     * starts the piratenkodexWindow in an extra window
+     * @throws IOException
+     */
     @FXML
     public void piratenkodex() throws IOException{
         Impressum impressum = new Impressum();
@@ -90,6 +120,9 @@ public class SettingsController implements Initializable {
         }
     }
 
+    /**
+     * sets the volume to another value by the slider
+     */
     public void setVolume(){
         volume.setValue(BattleshipsDesktopClientApplication.mediaView.getMediaPlayer().getVolume()*100);
         volume.valueProperty().addListener(new InvalidationListener() {
@@ -101,6 +134,9 @@ public class SettingsController implements Initializable {
         });
 }
 
+    /**
+     * sets the volume off, changes Image
+     */
     @FXML
     public void volumeOff(){
         if (BattleshipsDesktopClientApplication.mediaView.getMediaPlayer().isMute()){
@@ -115,6 +151,9 @@ public class SettingsController implements Initializable {
 
     }
 
+    /**
+     * sets the sounds off, changes Image
+     */
     @FXML
     public void soundsOff(){
         if (BattleshipsDesktopClientApplication.sounds){
