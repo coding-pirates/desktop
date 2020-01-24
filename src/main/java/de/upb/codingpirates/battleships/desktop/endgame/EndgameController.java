@@ -8,8 +8,13 @@ import de.upb.codingpirates.battleships.logic.Client;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Cursor;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.*;
+import javafx.stage.Screen;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -23,6 +28,12 @@ import java.util.ResourceBundle;
  */
 public class EndgameController implements Initializable {
 
+    @FXML
+    Button btn_settings;
+    @FXML
+    Button btn_help;
+    @FXML
+    ImageView background;
     @FXML
     Button btn_lobby;
     @FXML
@@ -42,7 +53,31 @@ public class EndgameController implements Initializable {
      */
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
+        double displayWidth = Screen.getPrimary().getBounds().getWidth();
+        double displayHeight = Screen.getPrimary().getBounds().getHeight();
 
+        background.setFitWidth(displayWidth);
+        background.setFitHeight(displayHeight);
+
+        //image button stettings
+        double btn_startXSize = displayWidth * 53/1920;
+        double btn_startYSize = displayHeight * 53/1080;
+
+        btn_settings.setBackground(new Background(new BackgroundImage(new Image(getClass().getResource("/images/icon_settings.png").toExternalForm()), BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, new BackgroundSize(btn_startXSize,btn_startYSize,true,true,true,true))));
+        btn_settings.setPrefSize(btn_startXSize, btn_startYSize);
+        btn_settings.setOnAction((event)-> settings());
+        btn_settings.setOnMouseEntered(this::changeCursor);
+
+        btn_settings.setLayoutX(displayWidth * 0.93 - btn_startXSize / 2);
+        btn_settings.setLayoutY(displayHeight * 0.13 - btn_startYSize / 2);
+
+        btn_help.setBackground(new Background(new BackgroundImage(new Image(getClass().getResource("/images/icon_help.png").toExternalForm()), BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, new BackgroundSize(btn_startXSize,btn_startYSize,true,true,true,true))));
+        btn_help.setPrefSize(btn_startXSize, btn_startYSize);
+        btn_help.setOnAction((event)-> help());
+        btn_help.setOnMouseEntered(this::changeCursor);
+
+        btn_help.setLayoutX(displayWidth * 0.89 - btn_startXSize / 2);
+        btn_help.setLayoutY(displayHeight * 0.13 - btn_startYSize / 2);
     }
 
     public void setPoints(Map<Integer, Integer> points) {
@@ -58,7 +93,7 @@ public class EndgameController implements Initializable {
      * @throws IOException
      */
     @FXML
-    public void help() throws IOException {
+    public void help() {
         Help help = new Help();
         try{
             help.display("Endgame-Help");
@@ -73,7 +108,7 @@ public class EndgameController implements Initializable {
      * @throws Exception
      */
     @FXML
-    public void settings() throws Exception {
+    public void settings(){
 
         Settings settings = new Settings();
         Stage settingsStage = new Stage();
@@ -115,7 +150,7 @@ public class EndgameController implements Initializable {
      * @throws Exception
      */
     @FXML
-    public void lobby() throws Exception {
+    public void lobby() {
         Lobby lobby = new Lobby();
         Stage lobbyStage = new Stage();
 
@@ -216,5 +251,14 @@ public class EndgameController implements Initializable {
 
 
         }
+    }
+
+    /**
+     * changes the cursor for a button hover to Cursor.HAND
+     * @param event event which calls the method
+     */
+    public void changeCursor(javafx.scene.input.MouseEvent event) {
+        Button currentButton = (Button) event.getSource();
+        currentButton.setCursor(Cursor.HAND);
     }
 }

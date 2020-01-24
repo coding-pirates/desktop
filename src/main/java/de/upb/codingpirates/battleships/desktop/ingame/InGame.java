@@ -1,5 +1,6 @@
 package de.upb.codingpirates.battleships.desktop.ingame;
 
+import de.upb.codingpirates.battleships.desktop.util.Fullscreen;
 import de.upb.codingpirates.battleships.logic.Client;
 import de.upb.codingpirates.battleships.logic.ClientType;
 import de.upb.codingpirates.battleships.logic.Game;
@@ -13,7 +14,7 @@ import javafx.stage.Stage;
 import java.util.Collection;
 import java.util.Map;
 
-public class InGame {
+public class InGame extends Fullscreen {
     private InGameController inGameController;
 
     /**
@@ -37,8 +38,7 @@ public class InGame {
         inGameStage.getIcons().add(icon);
         inGameStage.setTitle("InGame");
         inGameStage.setScene(new Scene(pane));
-        inGameStage.setMaximized(true);
-        inGameStage.show();
+        super.display(inGameStage);
         //inGameController.spectatorGameStateResponse(player, shots, ships, gameState);
         //inGameController.setGame(ausgewaehltesSpiel);
     }

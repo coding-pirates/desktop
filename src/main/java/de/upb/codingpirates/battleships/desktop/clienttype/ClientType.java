@@ -38,6 +38,8 @@ public class ClientType {
             clientTypeController.setPlayerVisibility(false);
         }
         window.setScene(scene);
+        window.setAlwaysOnTop(true);
+        window.getScene().getStylesheets().add("https://fonts.googleapis.com/css?family=Pirata+One");
         window.showAndWait();
     }
 

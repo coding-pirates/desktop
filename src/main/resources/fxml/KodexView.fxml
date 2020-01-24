@@ -1,17 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ScrollPane?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane minHeight="300.0" minWidth="150.0" prefHeight="600.0" prefWidth="600.0" style="-fx-background-color: #CFBE8E; -fx-border-color: #CFBE8E;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.upb.codingpirates.battleships.desktop.util.Impressum">
+<AnchorPane minHeight="300.0" minWidth="150.0" prefHeight="600.0" prefWidth="600.0" style="-fx-background-color: #CFBE8E; -fx-border-color: #CFBE8E;" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.upb.codingpirates.battleships.desktop.util.Impressum">
    <children>
       <VBox alignment="TOP_CENTER" fillWidth="false" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="300.0" style="-fx-background-color: #CFBE8E; -fx-border-color: #472218; -fx-border-width: 5;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -22,9 +17,9 @@
                         <Image url="@../images/button.png" />
                      </image>
                   </ImageView>
-                  <Text fx:id="txt_title" fill="WHITE" layoutX="3.0" layoutY="37.740234375" nodeOrientation="RIGHT_TO_LEFT" smooth="false" strokeType="OUTSIDE" strokeWidth="0.0" text="Piratenkodex" textAlignment="CENTER" wrappingWidth="297.9999992620433" AnchorPane.bottomAnchor="16.0" AnchorPane.leftAnchor="3.0" AnchorPane.rightAnchor="-1.0" AnchorPane.topAnchor="14.0">
+                  <Text fx:id="txt_title" fill="WHITE" layoutX="3.0" layoutY="37.740234375" nodeOrientation="RIGHT_TO_LEFT" smooth="false" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-family: 'Pirata One';" text="%settings.pirates_code" textAlignment="CENTER" wrappingWidth="297.9999992620433" AnchorPane.bottomAnchor="16.0" AnchorPane.leftAnchor="3.0" AnchorPane.rightAnchor="-1.0" AnchorPane.topAnchor="14.0">
                      <font>
-                        <Font name="System Bold" size="22.0" />
+                        <Font name="System Bold" size="24.0" />
                      </font>
                   </Text>
                </children>
@@ -36,7 +31,7 @@
                <content>
                   <AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="562.0" style="-fx-background-color: #CFBE8E;">
                      <children>
-                        <Label fx:id="lb_message" layoutY="-9.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="730.0" prefWidth="541.0" text="Zahl der Spieler: &#10;mindestens 2&#10;&#10;Größe der Schiffe: &#10;mindestens 2 (in unterschiedlichen Formen)&#10;&#10;Ziel des Spiels: &#10;Jeder Spieler versteckt seine Schiffe auf dem eigenen Spielfeld vor seinen Gegnern und versucht, durch das Abschießen und Versenken gegnerischer Schiffe eine möglichst hohe Punktzahl zu erzielen.&#10;Platzieren der eigenen Schiffe: Zu Spielbeginn platziert jeder Spieler seine Schiffe im eigenen Spielfeld. Schafft er dies nicht in der vorgegebenen Zeit, werden die übrigen Schiffe automatisch auf das Spielfeld gesetzt. Die Schiffe dürfen am Rand liegen, dürfen sich aber nicht überschneiden oder an den Seiten oder Kanten aneinanderstoßen.&#10;&#10;Ablauf einer Spielrunde: &#10;Alle Spieler, die am Anfang der Runde noch nicht-versenkte Schiffe auf ihrem Spielfeld haben, wählen innerhalb der vorgegebenen Zeit gleichzeitig die gewünschten Ziele ihrer Schüsse aus. Diese kann man beliebig auf alle Felder aufteilen und auch auf eigene Schiffe zielen.        &#10;Am Ende einer Spielrunde bekommt jeder Spieler alle Treffer und die versenkten Schiffe dieser Runde mitgeteilt.&#10;&#10;Versenken von Schiffen: &#10;Ein Schiff gilt als versenkt, wenn jede Koordinate eines Schiffes mindestens einmal getroffen wurde.&#10;&#10;Punkte: &#10;Für jeden Treffer und jedes davon versenkte Schiff erhält der verantwortliche Spieler entsprechende Punkte. Schießt ein Spieler auf sein eigenes Schiff oder auf Ziele, die bereit getroffen wurden, bekommt er dafür keine Punkte.&#10;&#10;Spielende: &#10;Das Spiel endet, wenn nur noch ein Spieler nicht-versenkte Schiffe besitzt.        &#10;Anhand der Punktzahlen aller Spieler wird dann die Platzierung bestimmt" textAlignment="JUSTIFY" textFill="#472218" wrapText="true" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="21.0">
+                        <Label fx:id="lb_message" layoutY="-9.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="730.0" prefWidth="541.0" text="%impressum.rules" textAlignment="JUSTIFY" textFill="#472218" wrapText="true" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="21.0">
                            <font>
                               <Font size="14.0" />
                            </font>
