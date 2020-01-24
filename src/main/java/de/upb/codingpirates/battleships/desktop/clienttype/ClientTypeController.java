@@ -103,16 +103,6 @@ public class ClientTypeController implements Initializable, GameJoinSpectatorRes
 
     public void back(){
         closeStage();
-      /*  Lobby newLobby = new Lobby();
-
-        try {
-            newLobby.display(this.LobbyStage,clientTypeModel.getClientID());
-            closeStage();
-        }catch (IOException e){
-            e.printStackTrace();
-        }
-*/
-
     }
 
     public void placeShips(){

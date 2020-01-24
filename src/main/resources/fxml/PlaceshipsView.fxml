@@ -22,14 +22,14 @@
                      <children>
                         <ButtonBar prefHeight="98.0" prefWidth="180.0">
                           <buttons>
-                            <Button fx:id="btnShipBack" mnemonicParsing="false" onMouseClicked="#onBackShipClicked" style="-fx-background-color: #CFBE8E; -fx-font-family: 'Pirata One';" text="&lt;&lt;" textFill="WHITE">
+                            <Button fx:id="btnShipBack" mnemonicParsing="false" onMouseClicked="#onBackShipClicked" style="-fx-background-color: #CFBE8E;" text="&lt;&lt;" textFill="WHITE">
                                  <cursor>
                                     <Cursor fx:constant="HAND" />
                                  </cursor>
                                  <font>
                                     <Font size="24.0" />
                                  </font></Button>
-                              <Button fx:id="btnShipNext" mnemonicParsing="false" onMouseClicked="#onNextShipClicked" style="-fx-background-color: #CFBE8E; -fx-font-family: 'Pirata One';" text="&gt;&gt;" textFill="WHITE">
+                              <Button fx:id="btnShipNext" mnemonicParsing="false" onMouseClicked="#onNextShipClicked" style="-fx-background-color: #CFBE8E;" text="&gt;&gt;" textFill="WHITE">
                                  <cursor>
                                     <Cursor fx:constant="HAND" />
                                  </cursor>
@@ -38,7 +38,7 @@
                                  </font></Button>
                           </buttons>
                         </ButtonBar>
-                        <Button fx:id="btn_rotate" contentDisplay="CENTER" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#rotate" prefHeight="58.0" prefWidth="161.0" style="-fx-background-color: #CFBE8E; -fx-font-family: 'Pirata One';" text="Rotate" textFill="#f8f7f7">
+                        <Button fx:id="btn_rotate" contentDisplay="CENTER" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#rotate" prefHeight="58.0" prefWidth="161.0" style="-fx-background-color: #CFBE8E;" text="%placeships.rotate" textFill="#f8f7f7">
                            <font>
                               <Font size="24.0" />
                            </font>
@@ -62,7 +62,7 @@
                      <children>
                         <HBox prefHeight="59.0" prefWidth="626.0">
                            <children>
-                              <Text fill="#f8f7f7" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-family: 'Pirata One';" text="Remaining Ships">
+                              <Text fill="#f8f7f7" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-family: 'Pirata One';" text="%placeships.remaining_ships">
                                  <font>
                                     <Font size="24.0" />
                                  </font>
@@ -75,7 +75,7 @@
                                     <Insets left="10.0" />
                                  </HBox.margin>
                               </Label>
-                              <Text fill="#fcf9f9" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-family: 'Pirata One';" text="Remaining Time: " wrappingWidth="183.22802734375">
+                              <Text fill="#fcf9f9" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-family: 'Pirata One';" text="%placeships.remaining_time" wrappingWidth="214.22802734375">
                                  <font>
                                     <Font size="24.0" />
                                  </font>
@@ -112,6 +112,9 @@
                            <font>
                               <Font name="System Bold" size="22.0" />
                            </font>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
                         </Button>
                         <Button fx:id="btn_settings" cache="true" cacheHint="ROTATE" cacheShape="false" contentDisplay="GRAPHIC_ONLY" focusTraversable="false" layoutX="85.0" layoutY="70.0" minHeight="-Infinity" minWidth="-Infinity" onAction="#settings" prefHeight="55.0" prefWidth="55.0" style="-fx-background-color: #CFBE8E;" text="Settings" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="85.0" AnchorPane.rightAnchor="60.0" AnchorPane.topAnchor="70.0">
                            <graphic>
@@ -119,6 +122,9 @@
                                  <image>
                                     <Image url="@../images/icon_settings.png" />
                                  </image>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
                               </ImageView>
                            </graphic>
                         </Button>
@@ -133,13 +139,13 @@
                <items>
                   <AnchorPane style="-fx-background-color: #CFBE8E;" SplitPane.resizableWithParent="false">
                      <children>
-                        <ScrollPane prefHeight="633.0" prefWidth="1200.0" AnchorPane.bottomAnchor="-2.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-2.0" AnchorPane.topAnchor="0.0">
+                        <ScrollPane prefHeight="633.0" prefWidth="1200.0" style="-fx-background-color: #CFBE8E;" AnchorPane.bottomAnchor="-2.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-2.0" AnchorPane.topAnchor="0.0">
                           <content>
                             <AnchorPane prefHeight="635.0" prefWidth="1920.0" style="-fx-background-color: #CFBE8E;">
                                  <children>
-                                    <FlowPane fx:id="anchorPane" prefHeight="718.0" prefWidth="1918.0">
+                                    <FlowPane fx:id="anchorPane" prefHeight="718.0" prefWidth="1918.0" style="-fx-background-color: #CFBE8E;">
                                        <children>
-                                          <BorderPane fx:id="borderPane" onMouseClicked="#clickGrid" onScroll="#scroll" prefHeight="860.0" prefWidth="1919.0">
+                                          <BorderPane fx:id="borderPane" onMouseClicked="#clickGrid" onScroll="#scroll" prefHeight="860.0" prefWidth="1919.0" style="-fx-background-color: #CFBE8E;">
                                              <FlowPane.margin>
                                                 <Insets />
                                              </FlowPane.margin></BorderPane>
@@ -155,7 +161,7 @@
             </SplitPane>
          </children>
       </VBox>
-      <Button fx:id="backButton" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#back" prefHeight="44.0" prefWidth="92.0" style="-fx-background-color: #CFBE8E; -fx-border-color: #472218;" text="back" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="5.0">
+      <Button fx:id="backButton" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#back" prefHeight="44.0" prefWidth="92.0" style="-fx-background-color: #CFBE8E; -fx-border-color: #472218; -fx-font-family: 'Pirata One'; -fx-font-size: 14;" text="%back" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="5.0">
          <graphic>
             <ImageView fitHeight="49.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -163,6 +169,9 @@
                </image>
             </ImageView>
          </graphic>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </Button>
    </children>
 </AnchorPane>
