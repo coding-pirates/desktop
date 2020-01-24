@@ -8,6 +8,7 @@ import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 import java.util.*;
 
@@ -34,6 +35,7 @@ public class Ranking implements FxmlLoader {
         rankingStage.setResizable(false);
         rankingStage.setTitle("Rangliste");
         rankingStage.setScene(new Scene(pane));
+        rankingStage.initStyle(StageStyle.UNDECORATED);
         rankingStage.show();
     }
 
