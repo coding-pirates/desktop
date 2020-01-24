@@ -256,13 +256,12 @@ public class InGameController implements Initializable, FxmlLoader {
     @FXML
     public void showRanking() {
         if (points != null) {
-
             this.ranking = new Ranking();
             Stage rankingStage = new Stage();
             try {
+                ranking.display(rankingStage);
                 ranking.setPlayer(players);
                 ranking.sortPoints(points);
-                ranking.display(rankingStage);
 
             } catch (Exception e) {
                 System.out.println("Fehler: " + e);

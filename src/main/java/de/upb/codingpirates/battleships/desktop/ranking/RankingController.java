@@ -6,9 +6,11 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
 
 import java.net.URL;
 import java.util.*;
@@ -40,6 +42,9 @@ public class RankingController implements Initializable {
     @FXML
     TableColumn<Player, Integer> points;
 
+    @FXML
+    Button btn_back;
+
     private Collection<Client> players;
 
     private Ranking ranking;
@@ -49,6 +54,14 @@ public class RankingController implements Initializable {
      */
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
+
+    }
+
+    @FXML
+    public void closeStage(){
+
+        Stage stage = (Stage) btn_back.getScene().getWindow();
+        stage.close();
 
     }
 

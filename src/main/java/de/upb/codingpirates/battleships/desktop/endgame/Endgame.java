@@ -40,8 +40,8 @@ public class Endgame extends Fullscreen implements FxmlLoader {
         FXMLLoader loader = this.getLoader("EndgameView");
         AnchorPane pane = loader.load();
         this.EndgameController = loader.getController();
-        EndgameController.setPoints(points);
-        EndgameController.setPlayers(players);
+        EndgameController.setPoints(this.points);
+        EndgameController.setPlayers(this.players);
         EndgameController.placement();
         EndgameController.setClientID(clientID);
         Image icon = new Image(String.valueOf(getClass().getResource("/images/app_icon.png")));

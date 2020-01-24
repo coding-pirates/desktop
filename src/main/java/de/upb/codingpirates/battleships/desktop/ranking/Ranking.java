@@ -29,14 +29,14 @@ public class Ranking implements FxmlLoader {
         FXMLLoader loader = this.getLoader("RankingView");
         AnchorPane pane = loader.load();
         this.rankingController = loader.getController();
-        rankingController.setRanking(this);
+        this.rankingController.setRanking(this);
         Image icon = new Image(String.valueOf(getClass().getResource("/images/app_icon.png")));
-        rankingStage.getIcons().add(icon);
-        rankingStage.setResizable(false);
-        rankingStage.setTitle("Rangliste");
-        rankingStage.setScene(new Scene(pane));
-        rankingStage.initStyle(StageStyle.UNDECORATED);
-        rankingStage.show();
+        this.rankingStage.getIcons().add(icon);
+        this.rankingStage.setResizable(false);
+        this.rankingStage.setTitle("Rangliste");
+        this.rankingStage.setScene(new Scene(pane));
+        this.rankingStage.initStyle(StageStyle.UNDECORATED);
+        this.rankingStage.show();
     }
 
     /**
