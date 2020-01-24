@@ -71,12 +71,19 @@ public class LobbyController implements Initializable , LobbyResponseListener {
     private Button refreshButton;
     private ChangeListener <GameView> changeListener;
 
+    private boolean listen;
+
     /**
      * Constructor of this class to register the Listener
      */
     public LobbyController() {
         ListenerHandler.registerListener(this);
         model = new LobbyModel();
+        listen= true;
+    }
+    @Override
+    public boolean invalidated() {
+        return !listen;
     }
     /**
      * Initial Method.

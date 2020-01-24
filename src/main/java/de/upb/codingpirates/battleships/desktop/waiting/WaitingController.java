@@ -33,9 +33,11 @@ public class WaitingController implements Initializable, GameStartNotificationLi
     private Game currentGame;
     private Collection<Client> clientList;
     private int clientID;
-    
+    private boolean listen;
+
     public WaitingController(){
         ListenerHandler.registerListener(this);
+        listen = true;
     }
 
     public void setModel(){
@@ -51,7 +53,12 @@ public class WaitingController implements Initializable, GameStartNotificationLi
 
     }
     @Override
+    public boolean invalidated() {
+        return !listen;
+    }
+    @Override
     public void onGameStartNotification(GameStartNotification message, int messageId){
+        listen = false;
         Platform.runLater(()->{
             InGame inGame = new InGame();
             Stage inGameStage = new Stage();

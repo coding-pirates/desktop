@@ -61,6 +61,8 @@ public class ServerLoginController implements Initializable, ServerJoinResponseL
     @FXML
     private ProgressIndicator login_progress;
 
+    private boolean listen;
+
     /**
      * StringProperty
      */
@@ -71,8 +73,13 @@ public class ServerLoginController implements Initializable, ServerJoinResponseL
      */
     public ServerLoginController() {
         ListenerHandler.registerListener((MessageHandlerListener) this);
+        listen = true;
     }
 
+    @Override
+    public boolean invalidated() {
+        return !listen;
+    }
     /**
      * Set Method for Main.
      *
@@ -148,6 +155,7 @@ public class ServerLoginController implements Initializable, ServerJoinResponseL
 
     @Override
     public void onServerJoinResponse(ServerJoinResponse response, int clientId) {
+        listen = false;
         Platform.runLater(() -> {
             setLblStatus("");
 
