@@ -53,6 +53,7 @@ public class Impressum {
         window.setResizable(false);
         window.setScene(scene);
         window.initStyle(StageStyle.UNDECORATED);
+        window.setAlwaysOnTop(true);
         window.showAndWait();
     }
 

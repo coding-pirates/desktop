@@ -39,6 +39,7 @@ public class Settings {
         settingsStage.setResizable(false);
         settingsStage.setScene(new Scene(pane));
         settingsStage.initStyle(StageStyle.UNDECORATED);
+        settingsStage.setAlwaysOnTop(true);
         settingsStage.showAndWait();
     }
 

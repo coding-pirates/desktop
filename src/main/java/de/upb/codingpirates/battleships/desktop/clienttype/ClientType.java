@@ -30,6 +30,8 @@ public class ClientType {
         window.getIcons().add(icon);
         Scene scene = new Scene(pane);
         window.setScene(scene);
+        window.setAlwaysOnTop(true);
+        window.getScene().getStylesheets().add("https://fonts.googleapis.com/css?family=Pirata+One");
         window.showAndWait();
     }
 }

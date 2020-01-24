@@ -29,12 +29,9 @@ public class Lobby extends Fullscreen {
         lobbyController.setChangeListener();
         Image icon = new Image(String.valueOf(getClass().getResource("/images/app_icon.png")));
         lobbyStage.getIcons().add(icon);
-        lobbyStage.setMaximized(true);
-        lobbyStage.setResizable(false);
         lobbyStage.setTitle("Lobby");
-        super.display(lobbyStage);
         lobbyStage.setScene(new Scene(pane));
-        lobbyStage.show();
+        super.display(lobbyStage);
         lobbyController.showgames();
 
     }

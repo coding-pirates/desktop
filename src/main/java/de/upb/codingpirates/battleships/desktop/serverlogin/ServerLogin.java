@@ -49,7 +49,6 @@ public class ServerLogin extends Fullscreen {
         serverLoginController.setMain(main);
         loginStage.setTitle("Login");
         Scene scene = new Scene(pane);
-        scene.getStylesheets().add("https://fonts.googleapis.com/css?family=Pirata+One");
         loginStage.setScene(scene);
         super.display(loginStage);
     }

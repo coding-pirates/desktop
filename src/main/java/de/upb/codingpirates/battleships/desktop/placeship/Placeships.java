@@ -1,6 +1,7 @@
 package de.upb.codingpirates.battleships.desktop.placeship;
 
 
+import de.upb.codingpirates.battleships.desktop.util.Fullscreen;
 import de.upb.codingpirates.battleships.logic.Game;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -14,7 +15,7 @@ import java.util.*;
 /**
  * Class that implements a Window to place the ships
  */
-public class Placeships  {
+public class Placeships extends Fullscreen {
 
 
     private Stage placeshipsStage;
@@ -34,11 +35,9 @@ public class Placeships  {
         placeshipsController.setShipForm();
         Image icon = new Image(String.valueOf(getClass().getResource("/images/app_icon.png")));
         placeshipsStage.getIcons().add(icon);
-        placeshipsStage.setResizable(false);
-        placeshipsStage.setMaximized(true);
         placeshipsStage.setTitle("PlaceShips");
         placeshipsStage.setScene(new Scene(pane));
-        placeshipsStage.show();
+        super.display(placeshipsStage);
     }
 
     /**
