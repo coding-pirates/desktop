@@ -156,11 +156,16 @@ public class GameField {
         Tooltip.install(map.get(point), toolTip);
     }
 
+    /**
+     * Removes a given Shot point from the GameField
+     * @param shot
+     */
     public void removeShot(Point2D shot) {
         String point = (shot.getX() + "," + shot.getY());
         Image img = new Image(String.valueOf(GameField.class.getResource("/images/field.png")));
         map.get(point).setFill(new ImagePattern(img));
     }
+
 
     public void placeShip(ArrayList<Point2D> shipPoints){
         for(Point2D point: shipPoints) {

@@ -179,7 +179,9 @@ public class EndgameController implements Initializable {
         this.clientID = clientID;
     }
 
-
+    /**
+     * gets the 3 best players and sets it to the ranking stage
+     */
     public void placement() {
 
         int firstPoints = -3000;
