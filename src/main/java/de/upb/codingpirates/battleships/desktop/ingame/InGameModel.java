@@ -205,7 +205,6 @@ public class InGameModel extends Application implements InGameModelMessageListen
     /**
      * First Request: Asks the Server to join a Game as Spectator.
      *
-     * @return gameId: Id of the joined Game
      */
     public void sendGameJoinSpectatorRequest() {
             try {
@@ -222,7 +221,6 @@ public class InGameModel extends Application implements InGameModelMessageListen
     /**
      * Second Request: Ask the Server about the GameState.
      *
-     * @return boolean
      */
     // Zweiter Request: SpectatorGameStateRequest
     public void sendGameStateRequest() {
@@ -266,7 +264,6 @@ public class InGameModel extends Application implements InGameModelMessageListen
      * Asks the Server about the remaining Time for the GameRound.
      * Starts the Controllers remainingTimeResponse().
      *
-     * @return boolean
      */
     public void remainingTimeRequest() {
         try {
@@ -283,7 +280,6 @@ public class InGameModel extends Application implements InGameModelMessageListen
      * Asks the Server about the Points of every Player.
      * Starts the Controllers setPoints().
      *
-     * @return
      */
     public void pointsRequest() {
         try {

@@ -14,7 +14,7 @@ public class Fullscreen {
     }
 
     /**
-     * this method sets the dimensions for {@param stage}. Currently sets width and height to display size. Also removes the windows task bar.
+     * this method sets the dimensions for stage. Currently sets width and height to display size. Also removes the windows task bar.
      * @param stage instance of the stage the dimensions shall be set
      */
     protected void initDimensions(Stage stage) {

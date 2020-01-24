@@ -89,7 +89,6 @@ public final class BattleshipsDesktopClientApplication extends Application imple
      * Loads the StartView.fxml, creates a Start.java Window and related Controller
      *
      * @param startStage first stage, which is displayed
-     * @throws IOException if stage could not be loaded
      */
     public void start(@Nonnull final Stage startStage) {
             Settings.init();

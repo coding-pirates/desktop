@@ -86,7 +86,6 @@ public class StartController implements Initializable {
 
     /**
      * starts the ServerLoginView and closes the startView
-     * @throws Exception
      */
     @FXML
     public void handleButton() {

@@ -98,7 +98,6 @@ public class LobbyModel {
     /**
      * Sends a Request about the games on the Server to the Server.
      *
-     * @return ArrayList List of Games on the Server
      */
     public void sendRequest() {
         try {

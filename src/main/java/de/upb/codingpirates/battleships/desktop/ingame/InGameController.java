@@ -663,7 +663,6 @@ public class InGameController implements Initializable, FxmlLoader {
 
     /**
      * starts the LobbyView and closes this window
-     * @throws Exception
      */
     @FXML
     public void leave(){

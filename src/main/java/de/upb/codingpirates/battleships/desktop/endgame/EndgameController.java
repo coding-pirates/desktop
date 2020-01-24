@@ -90,7 +90,6 @@ public class EndgameController implements Initializable {
 
     /**
      * starts the HelpView with accessibility tools in an extra window
-     * @throws IOException
      */
     @FXML
     public void help() {
@@ -105,7 +104,6 @@ public class EndgameController implements Initializable {
 
     /**
      * starts the SettingsView in an extra window
-     * @throws Exception
      */
     @FXML
     public void settings(){
@@ -147,7 +145,6 @@ public class EndgameController implements Initializable {
 
     /**
      * starts the lobbyView and closes this endgameView
-     * @throws Exception
      */
     @FXML
     public void lobby() {

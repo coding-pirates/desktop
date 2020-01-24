@@ -1,7 +1,10 @@
 package de.upb.codingpirates.battleships.desktop.placeship;
 
 import de.upb.codingpirates.battleships.client.ListenerHandler;
-import de.upb.codingpirates.battleships.client.listener.*;
+import de.upb.codingpirates.battleships.client.listener.GameInitNotificationListener;
+import de.upb.codingpirates.battleships.client.listener.GameLeaveResponseListener;
+import de.upb.codingpirates.battleships.client.listener.GameStartNotificationListener;
+import de.upb.codingpirates.battleships.client.listener.PlaceShipsResponseListener;
 import de.upb.codingpirates.battleships.desktop.gamefield.GameField;
 import de.upb.codingpirates.battleships.desktop.ingame.InGame;
 import de.upb.codingpirates.battleships.desktop.ingame.InGameController;
@@ -33,10 +36,6 @@ import javafx.util.Duration;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.ResourceBundle;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
@@ -226,7 +225,6 @@ public class PlaceShipsController extends InGameController implements Initializa
     /**
      * Adds a new GameField
      *
-     * @throws Exception
      */
     public void fieldInit() {
         buildBoard(model.getCurrentGame().getConfig().getHeight(), model.getCurrentGame().getConfig().getWidth());

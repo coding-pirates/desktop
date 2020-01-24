@@ -15,8 +15,7 @@ public class Start extends Fullscreen {
     private Control StartController;
 
     /**
-     * method for displaying the {@param startStage}
-     * @param startStage
+     * method for displaying the startStage
      */
     public void display(Stage startStage) {
         this.startStage = startStage;
