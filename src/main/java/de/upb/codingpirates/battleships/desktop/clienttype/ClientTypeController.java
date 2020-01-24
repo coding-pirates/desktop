@@ -39,7 +39,6 @@ public class ClientTypeController implements Initializable, GameJoinSpectatorRes
     @FXML
     private Button goButton;
 
-    private String chosenClient;
     private ClientTypeModel clientTypeModel;
     private Stage LobbyStage;
 
@@ -73,22 +72,22 @@ public class ClientTypeController implements Initializable, GameJoinSpectatorRes
     @FXML
     public void player(){
         System.out.println("Player");
-        chosenClient="Player";
+        clientTypeModel.setChosenClient("Player");
     }
 
     @FXML
     public void spectator(){
         System.out.println("Spectator");
-        chosenClient="Spectator";
+        clientTypeModel.setChosenClient("Spectator");
     }
 
 
     @FXML
     public void start(){
-        if(chosenClient=="Player"){
+        if(clientTypeModel.getChosenClient()=="Player"){
             clientTypeModel.sendGameJoinPlayerRequest();
         }
-        else if(chosenClient=="Spectator"){
+        else if(clientTypeModel.getChosenClient()=="Spectator"){
            clientTypeModel.sendGameJoinSpectatorRequest();
         }
         else

@@ -44,17 +44,15 @@ public class LobbyController implements Initializable , LobbyResponseListener {
     private Button refreshButton;
     private ChangeListener <GameView> changeListener;
 
-    private ObservableList<GameView> startList = FXCollections.synchronizedObservableList(FXCollections.observableArrayList());
-    private ObservableList<GameView> runningList = FXCollections.synchronizedObservableList(FXCollections.observableArrayList());
-    private ObservableList<GameView> endList = FXCollections.synchronizedObservableList(FXCollections.observableArrayList());
-
-    private int clientID;
-
-
-
-
     public LobbyController() {
         ListenerHandler.registerListener(this);
+        model = new LobbyModel();
+    }
+    /**
+     * Initial Method.
+     */
+    @Override
+    public void initialize(URL arg0, ResourceBundle arg1) {
 
     }
 
@@ -70,23 +68,15 @@ public class LobbyController implements Initializable , LobbyResponseListener {
 
                 window.setOnCloseRequest( t -> {
                     showgames();
-
                         }
                 );
 
                 try {
                     System.out.println("Hallo nochmal ctype Display von "+ arg2.getContent());
-                    cType.display(window, arg2.getContent(), clientID,lobby.getStage());
+                    cType.display(window, arg2.getContent(), model.getClientID(),lobby.getStage());
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
-            /*InGameModel inGameModel = new InGameModel(arg2.getContent());
-            Stage inGameStage = new Stage();
-            try {
-                inGameModel.start(inGameStage);
-            } catch (Exception e) {
-                e.printStackTrace();
-            }*/
             }
         };
 
@@ -112,63 +102,34 @@ public class LobbyController implements Initializable , LobbyResponseListener {
     public void showgames() {
         // Request GameList from Server
         try {
-            model = new LobbyModel();
             model.sendRequest();
         } catch (Exception e) {
             System.out.println("Fehler: " + e);
         }
 
-        this.startList.clear();
+       /* this.startList.clear();
         this.runningList.clear();
         this.endList.clear();
+        */
 
         //Show GameList
-        lstvwStart.setItems(startList);
-        lstvwRunning.setItems(runningList);
-        lstvwEnd.setItems(endList);
+        lstvwStart.setItems(model.getStartList());
+        lstvwRunning.setItems(model.getRunningList());
+        lstvwEnd.setItems(model.getEndList());
 
     }
 
     public void setClientID(int clientID){
-        this.clientID = clientID;
+        model.setClientID(clientID);
     }
 
-    /**
-     * Adds the GameView for every Game in the right Category.
-     *
-     * @param games Collection of Games
-     */
-    public void parseToGameView(Collection<Game> games) {
-        for (Game game : games) {
-            final GameView view = new GameView(game);
-
-            switch (game.getState()) {
-                case LOBBY:
-                    startList.add(view);
-                    break;
-                case IN_PROGRESS:
-                case PAUSED:
-                    runningList.add(view);
-                    break;
-                case FINISHED:
-                    endList.add(view);
-            }
-        }
-    }
-
-    /**
-     * Initial Method.
-     */
-    @Override
-    public void initialize(URL arg0, ResourceBundle arg1) {
-
-    }
 
     @Override
     public void onLobbyResponse(LobbyResponse message, int clientId) {
-        Platform.runLater(()->
-         parseToGameView(message.getGames())
-        );
+        Platform.runLater(()-> {
+            model.clearGameLists();
+            model.parseToGameView(message.getGames());
+        });
     }
 
     public void closeStage() {
