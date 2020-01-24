@@ -2,6 +2,7 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.*?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Font?>
@@ -16,14 +17,14 @@
          <children>
             <AnchorPane prefHeight="215.0" prefWidth="1920.0">
                <children>
-                  <Label alignment="CENTER" layoutX="405.0" layoutY="88.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="83.0" prefWidth="466.0" text="%endgame.title.name" textFill="WHITE" AnchorPane.leftAnchor="405.0" AnchorPane.rightAnchor="329.0" AnchorPane.topAnchor="88.0">
+                  <Label alignment="CENTER" layoutX="405.0" layoutY="88.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="83.0" prefWidth="466.0" style="-fx-font-family: 'Pirata One'; -fx-font-size: 35;" text="%endgame.title.name" textFill="WHITE" AnchorPane.leftAnchor="405.0" AnchorPane.rightAnchor="329.0" AnchorPane.topAnchor="88.0">
                      <font>
                         <Font size="35.0" />
                      </font>
                   </Label>
                  <Button fx:id="btn_settings" />
                  <Button fx:id="btn_help" />
-                  <Separator layoutX="217.0" layoutY="218.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="10.0" prefWidth="1562.0" style="-fx-background-color: brown;" />
+                  <Separator layoutX="217.0" layoutY="218.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="10.0" prefWidth="1562.0" style="-fx-background-color: #CFBE8E;" />
                </children>
             </AnchorPane>
             <VBox alignment="CENTER" fillWidth="false" minHeight="-Infinity" minWidth="-Infinity" prefHeight="793.0" prefWidth="1920.0">
@@ -52,7 +53,7 @@
                   </AnchorPane>
                   <HBox fillHeight="false" prefHeight="157.0" prefWidth="1200.0">
                      <children>
-                        <Button alignment="CENTER" contentDisplay="CENTER" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#ranking" prefHeight="61.0" prefWidth="326.0" style="-fx-background-color: #CFBE8E;" text="%endgame.overview.name" textAlignment="CENTER" textFill="WHITE">
+                        <Button alignment="CENTER" contentDisplay="CENTER" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#ranking" prefHeight="61.0" prefWidth="326.0" style="-fx-background-color: #CFBE8E; -fx-font-family: 'Pirata One'; -fx-font-size: 22;" text="%endgame.overview.name" textAlignment="CENTER" textFill="WHITE">
                            <font>
                               <Font name="System Bold" size="20.0" />
                            </font>
@@ -61,13 +62,16 @@
                                  <image>
                                     <Image url="@../images/button.png" />
                                  </image>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
                               </ImageView>
                            </graphic>
                            <HBox.margin>
                               <Insets left="150.0" />
                            </HBox.margin>
                         </Button>
-                        <Button fx:id="btn_lobby" alignment="CENTER" contentDisplay="CENTER" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#lobby" prefHeight="64.0" prefWidth="378.0" style="-fx-background-color: #CFBE8E;" text="%endgame.lobby.name" textAlignment="CENTER" textFill="WHITE">
+                        <Button fx:id="btn_lobby" alignment="CENTER" contentDisplay="CENTER" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#lobby" prefHeight="64.0" prefWidth="378.0" style="-fx-background-color: #CFBE8E; -fx-font-family: 'Pirata One'; -fx-font-size: 22;" text="%endgame.lobby.name" textAlignment="CENTER" textFill="WHITE">
                            <font>
                               <Font name="System Bold" size="20.0" />
                            </font>
@@ -76,6 +80,9 @@
                                  <image>
                                     <Image url="@../images/button.png" />
                                  </image>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
                               </ImageView>
                            </graphic>
                            <HBox.margin>

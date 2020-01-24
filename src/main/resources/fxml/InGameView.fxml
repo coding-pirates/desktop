@@ -2,10 +2,10 @@
 
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
+<?import javafx.scene.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
-
 <AnchorPane style="-fx-background-color: #CFBE8E;" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.upb.codingpirates.battleships.desktop.ingame.InGameController">
    <AnchorPane prefHeight="1086.0" prefWidth="1950.0">
       <children>
@@ -22,7 +22,7 @@
             </ImageView>
             <HBox minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="1200.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
-               <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="%inGame.sunkPoints">
+               <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-family: 'Pirata One';" text="%inGame.sunkPoints">
                  <font>
                    <Font size="18.0" />
                  </font>
@@ -38,7 +38,7 @@
                         <Insets left="10.0" top="15.0" />
                      </HBox.margin>
                </Label>
-               <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="%inGame.hitPoints">
+               <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-family: 'Pirata One';" text="%inGame.hitPoints">
                  <font>
                    <Font size="18.0" />
                  </font>
@@ -54,7 +54,7 @@
                         <Insets left="10.0" top="15.0" />
                      </HBox.margin>
                </Label>
-               <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Status:">
+               <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-family: 'Pirata One';" text="Status:">
                  <font>
                    <Font size="18.0" />
                  </font>
@@ -77,12 +77,15 @@
                      <HBox.margin>
                         <Insets left="400.0" right="25.0" top="5.0" />
                      </HBox.margin>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
                   </Button>
                </children>
             </HBox>
             <HBox minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="1200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
                <children>
-               <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="%inGame.thinkTime">
+               <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-family: 'Pirata One';" text="%inGame.thinkTime">
                  <font>
                    <Font size="18.0" />
                  </font>
@@ -98,7 +101,7 @@
                         <Insets bottom="15.0" left="10.0" />
                      </HBox.margin>
                </Label>
-               <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="%inGame.remainingTime">
+               <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-family: 'Pirata One';" text="%inGame.remainingTime">
                  <font>
                    <Font size="18.0" />
                  </font>
@@ -114,7 +117,7 @@
                         <Insets bottom="15.0" left="10.0" />
                      </HBox.margin>
                </Label>
-               <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="%inGame.player">
+               <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-family: 'Pirata One';" text="%inGame.player">
                  <font>
                    <Font size="18.0" />
                  </font>
@@ -130,7 +133,7 @@
                         <Insets bottom="15.0" left="10.0" />
                      </HBox.margin>
                </Label>
-               <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="%inGame.shots">
+               <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-family: 'Pirata One';" text="%inGame.shots">
                  <font>
                    <Font size="18.0" />
                  </font>
@@ -149,11 +152,17 @@
                            <image>
                               <Image url="@../images/icon_settings.png" />
                            </image>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
                         </ImageView>
                      </graphic>
                      <HBox.margin>
                         <Insets left="109.0" />
                      </HBox.margin>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
                   </Button>
                </children>
             </HBox>
@@ -164,7 +173,7 @@
         <Insets bottom="10.0" top="10.0" />
       </VBox.margin>
       <children>
-        <Button contentDisplay="CENTER" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#showRanking" prefHeight="30.0" prefWidth="162.0" style="-fx-background-color: #CFBE8E;" text="%inGame.showRanking" textFill="WHITE">
+        <Button contentDisplay="CENTER" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#showRanking" prefHeight="30.0" prefWidth="162.0" style="-fx-background-color: #CFBE8E; -fx-font-family: 'Pirata One'; -fx-font-size: 15;" text="%inGame.showRanking" textFill="WHITE">
           <font>
             <Font name="System Bold" size="15.0" />
           </font>
@@ -173,13 +182,19 @@
                      <image>
                         <Image url="@../images/button.png" />
                      </image>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
                   </ImageView>
                </graphic>
                <HBox.margin>
                   <Insets bottom="20.0" top="20.0" />
                </HBox.margin>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
         </Button>
-        <Button alignment="CENTER" contentDisplay="CENTER" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#leave" prefHeight="30.0" prefWidth="150.0" style="-fx-background-color: #CFBE8E;" text="%inGame.leave" textFill="WHITE" HBox.hgrow="ALWAYS">
+        <Button alignment="CENTER" contentDisplay="CENTER" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#leave" prefHeight="30.0" prefWidth="150.0" style="-fx-background-color: #CFBE8E; -fx-font-family: 'Pirata One'; -fx-font-size: 16;" text="%inGame.leave" textFill="WHITE" HBox.hgrow="ALWAYS">
           <font>
             <Font name="System Bold" size="15.0" />
           </font>
@@ -188,11 +203,17 @@
                      <image>
                         <Image url="@../images/button.png" />
                      </image>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
                   </ImageView>
                </graphic>
                <HBox.margin>
                   <Insets bottom="20.0" top="20.0" />
                </HBox.margin>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
         </Button>
       </children>
     </HBox>
