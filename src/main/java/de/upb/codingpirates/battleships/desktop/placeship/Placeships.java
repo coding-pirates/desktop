@@ -44,6 +44,7 @@ public class Placeships extends Fullscreen implements FxmlLoader {
         placeshipsStage.getIcons().add(icon);
         placeshipsStage.setTitle("PlaceShips");
         placeshipsStage.setScene(new Scene(pane));
+        placeshipsController.setRemainingShips();
         super.display(placeshipsStage);
     }
 

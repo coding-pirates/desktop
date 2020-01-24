@@ -25,6 +25,7 @@ import javafx.scene.Node;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
@@ -68,6 +69,13 @@ public class PlaceShipsController extends InGameController implements Initializa
 
     @FXML
     private PlaceshipsModel model;
+
+    @FXML
+    private Label timerPlaceShips;
+
+    @FXML
+    private Label remainingShips;
+
     private GameField gameField;
 
     private ShipForm shipForm;
@@ -104,6 +112,11 @@ public class PlaceShipsController extends InGameController implements Initializa
         model.addShipTypes(currentGame.getConfig().getShips());
         model.setSelectedShip(currentGame.getConfig().getShips().keySet().iterator().next());
         model.setMillis(currentGame.getConfig().getRoundTime());
+
+    }
+
+    public void setRemainingShips(){
+        remainingShips.setText(String.valueOf(model.getShipTypes().size()));
     }
 
     public void startTimer() {
@@ -118,7 +131,7 @@ public class PlaceShipsController extends InGameController implements Initializa
                 model.setMillis(model.getMillis() - 1000);
                 Long seconds = model.getMillis() / 1000;
                 System.out.println(seconds);
-                //restTime.setText((seconds.toString())); //TODO create label to fill in View
+                timerPlaceShips.setText(seconds.toString());
                 if (model.getMillis() <= 0) {
                     time.stop();
                 }
@@ -251,6 +264,7 @@ public class PlaceShipsController extends InGameController implements Initializa
                 model.addShipPlacement(model.getSelectedShip(), new PlacementInfo(clickedPoint, model.getCurrentRotation()));
                 model.setSelectedShip((model.getSelectedShip() + 1) % (model.getCurrentGame().getConfig().getShips().size()));
                 setShipForm();
+                remainingShips.setText(String.valueOf(model.getShipTypes().size()-model.getPlacedShips().size()));
             }
         }
     }

@@ -18,65 +18,95 @@
          <children>
             <HBox prefHeight="150.0" prefWidth="200.0">
                <children>
-                  <VBox prefHeight="200.0" prefWidth="100.0">
+                  <VBox prefHeight="163.0" prefWidth="180.0">
                      <children>
-                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Place your ships!" textAlignment="CENTER" wrappingWidth="200.4072265625">
-                           <font>
-                              <Font size="18.0" />
-                           </font>
-                           <VBox.margin>
-                              <Insets top="30.0" />
-                           </VBox.margin>
-                        </Text>
                         <ButtonBar prefHeight="98.0" prefWidth="180.0">
                           <buttons>
-                            <Button fx:id="btnShipBack" mnemonicParsing="false" onMouseClicked="#onBackShipClicked" text="&lt;&lt;">
+                            <Button fx:id="btnShipBack" mnemonicParsing="false" onMouseClicked="#onBackShipClicked" style="-fx-background-color: #CFBE8E; -fx-font-family: 'Pirata One';" text="&lt;&lt;" textFill="WHITE">
                                  <cursor>
                                     <Cursor fx:constant="HAND" />
-                                 </cursor></Button>
-                              <Button fx:id="btnShipNext" mnemonicParsing="false" onMouseClicked="#onNextShipClicked" text="&gt;&gt;">
+                                 </cursor>
+                                 <font>
+                                    <Font size="24.0" />
+                                 </font></Button>
+                              <Button fx:id="btnShipNext" mnemonicParsing="false" onMouseClicked="#onNextShipClicked" style="-fx-background-color: #CFBE8E; -fx-font-family: 'Pirata One';" text="&gt;&gt;" textFill="WHITE">
                                  <cursor>
                                     <Cursor fx:constant="HAND" />
-                                 </cursor></Button>
+                                 </cursor>
+                                 <font>
+                                    <Font size="24.0" />
+                                 </font></Button>
                           </buttons>
                         </ButtonBar>
+                        <Button fx:id="btn_rotate" contentDisplay="CENTER" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#rotate" prefHeight="58.0" prefWidth="161.0" style="-fx-background-color: #CFBE8E; -fx-font-family: 'Pirata One';" text="Rotate" textFill="#f8f7f7">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                           <VBox.margin>
+                              <Insets bottom="10.0" left="20.0" />
+                           </VBox.margin>
+                        </Button>
                      </children>
                      <HBox.margin>
                         <Insets left="100.0" />
                      </HBox.margin>
                   </VBox>
-                  <BorderPane fx:id="smallBorderPane" prefHeight="200.0" prefWidth="130.0">
+                  <BorderPane fx:id="smallBorderPane" prefHeight="110.0" prefWidth="139.0">
                      <HBox.margin>
-                        <Insets top="20.0" />
+                        <Insets bottom="20.0" left="20.0" top="20.0" />
                      </HBox.margin></BorderPane>
-                  <Text fill="#fcf9f9" strokeType="OUTSIDE" strokeWidth="0.0" text="Size" wrappingWidth="44.22802734375">
-                     <HBox.margin>
-                        <Insets left="100.0" top="30.0" />
-                     </HBox.margin></Text>
-                  <Label minHeight="-Infinity" minWidth="-Infinity" prefHeight="90.0" prefWidth="150.0" textFill="#fcfafa">
-                     <HBox.margin>
-                        <Insets />
-                     </HBox.margin></Label>
-                  <Text fill="#f8f6f6" strokeType="OUTSIDE" strokeWidth="0.0" text="Form">
-                     <HBox.margin>
-                        <Insets left="100.0" top="30.0" />
-                     </HBox.margin></Text>
-                  <Label minHeight="-Infinity" minWidth="-Infinity" prefHeight="90.0" prefWidth="200.0" textFill="#fcfafa">
-                     <HBox.margin>
-                        <Insets left="20.0" />
-                     </HBox.margin></Label>
-                  <Text fill="#f8f7f7" strokeType="OUTSIDE" strokeWidth="0.0" text="Placed ships">
-                     <HBox.margin>
-                        <Insets left="100.0" top="30.0" />
-                     </HBox.margin>
-                  </Text>
-                  <Label minHeight="-Infinity" minWidth="-Infinity" prefHeight="90.0" prefWidth="200.0" text="Label" />
-                  <Button fx:id="btn_rotate" contentDisplay="CENTER" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#rotate" prefHeight="36.0" prefWidth="111.0" style="-fx-background-color: #CFBE8E;" text="Rotate" textFill="#f8f7f7">
-                     <HBox.margin>
-                        <Insets left="50.0" top="20.0" />
-                     </HBox.margin>
-                  </Button>
-                  <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                  <VBox prefHeight="200.0" prefWidth="100.0">
+                     <children>
+                        <HBox prefHeight="59.0" prefWidth="626.0">
+                           <children>
+                              <Text fill="#f8f7f7" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-family: 'Pirata One';" text="Remaining Ships">
+                                 <font>
+                                    <Font size="24.0" />
+                                 </font>
+                              </Text>
+                              <Label fx:id="remainingShips" minHeight="-Infinity" minWidth="-Infinity" prefHeight="29.0" prefWidth="150.0" style="-fx-font-family: 'Pirata One';" textFill="#fcfafa">
+                                 <font>
+                                    <Font size="24.0" />
+                                 </font>
+                                 <HBox.margin>
+                                    <Insets left="10.0" />
+                                 </HBox.margin>
+                              </Label>
+                              <Text fill="#fcf9f9" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-family: 'Pirata One';" text="Remaining Time: " wrappingWidth="183.22802734375">
+                                 <font>
+                                    <Font size="24.0" />
+                                 </font>
+                              </Text>
+                              <Label fx:id="timerPlaceShips" minHeight="-Infinity" minWidth="-Infinity" prefHeight="32.0" prefWidth="200.0" style="-fx-font-family: 'Pirata One';" textFill="WHITE">
+                                 <font>
+                                    <Font size="24.0" />
+                                 </font>
+                                 <HBox.margin>
+                                    <Insets left="10.0" />
+                                 </HBox.margin>
+                              </Label>
+                           </children>
+                           <VBox.margin>
+                              <Insets left="60.0" top="30.0" />
+                           </VBox.margin>
+                        </HBox>
+                        <Button fx:id="btn_gameStart" contentDisplay="CENTER" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#gamestart" prefHeight="61.0" prefWidth="761.0" style="-fx-background-color: #CFBE8E; -fx-border-color: #472218;" text="Let's start the Game!" textAlignment="CENTER" textFill="#f8f7f7" visible="false">
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Button>
+                     </children>
+                  </VBox>
+                  <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="140.0" prefWidth="165.0">
                      <children>
                         <Button cache="true" cacheHint="ROTATE" cacheShape="false" contentDisplay="TEXT_ONLY" focusTraversable="false" layoutX="85.0" minHeight="-Infinity" minWidth="-Infinity" onAction="#help" prefHeight="55.0" prefWidth="55.0" style="-fx-background-color: #CFBE8E;" text="?" textFill="#472218" AnchorPane.leftAnchor="85.0" AnchorPane.rightAnchor="60.0" AnchorPane.topAnchor="0.0">
                            <font>
@@ -94,15 +124,11 @@
                         </Button>
                      </children>
                      <HBox.margin>
-                        <Insets left="25.0" top="10.0" />
+                        <Insets left="400.0" top="10.0" />
                      </HBox.margin>
                   </AnchorPane>
                </children>
             </HBox>
-            <Button fx:id="btn_gameStart" contentDisplay="CENTER" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#gamestart" prefHeight="36.0" prefWidth="170.0" style="-fx-background-color: #CFBE8E; -fx-border-color: #472218;" text="Let's start the Game!" textFill="#f8f7f7" visible="false">
-               <VBox.margin>
-                  <Insets />
-               </VBox.margin></Button>
             <SplitPane fx:id="splitPane" prefHeight="160.0" prefWidth="200.0" style="-fx-background-color: #CFBE8E;" VBox.vgrow="ALWAYS">
                <items>
                   <AnchorPane style="-fx-background-color: #CFBE8E;" SplitPane.resizableWithParent="false">
@@ -113,7 +139,10 @@
                                  <children>
                                     <FlowPane fx:id="anchorPane" prefHeight="718.0" prefWidth="1918.0">
                                        <children>
-                                          <BorderPane fx:id="borderPane" onMouseClicked="#clickGrid" onScroll="#scroll" prefHeight="860.0" prefWidth="1919.0" />
+                                          <BorderPane fx:id="borderPane" onMouseClicked="#clickGrid" onScroll="#scroll" prefHeight="860.0" prefWidth="1919.0">
+                                             <FlowPane.margin>
+                                                <Insets />
+                                             </FlowPane.margin></BorderPane>
                                        </children>
                                     </FlowPane>
                                  </children>
