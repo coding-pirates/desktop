@@ -13,7 +13,6 @@ import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
@@ -226,7 +225,7 @@ public class GameFieldController implements Initializable {
      * @param event
      */
     public void clickGrid(javafx.scene.input.MouseEvent event) {
-        if (event.getClickCount() == 2) {
+        if (event.getClickCount() == 2 && parent.getGameState()!= GameState.PAUSED) {
         if(parent.getTime()>100) {
                     Node clickedNode = event.getPickResult().getIntersectedNode();
                     if (clickedNode != grid) {

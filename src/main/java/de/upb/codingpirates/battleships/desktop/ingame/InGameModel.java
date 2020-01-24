@@ -27,6 +27,8 @@ public class InGameModel extends Application implements InGameModelMessageListen
     private Game ausgewaehltesSpiel = null;
     private InGameController inGameController;
 
+    private boolean listen;
+
     private Collection<Client> player = new ArrayList<Client>();
     private Map<Integer, Map<Integer, PlacementInfo>> ships = null;
     private GameState gameState = null;
@@ -41,6 +43,12 @@ public class InGameModel extends Application implements InGameModelMessageListen
      */
     public InGameModel() {
         ListenerHandler.registerListener(this);
+        listen = true;
+    }
+
+    @Override
+    public boolean invalidated() {
+        return !listen;
     }
 
     public void setInGameController(InGameController controller){
@@ -157,6 +165,7 @@ public class InGameModel extends Application implements InGameModelMessageListen
     public Map<Integer, PlacementInfo> getOwnShipPlacements() {
         return ownShipPlacements;
     }
+
 
     /**
      * Sends a GameJoinRequest and a GameStateRequest.
@@ -299,6 +308,7 @@ public class InGameModel extends Application implements InGameModelMessageListen
     }
     @Override
     public void onContinueNotification(ContinueNotification message, int clientId) {
+        this.gameState = GameState.IN_PROGRESS;
         Platform.runLater(()-> {
             inGameController.continueNotification();
         });
@@ -306,6 +316,7 @@ public class InGameModel extends Application implements InGameModelMessageListen
 
     @Override
     public void onFinishNotification(FinishNotification message, int clientId) {
+        listen = false;
         Platform.runLater(()-> {
             Map<Integer, Integer> points = message.getPoints();
             List<Integer> winner = new ArrayList(message.getWinner());
@@ -348,6 +359,7 @@ public class InGameModel extends Application implements InGameModelMessageListen
 
     @Override
     public void onPauseNotification(PauseNotification message, int clientId) {
+        this.gameState = GameState.PAUSED;
         Platform.runLater(()-> {
             inGameController.pauseNotification();
         });
