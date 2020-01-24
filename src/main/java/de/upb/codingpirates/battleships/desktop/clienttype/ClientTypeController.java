@@ -58,6 +58,10 @@ public class ClientTypeController implements Initializable, GameJoinSpectatorRes
 
     }
 
+    /**
+     * Sets the Player CheckBox visibility
+     * @param visible
+     */
     public void setPlayerVisibility(boolean visible){
         rb_player.setVisible(visible);
     }
@@ -69,19 +73,26 @@ public class ClientTypeController implements Initializable, GameJoinSpectatorRes
         });
     }
 
+    /**
+     * Sets the chosen client to player
+     */
     @FXML
     public void player(){
         System.out.println("Player");
         clientTypeModel.setChosenClient("Player");
     }
-
+    /**
+     * Sets the chosen client to spectator
+     */
     @FXML
     public void spectator(){
         System.out.println("Spectator");
         clientTypeModel.setChosenClient("Spectator");
     }
 
-
+    /**
+     * Sends GameJoin Request for the chosen Client
+     */
     @FXML
     public void start(){
         if(clientTypeModel.getChosenClient()=="Player"){
@@ -95,16 +106,23 @@ public class ClientTypeController implements Initializable, GameJoinSpectatorRes
             hinweis.setText("Bitte ein ClientTyp auswählen!");
         }
     }
-
+    /**
+     * Closes the stage
+     */
     public void closeStage(){
         Stage stage = (Stage) goButton.getScene().getWindow();
         stage.close();
     }
-
+    /**
+     * Goes back to Lobby View
+     */
     public void back(){
         closeStage();
     }
 
+    /**
+     * opens the place ships view
+     */
     public void placeShips(){
         Placeships placeships = new Placeships();
         Stage placeStage = new Stage();
@@ -122,6 +140,9 @@ public class ClientTypeController implements Initializable, GameJoinSpectatorRes
         }
     }
 
+    /**
+     * opens the waiting view
+     */
     public void waiting(){
         Waiting waitingView = new Waiting();
         Stage waitingStage = new Stage();
@@ -141,16 +162,32 @@ public class ClientTypeController implements Initializable, GameJoinSpectatorRes
         }
     }
 
+    /**
+     * Sets the selected game
+     * @param selectedGame
+     */
     public void setSelectedGame(Game selectedGame){
         clientTypeModel.setSelectedGame(selectedGame);
     }
 
+    /**
+     * sets the clientID
+     * @param clientID
+     */
     public void setClientID(int clientID){
         clientTypeModel.setClientID(clientID);
     }
 
+    /**
+     * Sets the LobbyStage
+     * @param LobbyStage
+     */
     public void setLobbyStage(Stage LobbyStage){this.LobbyStage=LobbyStage;}
 
+    /**
+     * Is used from ListenerHandler Class
+     * @return
+     */
     @Override
     public boolean invalidated() {
         return !listen;

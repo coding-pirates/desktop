@@ -21,6 +21,10 @@ public class ClientType implements FxmlLoader {
     private AnchorPane pane;
     private Scene scene;
 
+    /**
+     * Constructor for ClientType.
+     * @throws IOException
+     */
     public ClientType() throws IOException {
         this.loader = this.getLoader("ClientTypeView");
         this.pane = loader.load();
@@ -28,6 +32,14 @@ public class ClientType implements FxmlLoader {
         this.scene = new Scene(this.pane);
     }
 
+    /**
+     * Displays the Stage and sets all Variables.
+     * @param window
+     * @param selectedGame
+     * @param clientID
+     * @param lobbystage
+     * @throws IOException
+     */
     public void display(Stage window, Game selectedGame, int clientID, Stage lobbystage) throws IOException {
         this.window=window;
         this.LobbyStage=lobbystage;
@@ -50,10 +62,4 @@ public class ClientType implements FxmlLoader {
         window.getScene().getStylesheets().add("https://fonts.googleapis.com/css?family=Pirata+One");
         window.showAndWait();
     }
-
-    public Stage getLobbyStage(){
-        return this.LobbyStage;
-    }
-    public ClientTypeController getClientTypeController(){return this.clientTypeController;}
-    public void setClientTypeController(ClientTypeController clientTypeController){this.clientTypeController = clientTypeController;}
 }
