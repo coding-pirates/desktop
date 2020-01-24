@@ -12,12 +12,18 @@ import java.util.Collection;
 import java.util.Map;
 
 /**
- * Class that implements a Window to place the ships
+ * Class that implements a Window to show the endresult of the game
  */
 public class Endgame {
 
 
+    /**
+     * stage for this class
+     */
     private Stage endStage;
+    /**
+     * controllerClass to this class
+     */
     private EndgameController EndgameController;
     private Map<Integer, Integer> points;
     private Collection<Client> players = null;

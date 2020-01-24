@@ -4,11 +4,16 @@ import de.upb.codingpirates.battleships.client.ListenerHandler;
 import de.upb.codingpirates.battleships.client.listener.LobbyResponseListener;
 import de.upb.codingpirates.battleships.desktop.clienttype.ClientType;
 import de.upb.codingpirates.battleships.desktop.serverlogin.ServerLogin;
+import de.upb.codingpirates.battleships.client.ListenerHandler;
+import de.upb.codingpirates.battleships.client.listener.LobbyResponseListener;
 import de.upb.codingpirates.battleships.desktop.settings.Settings;
+import de.upb.codingpirates.battleships.desktop.util.GameView;
 import de.upb.codingpirates.battleships.desktop.util.GameView;
 import de.upb.codingpirates.battleships.desktop.util.Help;
 import de.upb.codingpirates.battleships.logic.Game;
 import de.upb.codingpirates.battleships.logic.GameState;
+import de.upb.codingpirates.battleships.network.message.response.LobbyResponse;
+import de.upb.codingpirates.battleships.logic.Game;
 import de.upb.codingpirates.battleships.network.message.response.LobbyResponse;
 import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
@@ -25,6 +30,11 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.Collection;
 import java.util.ResourceBundle;
+import java.io.IOException;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.ResourceBundle;
 
 /**
  * Controller Class for the Lobby Window.
@@ -32,33 +42,47 @@ import java.util.ResourceBundle;
 public class LobbyController implements Initializable , LobbyResponseListener {
 
 
+    /**
+     * Lobby class to start this View
+     */
     public Lobby lobby;
     private LobbyModel model;
+
+    //view
+    /**
+     * list with games, which are starting
+     */
     @FXML
     private ListView<GameView> lstvwStart;
+    /**
+     * list with games, which are running
+     */
     @FXML
     private ListView<GameView> lstvwRunning;
+    /**
+     * list with games, which are finished
+     */
     @FXML
     private ListView<GameView> lstvwEnd;
+    /**
+     * button to load all games
+     */
     @FXML
     private Button refreshButton;
     private ChangeListener <GameView> changeListener;
     private ClientType cType;
 
 
-    private ObservableList<GameView> startList = FXCollections.synchronizedObservableList(FXCollections.observableArrayList());
-    private ObservableList<GameView> runningList = FXCollections.synchronizedObservableList(FXCollections.observableArrayList());
-    private ObservableList<GameView> endList = FXCollections.synchronizedObservableList(FXCollections.observableArrayList());
-
     private int clientID;
 
 
-
-
+    /**
+     * Constructor of this class to register the Listener
+     */
     public LobbyController() throws IOException {
         ListenerHandler.registerListener(this);
-        this.cType = new ClientType();
         model = new LobbyModel();
+        this.cType = new ClientType();
     }
     /**
      * Initial Method.
@@ -79,7 +103,8 @@ public class LobbyController implements Initializable , LobbyResponseListener {
                     showgames();
                 });
                 try {
-                        cType.display(window, arg2.getContent(), clientID,lobby.getStage());
+                    System.out.println("Hallo nochmal ctype Display von "+ arg2.getContent());
+                    cType.display(window, arg2.getContent(), model.getClientID(),lobby.getStage());
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -136,10 +161,17 @@ public class LobbyController implements Initializable , LobbyResponseListener {
         });
     }
 
+    /**
+     * closes this stage
+     */
     public void closeStage() {
         lobby.close();
     }
 
+    /**
+     * starts the SettingsView in an extra window
+     * @throws Exception
+     */
     @FXML
     public void settings() throws Exception {
 
@@ -157,11 +189,15 @@ public class LobbyController implements Initializable , LobbyResponseListener {
     }
 
     /**
-     * nextButton
+     * nextButton - only to create the GUI
      * @throws IOException
      */
 
 
+    /**
+     * starts the HelpView with accessibility tools in an extra window
+     * @throws IOException
+     */
     @FXML
     public void help() throws IOException {
         Help help = new Help();

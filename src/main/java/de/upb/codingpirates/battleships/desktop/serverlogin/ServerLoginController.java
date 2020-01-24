@@ -8,6 +8,7 @@ import de.upb.codingpirates.battleships.desktop.lobby.Lobby;
 import de.upb.codingpirates.battleships.desktop.settings.Settings;
 import de.upb.codingpirates.battleships.desktop.util.Help;
 import de.upb.codingpirates.battleships.logic.ClientType;
+import de.upb.codingpirates.battleships.network.message.response.LobbyResponse;
 import de.upb.codingpirates.battleships.network.message.response.ServerJoinResponse;
 import javafx.application.Platform;
 import javafx.beans.property.SimpleStringProperty;
@@ -36,19 +37,38 @@ public class ServerLoginController implements Initializable, ServerJoinResponseL
 
     private BattleshipsDesktopClientApplication main;
 
+    //views
+    /**
+     * field to write in the IP_Adress of the server
+     */
     @FXML
     private TextField ipField;
+    /**
+     * field to write in the port
+     */
     @FXML
     private TextField portField;
+    /**
+     * field to write in the players' username
+     */
     @FXML
     private TextField nameField;
+    /**
+     * field to show warnings
+     */
     @FXML
     private Label lblStatus;
     @FXML
     private ProgressIndicator login_progress;
 
+    /**
+     * StringProperty
+     */
     private StringPropertyBase text = new SimpleStringProperty();
 
+    /**
+     * Constructor of this class to register the Listener
+     */
     public ServerLoginController() {
         ListenerHandler.registerListener((MessageHandlerListener) this);
     }
@@ -118,6 +138,9 @@ public class ServerLoginController implements Initializable, ServerJoinResponseL
         text.set(lblStatus);
     }
 
+    /**
+     * closes the ServerLoginView
+     */
     public void closeStage(){
         Stage stage = (Stage) lblStatus.getScene().getWindow();
         stage.close();

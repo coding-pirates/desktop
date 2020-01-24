@@ -13,9 +13,17 @@ import de.upb.codingpirates.battleships.network.message.response.ServerJoinRespo
  */
 public class ServerLoginModel implements ServerJoinResponseListener {
 
-
+    /**
+     * name of the player
+     */
     private String spielerName;
+    /**
+     * type of the client
+     */
     private ClientType clientKind;
+    /**
+     * Id of the client
+     */
     private int clientId;
 
     /**

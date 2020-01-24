@@ -13,6 +13,9 @@ import java.io.IOException;
  */
 public class Lobby  {
 
+    /**
+     * lobbyStage for this window
+     */
     private Stage lobbyStage;
 
     /**

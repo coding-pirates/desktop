@@ -15,13 +15,29 @@ import javafx.scene.shape.Rectangle;
 import java.util.ArrayList;
 import java.util.Collection;
 
-
+/**
+ * class to visualize the shipForm
+ */
 public class ShipForm {
 
+    /**
+     * Layout for shipFomr
+     */
     private GridPane shipForm;
+    /**
+     * amount of rows of the gridPane
+     */
     private int nbRow;
+    /**
+     * amount of the columns of the gridPane
+     */
     private int nbColumn;
 
+    /**
+     * Constructor of this class and visualize it
+     *
+     * @param positions of one ship
+     */
     public ShipForm(Collection<Point2D> positions) {
         this.shipForm = new GridPane();
         shipForm.setMinSize(1, 1);
@@ -34,6 +50,11 @@ public class ShipForm {
 
     }
 
+    /**
+     * Gets height/width of the ship for the layout
+     * @param positions
+     * @return
+     */
     public int height(Collection<Point2D> positions){
         int maxHeight=0;
         for (Point2D pos:positions){
@@ -45,6 +66,10 @@ public class ShipForm {
 
 
 
+    /**
+     * builds the layout around the ship and the ship
+     * @param positions
+     */
     public void setShip(Collection<Point2D> positions){
         ReadOnlyDoubleProperty heightProperty = shipForm.heightProperty();
         ReadOnlyDoubleProperty widthProperty = shipForm.widthProperty();
@@ -73,10 +98,19 @@ public class ShipForm {
         shipForm.setHgap(shipForm.getHeight() / nbRow);
 
     }
+
+    /**
+     * visualize the shipForm
+     * @return Gridpane  shipForm
+     */
     public GridPane getDisplay() {
+
         return shipForm;
     }
 
+    /**
+     * rotate the ship
+     */
     public void rotate(){
         double rotation = shipForm.getRotate();
         switch((int) rotation){

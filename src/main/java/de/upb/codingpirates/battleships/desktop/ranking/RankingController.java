@@ -18,12 +18,25 @@ import java.util.*;
  */
 public class RankingController implements Initializable {
 
+    //view
+    /**
+     * list for ranking with all players
+     */
     @FXML
     TableView<Player> tableRangList;
+    /**
+     * column player in table
+     */
     @FXML
     TableColumn<Player, String> name;
+    /**
+     * column rang in table according to the each player
+     */
     @FXML
     TableColumn<Player, Integer> rang;
+    /**
+     * column points in table according to each player
+     */
     @FXML
     TableColumn<Player, Integer> points;
 
@@ -56,7 +69,6 @@ public class RankingController implements Initializable {
     public void setPlayers(Collection<Client> players) {
         this.players = players;
     }
-
 
     /**
      * Fills the Ranking Window with the Placement of every Player, it's Name and Points.
