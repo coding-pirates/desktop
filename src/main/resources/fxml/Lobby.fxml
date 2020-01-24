@@ -62,6 +62,9 @@
                   </image>
                </ImageView>
             </graphic>
+            <cursor>
+               <Cursor fx:constant="HAND" />
+            </cursor>
      </Button>
      <Accordion minHeight="145.0" minWidth="558.0" prefHeight="400.0" prefWidth="1100.0" VBox.vgrow="ALWAYS">
        <padding>
@@ -90,7 +93,7 @@
            <font>
              <Font name="System Bold" size="25.0" />
            </font>
-           <ListView fx:id="lstvwEnd" minWidth="100.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #CFBE8E;" styleClass="list-view"/>
+           <ListView fx:id="lstvwEnd" minWidth="100.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #CFBE8E;" styleClass="list-view" />
                   <cursor>
                      <Cursor fx:constant="HAND" />
                   </cursor>

@@ -33,7 +33,7 @@ public class Placeships extends Fullscreen implements FxmlLoader {
      */
     public void display(Stage placeshipsStage, Game currentGame, int clientID) throws IOException {
         this.placeshipsStage = placeshipsStage;
-        FXMLLoader loader = this.getLoader("PlaceshipsView");
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/PlaceShipsView.fxml"), ResourceBundle.getBundle("lang/desktop", de.upb.codingpirates.battleships.desktop.util.Settings.getLocale()));
         AnchorPane pane = loader.load();
         this.placeshipsController = loader.getController();
         placeshipsController.setCurrentGame(currentGame);

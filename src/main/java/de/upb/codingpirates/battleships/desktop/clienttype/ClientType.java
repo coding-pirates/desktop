@@ -9,6 +9,7 @@ import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 import java.io.IOException;
 
@@ -33,7 +34,7 @@ public class ClientType implements FxmlLoader {
 
         window.initModality(Modality.APPLICATION_MODAL);
         window.setTitle("ClientType");
-
+        window.initStyle(StageStyle.UNDECORATED);
         this.clientTypeController.setLobbyStage(this.LobbyStage);
         this.clientTypeController.setClientID(clientID);
         this.clientTypeController.setSelectedGame(selectedGame);

@@ -18,7 +18,7 @@
                         <Image url="@../images/button.png" />
                      </image>
                   </ImageView>
-                  <Text fill="WHITE" layoutX="3.0" layoutY="37.740234375" nodeOrientation="RIGHT_TO_LEFT" smooth="false" strokeType="OUTSIDE" strokeWidth="0.0" text="Client Type" textAlignment="CENTER" wrappingWidth="297.9999992620433" AnchorPane.bottomAnchor="16.0" AnchorPane.leftAnchor="3.0" AnchorPane.rightAnchor="-1.0" AnchorPane.topAnchor="14.0">
+                  <Text fill="WHITE" layoutX="3.0" layoutY="37.740234375" nodeOrientation="RIGHT_TO_LEFT" smooth="false" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-family: 'Pirata One'; -fx-font-size: 24;" text="%clienttype.clienttype" textAlignment="CENTER" wrappingWidth="297.9999992620433" AnchorPane.bottomAnchor="16.0" AnchorPane.leftAnchor="3.0" AnchorPane.rightAnchor="-1.0" AnchorPane.topAnchor="14.0">
                      <font>
                         <Font name="System Bold" size="22.0" />
                      </font>
