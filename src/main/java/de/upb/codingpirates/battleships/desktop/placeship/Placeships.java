@@ -38,6 +38,7 @@ public class Placeships  {
         placeshipsStage.setMaximized(true);
         placeshipsStage.setTitle("PlaceShips");
         placeshipsStage.setScene(new Scene(pane));
+        placeshipsController.showWaitForGameInit();
         placeshipsStage.show();
     }
 

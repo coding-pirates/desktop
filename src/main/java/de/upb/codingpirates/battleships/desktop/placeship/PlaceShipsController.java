@@ -13,7 +13,11 @@ import de.upb.codingpirates.battleships.network.message.notification.GameInitNot
 import de.upb.codingpirates.battleships.network.message.notification.GameStartNotification;
 import de.upb.codingpirates.battleships.network.message.response.GameLeaveResponse;
 import de.upb.codingpirates.battleships.network.message.response.PlaceShipsResponse;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.application.Platform;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
@@ -24,6 +28,7 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 import java.io.IOException;
 import java.net.URL;
@@ -59,6 +64,8 @@ public class PlaceShipsController extends InGameController implements Initializa
     private GameField gameField;
 
     private ShipForm shipForm;
+    private Timeline time = new Timeline();
+    private long millis;
 
 
 
@@ -76,6 +83,31 @@ public class PlaceShipsController extends InGameController implements Initializa
        model.setCurrentGame(currentGame);
         model.addShipTypes(currentGame.getConfig().getShips()); //TODO maybe direct in Model
         model.setSelectedShip(currentGame.getConfig().getShips().keySet().iterator().next());
+        this.millis = currentGame.getConfig().getRoundTime();
+    }
+
+    public void startTimer() {
+        time.setCycleCount(Timeline.INDEFINITE);
+        if (time != null) {
+            time.stop();
+        }
+        KeyFrame frame = new KeyFrame(Duration.seconds(1), new EventHandler<ActionEvent>() {
+
+            @Override
+            public void handle(ActionEvent event) {
+                millis = millis-1000;
+                Long seconds = millis/1000;
+                System.out.println(seconds);
+                //restTime.setText((seconds.toString())); //TODO create label to fill in View
+                if (millis <= 0) {
+                    time.stop();
+                }
+
+            }
+
+        });
+        time.getKeyFrames().add(frame);
+        time.playFromStart();
     }
 
     public void closeStage() {
@@ -215,14 +247,6 @@ public class PlaceShipsController extends InGameController implements Initializa
     }
 
     public void setShipForm(){
-        //get ShipForm from server
-        //gameField = new GameField(height, width);
-       /* ArrayList<Point2D> positions= new ArrayList<>();
-        positions.add(new Point2D(0,0));
-        positions.add(new Point2D(0,1));
-        positions.add(new Point2D(0,2));
-        positions.add(new Point2D(1,2));
-        Ship s = new Ship(new ShipType(positions));*/
         shipForm= new ShipForm(model.getShipTypes().get(model.getSelectedShip()).getPositions());
         smallBorderPane.setPadding(new Insets(1, 1, 1, 1));
         selectedShipGrid = shipForm.getDisplay();
@@ -275,6 +299,7 @@ public class PlaceShipsController extends InGameController implements Initializa
     @Override
     public void onGameInitNotification(GameInitNotification message, int clientId) {
         btn_gameStart.setVisible(true);
+        startTimer();
         model.setClientList(message.getClientList());
     }
 
