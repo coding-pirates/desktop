@@ -32,11 +32,17 @@
                         <Image url="@../images/icon_settings.png" />
                      </image>
                   </ImageView>
-               </graphic></Button>
+               </graphic>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></Button>
             <Button cache="true" cacheHint="ROTATE" cacheShape="false" contentDisplay="TEXT_ONLY" focusTraversable="false" layoutX="1008.0" layoutY="78.0" minHeight="-Infinity" minWidth="-Infinity" onAction="#help" prefHeight="44.0" prefWidth="55.0" style="-fx-background-color: #CFBE8E;" text="?" textFill="#472218" AnchorPane.rightAnchor="137.0" AnchorPane.topAnchor="78.0">
                <font>
                   <Font name="System Bold" size="22.0" />
                </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
             </Button>
          </children>
       </AnchorPane>
@@ -61,7 +67,7 @@
          <Insets bottom="20.0" left="20.0" right="20.0" />
        </padding>
        <panes>
-         <TitledPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="150.0" prefWidth="1000.0" style="-fx-body-color: #472218; -fx-inner-border: #92BFBF; -fx-box-border: #92BFBF; -fx-mark-color: white; -fx-focus-color: #E4FFFF; -fx-font-family: 'Pirata One';" text="%lobby.starting_games" textFill="#fcfcfc">
+         <TitledPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="150.0" prefWidth="1000.0" style="-fx-body-color: #472218; -fx-inner-border: #92BFBF; -fx-box-border: #92BFBF; -fx-mark-color: white; -fx-focus-color: #E4FFFF; -fx-font-family: 'Pirata One'; -fx-font-size: 25;" text="%lobby.starting_games" textFill="#fcfcfc">
            <font>
              <Font name="System Bold" size="25.0" />
            </font>
@@ -70,7 +76,7 @@
                      <Cursor fx:constant="HAND" />
                   </cursor>
          </TitledPane>
-         <TitledPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="150.0" prefWidth="1000.0" style="-fx-body-color: #472218; -fx-inner-border: #92BFBF; -fx-box-border: #92BFBF; -fx-mark-color: white; -fx-focus-color: #E4FFFF; -fx-font-family: 'Pirata One';" text="%lobby.running_games" textFill="#fcfcfc">
+         <TitledPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="150.0" prefWidth="1000.0" style="-fx-body-color: #472218; -fx-inner-border: #92BFBF; -fx-box-border: #92BFBF; -fx-mark-color: white; -fx-focus-color: #E4FFFF; -fx-font-family: 'Pirata One'; -fx-font-size: 25;" text="%lobby.running_games" textFill="#fcfcfc">
            <font>
              <Font name="System Bold" size="25.0" />
            </font>
@@ -79,7 +85,7 @@
                      <Cursor fx:constant="HAND" />
                   </cursor>
          </TitledPane>
-         <TitledPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="150.0" prefWidth="1000.0" style="-fx-body-color: #472218; -fx-inner-border: #92BFBF; -fx-box-border: #92BFBF; -fx-mark-color: white; -fx-focus-color: #E4FFFF; -fx-font-family: 'Pirata One';" text="%lobby.finished_games" textFill="#f8f7f7">
+         <TitledPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="150.0" prefWidth="1000.0" style="-fx-body-color: #472218; -fx-inner-border: #92BFBF; -fx-box-border: #92BFBF; -fx-mark-color: white; -fx-focus-color: #E4FFFF; -fx-font-family: 'Pirata One'; -fx-font-size: 25;" text="%lobby.finished_games" textFill="#f8f7f7">
            <font>
              <Font name="System Bold" size="25.0" />
            </font>
