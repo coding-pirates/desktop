@@ -4,21 +4,12 @@ import de.upb.codingpirates.battleships.client.ListenerHandler;
 import de.upb.codingpirates.battleships.client.listener.LobbyResponseListener;
 import de.upb.codingpirates.battleships.desktop.clienttype.ClientType;
 import de.upb.codingpirates.battleships.desktop.serverlogin.ServerLogin;
-import de.upb.codingpirates.battleships.client.ListenerHandler;
-import de.upb.codingpirates.battleships.client.listener.LobbyResponseListener;
 import de.upb.codingpirates.battleships.desktop.settings.Settings;
 import de.upb.codingpirates.battleships.desktop.util.GameView;
-import de.upb.codingpirates.battleships.desktop.util.GameView;
 import de.upb.codingpirates.battleships.desktop.util.Help;
-import de.upb.codingpirates.battleships.logic.Game;
-import de.upb.codingpirates.battleships.logic.GameState;
-import de.upb.codingpirates.battleships.network.message.response.LobbyResponse;
-import de.upb.codingpirates.battleships.logic.Game;
 import de.upb.codingpirates.battleships.network.message.response.LobbyResponse;
 import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -28,12 +19,6 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.Collection;
-import java.util.ResourceBundle;
-import java.io.IOException;
-import java.net.URL;
-import java.util.ArrayList;
-import java.util.Collection;
 import java.util.ResourceBundle;
 
 /**
@@ -112,7 +97,6 @@ public class LobbyController implements Initializable , LobbyResponseListener {
                     showgames();
                 });
                 try {
-                    System.out.println("Hallo nochmal ctype Display von " + arg2.getContent());
                     cType.display(window, arg2.getContent(), model.getClientID(), lobby.getStage());
                 } catch (IOException e) {
                     e.printStackTrace();

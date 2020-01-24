@@ -22,7 +22,7 @@
             </ImageView>
             <HBox minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="1200.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
-               <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Punkte bei Versenken:">
+               <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="%inGame.sunkPoints">
                  <font>
                    <Font size="18.0" />
                  </font>
@@ -38,7 +38,7 @@
                         <Insets left="10.0" top="15.0" />
                      </HBox.margin>
                </Label>
-               <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Punkte bei Treffer:">
+               <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="%inGame.hitPoints">
                  <font>
                    <Font size="18.0" />
                  </font>
@@ -82,7 +82,7 @@
             </HBox>
             <HBox minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="1200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
                <children>
-               <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Bedenkzeit:">
+               <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="%inGame.thinkTime">
                  <font>
                    <Font size="18.0" />
                  </font>
@@ -98,7 +98,7 @@
                         <Insets bottom="15.0" left="10.0" />
                      </HBox.margin>
                </Label>
-               <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Restliche Bedenkzeit:">
+               <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="%inGame.remainingTime">
                  <font>
                    <Font size="18.0" />
                  </font>
@@ -114,7 +114,7 @@
                         <Insets bottom="15.0" left="10.0" />
                      </HBox.margin>
                </Label>
-               <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Spieler:">
+               <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="%inGame.player">
                  <font>
                    <Font size="18.0" />
                  </font>
@@ -130,7 +130,7 @@
                         <Insets bottom="15.0" left="10.0" />
                      </HBox.margin>
                </Label>
-               <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Schüsse:">
+               <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="%inGame.shots">
                  <font>
                    <Font size="18.0" />
                  </font>
@@ -164,7 +164,7 @@
         <Insets bottom="10.0" top="10.0" />
       </VBox.margin>
       <children>
-        <Button contentDisplay="CENTER" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#showRanking" prefHeight="30.0" prefWidth="162.0" style="-fx-background-color: #CFBE8E;" text="Rangliste anzeigen" textFill="WHITE">
+        <Button contentDisplay="CENTER" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#showRanking" prefHeight="30.0" prefWidth="162.0" style="-fx-background-color: #CFBE8E;" text="%inGame.showRanking" textFill="WHITE">
           <font>
             <Font name="System Bold" size="15.0" />
           </font>
@@ -179,7 +179,7 @@
                   <Insets bottom="20.0" top="20.0" />
                </HBox.margin>
         </Button>
-        <Button alignment="CENTER" contentDisplay="CENTER" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#leave" prefHeight="30.0" prefWidth="150.0" style="-fx-background-color: #CFBE8E;" text="Schlacht verlassen" textFill="WHITE" HBox.hgrow="ALWAYS">
+        <Button alignment="CENTER" contentDisplay="CENTER" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#leave" prefHeight="30.0" prefWidth="150.0" style="-fx-background-color: #CFBE8E;" text="%inGame.leave" textFill="WHITE" HBox.hgrow="ALWAYS">
           <font>
             <Font name="System Bold" size="15.0" />
           </font>
@@ -194,7 +194,7 @@
                   <Insets bottom="20.0" top="20.0" />
                </HBox.margin>
         </Button>
-            <Button contentDisplay="CENTER" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#shot" prefHeight="30.0" prefWidth="162.0" style="-fx-background-color: #CFBE8E;" text="Feuer!" textFill="WHITE">
+            <Button contentDisplay="CENTER" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#shot" prefHeight="30.0" prefWidth="162.0" style="-fx-background-color: #CFBE8E;" text="%inGame.fire" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="15.0" />
                </font>

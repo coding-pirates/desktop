@@ -15,11 +15,11 @@
         <rowConstraints>
           <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="TOP" vgrow="SOMETIMES" />
         </rowConstraints>
-        <Text fx:id="name" fill="#472218" fontSmoothingType="LCD" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font: 'Pirata One';" text=" Spieler:">
+        <Text fx:id="name" fill="#472218" fontSmoothingType="LCD" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font: 'Pirata One';" text="%inGamefield.player">
                <font>
                   <Font size="20.0" />
                </font></Text>
-        <Text fx:id="points" fill="#472218" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font: 'Pirata One';" text="Punkte:" GridPane.columnIndex="1">
+        <Text fx:id="points" fill="#472218" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font: 'Pirata One';" text="%inGamefield.point" GridPane.columnIndex="1">
                <font>
                   <Font size="20.0" />
                </font></Text>
