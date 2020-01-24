@@ -37,6 +37,7 @@ public class Help {
         window.setResizable(false);
         window.setScene(scene);
         window.initStyle(StageStyle.UNDECORATED);
+        window.setAlwaysOnTop(true);
         window.showAndWait();
     }
 
