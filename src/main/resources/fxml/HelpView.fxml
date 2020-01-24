@@ -1,17 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ScrollPane?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane minHeight="300.0" minWidth="150.0" prefHeight="600.0" prefWidth="600.0" style="-fx-background-color: #CFBE8E; -fx-border-color: #CFBE8E;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.upb.codingpirates.battleships.desktop.util.Help">
+<AnchorPane minHeight="300.0" minWidth="150.0" prefHeight="600.0" prefWidth="600.0" style="-fx-background-color: #CFBE8E; -fx-border-color: #CFBE8E;" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.upb.codingpirates.battleships.desktop.util.Help">
    <children>
       <VBox alignment="TOP_CENTER" fillWidth="false" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="300.0" style="-fx-background-color: #CFBE8E; -fx-border-width: 5; -fx-border-color: #472218;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -32,7 +28,7 @@
                   <Insets top="10.0" />
                </VBox.margin>
             </AnchorPane>
-            <Button fx:id="closeButton" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#closeStage" prefHeight="44.0" prefWidth="100.0" style="-fx-background-color: #CFBE8E; -fx-border-color: #472218;" text="back">
+            <Button fx:id="closeButton" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#closeStage" prefHeight="44.0" prefWidth="100.0" style="-fx-background-color: #CFBE8E; -fx-border-color: #472218;" text="%back">
                <graphic>
                   <ImageView fitHeight="49.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -40,6 +36,9 @@
                      </image>
                   </ImageView>
                </graphic>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
             </Button>
             <AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="476.0" prefWidth="574.0" style="-fx-background-color: #CFBE8E;">
                <children>
@@ -47,7 +46,7 @@
                      <children>
                         <ScrollPane hbarPolicy="NEVER" prefHeight="455.0" prefWidth="575.0" style="-fx-background-color: #CFBE8E; -fx-border-color: #CFBE8E;">
                            <content>
-                              <Label alignment="TOP_LEFT" cacheShape="false" centerShape="false" contentDisplay="TOP" focusTraversable="false" prefHeight="1300.0" prefWidth="556.0" style="-fx-background-color: #CFBE8E;" text="Start-View:&#10;Drücke den Start-Button.&#10;&#10;Server-Login-View:&#10;Gib deinen Usernamen, die Server-IP-Adresse und den ServerPort ein und bestätige deine Eingaben mit Klick auf den Login-Button. Das Symbol &quot;?&quot; hilft dir bei der Bedienung und das Einstellungsrad bringt dich zu den Einstellungen.&#10;&#10;Lobby-View:&#10;Hier kannst du alle Spiele sehen, die bereits angefangen haben, bereits beendet wurden und Spiele, die in Kürze starten. Klicke auf ein Spiel, welchem du als Beobachter oder Spieler beitreten möchtest. Wenn du nur Beobachter bist, kannst du dir Spiele anschauen, die bereits laufen oder bald beginnen. Als Spieler kannst du einem Spiel nur beitreten, wenn dieses noch nicht begonnen hat. Ebenfalls hast du nochmal die Möglichkeit dir die Spielregeln (&quot;unseren Piratenkodex&quot; unter den Einstellungen durchzulesen, falls du dir nicht mehr ganz sicher bist, wie die Spielregeln sind.&#10;&#10;ClientType-View:&#10;Wähle nun aus, ob du ein Beobachter oder ein aktiver Mitspieler bist. und drücke auf &quot;Go&quot;.&#10;&#10;Waiting-View:&#10;Du hast dich dazu entschieden, einem in Kürze beginnenden Spiel als Beobachter beizutreten. Da noch nicht alle Spieler zu diesem Spiel beigetreten sind, bzw. noch nicht alle ihre Schiffe platziert haben, musst du noch einen kurzen Augenblick warten, bis das Spiel beginnt.&#10;&#10;PlacingShip-View:&#10;Du hast dich dazu entschieden, selbst am Spiel aktiv teilzunehmen. Nun musst du deine Schiffe setzen. Oben in der Leiste werden dir alle möglichen Informationen zum Schiff angezeigt. Klicke auf ein Feld um dein Schiff dorthin zu setzen (Das Feld, welches du klickst, ist immer die obere linke Ecke des gesamten Schiffes). Aber beachte, dass sich die Schiffe nicht berühren dürfen. Du kannst das Schiff mithilfe des Rotate-Button simmer um 90° drehen. Wenn du damit fertig bist, klicke auf &quot;Schlacht starten&quot;.&#10;&#10;InGame-View:&#10;Das Spiel hat begonnen. Nun kannst du als Spieler und Beobachter einzelne Spielfelder deiner Mitspieler groß anzeigen. Dazu klicke auf das gewünschte Feld. Auf der linken Seite kannst du zwischen allen Spielfeldern wählen. &#10;Wenn du als Spieler angemeldet bist, musst du nun innernhalb der Bedenkzeit deine Schüsse setzen. Gehe dazu auf das gewünschte Feld und mache einen Doppelklick. Wenn du alle deine Schüsse gesetzt hast, musst du noch mit dem Button &quot;Feuer!&quot; deine Eingabe bestätigen.&#10;Wenn du zwischendurch die Rankliste aller Spieler sehen möchtest, dann klicke einfach auf Rangliste und sie wird dir angezeigt. Wenn du das Spiel verlassen möchtest, dann klicke auf den &quot;Schlacht verlassen&quot; Button.&#10;&#10;Endgame-View:&#10;Das Spiel ist beendet und du siehst die Gewinner des Spiels. Mit Klick auf die Rangliste siehst du alle Punktzahlen von allen Spielern. Wenn du ein weiteres Spiel spielen oder beobachten möchtest, klicke einfach auf den Button &quot;Eine neue Herausforderung suchen&quot;.&#10;&#10;Einstellungen:&#10;In den Einstellungen kannst du die Lautstärke der Musik verändern, sowie die Soundeffekte ausstellen. Außerdem findest du dort das Impressum und die Spielregeln." textFill="#472218" wrapText="true">
+                              <Label alignment="TOP_LEFT" cacheShape="false" centerShape="false" contentDisplay="TOP" focusTraversable="false" prefHeight="1300.0" prefWidth="556.0" style="-fx-background-color: #CFBE8E;" text="%help.helptext" textFill="#472218" wrapText="true">
                                  <font>
                                     <Font size="14.0" />
                                  </font>

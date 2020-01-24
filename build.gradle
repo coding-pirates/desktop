@@ -53,6 +53,7 @@ jar{
     manifest {
         attributes 'Implementation-Title': 'Battleships Desktop App',
                 'Implementation-Version': "${project.desktop_version}",
-                'Main-Class': 'de.upb.codingpirates.battleships.server.BattleshipsDesktopClientApplication'
+                'Main-Class': 'de.upb.codingpirates.battleships.desktop.BattleshipsDesktopClientApplication'
     }
-    from ( configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) } ) }
+    from ( configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) } )
+}

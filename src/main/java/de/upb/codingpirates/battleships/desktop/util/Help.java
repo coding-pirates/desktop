@@ -11,6 +11,7 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
 import java.io.IOException;
+import java.util.ResourceBundle;
 
 /**
  * class to show accessibility tools in every view
@@ -37,7 +38,7 @@ public class Help {
 
 
 
-        FXMLLoader loader = new FXMLLoader(this.getClass().getResource("/fxml/HelpView.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/HelpView.fxml"), ResourceBundle.getBundle("lang/desktop", de.upb.codingpirates.battleships.desktop.util.Settings.getLocale()));
         AnchorPane pane = loader.load();
 
 
@@ -48,7 +49,6 @@ public class Help {
         window.setResizable(false);
         window.setScene(scene);
         window.initStyle(StageStyle.UNDECORATED);
-        window.setAlwaysOnTop(true);
         window.showAndWait();
     }
 
