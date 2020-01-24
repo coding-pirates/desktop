@@ -22,16 +22,8 @@
                      </font>
                   </Label>
                   <Separator layoutX="227.0" layoutY="204.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="7.0" prefWidth="842.0" style="-fx-background-color: brown;" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="227.0" AnchorPane.rightAnchor="131.0" AnchorPane.topAnchor="204.0" />
-                  <Button fx:id="btn_settings">
-                     <graphic>
-                        <ImageView fitHeight="38.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../images/icon_settings.png" />
-                           </image>
-                        </ImageView>
-                     </graphic></Button>
-                  <Button fx:id="btn_help">
-                  </Button>
+                 <Button fx:id="btn_settings"/>
+                 <Button fx:id="btn_help"/>
                </children>
             </AnchorPane>
             <VBox alignment="CENTER" fillWidth="false" minHeight="-Infinity" minWidth="-Infinity" prefHeight="793.0" prefWidth="1920.0">

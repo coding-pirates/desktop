@@ -2,6 +2,7 @@ package de.upb.codingpirates.battleships.desktop.endgame;
 
 
 import de.upb.codingpirates.battleships.desktop.util.Fullscreen;
+import de.upb.codingpirates.battleships.desktop.util.FxmlLoader;
 import de.upb.codingpirates.battleships.logic.Client;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -11,12 +12,11 @@ import javafx.stage.Stage;
 
 import java.util.Collection;
 import java.util.Map;
-import java.util.ResourceBundle;
 
 /**
  * Class that implements a Window to show the endresult of the game
  */
-public class Endgame extends Fullscreen {
+public class Endgame extends Fullscreen implements FxmlLoader {
 
 
     /**
@@ -37,7 +37,7 @@ public class Endgame extends Fullscreen {
         this.endStage = endStage;
         this.points = points;
         this.players = players;
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/EndgameView.fxml"), ResourceBundle.getBundle("lang/desktop"));
+        FXMLLoader loader = this.getLoader("EndgameView");
         AnchorPane pane = loader.load();
         this.EndgameController = loader.getController();
         EndgameController.setPoints(points);
