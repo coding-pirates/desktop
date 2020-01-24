@@ -16,14 +16,14 @@
          <children>
             <AnchorPane prefHeight="215.0" prefWidth="1920.0">
                <children>
-                  <Label alignment="CENTER" layoutX="405.0" layoutY="88.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="83.0" prefWidth="466.0" text="\%endgame.title.name" textFill="WHITE" AnchorPane.leftAnchor="405.0" AnchorPane.rightAnchor="329.0" AnchorPane.topAnchor="88.0">
+                  <Label alignment="CENTER" layoutX="405.0" layoutY="88.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="83.0" prefWidth="466.0" text="%endgame.title.name" textFill="WHITE" AnchorPane.leftAnchor="405.0" AnchorPane.rightAnchor="329.0" AnchorPane.topAnchor="88.0">
                      <font>
                         <Font size="35.0" />
                      </font>
                   </Label>
-                  <Separator layoutX="227.0" layoutY="204.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="7.0" prefWidth="842.0" style="-fx-background-color: brown;" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="227.0" AnchorPane.rightAnchor="131.0" AnchorPane.topAnchor="204.0" />
-                 <Button fx:id="btn_settings"/>
-                 <Button fx:id="btn_help"/>
+                 <Button fx:id="btn_settings" />
+                 <Button fx:id="btn_help" />
+                  <Separator layoutX="217.0" layoutY="218.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="10.0" prefWidth="1562.0" style="-fx-background-color: brown;" />
                </children>
             </AnchorPane>
             <VBox alignment="CENTER" fillWidth="false" minHeight="-Infinity" minWidth="-Infinity" prefHeight="793.0" prefWidth="1920.0">
@@ -45,14 +45,14 @@
                               <Image url="@../images/winner3.png" />
                            </image>
                         </ImageView>
-                        <Label fx:id="first" layoutX="518.0" layoutY="216.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="63.0" prefWidth="206.0" text="\%endgame.podium.first" textAlignment="CENTER" textFill="#f8f8f8" AnchorPane.bottomAnchor="142.0" AnchorPane.leftAnchor="518.0" AnchorPane.rightAnchor="542.0" AnchorPane.topAnchor="216.0" />
-                        <Label fx:id="third" layoutX="754.0" layoutY="284.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="42.0" prefWidth="164.0" text="\%endgame.podium.second" textAlignment="CENTER" textFill="#fffefe" AnchorPane.bottomAnchor="74.0" AnchorPane.leftAnchor="754.0" AnchorPane.rightAnchor="282.0" AnchorPane.topAnchor="284.0" />
-                        <Label fx:id="second" layoutX="312.0" layoutY="284.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="42.0" prefWidth="164.0" text="\%endgame.podium.third" textAlignment="CENTER" textFill="WHITE" AnchorPane.bottomAnchor="74.0" AnchorPane.leftAnchor="312.0" AnchorPane.rightAnchor="724.0" AnchorPane.topAnchor="284.0" />
+                        <Label fx:id="first" layoutX="518.0" layoutY="216.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="63.0" prefWidth="206.0" text="%endgame.podium.first" textAlignment="CENTER" textFill="#f8f8f8" AnchorPane.bottomAnchor="142.0" AnchorPane.leftAnchor="518.0" AnchorPane.rightAnchor="542.0" AnchorPane.topAnchor="216.0" />
+                        <Label fx:id="third" layoutX="754.0" layoutY="284.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="42.0" prefWidth="164.0" text="%endgame.podium.second" textAlignment="CENTER" textFill="#fffefe" AnchorPane.bottomAnchor="74.0" AnchorPane.leftAnchor="754.0" AnchorPane.rightAnchor="282.0" AnchorPane.topAnchor="284.0" />
+                        <Label fx:id="second" layoutX="312.0" layoutY="284.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="42.0" prefWidth="164.0" text="%endgame.podium.third" textAlignment="CENTER" textFill="WHITE" AnchorPane.bottomAnchor="74.0" AnchorPane.leftAnchor="312.0" AnchorPane.rightAnchor="724.0" AnchorPane.topAnchor="284.0" />
                      </children>
                   </AnchorPane>
                   <HBox fillHeight="false" prefHeight="157.0" prefWidth="1200.0">
                      <children>
-                        <Button alignment="CENTER" contentDisplay="CENTER" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#ranking" prefHeight="61.0" prefWidth="326.0" style="-fx-background-color: #CFBE8E;" text="\%endgame.overview.name" textAlignment="CENTER" textFill="WHITE">
+                        <Button alignment="CENTER" contentDisplay="CENTER" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#ranking" prefHeight="61.0" prefWidth="326.0" style="-fx-background-color: #CFBE8E;" text="%endgame.overview.name" textAlignment="CENTER" textFill="WHITE">
                            <font>
                               <Font name="System Bold" size="20.0" />
                            </font>
