@@ -54,9 +54,9 @@
             </image>
          </ImageView>
       </graphic></Button>
-  <ChoiceBox fx:id="language" layoutX="136.0" layoutY="363.0" prefWidth="150.0" style="-fx-background-color: #472218; -fx-border-color: #472218; -fx-control-inner-background: black;">
+  <ChoiceBox fx:id="language" layoutX="136.0" layoutY="363.0" prefWidth="150.0" style="-fx-background-color: #472218; -fx-border-color: #472218; -fx-control-inner-background: #CFBE8E; -fx-mark-color: white;" styleClass="choice-box" stylesheets="@../css/comboBox.css">
   </ChoiceBox>
-   <Label fx:id="settings_restart_info_label" layoutX="339.0" layoutY="367.0" maxHeight="60.0" maxWidth="300.0" prefHeight="40.0" prefWidth="230.0" text="%settings.language.help" AnchorPane.leftAnchor="334.0" />
+   <Label fx:id="settings_restart_info_label" layoutX="339.0" layoutY="367.0" maxHeight="60.0" maxWidth="300.0" prefHeight="40.0" prefWidth="230.0" styleClass="label" text="%settings.language.help" AnchorPane.leftAnchor="334.0" />
    <Button cache="true" cacheHint="ROTATE" cacheShape="false" contentDisplay="TEXT_ONLY" focusTraversable="false" layoutX="531.0" layoutY="19.0" minHeight="-Infinity" minWidth="-Infinity" onAction="#help" prefHeight="44.0" prefWidth="55.0" style="-fx-background-color: #CFBE8E; -fx-border-color: #472218;" text="?" textFill="#472218">
       <font>
          <Font name="System Bold" size="22.0" />
