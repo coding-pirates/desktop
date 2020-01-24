@@ -8,7 +8,7 @@
 
 <AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="600.0" style="-fx-background-color: #CFBE8E; -fx-border-color: #CFBE8E; -fx-border-width: 5; -fx-border-color: #472218;" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.upb.codingpirates.battleships.desktop.settings.SettingsController">
    <Slider fx:id="volume" layoutX="130.0" layoutY="225.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="98.0" prefWidth="434.0" />
-   <Button alignment="CENTER" contentDisplay="CENTER" layoutX="323.0" layoutY="465.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#impressum" prefHeight="50.0" prefWidth="150.0" style="-fx-background-color: #CFBE8E;" text="Impressum" textAlignment="CENTER" textFill="WHITE">
+   <Button alignment="CENTER" contentDisplay="CENTER" layoutX="323.0" layoutY="465.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#impressum" prefHeight="50.0" prefWidth="150.0" style="-fx-background-color: #CFBE8E; -fx-font-family: 'Pirata One';" text="%settings.legal_notice" textAlignment="CENTER" textFill="WHITE">
       <font>
          <Font name="System Bold" size="20.0" />
       </font>
@@ -23,7 +23,7 @@
          <Cursor fx:constant="HAND" />
       </cursor>
    </Button>
-   <Button alignment="CENTER" contentDisplay="CENTER" layoutX="89.0" layoutY="465.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#piratenkodex" prefHeight="50.0" prefWidth="176.0" style="-fx-background-color: #CFBE8E;" text="Piratencodex" textAlignment="CENTER" textFill="WHITE">
+   <Button alignment="CENTER" contentDisplay="CENTER" layoutX="89.0" layoutY="465.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#piratenkodex" prefHeight="50.0" prefWidth="176.0" style="-fx-background-color: #CFBE8E; -fx-font-family: 'Pirata One';" text="%settings.pirates_code" textAlignment="CENTER" textFill="WHITE">
       <font>
          <Font name="System Bold" size="20.0" />
       </font>
@@ -54,7 +54,7 @@
             </image>
          </ImageView>
       </graphic></Button>
-  <ChoiceBox fx:id="language" layoutX="136.0" layoutY="363.0" prefWidth="150.0" style="-fx-background-color: #472218; -fx-border-color: #472218; -fx-control-inner-background: #CFBE8E; -fx-mark-color: white;" styleClass="choice-box" stylesheets="@../css/comboBox.css">
+  <ChoiceBox fx:id="language" layoutX="136.0" layoutY="363.0" prefWidth="150.0" style="-fx-background-color: #472218; -fx-border-color: #472218; -fx-control-inner-background: #CFBE8E; -fx-mark-color: white;" styleClass="choice-box" stylesheets="@../css/choicebox_language.css">
   </ChoiceBox>
    <Label fx:id="settings_restart_info_label" layoutX="339.0" layoutY="367.0" maxHeight="60.0" maxWidth="300.0" prefHeight="40.0" prefWidth="230.0" styleClass="label" text="%settings.language.help" AnchorPane.leftAnchor="334.0" />
    <Button cache="true" cacheHint="ROTATE" cacheShape="false" contentDisplay="TEXT_ONLY" focusTraversable="false" layoutX="531.0" layoutY="19.0" minHeight="-Infinity" minWidth="-Infinity" onAction="#help" prefHeight="44.0" prefWidth="55.0" style="-fx-background-color: #CFBE8E; -fx-border-color: #472218;" text="?" textFill="#472218">
@@ -77,7 +77,7 @@
          <Cursor fx:constant="HAND" />
       </cursor>
    </Button>
-  <Label alignment="CENTER" contentDisplay="CENTER" layoutX="223.0" layoutY="95.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="100.0" prefWidth="154.0" text="Settings" textFill="#f5f5f5">
+  <Label alignment="CENTER" contentDisplay="CENTER" layoutX="147.0" layoutY="95.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="100.0" prefWidth="298.0" style="-fx-font-family: 'Pirata One';" text="%settings.settings" textFill="#f5f5f5">
     <font>
       <Font size="38.0" />
     </font>

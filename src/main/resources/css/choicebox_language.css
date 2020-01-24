@@ -3,5 +3,5 @@
 }
 
 .choice-box .menu-item:focused {
-  -fx-background-color:  #472218 ; /* for example */
+  -fx-background-color:  #472218 ;
 }
