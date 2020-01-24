@@ -8,6 +8,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.ResourceBundle;
 
 /**
  * Class that initials the Lobby Window.
@@ -21,7 +22,7 @@ public class Lobby extends Fullscreen {
      */
     public void display(Stage lobbyStage, int clientID) throws IOException {
         this.lobbyStage = lobbyStage;
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/Lobby.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/Lobby.fxml"), ResourceBundle.getBundle("lang/desktop", de.upb.codingpirates.battleships.desktop.util.Settings.getLocale()));
         AnchorPane pane = loader.load();
         LobbyController lobbyController = loader.getController();
         lobbyController.setLobby(this);
