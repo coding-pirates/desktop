@@ -344,6 +344,8 @@ public class InGameModel extends Application implements InGameModelMessageListen
         });
     }
 
+
+
     @Override
     public void onPauseNotification(PauseNotification message, int clientId) {
         Platform.runLater(()-> {
@@ -363,7 +365,7 @@ public class InGameModel extends Application implements InGameModelMessageListen
     public void onRemainingTimeResponse(RemainingTimeResponse message, int clientId) {
         Platform.runLater(()-> {
             Long rtime = message.getTime();
-            inGameController.remainingTimeResponse(rtime*-1);
+            inGameController.remainingTimeResponse(rtime);
         });
     }
 

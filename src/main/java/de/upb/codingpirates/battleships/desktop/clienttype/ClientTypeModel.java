@@ -7,6 +7,7 @@ import de.upb.codingpirates.battleships.network.message.request.RequestBuilder;
 public class ClientTypeModel {
     private Game selectedGame;
     private int clientID;
+    private String chosenClient;
 
     public int getClientID() {
         return clientID;
@@ -37,10 +38,33 @@ public class ClientTypeModel {
             e.printStackTrace();
         }
     }
+
+    public void sendSpectatorGameStateRequest(){
+        try {
+            BattleshipsDesktopClientApplication
+                    .getInstance()
+                    .getTcpConnector()
+                    .sendMessageToServer(RequestBuilder.spectatorGameStateRequest());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
     public void setSelectedGame(Game selectedGame){
         this.selectedGame = selectedGame;
     }
     public Game getSelectedGame(){
         return selectedGame;
     }
+
+
+    public String getChosenClient() {
+        return chosenClient;
+    }
+
+    public void setChosenClient(String chosenClient) {
+        this.chosenClient = chosenClient;
+    }
+
+
+
 }

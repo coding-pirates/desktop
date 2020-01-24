@@ -8,6 +8,7 @@ import de.upb.codingpirates.battleships.desktop.settings.Settings;
 import de.upb.codingpirates.battleships.desktop.util.GameView;
 import de.upb.codingpirates.battleships.desktop.util.Help;
 import de.upb.codingpirates.battleships.logic.Game;
+import de.upb.codingpirates.battleships.logic.GameState;
 import de.upb.codingpirates.battleships.network.message.response.LobbyResponse;
 import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
@@ -57,6 +58,14 @@ public class LobbyController implements Initializable , LobbyResponseListener {
     public LobbyController() throws IOException {
         ListenerHandler.registerListener(this);
         this.cType = new ClientType();
+        model = new LobbyModel();
+    }
+    /**
+     * Initial Method.
+     */
+    @Override
+    public void initialize(URL arg0, ResourceBundle arg1) {
+
     }
 
     public void setChangeListener(){
@@ -74,21 +83,12 @@ public class LobbyController implements Initializable , LobbyResponseListener {
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
-            /*InGameModel inGameModel = new InGameModel(arg2.getContent());
-            Stage inGameStage = new Stage();
-            try {
-                inGameModel.start(inGameStage);
-            } catch (Exception e) {
-                e.printStackTrace();
-            }*/
-
-        };
+            };
 
 
         smStart.selectedItemProperty().addListener(changeListener);
         smRunning.selectedItemProperty().addListener(changeListener);
         smEnd.selectedItemProperty().addListener(changeListener);
-
     }
 
     /**
@@ -106,63 +106,34 @@ public class LobbyController implements Initializable , LobbyResponseListener {
     public void showgames() {
         // Request GameList from Server
         try {
-            model = new LobbyModel();
             model.sendRequest();
         } catch (Exception e) {
             System.out.println("Fehler: " + e);
         }
 
-        this.startList.clear();
+       /* this.startList.clear();
         this.runningList.clear();
         this.endList.clear();
+        */
 
         //Show GameList
-        lstvwStart.setItems(startList);
-        lstvwRunning.setItems(runningList);
-        lstvwEnd.setItems(endList);
+        lstvwStart.setItems(model.getStartList());
+        lstvwRunning.setItems(model.getRunningList());
+        lstvwEnd.setItems(model.getEndList());
 
     }
 
     public void setClientID(int clientID){
-        this.clientID = clientID;
+        model.setClientID(clientID);
     }
 
-    /**
-     * Adds the GameView for every Game in the right Category.
-     *
-     * @param games Collection of Games
-     */
-    public void parseToGameView(Collection<Game> games) {
-        for (Game game : games) {
-            final GameView view = new GameView(game);
-
-            switch (game.getState()) {
-                case LOBBY:
-                    startList.add(view);
-                    break;
-                case IN_PROGRESS:
-                case PAUSED:
-                    runningList.add(view);
-                    break;
-                case FINISHED:
-                    endList.add(view);
-            }
-        }
-    }
-
-    /**
-     * Initial Method.
-     */
-    @Override
-    public void initialize(URL arg0, ResourceBundle arg1) {
-
-    }
 
     @Override
     public void onLobbyResponse(LobbyResponse message, int clientId) {
-        Platform.runLater(()->
-         parseToGameView(message.getGames())
-        );
+        Platform.runLater(()-> {
+            model.clearGameLists();
+            model.parseToGameView(message.getGames());
+        });
     }
 
     public void closeStage() {
