@@ -7,7 +7,6 @@ import de.upb.codingpirates.battleships.desktop.lobby.Lobby;
 import de.upb.codingpirates.battleships.desktop.settings.Settings;
 import de.upb.codingpirates.battleships.desktop.util.Help;
 import de.upb.codingpirates.battleships.logic.ClientType;
-import de.upb.codingpirates.battleships.network.message.response.LobbyResponse;
 import de.upb.codingpirates.battleships.network.message.response.ServerJoinResponse;
 import javafx.application.Platform;
 import javafx.beans.property.SimpleStringProperty;
@@ -214,10 +213,14 @@ public class ServerLoginController implements Initializable, ServerJoinResponseL
                 .getInstance()
                 .getTcpConnector()
                 .connect(serverIP, Integer.parseInt(port),() -> Platform.runLater(()->{
+                    //Send request to server
+                    ServerLoginModel slm = new ServerLoginModel(nameField.getText(), ClientType.PLAYER);
+                    slm.sendRequest(serverIP);
+                }),() -> Platform.runLater(()->{
                     lblStatus.setAlignment(Pos.CENTER);
                     lblStatus.setText(resources.getString("serverLogin.lblStatus.noBattle"));
                     login_progress.setVisible(false);
-                }),() -> Platform.runLater(()->lblStatus.setText("Anmeldung fehlgeschlagen: Server nicht erreichbar!")));
+                }));
     }
 
     private void setLblStatus(String lblStatus) {
