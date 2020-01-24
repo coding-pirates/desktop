@@ -1,7 +1,7 @@
 package de.upb.codingpirates.battleships.desktop.ingame;
 
 import de.upb.codingpirates.battleships.desktop.util.Fullscreen;
-import de.upb.codingpirates.battleships.logic.Client;
+import de.upb.codingpirates.battleships.desktop.util.FxmlLoader;
 import de.upb.codingpirates.battleships.logic.ClientType;
 import de.upb.codingpirates.battleships.logic.Game;
 import de.upb.codingpirates.battleships.logic.PlacementInfo;
@@ -11,10 +11,9 @@ import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
-import java.util.Collection;
 import java.util.Map;
 
-public class InGame extends Fullscreen {
+public class InGame extends Fullscreen implements FxmlLoader {
     private InGameController inGameController;
 
     /**
@@ -26,7 +25,7 @@ public class InGame extends Fullscreen {
      * @throws Exception
      */
     public void start(Stage inGameStage, Game currentGame, ClientType clientType, Map<Integer, PlacementInfo> placedShips, int clientID) throws Exception {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/InGameView.fxml"));
+        FXMLLoader loader = this.getLoader("InGameView");
         AnchorPane pane = loader.load();
         inGameController = loader.getController();
         inGameController.setGame(currentGame);

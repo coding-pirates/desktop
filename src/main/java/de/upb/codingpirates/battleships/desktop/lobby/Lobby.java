@@ -1,6 +1,7 @@
 package de.upb.codingpirates.battleships.desktop.lobby;
 
 import de.upb.codingpirates.battleships.desktop.util.Fullscreen;
+import de.upb.codingpirates.battleships.desktop.util.FxmlLoader;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
@@ -8,12 +9,11 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.util.ResourceBundle;
 
 /**
  * Class that initials the Lobby Window.
  */
-public class Lobby extends Fullscreen {
+public class Lobby extends Fullscreen implements FxmlLoader {
 
     /**
      * lobbyStage for this window
@@ -25,7 +25,7 @@ public class Lobby extends Fullscreen {
      */
     public void display(Stage lobbyStage, int clientID) throws IOException {
         this.lobbyStage = lobbyStage;
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/Lobby.fxml"), ResourceBundle.getBundle("lang/desktop", de.upb.codingpirates.battleships.desktop.util.Settings.getLocale()));
+        FXMLLoader loader = this.getLoader("Lobby");
         AnchorPane pane = loader.load();
         LobbyController lobbyController = loader.getController();
         lobbyController.setLobby(this);
