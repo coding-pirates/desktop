@@ -14,25 +14,32 @@ public class ClientType {
     private ClientTypeController clientTypeController;
     private Stage window;
     private Stage LobbyStage;
+    private FXMLLoader loader;
+    private AnchorPane pane;
+    private Scene scene;
 
-    public void display(Stage window, Game selectedGame, int clientID,Stage Lobbystage) throws IOException {
+    public ClientType() throws IOException {
+        this.loader = new FXMLLoader(this.getClass().getResource("/fxml/ClientTypeView.fxml"));
+        this.pane = loader.load();
+        this.clientTypeController = loader.getController();
+        this.scene = new Scene(this.pane);
+    }
+
+    public void display(Stage window, Game selectedGame, int clientID, Stage lobbystage) throws IOException {
         this.window=window;
-        this.LobbyStage=Lobbystage;
+        this.LobbyStage=lobbystage;
 
         window.initModality(Modality.APPLICATION_MODAL);
         window.setTitle("ClientType");
 
-        FXMLLoader loader = new FXMLLoader(this.getClass().getResource("/fxml/ClientTypeView.fxml"));
-        AnchorPane pane = loader.load();
+        this.clientTypeController.setLobbyStage(this.LobbyStage);
+        this.clientTypeController.setClientID(clientID);
+        this.clientTypeController.setSelectedGame(selectedGame);
 
-        clientTypeController = loader.getController();
-        clientTypeController.setSelectedGame(selectedGame);
-        clientTypeController.setClientID(clientID);
-        clientTypeController.setLobbyStage(Lobbystage);
+
         Image icon = new Image(String.valueOf(ClientType.class.getResource("/images/app_icon.png")));
         window.getIcons().add(icon);
-        Scene scene = new Scene(pane);
-        window.setScene(scene);
+        window.setScene(this.scene);
         window.showAndWait();
     }
 

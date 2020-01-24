@@ -42,6 +42,8 @@ public class LobbyController implements Initializable , LobbyResponseListener {
     @FXML
     private Button refreshButton;
     private ChangeListener <GameView> changeListener;
+    private ClientType cType;
+
 
     private ObservableList<GameView> startList = FXCollections.synchronizedObservableList(FXCollections.observableArrayList());
     private ObservableList<GameView> runningList = FXCollections.synchronizedObservableList(FXCollections.observableArrayList());
@@ -52,9 +54,9 @@ public class LobbyController implements Initializable , LobbyResponseListener {
 
 
 
-    public LobbyController() {
+    public LobbyController() throws IOException {
         ListenerHandler.registerListener(this);
-
+        this.cType = new ClientType();
     }
 
     public void setChangeListener(){
@@ -63,19 +65,12 @@ public class LobbyController implements Initializable , LobbyResponseListener {
         SelectionModel<GameView> smEnd = lstvwEnd.getSelectionModel();
 
         this.changeListener = (arg0, arg1, arg2) -> {
-            if(arg2 !=null) {
                 Stage window = new Stage();
-                ClientType cType = new ClientType();
-
-                window.setOnCloseRequest( t -> {
+                window.setOnCloseRequest(t->{
                     showgames();
-
-                        }
-                );
-
+                });
                 try {
-                    System.out.println("Hallo nochmal ctype Display von "+ arg2.getContent());
-                    cType.display(window, arg2.getContent(), clientID,lobby.getStage());
+                        cType.display(window, arg2.getContent(), clientID,lobby.getStage());
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -86,7 +81,7 @@ public class LobbyController implements Initializable , LobbyResponseListener {
             } catch (Exception e) {
                 e.printStackTrace();
             }*/
-            }
+
         };
 
 
