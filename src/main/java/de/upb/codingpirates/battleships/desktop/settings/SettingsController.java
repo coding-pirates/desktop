@@ -1,8 +1,6 @@
 package de.upb.codingpirates.battleships.desktop.settings;
 
-import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
-import com.google.common.io.Files;
 import de.upb.codingpirates.battleships.desktop.BattleshipsDesktopClientApplication;
 import de.upb.codingpirates.battleships.desktop.util.Help;
 import de.upb.codingpirates.battleships.desktop.util.Impressum;
@@ -18,7 +16,6 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
-import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.*;
@@ -71,19 +68,7 @@ public class SettingsController implements Initializable {
             soundImg.setImage(new Image(String.valueOf(getClass().getResource("/images/SoundEffect_Icon.png"))));
         }
 
-        File[] files = new File(Thread.currentThread().getContextClassLoader().getResource("lang").getPath()).listFiles();
-        List<Locale> lists;
-        if(files != null && files.length > 0)
-            lists = Arrays.stream(files).map(file -> {
-                try {
-                    //noinspection UnstableApiUsage
-                    return Files.getNameWithoutExtension(file.getName()).split("_")[1];
-                }catch (ArrayIndexOutOfBoundsException e){
-                    return Locale.getDefault().toLanguageTag();
-                }
-            }).map(Locale::forLanguageTag).collect(Collectors.toList());
-        else
-            lists = Lists.newArrayList(Locale.getDefault());
+        List<Locale> lists = Settings.getAllLanguages();
         lists.sort(Comparator.comparing(locale->((Locale)locale).getDisplayLanguage()).thenComparing(locale-> ((Locale)locale).getDisplayCountry()));
         lists.forEach(locale -> languages.put(locale.getDisplayName(), locale));
         language.setItems(FXCollections.observableList(lists.stream().map(Locale::getDisplayName).collect(Collectors.toList())));

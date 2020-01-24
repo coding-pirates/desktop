@@ -1,5 +1,6 @@
 package de.upb.codingpirates.battleships.desktop.lobby;
 
+import de.upb.codingpirates.battleships.desktop.util.Fullscreen;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
@@ -11,7 +12,7 @@ import java.io.IOException;
 /**
  * Class that initials the Lobby Window.
  */
-public class Lobby  {
+public class Lobby extends Fullscreen {
 
     private Stage lobbyStage;
 
@@ -31,6 +32,7 @@ public class Lobby  {
         lobbyStage.setMaximized(true);
         lobbyStage.setResizable(false);
         lobbyStage.setTitle("Lobby");
+        super.display(lobbyStage);
         lobbyStage.setScene(new Scene(pane));
         lobbyStage.show();
         lobbyController.showgames();
