@@ -17,7 +17,6 @@ public class Ranking {
 
     private Stage rankingStage;
     private RankingController rankingController;
-    private Collection<Client> players;
 
     /**
      * Start Method that creates a new Window and a related Controller.
@@ -50,7 +49,7 @@ public class Ranking {
      * @param players Collection of Players
      */
     public void setPlayer(Collection<Client> players) {
-        this.players = players;
+        rankingController.setPlayers(players);
     }
 
     /**
@@ -60,23 +59,7 @@ public class Ranking {
      * @param points Map of PlayerIds and Points
      */
     public void sortPoints(Map<Integer, Integer> points) {
-        Map<Integer, Integer> tempPoints = new HashMap<>(points);
-        Queue<Integer> playerIDS = new LinkedList<>();
-        while (!tempPoints.isEmpty()) {
-            Integer aktMaxPunkt = -3000;
-            Integer aktMaxClientId =0;
-            Set<Integer> clientIds = tempPoints.keySet();
-            for (Integer clientId : clientIds) {
-                if (tempPoints.get(clientId) >= aktMaxPunkt) {
-                    aktMaxPunkt = points.get(clientId);
-                    aktMaxClientId = clientId;
-
-                }
-            }
-            playerIDS.add(aktMaxClientId);
-            tempPoints.remove(aktMaxClientId);
-        }
-        rankingController.setPointsList(playerIDS, points, players);
+       rankingController.sortPoints(points);
     }
 
 

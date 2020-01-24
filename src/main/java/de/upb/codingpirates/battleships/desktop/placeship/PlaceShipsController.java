@@ -65,12 +65,11 @@ public class PlaceShipsController extends InGameController implements Initializa
 
     private ShipForm shipForm;
     private Timeline time = new Timeline();
-    private long millis;
 
 
 
     public PlaceShipsController() {
-        ListenerHandler.registerListener((MessageHandlerListener) this);
+        ListenerHandler.registerListener(this);
         this.model = new PlaceshipsModel();
     }
 
@@ -81,9 +80,9 @@ public class PlaceShipsController extends InGameController implements Initializa
 
     public void setCurrentGame(Game currentGame){
        model.setCurrentGame(currentGame);
-        model.addShipTypes(currentGame.getConfig().getShips()); //TODO maybe direct in Model
+        model.addShipTypes(currentGame.getConfig().getShips());
         model.setSelectedShip(currentGame.getConfig().getShips().keySet().iterator().next());
-        this.millis = currentGame.getConfig().getRoundTime();
+        model.setMillis(currentGame.getConfig().getRoundTime());
     }
 
     public void startTimer() {
@@ -95,11 +94,11 @@ public class PlaceShipsController extends InGameController implements Initializa
 
             @Override
             public void handle(ActionEvent event) {
-                millis = millis-1000;
-                Long seconds = millis/1000;
+                model.setMillis(model.getMillis()-1000);
+                Long seconds = model.getMillis()/1000;
                 System.out.println(seconds);
                 //restTime.setText((seconds.toString())); //TODO create label to fill in View
-                if (millis <= 0) {
+                if (model.getMillis() <= 0) {
                     time.stop();
                 }
 
@@ -115,14 +114,9 @@ public class PlaceShipsController extends InGameController implements Initializa
         stage.close();
     }
 
-    /**
-     * next_Button
-     * @throws Exception
-     */
-
 
     @FXML
-    public void help() throws IOException {
+    public void help(){
         Help help = new Help();
         try{
             help.display("PlaceShip-Help");
@@ -156,27 +150,6 @@ public class PlaceShipsController extends InGameController implements Initializa
         model.sendLeaveRequest();
     }
 
-    @Override
-    public void onGameLeaveResponse(GameLeaveResponse message, int clientId){
-        System.out.println("GameLeaveResponse bekommen!");
-        Platform.runLater(() ->{
-            Lobby lobby = new Lobby();
-            Stage lobbyStage = new Stage();
-
-            lobbyStage.setOnCloseRequest(y -> {
-                Platform.exit();
-                System.exit(0);
-            });
-
-            try {
-                lobby.display(lobbyStage,clientId);
-                closeStage();
-            } catch (IOException e) {
-                e.printStackTrace();//TODO
-            }
-        });
-
-    }
 
     @FXML
     public void rotate(){
@@ -247,7 +220,7 @@ public class PlaceShipsController extends InGameController implements Initializa
     }
 
     public void setShipForm(){
-        shipForm= new ShipForm(model.getShipTypes().get(model.getSelectedShip()).getPositions());
+        shipForm = new ShipForm(model.getShipTypes().get(model.getSelectedShip()).getPositions());
         smallBorderPane.setPadding(new Insets(1, 1, 1, 1));
         selectedShipGrid = shipForm.getDisplay();
         smallBorderPane.setCenter(selectedShipGrid);
@@ -266,6 +239,29 @@ public class PlaceShipsController extends InGameController implements Initializa
                 "Platziere bitte zuerst alle Schiffe.", ButtonType.OK);
         alertFinish.showAndWait();
     }
+
+    @Override
+    public void onGameLeaveResponse(GameLeaveResponse message, int clientId){
+        System.out.println("GameLeaveResponse bekommen!");
+        Platform.runLater(() ->{
+            Lobby lobby = new Lobby();
+            Stage lobbyStage = new Stage();
+
+            lobbyStage.setOnCloseRequest(y -> {
+                Platform.exit();
+                System.exit(0);
+            });
+
+            try {
+                lobby.display(lobbyStage,clientId);
+                closeStage();
+            } catch (IOException e) {
+                e.printStackTrace();//TODO
+            }
+        });
+
+    }
+
 
     @Override
     public void onPlaceShipsResponse(PlaceShipsResponse message, int clientId) {

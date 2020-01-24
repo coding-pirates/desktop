@@ -11,10 +11,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.net.URL;
-import java.util.Collection;
-import java.util.Map;
-import java.util.Queue;
-import java.util.ResourceBundle;
+import java.util.*;
 
 /**
  * Controller Class for the Ranking Window.
@@ -30,7 +27,17 @@ public class RankingController implements Initializable {
     @FXML
     TableColumn<Player, Integer> points;
 
+    private Collection<Client> players;
+
     private Ranking ranking;
+
+    /**
+     * Initial Method.
+     */
+    @Override
+    public void initialize(URL arg0, ResourceBundle arg1) {
+
+    }
 
     /**
      * Set Method for the Ranking.
@@ -41,13 +48,15 @@ public class RankingController implements Initializable {
         this.ranking = ranking;
     }
 
-    /**
-     * Initial Method.
-     */
-    @Override
-    public void initialize(URL arg0, ResourceBundle arg1) {
 
+    public Collection<Client> getPlayers() {
+        return players;
     }
+
+    public void setPlayers(Collection<Client> players) {
+        this.players = players;
+    }
+
 
     /**
      * Fills the Ranking Window with the Placement of every Player, it's Name and Points.
@@ -80,6 +89,32 @@ public class RankingController implements Initializable {
         name.setCellValueFactory(new PropertyValueFactory<>("name"));
         points.setCellValueFactory(new PropertyValueFactory<>("points"));
         tableRangList.setItems(playerList);
+    }
+
+    /**
+     * Sorts the PlayerIds by Points Decreasing.
+     * Creates a pointsList with the sorted PlayerIds
+     *
+     * @param points Map of PlayerIds and Points
+     */
+    public void sortPoints(Map<Integer, Integer> points) {
+        Map<Integer, Integer> tempPoints = new HashMap<>(points);
+        Queue<Integer> playerIDS = new LinkedList<>();
+        while (!tempPoints.isEmpty()) {
+            Integer aktMaxPunkt = -3000;
+            Integer aktMaxClientId =0;
+            Set<Integer> clientIds = tempPoints.keySet();
+            for (Integer clientId : clientIds) {
+                if (tempPoints.get(clientId) >= aktMaxPunkt) {
+                    aktMaxPunkt = points.get(clientId);
+                    aktMaxClientId = clientId;
+
+                }
+            }
+            playerIDS.add(aktMaxClientId);
+            tempPoints.remove(aktMaxClientId);
+        }
+        this.setPointsList(playerIDS, points, players);
     }
 
 }

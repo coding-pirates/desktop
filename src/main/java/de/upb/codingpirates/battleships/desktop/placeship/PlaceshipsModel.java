@@ -17,6 +17,7 @@ public class PlaceshipsModel{
     private int clientID;
     private int selectedShip;
     private Rotation currentRotation = Rotation.NONE;
+    private long millis;
 
     public PlaceshipsModel(){
         placedShips = new HashMap<>();
@@ -82,6 +83,16 @@ public class PlaceshipsModel{
     public Map<Integer,ShipType> getShipTypes(){
         return shipTypes;
     }
+
+
+    public long getMillis() {
+        return millis;
+    }
+
+    public void setMillis(long millis) {
+        this.millis = millis;
+    }
+
 
     public boolean proofShip(Collection<Point2D> shipPoints){
         for(Point2D point : shipPoints){
