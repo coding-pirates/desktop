@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.*?>
-<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
@@ -18,9 +17,9 @@
                         <Image url="@../images/button.png" />
                      </image>
                   </ImageView>
-                  <Text fx:id="txt_title" fill="WHITE" layoutX="3.0" layoutY="37.740234375" nodeOrientation="RIGHT_TO_LEFT" smooth="false" strokeType="OUTSIDE" strokeWidth="0.0" text="Piratenkodex" textAlignment="CENTER" wrappingWidth="297.9999992620433" AnchorPane.bottomAnchor="16.0" AnchorPane.leftAnchor="3.0" AnchorPane.rightAnchor="-1.0" AnchorPane.topAnchor="14.0">
+                  <Text fx:id="txt_title" fill="WHITE" layoutX="3.0" layoutY="37.740234375" nodeOrientation="RIGHT_TO_LEFT" smooth="false" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-family: 'Pirata One';" text="%settings.pirates_code" textAlignment="CENTER" wrappingWidth="297.9999992620433" AnchorPane.bottomAnchor="16.0" AnchorPane.leftAnchor="3.0" AnchorPane.rightAnchor="-1.0" AnchorPane.topAnchor="14.0">
                      <font>
-                        <Font name="System Bold" size="22.0" />
+                        <Font name="System Bold" size="24.0" />
                      </font>
                   </Text>
                </children>
@@ -49,9 +48,6 @@
                      </image>
                   </ImageView>
                </graphic>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
             </Button>
          </children>
          <padding>
