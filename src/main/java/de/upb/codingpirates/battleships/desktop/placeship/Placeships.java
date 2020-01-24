@@ -2,6 +2,7 @@ package de.upb.codingpirates.battleships.desktop.placeship;
 
 
 import de.upb.codingpirates.battleships.desktop.util.Fullscreen;
+import de.upb.codingpirates.battleships.desktop.util.FxmlLoader;
 import de.upb.codingpirates.battleships.logic.Game;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -16,7 +17,7 @@ import java.util.*;
 /**
  * Class that implements a Window to place the ships
  */
-public class Placeships extends Fullscreen {
+public class Placeships extends Fullscreen implements FxmlLoader {
 
     /**
      * stage of this view
@@ -32,7 +33,7 @@ public class Placeships extends Fullscreen {
      */
     public void display(Stage placeshipsStage, Game currentGame, int clientID) throws IOException {
         this.placeshipsStage = placeshipsStage;
-        FXMLLoader loader = new FXMLLoader(this.getClass().getResource("/fxml/PlaceshipsView.fxml"));
+        FXMLLoader loader = this.getLoader("PlaceshipsView");
         AnchorPane pane = loader.load();
         this.placeshipsController = loader.getController();
         placeshipsController.setCurrentGame(currentGame);

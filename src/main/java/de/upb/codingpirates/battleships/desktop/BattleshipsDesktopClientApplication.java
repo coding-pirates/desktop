@@ -4,6 +4,7 @@ import de.upb.codingpirates.battleships.client.network.ClientApplication;
 import de.upb.codingpirates.battleships.client.network.ClientConnector;
 import de.upb.codingpirates.battleships.desktop.start.Start;
 import de.upb.codingpirates.battleships.desktop.start.StartController;
+import de.upb.codingpirates.battleships.desktop.util.FxmlLoader;
 import de.upb.codingpirates.battleships.desktop.util.Settings;
 import javafx.application.Application;
 import javafx.application.Platform;
@@ -28,7 +29,7 @@ import java.util.Random;
 /**
  * class to start the Battleship Desktop-Client-Application
  */
-public final class BattleshipsDesktopClientApplication extends Application {
+public final class BattleshipsDesktopClientApplication extends Application implements FxmlLoader {
 
     /**
      * first Stage in this Application
@@ -98,7 +99,7 @@ public final class BattleshipsDesktopClientApplication extends Application {
                 System.exit(0);
             });
             try{
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/StartView.fxml"));
+            FXMLLoader loader = this.getLoader("StartView");
             AnchorPane pane = loader.load();
             StartController startcontroller = loader.getController();
             startcontroller.setMain(this);

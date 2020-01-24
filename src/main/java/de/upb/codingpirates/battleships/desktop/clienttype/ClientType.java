@@ -1,5 +1,6 @@
 package de.upb.codingpirates.battleships.desktop.clienttype;
 
+import de.upb.codingpirates.battleships.desktop.util.FxmlLoader;
 import de.upb.codingpirates.battleships.logic.Game;
 import de.upb.codingpirates.battleships.logic.GameState;
 import javafx.fxml.FXMLLoader;
@@ -11,7 +12,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class ClientType {
+public class ClientType implements FxmlLoader {
     private ClientTypeController clientTypeController;
     private Stage window;
     private Stage LobbyStage;
@@ -20,7 +21,7 @@ public class ClientType {
     private Scene scene;
 
     public ClientType() throws IOException {
-        this.loader = new FXMLLoader(this.getClass().getResource("/fxml/ClientTypeView.fxml"));
+        this.loader = this.getLoader("ClientTypeView");
         this.pane = loader.load();
         this.clientTypeController = loader.getController();
         this.scene = new Scene(this.pane);

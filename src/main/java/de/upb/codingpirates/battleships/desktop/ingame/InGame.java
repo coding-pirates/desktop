@@ -50,7 +50,7 @@ public class InGame extends Fullscreen implements FxmlLoader {
      * @throws Exception
      */
     public void start(Stage inGameStage, Game currentGame, ClientType clientType) throws Exception {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/InGameView.fxml"));
+        FXMLLoader loader = this.getLoader("InGameView");
         AnchorPane pane = loader.load();
         inGameController = loader.getController();
         inGameController.setGame(currentGame);

@@ -5,6 +5,7 @@ import de.upb.codingpirates.battleships.desktop.gamefield.GameFieldController;
 import de.upb.codingpirates.battleships.desktop.lobby.Lobby;
 import de.upb.codingpirates.battleships.desktop.ranking.Ranking;
 import de.upb.codingpirates.battleships.desktop.settings.Settings;
+import de.upb.codingpirates.battleships.desktop.util.FxmlLoader;
 import de.upb.codingpirates.battleships.desktop.util.Help;
 import de.upb.codingpirates.battleships.logic.*;
 import javafx.animation.KeyFrame;
@@ -32,7 +33,7 @@ import java.util.*;
  * Controller Class for the Window that shows the Game Configuration and GameFields
  * of every Player involved in the Game.
  */
-public class InGameController implements Initializable {
+public class InGameController implements Initializable, FxmlLoader {
 
     /**
      * model class of this view
@@ -419,7 +420,7 @@ public class InGameController implements Initializable {
         Object[] clientArray = clientList.toArray();
         for (Object o : clientArray) {
             Client client = (Client) o;
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/GameFieldView.fxml"));
+            FXMLLoader loader = this.getLoader("GameFieldView");
             inGame = loader.load();
             spielfelder.getChildren().add(inGame);
             GameFieldController gameFieldController = loader.getController();

@@ -1,5 +1,6 @@
 package de.upb.codingpirates.battleships.desktop.ranking;
 
+import de.upb.codingpirates.battleships.desktop.util.FxmlLoader;
 import de.upb.codingpirates.battleships.logic.Client;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -13,7 +14,7 @@ import java.util.*;
 /**
  * Class that implements a Window with the Ranking when i Game is finished.
  */
-public class Ranking {
+public class Ranking implements FxmlLoader {
 
     private Stage rankingStage;
     private RankingController rankingController;
@@ -24,7 +25,7 @@ public class Ranking {
     public void display(Stage rankingStage) throws Exception {
         this.rankingStage = rankingStage;
         rankingStage.initModality(Modality.APPLICATION_MODAL);
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/RankingView.fxml"));
+        FXMLLoader loader = this.getLoader("RankingView");
         AnchorPane pane = loader.load();
         this.rankingController = loader.getController();
         rankingController.setRanking(this);

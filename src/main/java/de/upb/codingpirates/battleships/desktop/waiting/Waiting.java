@@ -1,5 +1,6 @@
 package de.upb.codingpirates.battleships.desktop.waiting;
 
+import de.upb.codingpirates.battleships.desktop.util.FxmlLoader;
 import de.upb.codingpirates.battleships.logic.Game;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -10,7 +11,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class Waiting  {
+public class Waiting implements FxmlLoader {
 
     private Stage waitingStage;
     private WaitingController waitingController;
@@ -23,7 +24,7 @@ public class Waiting  {
         waitingStage.initModality(Modality.APPLICATION_MODAL);
         waitingStage.setTitle("Waiting");
 
-        FXMLLoader loader = new FXMLLoader(this.getClass().getResource("/fxml/WaitingView.fxml"));
+        FXMLLoader loader = this.getLoader("WaitingView");
         AnchorPane pane = loader.load();
 
         waitingController = loader.getController();
