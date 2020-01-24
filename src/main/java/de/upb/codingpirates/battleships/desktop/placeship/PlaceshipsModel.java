@@ -84,10 +84,10 @@ public class PlaceshipsModel{
     }
 
     public boolean proofShip(Collection<Point2D> shipPoints){
+        for(Point2D point : shipPoints){
             for(Integer placedShipId : placedShips.keySet()) {
                 ArrayList<Point2D> placedShipPoints = getShipPoints(placedShips.get(placedShipId), shipTypes.get(placedShipId));
-                for(Point2D point : shipPoints){
-                if (placedShipPoints.contains(point)
+                if ((placedShipPoints.contains(point)
                         || placedShipPoints.contains(new Point2D(point.getX() + 1, point.getY()))
                         || placedShipPoints.contains(new Point2D(point.getX(), point.getY() + 1))
                         || placedShipPoints.contains(new Point2D(point.getX() - 1, point.getY()))
@@ -95,14 +95,16 @@ public class PlaceshipsModel{
                         || placedShipPoints.contains(new Point2D(point.getX() + 1, point.getY() + 1))
                         || placedShipPoints.contains(new Point2D(point.getX() - 1, point.getY() + 1))
                         || placedShipPoints.contains(new Point2D(point.getX() - 1, point.getY() - 1))
-                        || placedShipPoints.contains(new Point2D(point.getX() + 1, point.getY() - 1))
-                        || point.getY()>= currentGame.getConfig().getHeight()-1
-                        || point.getX()>= currentGame.getConfig().getWidth()-1
-                        || point.getY()<0
-                        || point.getX()<0) {
+                        || placedShipPoints.contains(new Point2D(point.getX() + 1, point.getY() - 1)))&& placedShipId != selectedShip) {
                     return false;
                 }
             }
+                if(point.getY()> currentGame.getConfig().getHeight()-1
+                        || point.getX()> currentGame.getConfig().getWidth()-1
+                        || point.getY()<0
+                        || point.getX()<0){
+                    return false;
+                }
         }
         return true;
     }

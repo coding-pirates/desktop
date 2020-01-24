@@ -50,7 +50,7 @@ public class PlaceShipsController extends InGameController implements Initializa
     @FXML
     private BorderPane borderPane;
     @FXML
-    private GridPane grid;
+    private GridPane selectedShipGrid;
     @FXML
     private BorderPane smallBorderPane;
 
@@ -194,10 +194,9 @@ public class PlaceShipsController extends InGameController implements Initializa
      */
     public void clickGrid(javafx.scene.input.MouseEvent event) {
             Node clickedNode = event.getPickResult().getIntersectedNode();
-            if (clickedNode != grid) {
-                // click on descendant node
-                Integer colIndex = GridPane.getColumnIndex(clickedNode);
-                Integer rowIndex = GridPane.getRowIndex(clickedNode);
+        Integer colIndex = GridPane.getColumnIndex(clickedNode);
+        Integer rowIndex = GridPane.getRowIndex(clickedNode);
+            if (clickedNode != selectedShipGrid && colIndex != null && rowIndex != null) {
                 int row = gameField.getRow();
                 int col = gameField.getCol();
                 System.out.println("Mouse clicked cell: " + colIndex + " And: " + rowIndex);
@@ -226,8 +225,8 @@ public class PlaceShipsController extends InGameController implements Initializa
         Ship s = new Ship(new ShipType(positions));*/
         shipForm= new ShipForm(model.getShipTypes().get(model.getSelectedShip()).getPositions());
         smallBorderPane.setPadding(new Insets(1, 1, 1, 1));
-        grid = shipForm.getDisplay();
-        smallBorderPane.setCenter(grid);
+        selectedShipGrid = shipForm.getDisplay();
+        smallBorderPane.setCenter(selectedShipGrid);
         System.out.println(smallBorderPane.getCenter());
     }
 
