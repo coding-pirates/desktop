@@ -12,6 +12,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -46,6 +47,9 @@ public class SettingsController implements Initializable {
     @FXML
     public ChoiceBox<String> language;
 
+    @FXML
+    private Label settings_restart_info_label;
+
     private Map<String, Locale> languages = Maps.newHashMap();
 
     /**
@@ -54,6 +58,7 @@ public class SettingsController implements Initializable {
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
 
+        settings_restart_info_label.setWrapText(true);
         if (BattleshipsDesktopClientApplication.mediaView.getMediaPlayer().isMute()){
             volumeImg.setImage(new Image(String.valueOf(getClass().getResource("/images/SoundOff_Icon.png"))));
         } else {
