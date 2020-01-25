@@ -3,6 +3,7 @@ package de.upb.codingpirates.battleships.desktop.serverlogin;
 import de.upb.codingpirates.battleships.client.network.ClientApplication;
 import de.upb.codingpirates.battleships.client.network.ClientConnector;
 import de.upb.codingpirates.battleships.desktop.util.Fullscreen;
+import de.upb.codingpirates.battleships.desktop.util.FxmlLoader;
 import de.upb.codingpirates.battleships.desktop.util.Settings;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -17,7 +18,7 @@ import java.util.ResourceBundle;
 /**
  * Class that implements a Window to login to the game
  */
-public class ServerLogin extends Fullscreen {
+public class ServerLogin extends Fullscreen implements FxmlLoader {
 
     /**
      * stage for this view
@@ -39,7 +40,7 @@ public class ServerLogin extends Fullscreen {
     public void display(@Nonnull final Stage loginStage) throws IOException {
         this.loginStage = loginStage;
 
-        FXMLLoader loader = new FXMLLoader(ServerLogin.class.getResource("/fxml/ServerLogin.fxml"), ResourceBundle.getBundle("lang/desktop", Settings.getLocale()));
+        FXMLLoader loader = this.getLoader("ServerLogin");
         AnchorPane pane = loader.load();
 
         Image icon = new Image(String.valueOf(getClass().getResource("/images/app_icon.png")));
