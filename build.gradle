@@ -1,35 +1,13 @@
 plugins {
     id 'java'
     id 'idea'
-    id 'maven-publish'
     id 'application'
 }
 
 repositories{
     mavenCentral()
     maven {
-        name = "Coding Pirates Network"
-        url = "https://maven.pkg.github.com/coding-pirates/network"
-        credentials {
-            username = project.findProperty("gpr.user") ?: System.getenv("GITHUB_USERNAME")
-            password = project.findProperty("gpr.key") ?: System.getenv("GITHUB_PACKAGE_READ_TOKEN")
-        }
-    }
-    maven {
-        name = "Coding Pirates Logic"
-        url = "https://maven.pkg.github.com/coding-pirates/logic"
-        credentials {
-            username = project.findProperty("gpr.user") ?: System.getenv("GITHUB_USERNAME")
-            password = project.findProperty("gpr.key") ?: System.getenv("GITHUB_PACKAGE_READ_TOKEN")
-        }
-    }
-    maven {
-        name = "Coding Pirates Client"
-        url = "https://maven.pkg.github.com/coding-pirates/client"
-        credentials {
-            username = project.findProperty("gpr.user") ?: System.getenv("GITHUB_USERNAME")
-            password = project.findProperty("gpr.key") ?: System.getenv("GITHUB_PACKAGE_READ_TOKEN")
-        }
+        url = "https://maven.paube.de"
     }
 }
 
@@ -87,27 +65,6 @@ task fatJar(type: Jar){
         exclude 'log4j2.xml'
     }
     with jar
-}
-
-publishing {
-    repositories {
-        maven {
-            name = "GitHubPackages"
-            url = uri("https://maven.pkg.github.com/coding-pirates/desktop-client")
-            credentials {
-                username = project.findProperty("gpr.user") ?: System.getenv("GITHUB_USERNAME")
-                password = project.findProperty("gpr.key") ?: System.getenv("GITHUB_PACKAGE_PUBLISH_TOKEN")
-            }
-        }
-    }
-    publications{
-        gpr(MavenPublication){
-            from(components.java)
-            artifact tasks.sourceJar
-            artifact tasks.fatJar
-            artifactId = project.artifact
-        }
-    }
 }
 
 idea.module {
